@@ -1,0 +1,74 @@
+= PDDL support questionnaire =
+
+In your planner submission email, please attach or include answers to the
+following questions. One convenient way of doing this is by clicking on the
+following link to obtain a [[PddlSupportQuestionnaire|plain text version of
+this page|&action=raw]], and then cutting and pasting from there. Edit the
+parts [in brackets] to give your answers, and leave everything else as is.
+
+ * If you submit several planners or planner versions, please fill in one
+copy of the questionnaire for each. If they are mostly identical, just
+copy-and-paste.
+ * You only need to fill in the questionnaire once per planner, not once per
+track. If your answers are different for the different tracks, please
+indicate. For example, your planner might support conditional effects only
+in the sequential tracks, but not in the temporal tracks.
+
+== General questions ==
+
+ * Name of planner: SGPlan6
+ * Names of team members: Chih-Wei Hsu, Benjamin Wah
+ 
+== Tracks ==
+
+The planner is entered in the following '''tracks''' (please remove all
+options that don't apply; multiple answers possible):
+ * [The planner is entered in the sequential satisficing track.]
+ * [The planner is entered in the temporal satisficing track.]
+ * [The planner is entered in the net benefit satisficing track.]
+
+== Features ==
+
+The planner supports '''object fluents''' in the following way (please
+remove all options apart from the one that applies):
+ * [The planner only supports predicate representations, no object fluent
+representations.]
+
+The planner supports '''PDDL types''' in the following way (please remove
+all options apart from the one that applies):
+ * [The planner supports both representations, and typed representations are
+preferred.]
+
+The planner supports '''grounded representations''' in the following way
+(please remove all options apart from the one that applies):
+ * [The planner supports both representations, and representations with
+schematic operators are preferred.]
+
+The planner supports the following '''optional features''' (please remove
+all options that don't apply; multiple answers possible):
+ * [The planner supports negative preconditions in STRIPS operators and in
+the goal specification.]
+ * [The planner supports general ADL conditions ({{{exists}}}, {{{forall}}},
+{{{or}}}, ...) in operators and goals.]
+ * [The planner supports conditional effects ({{{when}}}) in operators.]
+ * [The planner supports universal effects ({{{forall}}}) in operators.]
+ * [The planner supports derived predicates.]
+
+The planner supports '''numeric state variables''' in the following way
+(please remove the one that doesn't apply):
+ * [Numeric state variables are supported.]
+
+Note that support for numeric state variables (beyond support of action
+costs) is not needed in the sequential tracks, and that numeric state
+variables are ''required'' in the temporal and net benefit tracks. However,
+we expect some planners that don't support numeric state variables to be
+entered in the temporal and net benefit tracks. (These planners will then
+score zero points in domains where numbers are necessary.)
+
+The planner supports '''temporal planning''' in the following way (please
+remove all options apart from the one that applies):
+ * [Durative actions and timed initial literals are supported.]
+
+Note that support for durative actions is not needed in the sequential
+tracks, and of course it is required in the temporal tracks. Durative
+actions are an optional feature in the net benefit tracks.

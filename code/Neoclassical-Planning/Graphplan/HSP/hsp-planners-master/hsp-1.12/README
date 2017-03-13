@@ -1,0 +1,158 @@
+This is Release 1.12 of the Heuristic Search Planner (HSP).
+
+Version 1.0 was used in the AIPS-98 Planning Competition
+(see http://www.cs.yale.edu/~drew.mcdermott)
+
+
+HISTORY
+=======
+
+This release, 1.11, fixes some bugs about default values
+of arguments, name of arguments, and packing of the software.
+The goal is to make the HSP packing uniform with the HSPR packing.
+
+This release, 1.1, just changes the implementation
+of the heuristic function by making it significantly faster. 
+As a result, the planner runs several times faster than before.
+
+
+HSP
+===
+
+HSP does Strips planning by heuristic search.
+The heuristic is extracted from the Strips
+representation of the problem, and is plugged into 
+greedy-like search algorithm. A note describing HSP can 
+be found in the hsp-1.1/doc directory (see below).
+This document describes the installation procedure,
+the contents of the distribution, the test suite, the AIPS-98
+Planning Competition problem suite, etc.
+An earlier version the the planner was described in 
+the paper "A fast and robust action selection mechanism 
+for planning", B. Bonet, G. Loerincs, and H. Geffner (AAAI-97).
+
+
+REQUIREMENTS
+============
+
+In order to install/solve problems you will need a standard C compiler
+(like gcc) and some general unix tools: make, sed, awk, ld, etc. 
+Be sure to have these commands in your path. 
+
+
+INSTALLATION
+============
+
+1) unpack distribution files, for example
+
+    $ gzip -dc hsp-1.11.tar.gz | tar -xvf -
+
+2) set the var HSPHOME to the hsp directory, for example (using ksh)
+
+    $ export HSPHOME=`pwd`/hsp-1.11
+
+3) run "make compile" in $HSPHOME to compile parser and planner, 
+
+    $ cd $HSPHOME; make compile
+
+
+RUNNING SOME SAMPLES
+==================== 
+
+The sample problems are in the pddl directories. 
+Here is an example for solving some of them:
+
+1) change to the logistics problems, 
+
+    $ cd $HSPRHOME/pddl/logistics
+
+2) compile the problems,
+
+    $ make compile
+
+3) solve the problems
+
+    $ make solve
+
+The results are in the file "solutions.all".
+
+
+THE PLANNER
+===========
+
+In order to run the planner you must define the environment
+variable HSPHOME with the absolute path of the ./hsp-1.11 directory
+(e.g., in bash you can say "export HSPHOME=/home/john/hsp-1.11").
+After that, you can move to any pddl directory (e.g., pddl/blocks-world)
+and execute the command "make compile". This command builds all problems
+specified in the PROBLEMS file; to apply the planner over them use "make solve".
+The plan and timing information are left in the file "solutions.all".
+Edit the PROBLEMS file in order to specify different subsets of problems.
+
+The files in the ./hsp-1.11/pddl directory conform the test suite.
+Neither all problems have solutions nor the planner solves all that
+have one. The problems in pddl/aips98 are those used in the First Planing
+Competition and were collected by Drew McDermott (see his page for details).
+*INCLUDE CREDITS FOR OTHER PROBLEMS*
+
+There are several flags that modify the behaviour of the planner:
+
+  1) "-h" prints a help message,
+
+  2) "-l" performs loop detection,
+
+  3) "-u" performs updates the heuristic function,
+
+  4) "-i" sets the maximum number of impasses,
+
+  5) "-m" sets the maximum number of minutes to run, 
+
+  6) "-N" sets the size of the N-Buffer,
+
+  7) "-r" sets the random seed.
+
+If you want to solve the problems with one or more options you
+can use the environment variable "HSPFLAGS". For the random seed, 
+we use the environment variable "HSPSEED". For example, use a
+random seed of 20 and  backtrack after 80 impasses:
+
+   $ export HSPFLAGS="-i 80"
+   $ export HSPSEED=20
+   $ make solve
+
+or, use a random seed supplied by the shell:
+
+   $ export HSPSEED=$RANDOM
+   $ make solve
+
+
+THE PDDL PARSER
+===============
+
+The parser translates  the planning problems expressed in PDDL (as 
+problem and domain definitions) into a set of C programs. In this way 
+we get a fast implementation of the planner tailored to that
+particular planning instance. To run the planner, these C files must 
+be compiled and linked. This is done in the "make compile".
+
+Two object files that are always linked are planner.o and costs.o (in 
+./hsp-1.11/planner)  which contain problem independent code
+(the general heuristic search algorithm and some high-level 
+functions for computing the heuristic values).  The C files generated
+by the parser have the extensions .ope.c, .fac.c, and .tab.c.
+
+
+Documentation
+=============
+
+The algorithm and heuristic function used are described in a short
+note located in ./hsp-1.11/docs.
+
+
+Comments and suggestions can be addressed to bonet@usb.ve and 
+hector@usb.ve.
+
+
+Enjoy.
+
+blai and hector

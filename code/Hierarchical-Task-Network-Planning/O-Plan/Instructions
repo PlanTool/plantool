@@ -1,0 +1,47 @@
+Instructions for the O-Plan 3.3 release
+---------------------------------------
+
+O-Plan 3.3 is distributed as a gzipped tar file containing some
+documentation, some example domain definitions, and complete
+source code.
+
+To use this system,
+
+ 1. Get a copy of the file oplan-3.3-25May00.tar.gz via
+
+      http://www.aiai.ed.ac.uk/~oplan/release/
+
+ 2. Make a (new) directory to contain the O-Plan files and
+    unpack the release tar file there, e.g. as follows:
+
+      zcat oplan-3.3-25May00.tar.gz | tar xpf -
+
+ 3. Follow the instructions in the INSTALL file.
+
+You will need a machine running a suitable version of Unix and a
+Common Lisp system for that machine.  Recent versions of O-Plan have
+been successfully used with the following combinations:
+
+  Machine      Operating system       Common Lisps
+  -------      ----------------       ------------
+  Sun SPARC    SunOS 4.1.3            Lucid 4.1,
+                                      Allegro 4.3,
+                                      GCL-1.1
+
+  Sun SPARC    SunOS 5.1.1 (Solaris)  Liquid 5.0.3,
+                                      Lucid 4.4.1,
+                                      Allegro 4.3 and 5.0,
+                                      GCL-2.2.2 and -2.3 (modified)
+
+  386 etc PC   FreeBSD                GCL-1.1, -2.2.2, and -2.3
+
+  386 etc PC   Linux Redhat 5.2       GCL-2.3 (modified)
+
+The "modified" in connection with GCL is because some additional
+routines must be linked in when GCL is built for certain operating
+systems.  For instructions on how to do this, mail to oplan@aiai.ed.ac.uk.
+
+A version of O-Plan prebuilt using GCL (GNU Common Lisp) is also
+available.  Since that version is already in executable form, you
+do not need any separate Lisp system in order to use it.  The prebuilt
+O-Plan can be obtained via http://www.aiai.ed.ac.uk/~oplan/release/.

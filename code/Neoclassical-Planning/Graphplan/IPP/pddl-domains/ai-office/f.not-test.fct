@@ -1,0 +1,18 @@
+(define (problem f-not)
+   (:domain ai-office)
+   (:objects   prak-room jk bn bw - room
+              blob1 blob2 blob3  - object)
+
+
+(:init 
+(at-room prak-room)
+(at blob1 prak-room)
+(at blob2 bn-room)
+(at blob3 bn-room)
+(red blob1) 
+(red blob3)
+(red blob2))
+
+(:goal (and (at blob1 bn-room)
+            (forall (?b - object )(imply (red ?b) (not (at ?b prak-room)))))))
+

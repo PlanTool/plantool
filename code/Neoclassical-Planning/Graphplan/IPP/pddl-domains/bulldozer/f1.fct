@@ -1,0 +1,23 @@
+(define (problem f1)
+   (:domain bulldozer)
+   (:objects bulldozer jack - thing
+             a b c d e f g - place)
+
+
+(:init   (road a b) (road b a)
+	 (road a e) (road e a)
+	 (road e b) (road b e)
+	 (road a c) (road c a)
+	 (road c b) (road b c)
+	 (bridge b d) (bridge d b)
+	 (bridge c f) (bridge f c)
+	 (road d f) (road f d)
+	 (road f g) (road g f)
+	 (road d g) (road g d)
+         (vehicle bulldozer) (mobile jack)
+         (at jack a) 
+         (at bulldozer e) 
+         (person jack))
+
+
+(:goal (and (at bulldozer g) (at jack a))))

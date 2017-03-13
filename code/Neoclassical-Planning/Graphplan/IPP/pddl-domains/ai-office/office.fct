@@ -1,0 +1,21 @@
+(define (problem office)
+   (:domain ai-office)
+   (:objects  jk-room ah-room wh-room sj-room prak-room - room
+              k-bin a-bin h-bin g-bin - bin 
+              blob1 blob2 blob3 blob4 k-bin a-bin h-bin g-bin - object)
+
+(:init
+(at-room prak-room)
+(at k-bin jk-room)
+(at a-bin ah-room)
+(at h-bin wh-room)
+(at g-bin sj-room)
+(at blob1 jk-room)
+(at blob2 ah-room)
+(at blob3 wh-room)
+(at blob4 sj-room)
+(full g-bin) (full a-bin))
+
+(:goal
+(at k-bin wh-room)))
+
