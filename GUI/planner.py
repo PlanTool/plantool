@@ -50,15 +50,15 @@ class PlannerGUI(wx.Frame):
         self.planner_init()
         self.Bind(wx.EVT_CHOICE, self.choice_init, self.listBox)
 
-        #Chose domain file and problem file
-        cad = wx.StaticText(self.panel, -1, "Chose a domain:", (20,480), style=wx.ALIGN_LEFT)
-        cap = wx.StaticText(self.panel, -1, "Chose a problem:", (20,520), style=wx.ALIGN_LEFT)
+        #Choose domain file and problem file
+        cad = wx.StaticText(self.panel, -1, "Choose a domain:", (20,480), style=wx.ALIGN_LEFT)
+        cap = wx.StaticText(self.panel, -1, "Choose a problem:", (20,520), style=wx.ALIGN_LEFT)
         cad.SetFont(wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.BOLD))
         cap.SetFont(wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.BOLD))
-        self.dom_button = wx.Button(self.panel, -1,"Chose", pos=(150, 475), size=(180, -1))  
+        self.dom_button = wx.Button(self.panel, -1,"Choose", pos=(150, 475), size=(180, -1))  
         self.Bind(wx.EVT_BUTTON, self.Domain_Button, self.dom_button)
         #self.dom_button.SetDefault()
-        self.pro_button = wx.Button(self.panel, -1,"Chose", pos=(150, 515), size=(180, -1))  
+        self.pro_button = wx.Button(self.panel, -1,"Choose", pos=(150, 515), size=(180, -1))  
         self.Bind(wx.EVT_BUTTON, self.Problem_Button, self.pro_button)
         #self.pro_button.SetDefault()
 
