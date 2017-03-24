@@ -1,0 +1,13 @@
+usage: hsp <flags>* [ <algorithm> | -S <schedule> ] <problem.pddl> <domain.pddl>
+where <flags> are among:
+   -v <level>		Verbose level >= 0 (default is 1).
+   -w <weight>		Float to weight the heuristic component of the cost function.
+<algorithm> is:
+   -a <algorithm>	Either 'bfs' or 'gbfs'.
+   -d <direction>	Either 'forward' or 'backward'.
+   -h <heuristic>	One of 'h1plus', 'h1max', 'h2plus', 'h2max'.
+<schedule> is a colon separated <option> list where each option has
+form '[<direction>,<heuristic>,<msecs>]'. The options are performed
+sequentially until one finds a plan, or no more options are available
+(each option is attempted with the given time constraint).
+

@@ -1,0 +1,26 @@
+IPP:
+gcc -o ipp.so -shared -fPIC main.c output.c utilities.c memory.c pddl.c pddl-types.c instantiateI.c instantiateII.c instantiateIII.c instantiateIV.c build_graph.c exclusions.c search_plan.c memoize.c wave_front.c save_graph.c scan-fct_pddl.tab.c scan-ops_pddl.tab.c 
+
+HSP:
+gcc -o hsp.so -shared -fPIC planner.c pddl.c parser.c
+
+FF-v2.3:
+gcc -o ff.so -shared -fPIC main.c memory.c output.c parse.c inst_pre.c inst_easy.c inst_hard.c inst_final.c orderings.c relax.c search.c scan-fct_pddl.tab.c scan-ops_pddl.tab.c
+
+GPCSP:
+gcc -o gpcsp.so -shared -fPIC bbpddl.tab.c lex.yy.c graphplan.c utilities.c hash.c planner.c dummy.c justify.c
+
+AltAlt:
+g++ -o altalt.so -shared -fPIC SymTab.cc Rules.cc States.cc BasicTim.cc TimInterface.cc globals.cc facts.cc actions.cc instantiation.cc construction.cc badgoals.cc searchhsp.cc candidates.cc search.cc main.cc
+
+Graphplan:
+gcc -o graphplan.so -shared -fPIC dummy.c  graphplan.c  hash.c  lex.yy.c  planner.c  utilities.c  y.tab.c
+
+SGplan:
+gcc -o sgplan.so -shared -fPIC main.c ActionSubgraph.c inst_easy.c ComputeReachInf.c inst_final.c memory.c H_max.c inst_hard.c mutex.c search.c H_relaxed.c  inst_pre.c   numeric.c    time.c    LocalSearch.c  inst_utils.c   output.c  utilities.c LpgOutput.c parse.c check.c  relax.c orderings.c scan-fct_pddl.tab.c scan-ops_pddl.tab.c 
+
+
+
+
+
+
