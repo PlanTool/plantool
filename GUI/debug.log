@@ -1,0 +1,12 @@
+DEBUG:root:
+2017-03-27 21:47:29
+Initializing MyApp...
+DEBUG:root:Begin a MainLoop
+
+DEBUG:root:Initializing PlannerGUI...
+
+DEBUG:root:
+Exiting Myapp...
+
+DEBUG:root:Finish a MainLoop
+

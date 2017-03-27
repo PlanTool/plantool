@@ -1,0 +1,41 @@
+Namespace(actionDB='tag_actions1', action_label=2, action_rate=0.15, batch_size=8, channel=1, cnn_format='NCHW', decay_rate=0.88, discount_rate=0.9, epochs=2, epsilon=1e-06, exploration_decay_steps=10, exploration_rate_end=0.1, exploration_rate_start=1, exploration_rate_test=0.0, gpu_rate=0.2, learning_rate=0.0025, load_weights='./models/DPR_model/tb0_1.prm', max_text_num='64', model_dir='./models/word2vec_model/', momentum=0.1, non_action_label=1, num_actions=1000, penal_radix=5.0, positive_rate=0.75, priority=1, random_play=0, replay_size=60000, result_dir='./outputs/DPR_result', reward_assign='2.0 1.0 -1.0 -2.0', reward_bound=0, save_weights_prefix='./models/DPR_model/tb0', start_epoch=0, target_output=2, target_steps=5, test_one=1, test_text_num=8, text_dir='./test_inputs/1.txt', train_frequency=1, train_repeat=1, train_steps=28000, train_test=1, use_gpu=1, vec_length=50, vec_model='mymodel5-5-50', words_num=500, wordvec=100)
+
+Current time is: 2017-03-25 23:33:28
+Starting at main.py...
+Loading weights from ./models/DPR_model/tb0_1.prm...
+States: [ 1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.
+  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.
+  1.  1.  1.  1.  1.  1.  1.  1.  2.  1.  1.  1.  1.  1.  1.  1.  1.  1.
+  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.
+  2.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  2.  1.  1.  1.
+  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.
+  1.  1.  1.  1.  1.  1.  1.  1.  2.  1.  1.  1.  1.  1.  1.  1.  2.  1.
+  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.
+  1.  1.  1.  1.  1.  1.  1.  2.  1.  1.  1.  1.  1.  2.  1.  1.  1.  1.
+  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  2.  1.
+  1.  1.  1.  1.  1.  1.  2.  1.  1.  1.  1.  1.  1.  1.  1.  1.  2.  1.
+  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  2.  1.  1.  1.
+  1.  1.  1.  1.  2.  1.  1.  1.  1.  1.  1.  2.  1.  1.  1.  1.  1.  1.
+  1.  1.  1.  1.  1.  1.  2.  1.  1.  1.  2.  1.  1.  1.  1.  1.  1.  1.
+  1.  2.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  2.  1.  1.  1.  1.
+  1.  1.  1.  1.  1.  2.  1.  1.  1.  1.  1.  1.  1.  1.  2.  1.  2.  1.
+  1.  1.  2.  1.  1.  2.  1.  1.  1.  1.  2.  1.  1.  1.  1.  1.  1.  2.
+  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.
+  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.
+  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.
+  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.
+  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.
+  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.
+  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.
+  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.
+  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.
+  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.
+  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.]
+
+Words: ['MAKE', 'BREAKFAST', 'THE', 'NIGHT', 'BEFORE', 'WITH', 'A', 'HASH', 'BROWN', 'CASSEROLE', 'Start', 'by', 'mixing', 'together', 'your', 'cream', 'of', 'mushroom', 'condensed', 'soup', 'sour', 'cream', 'salt', 'pepper', 'onion', 'and', 'cheese', 'in', 'a', 'large', 'bowl', 'After', 'these', 'are', 'well', 'combined', 'add', 'in', 'the', 'hash', 'browns', 'and', 'mix', 'gently', 'Spray', 'your', 'slow', 'cooker', 'with', 'some', 'non-stick', 'cooking', 'spray', 'or', 'coat', 'with', 'butter', 'This', 'will', 'prevent', 'sticking', 'so', 'you', 'don', 't', 'have', 'a', 'huge', 'mess', 'to', 'clean', 'up', 'Pour', 'the', 'hash', 'brown', 'mixture', 'into', 'your', 'slow', 'cooker', 'and', 'put', 'the', 'cover', 'on', 'Turn', 'the', 'slow', 'cooker', 'on', 'high', 'and', 'leave', 'for', '1', 'to', '1', '5', 'hours', 'After', 'this', 'turn', 'the', 'heat', 'to', 'low', 'and', 'leave', 'it', 'on', 'for', '2', '5', 'hours', 'longer', 'Turn', 'off', 'slow', 'cooker', 'and', 'serve', 'right', 'away', 'Keep', 'on', 'warm', 'if', 'you', 'plan', 'on', 'waiting', 'to', 'enjoy', 'for', 'a', 'little', 'bit', 'longer', 'It', 's', 'best', 'when', 'served', 'with', 'scrambled', 'eggs', 'If', 'you', 'want', 'to', 'add', 'something', 'unique', 'to', 'this', 'recipe', 'add', 'your', 'favorite', 'vegetables', 'It', 's', 'generally', 'best', 'to', 'use', 'soft', 'vegetables', 'or', 'those', 'that', 'have', 'been', 'slightly', 'cooked', 'before', 'you', 'add', 'them', 'This', 'will', 'ensure', 'they', 'don', 't', 'turn', 'out', 'hard', 'when', 'the', 'rest', 'of', 'the', 'dish', 'is', 'cooked', 'fully', 'Broccoli', 'and', 'cheese', 'work', 'well', 'together', 'but', 'peppers', 'also', 'taste', 'great', 'You', 'can', 'also', 'add', 'in', 'cooked', 'sausage', 'or', 'bacon', 'if', 'you', 'want', 'some', 'meat', 'in', 'the', 'dish', 'Just', 'make', 'sure', 'that', 'the', 'meat', 'you', 'add', 'is', 'already', 'cooked', 'before', 'it', 's', 'put', 'in', 'If', 'you', 'add', 'in', 'raw', 'meat', 'it', 'likely', 'won', 't', 'fully', 'cook', 'when', 'the', 'rest', 'of', 'the', 'dish', 'is', 'done', 'and', 'may', 'be', 'raw', 'This', 'is', 'a', 'very', 'forgiving', 'recipe', 'that', 'you', 'can', 'play', 'around', 'with', 'and', 'change', 'if', 'you', 'want', 'to', 'add', 'or', 'omit', 'something', 'You', 'can', 'do', 'everything', 'from', 'adding', 'in', 'some', 'garlic', 'to', 'switching', 'the', 'flavor', 'of', 'condensed', 'soup', 'you', 'use', 'Well-defined', 'model_name']
+
+
+Action_squence: ['Spray', 'Pour', 'Turn', 'Turn', 'Keep', 'add', 'add', 'add', 'turn', 'cooked', 'add', 'want', 'make', 'put', 'add', 'cook', 'raw', 'play', 'add', 'omit', 'do', 'adding', 'switching', 'use']
+
+Total time cost: 8s
+Current time is: 2017-03-25 23:33:36

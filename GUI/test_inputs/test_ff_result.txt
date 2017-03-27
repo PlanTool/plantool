@@ -1,0 +1,68 @@
+
+ff: parsing domain file
+domain 'ASSEMBLY' defined
+ ... done.
+ff: parsing problem file
+problem 'ASSEMBLY-D2-M5-N1-H90-A25-R5-T5-O50' defined
+ ... done.
+
+
+warning: var quantification of ?RES overwrites previous declaration
+
+
+
+Cueing down from goal distance:   12 into depth [1]
+                                  11            [1]
+                                  10            [1]
+                                   9            [1]
+                                   8            [1]
+                                   7            [1]
+                                   6            [1]
+                                   5            [1][2]
+                                   4            [1]
+                                   3            [1]
+
+Enforced Hill-climbing failed !
+switching to Best-first Search now.
+
+advancing to distance :   12
+                          11
+                          10
+                           9
+                           8
+                           7
+                           6
+                           5
+                           4
+                           3
+                           2
+                           1
+                           0
+
+ff: found legal plan as follows
+
+step    0: ASSEMBLE A-2-5 A-1-4
+        1: ASSEMBLE A-2-3 A-1-2
+        2: ASSEMBLE A-2-2 A-1-1
+        3: ASSEMBLE A-2-1 A-1-1
+        4: ASSEMBLE A-1-4 A-0-0
+        5: ASSEMBLE A-1-2 A-0-0
+        6: ASSEMBLE A-1-1 A-0-0
+        7: ASSEMBLE A-2-4 A-1-3
+        8: ASSEMBLE A-1-3 A-0-0
+        9: REMOVE A-2-4 A-1-3
+       10: ASSEMBLE A-2-4 A-1-0
+       11: ASSEMBLE A-2-0 A-1-0
+       12: REMOVE A-2-4 A-1-0
+       13: ASSEMBLE A-1-0 A-0-0
+     
+
+time spent:    0.01 seconds instantiating 24 easy, 24 hard action templates
+               0.00 seconds reachability analysis, yielding 187 facts and 48 actions
+               0.00 seconds creating final representation with 55 relevant facts
+               0.00 seconds building connectivity graph
+               0.00 seconds searching, evaluating 528 states, to a max depth of 2
+               0.01 seconds total time
+
+
+
