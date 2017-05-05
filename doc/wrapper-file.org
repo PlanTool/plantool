@@ -1,3 +1,6 @@
+#+AUTHOR: 326623
+#+DATE: <2017-05-05 五>
+
 * steps of wrapping a planner
   1. Adding planner swig interface file
      #+BEGIN_SRC sh
