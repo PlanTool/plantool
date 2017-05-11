@@ -22,9 +22,6 @@
 
      int oldmain( int argc, char *argv[] );
 
-     int main(int argc, char *argv[]) {
-       return oldmain(argc, argv);
-     }
      #+END_SRC
 
   2. Editing PLANNER.h(where swig interface wrap) and main.c(where the main() are defined)
@@ -41,10 +38,15 @@
           //  Source code of main()
           //  ...
        }
+
+       int main(int argc, char *argv[]) {
+       return oldmain(argc, argv);
+       }
        #+END_SRC
 
   3. Modifying makefile
      - Adding gcc -fPIC flag
+     
      #+BEGIN_SRC makefile
      -fPIC
      #+END_SRC
