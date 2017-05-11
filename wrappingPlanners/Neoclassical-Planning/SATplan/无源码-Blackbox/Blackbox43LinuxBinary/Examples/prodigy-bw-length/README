@@ -1,0 +1,22 @@
+Domain: blocks-world
+Version: prodigy-bw-length
+
+Same as prodigy-bw, but with (:length) specified.
+
+The same as the domain "prodigy-bw" in the
+PDDL 1.3 distribution
+
+	strict-domains/fridge/domain04.pddl
+
+with renamed examples and added examples from the paper
+
+		Henry Kautz and Bart Selman, "Pushing the Envelope:
+		Planning, Propositional Logic, and Stochastic Search",
+		Proc. AAAI-96.
+
+12 June 1998, Henry Kautz
+
+NOTES:
+
+bw-large-d.cnf would be over 17,000,000 clauses, and over 40,000
+variables.

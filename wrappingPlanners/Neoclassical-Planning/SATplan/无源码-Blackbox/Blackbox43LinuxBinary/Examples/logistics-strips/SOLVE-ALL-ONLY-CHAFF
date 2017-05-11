@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for f in prob*.pddl
+do
+echo
+echo '*******************************************'
+blackbox -o domain.pddl -f $f -solver chaff 
+done

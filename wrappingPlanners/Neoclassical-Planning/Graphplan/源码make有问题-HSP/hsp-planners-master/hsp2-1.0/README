@@ -1,0 +1,127 @@
+This is Alpha Release 2.0 of the Heuristic Search Planner.
+
+
+
+HISTORY
+=======
+
+This release, 2.0, fusion HSP and HSPR into one single planner, 
+better state representation, no more C compilation, etc.
+
+
+HSP
+===
+
+HSP does Strips planning by heuristic search.
+The search can proceed either forward from the
+initial state towards the goal states, or backwards
+from the goal states to the initial state.
+The heuristic is extracted from the Strips
+representation of the problem, and is plugged into 
+Weighted Best-First Algorithm.
+A paper describing HSP-R, and a note describing HSP can 
+be found in the ./hspr/docs directory (see below).
+This document describes the installation procedure,
+the contents of the distribution, and the test suite.
+
+
+
+REQUIREMENTS
+============
+
+In order to install/solve problems you will need a standard C compiler
+(like gcc) and some general unix tools: make, sed, nawk, ln, etc. 
+Be sure to have these commands in your path.
+
+
+
+QUICK INSTALLATION
+==================
+
+1) unpack distribution files, for example
+
+    $ gzip -dc hsp-2.0.tar.gz | tar -xvf -
+
+2) set the var HSPHOME to the hsp directory, for example (using ksh)
+
+    $ export HSPHOME=`pwd`/hsp-2.0
+
+3) run "make compile" in $HSPHOME to compile parser and planner, 
+
+    $ cd $HSPHOME; make compile
+
+
+
+RUNNING SOME SAMPLES
+==================== 
+
+The sample problems are in the pddl directories. 
+Here is an example for solving some of them:
+
+1) change to the logistics problems, 
+
+    $ cd $HSPHOME/pddl/blocks-world
+
+2) solve the problems
+
+    $ make solve
+
+The results are in the file "solutions.all".
+
+
+
+THE PLANNER
+===========
+
+In order to run now the planner you must define the environment
+variable HSPHOME with the absolute path of the ./hsp directory
+(e.g., in bash you can say "export HSPHOME=/home/john/hsp").
+After that, you can move to any pddl directory (e.g., pddl/blocks-world)
+and execute the command "make solve". This command apply the planner
+to the problem set specified in the PROBLEMS file.
+The plan and timing information are left in the file "solutions.all".
+Edit the PROBLEMS file in order to specify different subsets of problems.
+
+There are several flags that modify the behaviour of the planning
+search algorithm:
+
+  1) "-a" set the search algorithm to be used (1 = BFS, or 2 = GBFS),
+  2) "-d" set the direction of the search (1 = FORWARD, or 2 = BACKWARD),
+  3) "-h" set the heuristic to be used in the search (1 = HPLUS, or 2 = HMAX),
+  4) "-w" set the weight for the heuristic (it takes a float),
+  5) "-v" that sets the verbosity mode.
+
+The default parameter set is "-a 1 -d 1 -h 1 -w 5.0 -v 1" meaning
+to use a BFS algorithm in the FORWARD direction with the HPLUS
+heuristics and a WEIGHT factor of 5.0. The verbosity level 1
+is for printing the plan (if any).
+
+If you want to solve the problems with one or more options you
+can use the environment variable "HSPFLAGS". For example, for
+a BACKWARD search using a weight of 2 and print no plan (verbosity equal to 0):
+
+   $ export HSPFLAGS="-d 2 -w 2 -v 0"
+   $ make solve
+
+
+THE PDDL PARSER
+===============
+
+Different from earlier version of HSP, the parser has been 
+incorporated into the planner. Thus, the preprocessing of
+the files is no longer necessary.
+
+
+Documentation
+=============
+
+Some documentation can be found in ./hsp/docs.
+
+
+Comments and suggestions can be addressed to bonet@usb.ve and
+hector@usb.ve.
+
+
+Enjoy.
+
+Blai and Hector

@@ -1,0 +1,98 @@
+This is UCPOP,  release 4.0.
+
+  (c) 1990-1995 Copyright (c) University of Washington
+  Written by Tony Barrett, Dave Christianson, Chung Kwok, J Scott Penberthy,
+  and Daniel Weld.
+
+  All rights reserved. Use of this software is permitted for non-commercial
+  research purposes, and it may be copied only for that use.  All copies must
+  include this copyright message.  This software is made available AS IS, and
+  neither the authors nor the University of Washington make any warranty about
+  the software or its performance.
+
+  When you first acquire this software please send mail to 
+  bug-ucpop@cs.washington.edu; the same address should be used for problems.
+
+**************** Contents of this file
+1. Description of version 4.0
+2. Files and loading instructions
+3. Starting UCPOP
+4. Known bugs and workarounds
+
+**************** Description 
+
+This version (4.0) has minor bug fixes and some significant enhancements
+for the planner - for example inclusion of the PDB planner
+visualization/debugging tool.  UCPOP runs on most Lisp systems.  PDB
+requires CLIM 2.0.
+
+This minor revision (4.0.6) fixes many loading bugs and some geometry problems
+of PDB.  A new implementation of ZLIFO is included,  for details please refer
+to ./doc/zlifo.doc.  
+
+**************** Files and loading instructions
+
+This distribution contains the following files:
+
+./README                  : this file
+./*.lisp                  : code for UCPOP planner proper.
+./ucpop40.system	  : CMU defsystem for ucpop 4.0
+./domains/domains.lisp	  : main test domains for ucpop
+./domains/truckworld.lisp : truckworld domain.  Using ranking heuristics to 
+			    control search.
+./domains/safety-domain.lisp: domains illustrating safety constraints 
+./domains/processp/*.lisp : domain definition and problems for a large
+			     real-world scheduling domain.
+			     read processp/p-metal.lisp for details.
+./pdb/*.lisp              : code for the PDB plan debugger for UCPOP.
+./doc/manual.ps           : Postscript file for UCPOP 4.0 user manual.
+./doc/planning-intro.ps   : An Introduction to Least-Commitment Planning 
+                            (AI Magazine, Winter '94) by Dan Weld
+./doc/first-law-aaai94.ps : First law of robotics paper (some safety 
+			    constraints discussed in this paper are 
+			    implemented)
+./doc/pdb.html            : PDB (plan debugger) user guide for UCPOP 4.0
+./doc/zlifo.doc		  : Gerevini & Schubert ZLIFO code documentation
+./doc/*.gif               : screen shots of PDB used for pdb.html
+
+If you don't have CMU public domain defsystem library,  you can load UCPOP
+by loading the file ./loader.lisp,  and run (load-ucpop) afterwards.  
+You can compile the system using (compile-ucpop).  Remember to update
+the variable *ucpop-dir* in the file to reflect where you have installed
+UCPOP.
+
+If you have CMU defsystem,  just put the file ./ucpop40.system in your
+local repository and you can use (load-ucpop) and (compile-ucpop) to
+load and compile the system.  Please remember to redefine the source paths in
+the defsystem files.
+
+**************** Starting UCPOP
+
+After loading UCPOP via (require 'ucpop) or (load-ucpop), type
+
+(in-package "UCPOP")
+(bf-control 'sussman-anomaly)
+
+If you have CLIM 2.0, then from the UCPOP package type
+
+(pdb-setup)
+
+**************** Known Bugs and Workarounds
+
+When compiling ucpop and pdb, Lisp may give warnings about unreferenced
+functions. These are bogus - Lisp just couldn't figure out the dependencies
+at compile time.
+
+Some users have reported problems using the graphical user interface (PDB)
+because other applications have used up all the colormap entries in your X
+terminal.  If you get this problem, try to do an xsetroot to remove
+background pictures on your xterm if any, or close down some apps that use
+up colors.  You can also use the monochrome defaults (which uses only 4 colors)
+by (setf *use-colors* nil) *before* loading ucpop.  
+There are Lisp workarounds for color problems,  but current it requires
+patching the Lisp image,  so we chose not to apply those solutions.
+
+Other behavioral problems of PDB documented in doc/pdb.html.
+
+**************** End of README
+ 

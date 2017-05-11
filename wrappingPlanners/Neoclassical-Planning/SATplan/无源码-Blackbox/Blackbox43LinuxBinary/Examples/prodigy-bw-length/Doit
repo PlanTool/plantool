@@ -1,0 +1,16 @@
+#!/bin/ksh -x
+for x in *.pddl
+do
+
+ blackbox -o domain.pddl -f $x -printcnf -printexit | extract cnf > ${x%.pddl}.cnf
+
+done
+
+for x in bw-large-a.pddl
+do
+for a in 1 2 3
+do
+ blackbox -o domain.pddl -f $x -axioms $a -printcnf -printexit | extract cnf > ${x%.pddl}.$a.cnf
+
+done
+done

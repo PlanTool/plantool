@@ -1,0 +1,44 @@
+(define (problem f1)
+   (:domain officebot)
+   (:objects 
+red-cup           - cup
+coffeepowder      - product
+coffee            - drink
+bernhard roswitha - person
+sek bn-office prak corridor - location
+coffeemaker  water     - object
+d1 d2 d3 d4       - door)
+
+(:init
+(dirty red-cup) 
+(connects d2 prak)
+(connects d2 corridor) 
+(connects d1 corridor) 
+(connects d1 r45)
+(connects d3 corridor) 
+(connects d3 sek) 
+(connects d4 sek) 
+(connects d4 bn-office)
+(open d1) 
+(open d2)  
+(open d3)  
+(open d4)
+(at bernhard bn-office) 
+(is-at prak)
+(nextto coffeemaker) 
+(at roswitha sek) 
+(answer red-cup yes) 
+(gripper-ok) 
+(has coffeepowder) 
+(has water) 
+(branched coffeemaker) 
+(at coffeemaker sek) 
+(radio-link) 
+(freshcoffee))
+        
+(:goal (served coffee bernhard)))
+
+
+
+
+

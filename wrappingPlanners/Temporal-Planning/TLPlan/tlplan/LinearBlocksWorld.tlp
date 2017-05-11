@@ -1,0 +1,216 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; LinearBlocksWorld.tlp
+;;; TLPlanner Linear Time Blocks World.
+;;; Written by Fahiem Bacchus
+;;;
+;;; This world uses an incremental strategy that avoids the overhead of
+;;; progressing a control formula.
+;;;
+;;; The described predicate goodtower is equivalent to the defined predicate
+;;; goodtowerbelow.  It serves to fully embody the goal state and is used to
+;;; control the application of each operator.  Each operator is designed so
+;;; that it can never delete a goodtower literal, ensuring monotonic progress
+;;; toward the goal.
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Initialization
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(clear-world-symbols)                   ;Remove old domain symbols
+(disable cycle-checking)				;Cycle checking not needed
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; 1.  The world symbols.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(declare-described-symbols
+ (predicate on 2)
+ (predicate holding 1)
+ (predicate handempty 0)
+ (predicate clear 1)
+ (predicate ontable 1)
+ (predicate goodtower 1)
+ (predicate block 1)
+ (function  currentlyOn 1)
+ (function  goalLoc 1))
+
+(declare-defined-symbols
+ (predicate goodtowerbelow 1)
+ (predicate accumulate-tower 1)
+ (predicate print-holding-block 1)
+ (predicate print-goodtowers 1)
+ (predicate print-blocks-world 1))
+
+(declare-external-symbols "userlib/blocks"
+			  (predicate push-block "PushBlock" 1)
+			  (predicate push-space "PushSpace" 1)
+			  (predicate end-tower "EndTower" 0)
+			  (predicate print-towers "PrintTowers" 1)
+			  (predicate clear-accumulators "ClearAccumulators" 0)
+			  (function random-blocks-world "RandomBlocksWorld" 2)
+			  (function random-blocks-goal "RandomBlocksGoal" 2))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; 2.  The defined predicates.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;; Goodtowerbelow -- this is the same as goodtowerbelow in other blocks worlds!
+;;;
+;;; ?x is a goodtowerbelow if none of the on-relationships in the tower violate
+;;; a goal condition.
+;;; To test the on-relationships we need to test both what should be below ?x
+;;; and what should be above the block below it.
+
+(def-defined-predicate (goodtowerbelow ?x)
+  (or
+   (and
+    (ontable ?x)
+    (not (goal (exists (?y) (on ?x ?y)))))
+   (exists (?y) (on ?x ?y)
+	   (and
+	    (not (goal (ontable ?x)))
+	    (not (goal (clear ?y)))
+	    (not (goal (holding ?y)))
+	    (forall (?z) (goal (on ?x ?z)) (= ?z ?y))
+	    (forall (?z) (goal (on ?z ?y)) (= ?z ?x))
+	    (goodtowerbelow ?y)))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; 3.  The Initialization Formula.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(set-initialization-sequence
+  (forall (?x ?y) (on ?x ?y)
+	  (add (block ?x)))
+  (forall (?x) (ontable ?x)
+	  (add (block ?x)))
+  (forall (?x) (holding ?x)
+	  (add (block ?x)))
+  
+  (forall (?x) (block ?x)
+	  (add (= (goalLoc ?x) none)))		;;set default
+  (forall (?x ?y) (goal (on ?x ?y))		;;fix blocks with goal locations.
+	  (add (= (goalLoc ?x) ?y)))
+  (forall (?x) (goal (ontable ?x))
+	  (add (= (goalLoc ?x) table)))
+
+  (forall (?x) (block ?x)
+	  (add (= (currentlyOn ?x) none)))
+  (forall (?x ?y) (on ?x ?y)
+	  (add (= (currentlyOn ?x) ?y)))
+  (forall (?x) (ontable ?x)
+	  (add (= (currentlyOn ?x) table)))
+  
+  (forall (?x) (block ?x)
+	  (implies (goodtowerbelow ?x) (add (goodtower ?x)))))
+
+;(set-search-strategy depth-first)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; 4.  The Operators.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(def-adl-operator (pickup ?x)
+  (pre
+   (?x) (clear ?x)
+   (and
+    (handempty)
+    (ontable ?x)
+    (exists (?y) (= (goalLoc ?x) ?y)
+	    (and (clear ?y) (goodtower ?y)))))
+  (add
+   (holding ?x)
+   (= (currentlyon ?x) none))
+  (del
+   (handempty)
+   (clear ?x)
+   (ontable ?x)))
+
+(def-adl-operator (putdown ?x)
+  (pre
+   (?x) (holding ?x)
+   (not (and (clear (goalLoc ?x))
+	     (goodtower (goalLoc ?x)))))
+  (add
+   (ontable ?x)
+   (clear ?x)
+   (handempty)
+   (= (currentlyOn ?x) table))
+  (implies
+   (or (goal (ontable ?x))
+       (= (goalLoc ?x) none))
+   (add (goodtower ?x)))
+  (del
+   (holding ?x)))
+
+(def-adl-operator (stack ?x ?y)
+  (pre
+   (?x) (holding ?x)
+   (?y) (= (goalLoc ?x) ?y)
+   (and
+    (clear ?y)
+    (goodtower ?y)))
+  (add
+   (on ?x ?y)
+   (clear ?x)
+   (handempty)
+   (goodtower ?x)
+   (= (currentlyon ?x) ?y))
+  (del
+   (holding ?x)
+   (clear ?y)))
+
+(def-adl-operator (unstack ?x ?y)
+  (pre
+   (?x) (clear ?x)
+   (?y) (= (currentlyOn ?x) ?y)
+   (and
+    (handempty)
+    (not (= ?y table))
+    (not (goodtower ?x))))
+  (add
+   (holding ?x)
+   (clear ?y)
+   (= (currentlyOn ?x) none))
+  (del
+   (on ?x ?y)
+   (clear ?x)
+   (handempty)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; 5. Print routines.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; The final (and (push-space 1) (end-tower)) is so that goal towers
+;;; that are not terminated by clear blocks can be properly accumulated.
+
+(def-defined-predicate (accumulate-tower ?x)
+  (and
+   (push-block ?x)
+   (or
+    (and (clear ?x) (end-tower))
+    (exists (?y) (on ?y ?x) (accumulate-tower ?y))
+    (and (push-space 1) (end-tower)))))
+
+(def-defined-predicate (print-holding-block ?stream)
+  (forall (?x) (holding ?x) 
+	  (print ?stream "Holding:  ~A~%" ?x)))
+
+(def-defined-predicate (print-goodtowers ?stream)
+  (implies
+   (exists (?x) (goodtower ?x))
+   (and
+    (print ?stream "Good towers:  ")
+    (forall (?x) (goodtower ?x) 
+	    (print ?stream " ~A" ?x))
+    (print ?stream "~%"))))
+
+(def-defined-predicate (print-blocks-world ?stream)
+  (and
+   (forall (?x) (ontable ?x)
+	   (accumulate-tower ?x))
+   (print-holding-block ?stream)
+   (print-goodtowers ?stream)
+   (print-towers ?stream)
+   (clear-accumulators)))
+
+(set-print-world-fn print-blocks-world)

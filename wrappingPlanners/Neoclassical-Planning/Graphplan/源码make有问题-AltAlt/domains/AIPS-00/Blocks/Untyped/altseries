@@ -1,0 +1,99 @@
+
+blocks-4-0,0.057,6,NG:9,NE:6(pick-up b),(stack b a),(pick-up c),(stack c b),(pick-up d),(stack d c),
+
+
+blocks-4-1,0.017,10,NG:12,NE:10(unstack b c),(put-down b),(unstack c a),(put-down c),(unstack a d),(stack a b),(pick-up c),(stack c a),(pick-up d),(stack d c),
+
+
+blocks-4-2,0.015,6,NG:8,NE:6(unstack c b),(stack c d),(pick-up b),(stack b c),(pick-up a),(stack a b),
+
+
+blocks-5-0,0.026,12,NG:17,NE:12(unstack c e),(put-down c),(unstack e b),(put-down e),(pick-up d),(stack d c),(unstack b a),(stack b d),(pick-up e),(stack e b),(pick-up a),(stack a e),
+
+
+blocks-5-1,0.025,10,NG:14,NE:10(unstack b a),(stack b c),(unstack a d),(stack a e),(unstack b c),(stack b a),(pick-up c),(stack c b),(pick-up d),(stack d c),
+
+
+blocks-5-2,0.029,16,NG:26,NE:18(unstack d e),(put-down d),(unstack e c),(put-down e),(unstack c a),(stack c d),(unstack a b),(put-down a),(pick-up e),(stack e a),(pick-up b),(stack b e),(unstack c d),(stack c b),(pick-up d),(stack d c),
+
+
+blocks-6-0,0.044,12,NG:17,NE:12(unstack d a),(put-down d),(unstack f e),(stack f d),(unstack e b),(stack e f),(unstack a c),(stack a e),(pick-up b),(stack b a),(pick-up c),(stack c b),
+
+
+blocks-6-1,0.037,10,NG:20,NE:10(unstack a f),(stack a d),(pick-up b),(stack b a),(pick-up c),(stack c b),(pick-up f),(stack f c),(pick-up e),(stack e f),
+
+
+blocks-6-2,0.051,28,NG:64,NE:40(unstack a d),(put-down a),(unstack d b),(put-down d),(pick-up a),(stack a d),(unstack b f),(stack b a),(unstack f e),(stack f b),(unstack e c),(put-down e),(unstack f b),(stack f e),(unstack b a),(stack b f),(unstack a d),(put-down a),(pick-up c),(stack c d),(unstack b f),(stack b c),(pick-up a),(stack a b),(unstack f e),(stack f a),(pick-up e),(stack e f),
+
+
+blocks-7-0,0.073,24,NG:44,NE:28(unstack e g),(put-down e),(unstack g b),(put-down g),(unstack b a),(stack b e),(unstack a f),(put-down a),(pick-up g),(stack g a),(unstack b e),(stack b g),(unstack f c),(stack f e),(unstack c d),(stack c f),(unstack b g),(stack b c),(pick-up d),(stack d b),(unstack g a),(stack g d),(pick-up a),(stack a g),
+
+
+blocks-7-1,0.07,22,NG:49,NE:25(unstack c d),(stack c a),(unstack d b),(put-down d),(unstack c a),(stack c d),(unstack b e),(put-down b),(unstack a g),(put-down a),(unstack e f),(stack e a),(pick-up g),(stack g c),(pick-up f),(stack f g),(pick-up b),(stack b f),(unstack e a),(stack e b),(pick-up a),(stack a e),
+
+
+blocks-7-2,0.073,20,NG:66,NE:28(unstack b c),(put-down b),(unstack c g),(stack c b),(unstack g e),(put-down g),(unstack e f),(put-down e),(unstack c b),(stack c g),(unstack a d),(stack a c),(pick-up d),(stack d a),(pick-up f),(stack f d),(pick-up b),(stack b f),(pick-up e),(stack e b),
+
+
+blocks-8-0,0.112,20,NG:48,NE:22(unstack a g),(stack a d),(unstack g e),(stack g b),(unstack a d),(stack a g),(unstack d h),(stack d e),(pick-up c),(stack c a),(unstack h f),(stack h c),(unstack d e),(put-down d),(pick-up e),(stack e h),(pick-up f),(stack f e),(pick-up d),(stack d f),
+
+
+blocks-8-1,0.102,20,NG:56,NE:21(unstack e c),(put-down e),(unstack h a),(stack h f),(unstack a b),(stack a e),(unstack h f),(stack h a),(unstack b g),(stack b d),(pick-up f),(stack f h),(pick-up g),(stack g f),(unstack b d),(stack b g),(pick-up d),(stack d b),(pick-up c),(stack c d),
+
+
+blocks-8-2,0.1,16,NG:34,NE:17(unstack d b),(stack d h),(unstack b f),(stack b c),(pick-up a),(stack a d),(unstack f g),(stack f a),(pick-up g),(stack g f),(pick-up e),(stack e g),(unstack b c),(stack b e),(pick-up c),(stack c b),
+
+
+blocks-9-0,0.254,36,NG:323,NE:141(unstack f g),(put-down f),(unstack g e),(put-down g),(unstack e a),(stack e g),(unstack a i),(stack a c),(unstack e g),(stack e a),(unstack i d),(stack i f),(unstack d h),(stack d g),(unstack i f),(stack i d),(pick-up f),(stack f i),(unstack h b),(put-down h),(unstack e a),(stack e h),(unstack f i),(stack f e),(unstack i d),(stack i f),(unstack a c),(stack a i),(pick-up c),(stack c a),(pick-up b),(stack b c),(unstack d g),(stack d b),(pick-up g),(stack g d),
+
+
+blocks-9-1,0.185,36,NG:128,NE:72(unstack f e),(put-down f),(unstack e b),(put-down e),(pick-up f),(stack f e),(unstack b d),(stack b f),(unstack d c),(put-down d),(unstack b f),(stack b d),(unstack c i),(put-down c),(unstack f e),(put-down f),(pick-up e),(stack e c),(pick-up f),(stack f e),(unstack b d),(put-down b),(unstack i g),(stack i d),(unstack g h),(stack g f),(unstack h a),(stack h g),(pick-up b),(stack b h),(pick-up a),(stack a b),(unstack i d),(stack i a),(pick-up d),(stack d i),
+
+
+blocks-9-2,0.18,26,NG:85,NE:39(unstack h a),(stack h f),(unstack a d),(put-down a),(unstack d e),(put-down d),(unstack e c),(stack e d),(unstack c i),(stack c a),(unstack i b),(stack i h),(unstack b g),(stack b c),(unstack e d),(stack e b),(unstack i h),(stack i e),(pick-up d),(stack d i),(unstack h f),(stack h d),(pick-up g),(stack g h),(pick-up f),(stack f g),
+
+
+blocks-10-0,0.335,42,NG:256,NE:109(unstack c e),(put-down c),(unstack e j),(stack e c),(unstack j b),(stack j f),(unstack e c),(stack e j),(pick-up c),(stack c e),(unstack b g),(stack b c),(unstack g h),(stack g b),(unstack h a),(put-down h),(unstack a d),(stack a h),(unstack d i),(put-down d),(unstack g b),(stack g i),(unstack b c),(stack b d),(unstack a h),(stack a g),(unstack b d),(stack b a),(pick-up h),(stack h b),(unstack c e),(stack c d),(unstack e j),(stack e h),(unstack j f),(stack j e),(pick-up f),(stack f j),(unstack c d),(stack c f),(pick-up d),(stack d c),
+
+
+blocks-10-1,0.268,38,NG:111,NE:54(unstack f d),(put-down f),(unstack c g),(put-down c),(unstack d h),(stack d c),(pick-up f),(stack f d),(unstack g e),(put-down g),(unstack e i),(stack e h),(unstack i j),(stack i f),(unstack e h),(stack e i),(pick-up g),(stack g e),(unstack j a),(put-down j),(unstack g e),(stack g j),(pick-up h),(stack h g),(unstack e i),(stack e h),(unstack a b),(stack a e),(unstack i f),(stack i a),(unstack f d),(stack f i),(unstack d c),(stack d f),(pick-up b),(stack b d),(pick-up c),(stack c b),
+
+
+blocks-10-2,0.337,48,NG:269,NE:123(unstack j i),(stack j c),(unstack i h),(stack i j),(unstack h f),(put-down h),(unstack i j),(stack i h),(unstack f d),(stack f i),(unstack d e),(put-down d),(unstack j c),(stack j d),(unstack f i),(stack f j),(unstack i h),(stack i c),(pick-up h),(stack h f),(unstack i c),(stack i h),(unstack e g),(put-down e),(unstack g b),(stack g i),(unstack b a),(put-down b),(unstack g i),(stack g b),(unstack i h),(stack i e),(unstack h f),(stack h g),(pick-up a),(stack a f),(pick-up c),(stack c a),(unstack h g),(stack h c),(unstack g b),(stack g h),(unstack i e),(stack i g),(pick-up e),(stack e i),(pick-up b),(stack b e),
+
+
+blocks-11-0,0.402,34,NG:142,NE:67(unstack b g),(put-down b),(unstack c e),(put-down c),(unstack g h),(stack g c),(unstack h k),(stack h j),(unstack k a),(stack k h),(pick-up e),(stack e g),(unstack a f),(put-down a),(unstack f i),(stack f e),(pick-up b),(stack b a),(pick-up i),(stack i f),(unstack k h),(stack k i),(unstack h j),(stack h k),(unstack b a),(stack b h),(unstack j d),(stack j a),(pick-up d),(stack d b),(unstack j a),(stack j d),(pick-up a),(stack a j),
+
+
+blocks-11-1,0.448,32,NG:181,NE:53(unstack f e),(stack f d),(unstack e k),(put-down e),(unstack j i),(stack j k),(pick-up i),(stack i e),(unstack g b),(stack g i),(unstack f d),(stack f g),(unstack b a),(put-down b),(unstack j k),(stack j b),(unstack d c),(put-down d),(unstack c h),(stack c f),(pick-up a),(stack a c),(pick-up h),(stack h a),(pick-up k),(stack k h),(unstack j b),(stack j k),(pick-up d),(stack d j),(pick-up b),(stack b d),
+
+
+blocks-11-2,0.784,52,NG:829,NE:388(unstack b h),(stack b i),(unstack h k),(put-down h),(unstack b i),(stack b h),(unstack k f),(put-down k),(unstack f c),(stack f k),(unstack c d),(stack c f),(unstack d j),(stack d c),(unstack j a),(stack j i),(unstack d c),(stack d j),(unstack c f),(stack c d),(unstack b h),(put-down b),(pick-up h),(stack h c),(pick-up a),(stack a f),(unstack h c),(stack h a),(pick-up b),(stack b h),(unstack c d),(put-down c),(unstack d j),(put-down d),(unstack j i),(stack j b),(pick-up d),(stack d j),(unstack i e),(put-down i),(unstack d j),(stack d i),(unstack e g),(stack e j),(unstack d i),(stack d e),(pick-up c),(stack c d),(pick-up g),(stack g c),(pick-up i),(stack i g),
+
+
+blocks-12-0,0.538,34,NG:85,NE:40(unstack h a),(stack h j),(unstack a g),(stack a l),(unstack g k),(put-down g),(unstack h j),(stack h g),(unstack a l),(stack a h),(unstack l f),(put-down l),(pick-up f),(stack f a),(unstack k e),(stack k f),(unstack e b),(stack e k),(unstack b d),(put-down b),(pick-up j),(stack j e),(unstack d i),(stack d j),(pick-up l),(stack l d),(pick-up b),(stack b l),(unstack i c),(put-down i),(pick-up c),(stack c b),(pick-up i),(stack i c),
+
+
+blocks-12-1,0.563,34,NG:133,NE:58(unstack c g),(put-down c),(unstack g h),(put-down g),(unstack h i),(put-down h),(unstack k d),(stack k c),(unstack i f),(stack i d),(unstack f b),(stack f h),(unstack b a),(stack b i),(unstack a l),(stack a k),(pick-up g),(stack g b),(unstack l e),(stack l g),(unstack f h),(stack f l),(unstack a k),(stack a f),(pick-up h),(stack h a),(unstack k c),(stack k h),(unstack e j),(stack e k),(pick-up c),(stack c e),(pick-up j),(stack j c),
+
+
+blocks-13-0,1.122,58,NG:619,NE:260(unstack b f),(stack b m),(unstack f d),(stack f b),(unstack d c),(stack d f),(unstack c j),(stack c i),(unstack d f),(stack d c),(unstack f b),(stack f d),(unstack b m),(stack b f),(unstack j a),(stack j b),(unstack a e),(stack a j),(unstack e h),(stack e a),(unstack h l),(stack h m),(unstack e a),(stack e h),(unstack a j),(stack a e),(unstack j b),(stack j a),(unstack l k),(stack l j),(unstack b f),(stack b k),(unstack l j),(stack l f),(unstack j a),(stack j b),(unstack l f),(stack l j),(unstack a e),(stack a f),(unstack e h),(stack e l),(unstack h m),(stack h e),(pick-up m),(stack m h),(unstack a f),(stack a m),(unstack f d),(stack f a),(unstack d c),(stack d f),(unstack c i),(stack c d),(unstack i g),(stack i c),(pick-up g),(stack g i),
+
+
+blocks-13-1,0.885,60,NG:297,NE:112(unstack j e),(stack j b),(unstack e d),(stack e j),(unstack d c),(put-down d),(unstack e j),(stack e d),(unstack c a),(stack c j),(unstack a l),(stack a c),(unstack l h),(stack l e),(unstack a c),(stack a l),(unstack c j),(stack c a),(unstack j b),(stack j c),(unstack h g),(stack h j),(unstack g m),(stack g h),(unstack m i),(put-down m),(unstack g h),(stack g m),(unstack h j),(stack h g),(unstack b k),(put-down b),(unstack i f),(stack i b),(unstack h g),(stack h i),(unstack g m),(stack g h),(unstack j c),(stack j m),(pick-up k),(stack k g),(pick-up f),(stack f k),(unstack j m),(stack j f),(unstack c a),(stack c j),(pick-up m),(stack m c),(unstack a l),(put-down a),(unstack l e),(stack l m),(unstack e d),(stack e l),(pick-up a),(stack a e),(pick-up d),(stack d a),
+
+
+blocks-14-0,1.085,38,NG:147,NE:60(unstack a j),(stack a g),(unstack j h),(stack j f),(unstack h m),(put-down h),(unstack a g),(stack a h),(unstack m k),(stack m a),(unstack g d),(stack g j),(unstack d i),(stack d m),(unstack g j),(stack g d),(unstack k c),(stack k g),(unstack c l),(stack c k),(unstack i n),(stack i j),(pick-up n),(stack n c),(unstack i j),(stack i n),(unstack j f),(stack j i),(unstack l b),(put-down l),(unstack b e),(stack b j),(pick-up f),(stack f b),(pick-up l),(stack l f),(pick-up e),(stack e l),
+
+
+blocks-14-1,2.01,52,NG:1663,NE:360(unstack h f),(stack h g),(unstack f a),(stack f n),(unstack a k),(stack a i),(unstack k b),(put-down k),(unstack h g),(stack h b),(unstack a i),(stack a k),(unstack f n),(stack f a),(unstack i d),(stack i f),(unstack d l),(put-down d),(unstack i f),(stack i d),(unstack c e),(put-down c),(pick-up n),(stack n c),(unstack l m),(stack l n),(pick-up e),(stack e l),(unstack i d),(stack i e),(unstack f a),(put-down f),(unstack a k),(stack a i),(unstack g j),(stack g a),(pick-up f),(stack f g),(pick-up d),(stack d j),(pick-up k),(stack k f),(pick-up m),(stack m k),(unstack h b),(stack h m),(pick-up b),(stack b h),(unstack d j),(stack d b),(pick-up j),(stack j d),
+
+
+blocks-15-0,3.23,50,NG:2247,NE:610(unstack m n),(stack m i),(unstack e j),(put-down e),(unstack j d),(stack j n),(unstack m i),(stack m e),(unstack d l),(stack d j),(unstack l c),(stack l m),(unstack d j),(stack d l),(unstack j n),(stack j d),(unstack c g),(put-down c),(unstack i h),(stack i c),(unstack j d),(stack j h),(pick-up n),(stack n i),(unstack d l),(stack d n),(unstack j h),(stack j d),(unstack l m),(stack l j),(unstack b a),(stack b l),(unstack a o),(stack a b),(unstack m e),(stack m o),(pick-up e),(stack e a),(unstack f k),(stack f e),(unstack m o),(stack m f),(pick-up k),(stack k m),(pick-up h),(stack h k),(pick-up o),(stack o h),(pick-up g),(stack g o),
+
+
+blocks-15-1,198.23,72,NG:39967,NE:14162(unstack g l),(stack g o),(unstack l f),(put-down l),(unstack g o),(stack g l),(unstack f c),(put-down f),(unstack c n),(stack c o),(unstack n e),(stack n g),(unstack e h),(stack e f),(unstack n g),(stack n e),(unstack c o),(stack c n),(unstack h d),(put-down h),(unstack g l),(put-down g),(pick-up l),(stack l h),(pick-up g),(stack g l),(unstack d a),(put-down d),(unstack a k),(stack a o),(unstack g l),(stack g d),(unstack k b),(stack k g),(unstack a o),(stack a k),(unstack b j),(stack b o),(unstack j i),(put-down j),(unstack b o),(stack b j),(unstack c n),(stack c b),(pick-up i),(stack i l),(unstack o m),(stack o i),(unstack n e),(stack n o),(unstack c b),(stack c n),(unstack b j),(stack b c),(unstack e f),(stack e j),(unstack a k),(stack a b),(pick-up m),(stack m a),(unstack e j),(stack e m),(pick-up j),(stack j e),(unstack k g),(stack k j),(pick-up f),(stack f k),(unstack g d),(stack g f),(pick-up d),(stack d g),
+
+
+blocks-16-1,5.134,84,NG:3544,NE:1021(unstack f l),(stack f h),(unstack l m),(stack l o),(unstack f h),(stack f l),(unstack m j),(stack m h),(unstack j p),(stack j m),(unstack p n),(put-down p),(unstack j m),(stack j p),(unstack m h),(stack m j),(unstack f l),(stack f h),(unstack l o),(stack l m),(unstack f h),(stack f l),(unstack n i),(stack n o),(unstack i b),(stack i n),(unstack b d),(stack b i),(unstack d c),(put-down d),(unstack b i),(stack b d),(unstack i n),(stack i b),(unstack n o),(stack n i),(unstack o g),(put-down o),(unstack f l),(put-down f),(unstack l m),(stack l n),(unstack c k),(stack c o),(unstack m j),(stack m c),(unstack l n),(stack l m),(unstack k a),(stack k f),(unstack l m),(stack l k),(unstack h e),(stack h j),(pick-up e),(stack e m),(unstack n i),(stack n e),(unstack h j),(stack h i),(pick-up a),(stack a n),(unstack h i),(stack h a),(unstack j p),(stack j h),(unstack l k),(stack l j),(unstack i b),(stack i l),(unstack k f),(stack k i),(pick-up f),(stack f b),(pick-up g),(stack g k),(unstack f b),(stack f g),(pick-up p),(stack p f),(unstack b d),(stack b p),(pick-up d),(stack d b),
+

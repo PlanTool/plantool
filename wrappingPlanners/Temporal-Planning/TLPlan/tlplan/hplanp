@@ -1,0 +1,52 @@
+#!/bin/bash
+
+BASEDIR=$PWD
+
+isearch_file=isearch_new.tlp
+
+if [[ $# -ne 3 ]] 
+then
+    echo "Usage: $0 domain_name problem_name strategy"
+    echo "The problem_name.pddl and domain.pddl files are assumed to be in the domains/ directory"
+    echo "strategy is a number 1-44, which defines the heuristic to be used. Competition stategy was 18"
+    echo "Example $0 TPP p10 18"
+    echo "The results are put in a tlplan-results directory"
+else 
+    name=$1
+    PROBLEMS="$2.pddl"
+#    cd domains
+
+    echo "====================== DOMAIN:  $name  ====================="
+    mkdir -p $BASEDIR/tlplan-result/$name/QualitativePreferences
+    mkdir $BASEDIR/tlplan-output
+    cd $BASEDIR
+    for pname in $PROBLEMS; do
+	echo "---------------------- Problem:  $pname  ---------------------"
+	echo "-- running translator"
+
+	/usr/bin/time -f "scale=2;%S+%U" -o _elapsedtime pddl2tlplan ipc5/domains/$name/QualitativePreferences/domain.pddl ipc5/domains/$name/QualitativePreferences/$pname > /dev/null
+	echo "-- creating script.tlp file"
+	NEWNAME=`echo $pname | sed "s/\.pddl//"`
+	T=`cat _elapsedtime | bc`
+	
+	echo -e "(load-file \"output\")
+(set-plan-name \"$BASEDIR/tlplan-result/$name/QualitativePreferences/$NEWNAME\")
+(load-file \"${isearch_file}\")
+(def-defined-predicate do-it
+    (local-vars ?extra-time ?parse-time)
+    (and 
+       (:= ?extra-time $T)
+       (:= ?parse-time (get-cpu-time))
+       (set-search-limit 50000)
+       (isearch 1800 $3)))
+(do-it)
+(exit)
+" > script.tlp
+	
+	echo "-- running tlplan"
+
+ 	./tlplan script.tlp 2> tlplan-output/$name-$NEWNAME.err
+        mv tlplan.log tlplan-output/$name-$NEWNAME.log
+    done;
+
+fi

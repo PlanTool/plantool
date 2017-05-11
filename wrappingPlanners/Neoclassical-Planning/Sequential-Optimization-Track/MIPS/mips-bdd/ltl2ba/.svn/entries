@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   revision="24"
+   repos="svn+ssh://jabbar@ls5-svn.cs.uni-dortmund.de/export/svn/shahid"
+   url="svn+ssh://jabbar@ls5-svn.cs.uni-dortmund.de/export/svn/shahid/ExternalAStar/bdd-solver/ltl2ba"
+   last-author="jabbar"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="dir"
+   name=""
+   committed-rev="22"/>
+<entry
+   checksum="ebb4cf3fc73ed5e6fb3976960b915ec2"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:26.000000Z"
+   text-time="2006-10-24T00:04:49.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="LICENSE"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="6340e5174fc31dc53c44f5363861c790"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:26.000000Z"
+   text-time="2006-10-24T00:04:49.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="Makefile"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="72a4640fd355837ef2e38b292b939c39"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:27.000000Z"
+   text-time="2006-10-24T00:04:50.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="README"
+   committed-rev="22"/>
+<entry
+   checksum="d41d8cd98f00b204e9800998ecf8427e"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:26.000000Z"
+   text-time="2006-10-24T00:04:50.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="_tmp2_"
+   committed-rev="22"/>
+<entry
+   checksum="e805247ad805eabe3485fbc6f225a7cd"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:27.000000Z"
+   text-time="2006-10-24T00:04:49.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="alternating.c"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="3a35f94a9c9e89894e4c1258511c687e"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:28.000000Z"
+   text-time="2006-10-24T00:04:49.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="alternating.o"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="8fe36b0b6237be9023a2f024ebae7631"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:27.000000Z"
+   text-time="2006-10-24T00:04:50.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="buchi.c"
+   committed-rev="22"/>
+<entry
+   checksum="53774909933035449c60d99dcbfb7deb"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:28.000000Z"
+   text-time="2006-10-24T00:04:50.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="buchi.o"
+   committed-rev="22"/>
+<entry
+   checksum="b188f7e86472c946b54752aa3cb7c8f8"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:27.000000Z"
+   text-time="2006-10-24T00:04:50.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="cache.c"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="b0b3348cbfd16121a1004a24e2013d32"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:28.000000Z"
+   text-time="2006-10-24T00:04:50.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="cache.o"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="b887617658e3bab00aff30749bbfb5f6"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:27.000000Z"
+   text-time="2006-10-24T00:04:50.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="generalized.c"
+   committed-rev="22"/>
+<entry
+   checksum="52127d05f3acd66a0aa3e242659193ea"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:28.000000Z"
+   text-time="2006-10-24T00:04:50.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="generalized.o"
+   committed-rev="22"/>
+<entry
+   checksum="7a01730c54379935d62fe6f7b9039d56"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:27.000000Z"
+   text-time="2006-10-24T00:04:49.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="lex.c"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="ebce2d8ca00d7375c0e0bf459ab34f36"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:28.000000Z"
+   text-time="2006-10-24T00:04:49.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="lex.o"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="0ee937ed2424c99998bbee6c6359e244"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:26.000000Z"
+   text-time="2006-10-24T00:04:50.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="ltl2ba"
+   committed-rev="22"/>
+<entry
+   checksum="a8b010c86e97e8ebbd50a7a0900c293a"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:28.000000Z"
+   text-time="2006-10-24T00:04:50.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="ltl2ba.h"
+   committed-rev="22"/>
+<entry
+   checksum="e9663fe1c8b3211289b9a5a5da624f7c"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:29.000000Z"
+   text-time="2006-10-24T00:04:50.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="ltl2ba.rar"
+   committed-rev="22"/>
+<entry
+   checksum="6e7179c799e133163aed3a709c6c90f0"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:27.000000Z"
+   text-time="2006-10-24T00:04:50.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="main.c"
+   committed-rev="22"/>
+<entry
+   checksum="35586533d41eb3158bd6abfbaf238b3a"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:28.000000Z"
+   text-time="2006-10-24T00:04:50.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="main.o"
+   committed-rev="22"/>
+<entry
+   checksum="6495eaa524c954b54b5f3518bb69e344"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:26.000000Z"
+   text-time="2006-10-24T00:04:49.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="maxi"
+   committed-rev="22"/>
+<entry
+   checksum="8321e4cd594fbd7c9a66c7540c3b0f0f"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:27.000000Z"
+   text-time="2006-10-24T00:04:49.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="mem.c"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="f5105805109756272b02483a033bbb38"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:28.000000Z"
+   text-time="2006-10-24T00:04:49.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="mem.o"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="d41d8cd98f00b204e9800998ecf8427e"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:26.000000Z"
+   text-time="2006-10-24T00:04:49.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="out"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="2b6d075c51c0d306772cf2d9a90a2277"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:27.000000Z"
+   text-time="2006-10-24T00:04:50.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="parse.c"
+   committed-rev="22"/>
+<entry
+   checksum="d7c5ff355e2f7120bd26b9923e00e906"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:28.000000Z"
+   text-time="2006-10-24T00:04:50.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="parse.o"
+   committed-rev="22"/>
+<entry
+   checksum="43909b9d9f7b7ce57eced5dcdb296f96"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:27.000000Z"
+   text-time="2006-10-24T00:04:49.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="rewrt.c"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="63dd52cd1698bc3676b1b1424c8b6b1e"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:28.000000Z"
+   text-time="2006-10-24T00:04:49.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="rewrt.o"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="5f112ab99532d599de1303d95be1b2b0"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:27.000000Z"
+   text-time="2006-10-24T00:04:49.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="set.c"
+   committed-rev="22"/>
+<entry
+   checksum="e1c4f52bdb6671b610e3dc8539806a13"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:28.000000Z"
+   text-time="2006-10-24T00:04:49.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="set.o"
+   committed-rev="22"/>
+<entry
+   checksum="c836a6a153bffc9a3de827b530cbb832"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:27.000000Z"
+   text-time="2006-10-24T00:04:50.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="trans.c"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="b16225266a3e251cf907cbb8de994e17"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:28.000000Z"
+   text-time="2006-10-24T00:04:50.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="trans.o"
+   kind="file"
+   committed-rev="22"/>
+</wc-entries>

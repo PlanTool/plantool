@@ -1,0 +1,7 @@
+#!/bin/ksh -x
+for x in prob002-rocket-a.pddl prob003-rocket-b.pddl prob004-log-a.pddl 
+do
+
+ blackbox -o domain.pddl -f $x -printcnf -printexit | extract cnf > ${x%.pddl}.cnf
+
+done

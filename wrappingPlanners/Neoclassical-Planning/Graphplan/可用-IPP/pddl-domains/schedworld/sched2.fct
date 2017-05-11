@@ -1,0 +1,31 @@
+(define (problem sched2)
+   (:domain schedworld)
+   (:objects obj-a obj-b        - physobj
+             sched store        - location
+             red blue nil       - paintcondition
+oblong cylindrical flat rectangular - shapecondition
+             cold hot           - tempcondition
+       rough smooth polished    - surfacecondition
+     null-1 null-2 null-3       - width
+front back left-side right-side - orient)
+
+(:init 
+(shape obj-a rectangular)
+(temperature obj-a cold)
+(surface-condition obj-a rough)
+(painted obj-a blue)
+(has-hole obj-a null-2 front) 
+(has-hole obj-a null-3 left-side)
+(shape obj-b flat)
+(temperature obj-b hot)
+(surface-condition obj-b rough)
+(have-supply red )
+(is-at sched))
+
+
+(:goal (and
+         (shape obj-a oblong)
+         (painted obj-a red)
+         (not (has-hole obj-a null-2 front))
+         (not (has-hole obj-a null-3 left-side))  
+         (has-hole obj-a null-2 back))))

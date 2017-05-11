@@ -1,0 +1,9 @@
+#!/bin/csh -x
+
+foreach d (logistics-strips-length prodigy-bw-length bulldozer fridge-typed woodshop)
+
+cd $d
+nice ../Solve-All >& $d.TRACE &
+cd ..
+
+end

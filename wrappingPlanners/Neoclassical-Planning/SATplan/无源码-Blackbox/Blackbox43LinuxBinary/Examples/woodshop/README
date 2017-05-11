@@ -1,0 +1,12 @@
+Domain: woodshop
+Version: woodshop-strips
+
+This is the woodshop-strips subset of the PDDL 1.3 distribution
+	strict-domains/woodshop/domain02.pddl
+
+This domain exercises the code that parses :constants.
+Blackbox version 2 works fine on this domain.
+However, in other domains the use of :constants seems
+to trigger a bug (core dump).
+
+12 jun 1998

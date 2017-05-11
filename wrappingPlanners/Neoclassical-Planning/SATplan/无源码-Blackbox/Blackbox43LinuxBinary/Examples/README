@@ -1,0 +1,10 @@
+These examples have been gathered from various
+sources as indicated in the README files.
+
+The most extensive test set is logistics-strips.
+
+The script Solve-All can be used to run blackbox
+on all examples in a directory.  E.g.:
+
+cd logistics-strips
+../Solve-All

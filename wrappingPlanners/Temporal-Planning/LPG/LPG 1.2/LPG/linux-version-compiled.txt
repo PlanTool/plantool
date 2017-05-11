@@ -1,0 +1,3 @@
+Reading specs from /usr/lib/gcc-lib/i586-mandrake-linux/2.96/specs
+gcc version 2.96 20000731 (Linux-Mandrake 8.0 2.96-0.48mdk)
+

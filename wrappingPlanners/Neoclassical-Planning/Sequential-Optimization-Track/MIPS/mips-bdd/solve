@@ -1,0 +1,18 @@
+#!/bin/bash
+Domain=$2
+DomainVariant=$3
+echo "Running MIPS-BDD on all problems for Domain Variant "$3" of Domain "$2" on path: "$1
+PathString=$1"/"$2"/"$3
+echo "Reading Problem and Domain files from "$PathString
+echo "Results will be saved in "$ResultsPath
+
+num=1
+for (( num = 1 ; num <= 9 ; num++ ))
+do
+  if [ -f $PathString/p0$num.pddl ]
+      then
+      ./mips $PathString/domain.pddl $PathString/p0$num.pddl 
+  fi
+done
+
+

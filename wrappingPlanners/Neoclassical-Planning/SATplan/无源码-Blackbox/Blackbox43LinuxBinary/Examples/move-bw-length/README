@@ -1,0 +1,23 @@
+Domain: blocks-world
+Version: prodigy-bw-length
+
+Same as prodigy-bw, but with (:length) specified.
+
+The same as the domain "prodigy-bw" in the PDDL 1.3 distribution with
+renamed examples and added examples from the paper
+
+		Henry Kautz and Bart Selman, "Pushing the Envelope:
+		Planning, Propositional Logic, and Stochastic Search",
+		Proc. AAAI-96.
+
+The default settings for problems
+	bw-large-c.pddl
+	bw-large-d.pddl
+cause out of memory errors for blackbox.  bw-large-c.pddl
+can be solved using the following options:
+	-axioms compact -solver compact -l -then satz -cutoff 40 
+		-restart 20 -then satz -cutoff 400
+Currently bw-large-d.pddl is still too large (over 40,000 vars and
+4,000,000 clauses).
+
+Fri Jan 29 10:47:23 EST 1999

@@ -1,0 +1,405 @@
+
+
+Terminals which are not used:
+
+   ATOM_LISTP
+   ATOM_BTREEP
+   ATOM_FUNCTIONP
+   ATOM_FORMULAP
+   ATOM_OPERATORP
+   ATOM_SYMBOLINFOP
+   ATOM_ARRAYINFOP
+   ATOM_ISPECP
+   ATOM_BADTOK
+
+
+
+Grammar
+rule 1    plan -> lists
+rule 2    lists ->		/* empty */
+rule 3    lists -> lists list
+rule 4    lists -> lists error
+rule 5    list -> '(' list_elements ')'
+rule 6    list_elements ->		/* empty */
+rule 7    list_elements -> list_elements list_element
+rule 8    list_element -> ATOM_IDENT
+rule 9    list_element -> ATOM_INTEGER
+rule 10   list_element -> ATOM_FLOAT
+rule 11   list_element -> ATOM_STRING
+rule 12   list_element -> list
+rule 13   list_element -> interval
+rule 14   list_element -> error
+rule 15   interval -> ATOM_LOWER_OPEN lnumber ',' rnumber ATOM_UPPER_OPEN
+rule 16   interval -> ATOM_LOWER_CLOSED lnumber ',' rnumber ATOM_UPPER_OPEN
+rule 17   interval -> ATOM_LOWER_OPEN lnumber ',' rnumber ATOM_UPPER_CLOSED
+rule 18   interval -> ATOM_LOWER_CLOSED lnumber ',' rnumber ATOM_UPPER_CLOSED
+rule 19   lnumber -> ATOM_INTEGER
+rule 20   lnumber -> ATOM_FLOAT
+rule 21   rnumber -> ATOM_INTEGER
+rule 22   rnumber -> ATOM_FLOAT
+rule 23   rnumber -> ATOM_INFINITY
+
+Terminals, with rules where they appear
+
+$ (-1)
+'(' (40) 5
+')' (41) 5
+',' (44) 15 16 17 18
+error (256) 4 14
+ATOM_IDENT (257) 8
+ATOM_INTEGER (258) 9 19 21
+ATOM_FLOAT (259) 10 20 22
+ATOM_STRING (260) 11
+ATOM_INFINITY (261) 23
+ATOM_LOWER_OPEN (262) 15 17
+ATOM_LOWER_CLOSED (263) 16 18
+ATOM_UPPER_OPEN (264) 15 16
+ATOM_UPPER_CLOSED (265) 17 18
+ATOM_LISTP (266)
+ATOM_BTREEP (267)
+ATOM_FUNCTIONP (268)
+ATOM_FORMULAP (269)
+ATOM_OPERATORP (270)
+ATOM_SYMBOLINFOP (271)
+ATOM_ARRAYINFOP (272)
+ATOM_ISPECP (273)
+ATOM_BADTOK (274)
+
+Nonterminals, with rules where they appear
+
+plan (24)
+    on left: 1
+lists (25)
+    on left: 2 3 4, on right: 1 3 4
+list (26)
+    on left: 5, on right: 3 12
+list_elements (27)
+    on left: 6 7, on right: 5 7
+list_element (28)
+    on left: 8 9 10 11 12 13 14, on right: 7
+interval (29)
+    on left: 15 16 17 18, on right: 13
+lnumber (30)
+    on left: 19 20, on right: 15 16 17 18
+rnumber (31)
+    on left: 21 22 23, on right: 15 16 17 18
+
+
+state 0
+
+    $default	reduce using rule 2 (lists)
+
+    plan	go to state 32
+    lists	go to state 1
+
+
+
+state 1
+
+    plan  ->  lists .   (rule 1)
+    lists  ->  lists . list   (rule 3)
+    lists  ->  lists . error   (rule 4)
+
+    error	shift, and go to state 2
+    '(' 	shift, and go to state 3
+
+    $   	reduce using rule 1 (plan)
+
+    list	go to state 4
+
+
+
+state 2
+
+    lists  ->  lists error .   (rule 4)
+
+    $default	reduce using rule 4 (lists)
+
+
+
+state 3
+
+    list  ->  '(' . list_elements ')'   (rule 5)
+
+    $default	reduce using rule 6 (list_elements)
+
+    list_elements	go to state 5
+
+
+
+state 4
+
+    lists  ->  lists list .   (rule 3)
+
+    $default	reduce using rule 3 (lists)
+
+
+
+state 5
+
+    list  ->  '(' list_elements . ')'   (rule 5)
+    list_elements  ->  list_elements . list_element   (rule 7)
+
+    error	shift, and go to state 6
+    ATOM_IDENT	shift, and go to state 7
+    ATOM_INTEGER	shift, and go to state 8
+    ATOM_FLOAT	shift, and go to state 9
+    ATOM_STRING	shift, and go to state 10
+    ATOM_LOWER_OPEN	shift, and go to state 11
+    ATOM_LOWER_CLOSED	shift, and go to state 12
+    '(' 	shift, and go to state 3
+    ')' 	shift, and go to state 13
+
+    list	go to state 14
+    list_element	go to state 15
+    interval	go to state 16
+
+
+
+state 6
+
+    list_element  ->  error .   (rule 14)
+
+    $default	reduce using rule 14 (list_element)
+
+
+
+state 7
+
+    list_element  ->  ATOM_IDENT .   (rule 8)
+
+    $default	reduce using rule 8 (list_element)
+
+
+
+state 8
+
+    list_element  ->  ATOM_INTEGER .   (rule 9)
+
+    $default	reduce using rule 9 (list_element)
+
+
+
+state 9
+
+    list_element  ->  ATOM_FLOAT .   (rule 10)
+
+    $default	reduce using rule 10 (list_element)
+
+
+
+state 10
+
+    list_element  ->  ATOM_STRING .   (rule 11)
+
+    $default	reduce using rule 11 (list_element)
+
+
+
+state 11
+
+    interval  ->  ATOM_LOWER_OPEN . lnumber ',' rnumber ATOM_UPPER_OPEN   (rule 15)
+    interval  ->  ATOM_LOWER_OPEN . lnumber ',' rnumber ATOM_UPPER_CLOSED   (rule 17)
+
+    ATOM_INTEGER	shift, and go to state 17
+    ATOM_FLOAT	shift, and go to state 18
+
+    lnumber	go to state 19
+
+
+
+state 12
+
+    interval  ->  ATOM_LOWER_CLOSED . lnumber ',' rnumber ATOM_UPPER_OPEN   (rule 16)
+    interval  ->  ATOM_LOWER_CLOSED . lnumber ',' rnumber ATOM_UPPER_CLOSED   (rule 18)
+
+    ATOM_INTEGER	shift, and go to state 17
+    ATOM_FLOAT	shift, and go to state 18
+
+    lnumber	go to state 20
+
+
+
+state 13
+
+    list  ->  '(' list_elements ')' .   (rule 5)
+
+    $default	reduce using rule 5 (list)
+
+
+
+state 14
+
+    list_element  ->  list .   (rule 12)
+
+    $default	reduce using rule 12 (list_element)
+
+
+
+state 15
+
+    list_elements  ->  list_elements list_element .   (rule 7)
+
+    $default	reduce using rule 7 (list_elements)
+
+
+
+state 16
+
+    list_element  ->  interval .   (rule 13)
+
+    $default	reduce using rule 13 (list_element)
+
+
+
+state 17
+
+    lnumber  ->  ATOM_INTEGER .   (rule 19)
+
+    $default	reduce using rule 19 (lnumber)
+
+
+
+state 18
+
+    lnumber  ->  ATOM_FLOAT .   (rule 20)
+
+    $default	reduce using rule 20 (lnumber)
+
+
+
+state 19
+
+    interval  ->  ATOM_LOWER_OPEN lnumber . ',' rnumber ATOM_UPPER_OPEN   (rule 15)
+    interval  ->  ATOM_LOWER_OPEN lnumber . ',' rnumber ATOM_UPPER_CLOSED   (rule 17)
+
+    ',' 	shift, and go to state 21
+
+
+
+state 20
+
+    interval  ->  ATOM_LOWER_CLOSED lnumber . ',' rnumber ATOM_UPPER_OPEN   (rule 16)
+    interval  ->  ATOM_LOWER_CLOSED lnumber . ',' rnumber ATOM_UPPER_CLOSED   (rule 18)
+
+    ',' 	shift, and go to state 22
+
+
+
+state 21
+
+    interval  ->  ATOM_LOWER_OPEN lnumber ',' . rnumber ATOM_UPPER_OPEN   (rule 15)
+    interval  ->  ATOM_LOWER_OPEN lnumber ',' . rnumber ATOM_UPPER_CLOSED   (rule 17)
+
+    ATOM_INTEGER	shift, and go to state 23
+    ATOM_FLOAT	shift, and go to state 24
+    ATOM_INFINITY	shift, and go to state 25
+
+    rnumber	go to state 26
+
+
+
+state 22
+
+    interval  ->  ATOM_LOWER_CLOSED lnumber ',' . rnumber ATOM_UPPER_OPEN   (rule 16)
+    interval  ->  ATOM_LOWER_CLOSED lnumber ',' . rnumber ATOM_UPPER_CLOSED   (rule 18)
+
+    ATOM_INTEGER	shift, and go to state 23
+    ATOM_FLOAT	shift, and go to state 24
+    ATOM_INFINITY	shift, and go to state 25
+
+    rnumber	go to state 27
+
+
+
+state 23
+
+    rnumber  ->  ATOM_INTEGER .   (rule 21)
+
+    $default	reduce using rule 21 (rnumber)
+
+
+
+state 24
+
+    rnumber  ->  ATOM_FLOAT .   (rule 22)
+
+    $default	reduce using rule 22 (rnumber)
+
+
+
+state 25
+
+    rnumber  ->  ATOM_INFINITY .   (rule 23)
+
+    $default	reduce using rule 23 (rnumber)
+
+
+
+state 26
+
+    interval  ->  ATOM_LOWER_OPEN lnumber ',' rnumber . ATOM_UPPER_OPEN   (rule 15)
+    interval  ->  ATOM_LOWER_OPEN lnumber ',' rnumber . ATOM_UPPER_CLOSED   (rule 17)
+
+    ATOM_UPPER_OPEN	shift, and go to state 28
+    ATOM_UPPER_CLOSED	shift, and go to state 29
+
+
+
+state 27
+
+    interval  ->  ATOM_LOWER_CLOSED lnumber ',' rnumber . ATOM_UPPER_OPEN   (rule 16)
+    interval  ->  ATOM_LOWER_CLOSED lnumber ',' rnumber . ATOM_UPPER_CLOSED   (rule 18)
+
+    ATOM_UPPER_OPEN	shift, and go to state 30
+    ATOM_UPPER_CLOSED	shift, and go to state 31
+
+
+
+state 28
+
+    interval  ->  ATOM_LOWER_OPEN lnumber ',' rnumber ATOM_UPPER_OPEN .   (rule 15)
+
+    $default	reduce using rule 15 (interval)
+
+
+
+state 29
+
+    interval  ->  ATOM_LOWER_OPEN lnumber ',' rnumber ATOM_UPPER_CLOSED .   (rule 17)
+
+    $default	reduce using rule 17 (interval)
+
+
+
+state 30
+
+    interval  ->  ATOM_LOWER_CLOSED lnumber ',' rnumber ATOM_UPPER_OPEN .   (rule 16)
+
+    $default	reduce using rule 16 (interval)
+
+
+
+state 31
+
+    interval  ->  ATOM_LOWER_CLOSED lnumber ',' rnumber ATOM_UPPER_CLOSED .   (rule 18)
+
+    $default	reduce using rule 18 (interval)
+
+
+
+state 32
+
+    $   	go to state 33
+
+
+
+state 33
+
+    $   	go to state 34
+
+
+
+state 34
+
+    $default	accept

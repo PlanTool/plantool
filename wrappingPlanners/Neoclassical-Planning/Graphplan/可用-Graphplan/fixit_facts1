@@ -1,0 +1,27 @@
+(wrench Object)
+(jack Object)
+(pump Object)
+(the-hub Hub)
+(the-hub Object)
+(nuts Nut)
+(nuts Object)
+(boot Container)
+(wheel1 Object)
+(wheel2 Object)
+(wheel1 Wheel)
+(wheel2 Wheel)
+
+(preconds
+(intact wheel2) (in jack boot) (in pump boot) (in wheel2 boot) 
+(in wrench boot) (on wheel1 the-hub) (on-ground the-hub) (tight nuts the-hub)
+(not-inflated wheel2)
+(unlocked boot)
+(fastened the-hub)
+(closed boot))
+
+(effects
+ (on wheel2 the-hub) (in wheel1 boot) (inflated wheel2) (in wrench boot) 
+ (in jack boot) (in pump boot) (tight nuts the-hub)  
+ (closed boot))
+
+

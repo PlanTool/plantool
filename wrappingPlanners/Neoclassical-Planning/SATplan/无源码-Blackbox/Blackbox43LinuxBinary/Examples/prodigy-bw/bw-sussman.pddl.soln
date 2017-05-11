@@ -1,0 +1,9 @@
+; Time 0.02
+; ParsingTime    0.00
+; MakeSpan 6
+0: (UNSTACK C A) [1]
+1: (PUT-DOWN C) [1]
+2: (PICK-UP B) [1]
+3: (STACK B C) [1]
+4: (PICK-UP A) [1]
+5: (STACK A B) [1]

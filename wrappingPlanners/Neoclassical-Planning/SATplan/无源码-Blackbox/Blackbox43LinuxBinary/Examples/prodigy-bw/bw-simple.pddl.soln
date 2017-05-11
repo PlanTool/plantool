@@ -1,0 +1,5 @@
+; Time 0.00
+; ParsingTime    0.00
+; MakeSpan 2
+0: (UNSTACK A B) [1]
+1: (PUT-DOWN A) [1]

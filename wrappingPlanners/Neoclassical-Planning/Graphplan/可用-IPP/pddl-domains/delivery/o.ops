@@ -1,0 +1,23 @@
+;; a robot has to pickup a letter in one office and deliver it in the other
+
+(define (domain delivery)
+        (:predicates (in ?x - loc)
+                     (have ?o - object)
+                     (delivered ?o - object)
+                     (sender ?o - object ?l - loc)
+                     (dest ?o - object ?l - loc))
+
+(:action go 
+  :parameters (?loc1 ?loc2 - loc)
+  :precondition (in ?loc1)
+  :effect (and (in ?loc2) (not (in ?loc1))))
+
+(:action drop 
+  :parameters (?b - object ?loc - loc)
+  :precondition (and (have ?b) (dest ?b ?loc) (in ?loc))
+  :effect (and (delivered ?b) (not (have ?b))))
+
+(:action get
+  :parameters (?b - object ?loc - loc)
+  :precondition (and (sender ?b ?loc) (in ?loc))
+  :effect (have ?b)))

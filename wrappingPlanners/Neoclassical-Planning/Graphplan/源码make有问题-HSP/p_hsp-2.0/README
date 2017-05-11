@@ -1,0 +1,171 @@
+This is Release 2.0 of the Heuristic Search Planner.
+
+HSP
+===
+
+HSP does Strips planning by heuristic search.
+The search can be chosen to proceed forward from the
+initial state toward the goal, or backward
+from the goal. The heuristic is extracted from the 
+representation of the problem (Strips or simple ADL), 
+and is used in a WA* search (a A* search with the heuristic
+function h multiplied by a constant W >= 1; WA* = A* 
+when W=1).
+
+HSP2.0 extends and roughly subsumes the previous HSP 
+and HSPr planners (see Bonet & Geffner, ECP99)
+In HSP2.0 the user can choose the search direction (backward, forward); 
+the heuristic (the additive h1plus, the max h1max, h2max, etc); 
+and the multiplying constant W. In addition,  different
+options can be scheduled in sequence or run in parallel.
+
+The fragment of the PDDL language that is supported includes
+strips, types, equality, and `simple' ADL (universal conditional effects, 
+negation, and types; but no complex preconds or goals).
+
+For computing optimal sequential plans, HSP2.0 must be run
+with the h2max heuristic (see Haslum & Geffner, AIPS2000)
+in backward mode, with W=1.
+
+Current default is h=h1plus, W=2, direction=forward
+
+REQUIREMENTS
+============
+
+In order to install/solve problems you will need a standard C compiler
+(like gcc) and some general unix tools: make, sed, nawk, ln, etc. 
+Be sure to have these commands in your path.
+
+
+
+QUICK INSTALLATION
+==================
+
+1) unpack distribution files, for example
+
+    $ gzip -dc hsp-2.0.tar.gz | tar -xvf -
+
+2) set the var HSPHOME to the hsp directory, for example (using ksh)
+
+    $ export HSPHOME=`pwd`/hsp-2.0
+
+3) run "make compile" in $HSPHOME to compile parser and planner, 
+
+    $ cd $HSPHOME; make compile
+
+
+
+RUNNING SOME INSTANCES
+==================== 
+
+A few domains are in the pddl directory 
+More instances can be found in a number of sites 
+(see Blackbox distribution, AIPS98 suite in McDermott's page, 
+AIPS2000 suite in Bacchus' page, etc)
+
+Here is an example of usage:
+
+1) change to dir where the domain and instances are; e.g.
+
+    $ cd $HSPHOME/pddl/blocks-world
+
+2) solve instance prob04.pddl by running
+
+    $ $HSPHOME/bin/hsp -S [forward,h1plus,10000] prob04.pddl domain.pddl
+
+
+This will run HSP in a forward direction, using the h1plus heuristic 
+for 10000 msecs. 
+
+Alternatively, one can invoke HSP as:
+
+   $ $HSPHOME/bin/hsp -d forward -h h1plus -w 1.5 prob04.pddl domain.pddl
+
+In this case, HSP will not time out and will use W=1.5
+
+
+OPTIONS
+===========
+
+There are several modes to run the planner: you can run a single
+set of options, you can run an schedule of different options (sequentially),
+or you can run several options concurrently. The first two are
+supported by the planner while the last one is implemented using
+the perl script HSP-concurrent in $HSPHOME/bin . 
+
+To run HSP in one particular mode (this is the standard way to invoke HSP)
+the following parameters are relevant:
+
+  -d	set direction of the search: 'forward' or 'backward',
+  -h	set heuristic to be usedr: 'h1plus', 'h1max', 'h2plus', 'h2max'.
+  -w    set value of the constant multiplying the heuristic  '1', '1.7', '2'
+  -v    set verbosity level '1', '2', ...; e.g. "-v 5" shows node values,etc
+
+Defaults are:
+
+   -d forward -h h1plus -w 2 -v 1
+
+
+To schedule several options *sequentially*, a sequence of colon separated 
+options is specified using the "-S" parameter. Each option has the form 
+'[<direction>,<heuristic>,<msecs>]' that says to search in <direction> 
+using <heuristic> for at most <msecs> time. If the options fails, the next 
+option is attempted until no more options are left.
+
+E.g., 
+
+$HSPHOME/bin/hsp -w 1.7 -S [backward,h2max,10000]:[forward:h1plus,0] 
+     <instance.pddl> <domain.pddl>
+
+will run HSP backward with h=h2max for 10 secs, and if no solution is 
+found before then, it will switch to a forward search with h=h1plus until 
+a solution is found or memory is exhausted (time=0 means time=infty).
+In both cases it will use W=1.7
+
+To run several options *concurrently*, run the perl script HSP-conc
+in $HSPHOME/bin (check first the path for perl in the first line), as 
+
+$HSPHOME/bin/HSP-conc <instance.pddl> <domain.pddl>
+
+This starts several options concurrently.  The options in the script are
+
+  1)  -S [backward,h2max,180000],
+  2)  -S [backward,h1plus,180000],
+  3)  -S [forward,h1plus,1800000].
+
+but they can be modified. This is the mode in which HSP2.0 was run
+in the AIPS2000 Contest (namely, h2max and h1plus were run backward
+for 3 mins, and only h1plus forward was allowed to run beyond that
+for 30 mins)
+
+CURRENT LIMITATIONS
+========
+
+Not all combinations of options are currently supported; e.g., 
+
+- heuristic h2max is only supported in backward search
+   (where it's computed only once)
+
+- ADL problems can only be dealt with by forward search 
+
+
+THE PDDL PARSER
+===============
+
+Different from earlier version of HSP, the parser has been 
+incorporated into the planner. Thus, the preprocessing and
+compilation of instances into C code is no longer necessary.
+
+
+Documentation
+=============
+
+$HSPHOME/docs includes a description of the HSP planner
+entered in the AIPS98 Contest (hsp.ps); a description of
+the HSP planner entered into the AIPS2000 Contestt (hsp2.ps), 
+and the ECP99 paper that describes the general framework.
+
+Send comments, bugs, and suggestions to bonet@usb.ve and hector@usb.ve.
+
+Blai Bonet
+Hector Geffner

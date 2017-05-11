@@ -1,0 +1,14 @@
+This projects contains three planners:
+
+- hsp : original version of HSP that translates each problem 
+        into an executable that is run to solve the task.
+
+- hspr: like hsp but performs search in the reverse search space
+        from goal to initial situations. This search permites a
+        more efficient evaluation of the heuristic function h^2.
+        This planner introduces the h^2 heuristic and mutex pairs.
+
+- hsp2: this is the planner that entered the IPC-2000 competetition.
+        It is an integration of hsp and hspr. The translation and
+        compilation phase is removed. 
+

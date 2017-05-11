@@ -1,0 +1,24 @@
+(define (problem t2)
+   (:domain ai-office)
+   (:objects  jk-room bn-room prak-room - room
+              k-bin n-bin - bin 
+              blob1 blob2  k-bin n-bin - object)
+
+(:init
+(at-room prak-room)
+(at k-bin jk-room)
+(at blob1 jk-room)
+(at n-bin bn-room)
+(at blob2 bn-room)
+(red blob1) 
+(red blob2) 
+(full k-bin)
+(full n-bin)
+)
+
+
+(:goal (and (forall (?b - bin) (imply (full ?b) (not (full ?b))))
+            (forall (?a - object) (imply (red ?a) (at ?a prak-room))))))
+
+
+

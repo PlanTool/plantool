@@ -1,0 +1,2 @@
+gcc -fPIC -c -O6 -Wall -ansi scan-fct_pddl.tab.c
+makefile:54: recipe for target 'scan-fct_pddl.tab.o' failed

@@ -1,0 +1,46 @@
+gcc -g -Wall -fPIC -c -Wall  tlplan.c
+gcc -g -Wall -fPIC -c -Wall  adl.c
+gcc -g -Wall -fPIC -c -Wall  btree.c
+gcc -g -Wall -fPIC -c -Wall  cc.c
+gcc -g -Wall -fPIC -c -Wall  color.c
+gcc -g -Wall -fPIC -c -Wall  compute.c
+gcc -g -Wall -fPIC -c -Wall  crchash.c
+gcc -g -Wall -fPIC -c -Wall  current.c
+gcc -g -Wall -fPIC -c -Wall  domain.c
+gcc -g -Wall -fPIC -c -Wall  eval.c
+gcc -g -Wall -fPIC -c -Wall  eval1.c
+gcc -g -Wall -fPIC -c -Wall  formula.c
+gcc -g -Wall -fPIC -c -Wall  gate.c
+gcc -g -Wall -fPIC -c -Wall  hash.c
+gcc -g -Wall -fPIC -c -Wall  hashrelax.c
+gcc -g -Wall -fPIC -c -Wall  hbtree.c
+gcc -g -Wall -fPIC -c -Wall  heap.c
+gcc -g -Wall -fPIC -c -Wall  idle.c
+gcc -g -Wall -fPIC -c -Wall  iface.c
+gcc -g -Wall -fPIC -c -Wall  internal.c
+gcc -g -Wall -fPIC -c -Wall  interval.c
+gcc -g -Wall -fPIC -c -Wall  isaac.c
+gcc -g -Wall -fPIC -c -Wall  list.c
+gcc -g -Wall -fPIC -c -Wall  makeform.c
+gcc -g -Wall -fPIC -c -Wall  makegen.c
+gcc -g -Wall -fPIC -c -Wall  msort.c
+gcc -g -Wall -fPIC -c -Wall  oper.c
+gcc -g -Wall -fPIC -c -Wall   lexpddl.c
+gcc -g -Wall -fPIC -c -Wall  plan.c
+gcc -g -Wall -fPIC -c -Wall  progress.c
+gcc -g -Wall -fPIC -c -Wall  queue.c
+gcc -g -Wall -fPIC -c -Wall  save.c
+gcc -g -Wall -fPIC -c -Wall  search.c
+gcc -g -Wall -fPIC -c -Wall  strips.c
+gcc -g -Wall -fPIC -c -Wall  strhash.c
+gcc -g -Wall -fPIC -c -Wall   tl_tab.c
+gcc -g -Wall -fPIC -c -Wall   tllex.c
+gcc -g -Wall -fPIC -c -Wall  tlparse.c
+gcc -g -Wall -fPIC -c -Wall  user.c
+gcc -g -Wall -fPIC -c -Wall  util.c
+gcc -g -Wall -fPIC -c -Wall  var.c
+gcc -g -Wall -fPIC -c -Wall  world.c
+gcc -g -Wall -fPIC -c -Wall  zone.c
+gcc -g -Wall -fPIC -shared -ldl -lm -o libtl.so adl.o btree.o cc.o color.o compute.o crchash.o current.o domain.o eval.o eval1.o formula.o gate.o hash.o hashrelax.o hbtree.o heap.o idle.o iface.o internal.o interval.o isaac.o list.o makeform.o makegen.o msort.o oper.o lexpddl.o plan.o progress.o queue.o save.o search.o strips.o strhash.o tl_tab.o tllex.o tlparse.o user.o util.o var.o world.o zone.o
+gcc -g -Wall -fPIC -lm -ldl -o tlplan tlplan.o adl.o btree.o cc.o color.o compute.o crchash.o current.o domain.o eval.o eval1.o formula.o gate.o hash.o hashrelax.o hbtree.o heap.o idle.o iface.o internal.o interval.o isaac.o list.o makeform.o makegen.o msort.o oper.o lexpddl.o plan.o progress.o queue.o save.o search.o strips.o strhash.o tl_tab.o tllex.o tlparse.o user.o util.o var.o world.o zone.o
+makefile:14: recipe for target 'tlplan' failed

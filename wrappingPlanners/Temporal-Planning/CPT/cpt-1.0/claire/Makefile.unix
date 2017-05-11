@@ -1,0 +1,102 @@
+# ************************************************************
+# *  Makefile for the CLAIRE system.                         *
+# *  UNIX version  - CLAIRE 3.1                              *
+# ************************************************************
+
+all:	cclaire
+
+# -------------------------------------------
+# |      1. directories                      |
+# -------------------------------------------
+
+# directories
+ROOT = $(CLAIRE3_HOME)
+Dl = $(ROOT)/bin/public/unix
+Dd = $(ROOT)/bin/debug/unix
+Ds = $(ROOT)/csrc
+Dh = $(ROOT)/include
+
+#utilities
+DEL = rm -f
+CXX = g++
+LIBR = ld
+
+# this line is system-dependent !you may need to edit it ...
+CXXFLAGS = -I$(Dh) -DCLUNIX -DCLNOCODE -fwritable-strings -O2 -w
+LIBFLAGS = -r
+
+# dependency rule
+$(Ds)%.o:	$(Ds)%.cpp
+	$(CXX) $(CXXFLAGS) -c $(@:.o=.cpp) -o $@
+
+
+# create the different module libs
+FILES_kernel = $(Ds)/clAlloc.o $(Ds)/clBag.o $(Ds)/clString.o $(Ds)/clEnv.o $(Ds)/clPort.o $(Ds)/clReflect.o $(Ds)/Kernel.o
+
+$(Dl)/Kernel.lib:	$(FILES_kernel)
+	$(LIBR) $(LIBFLAGS) -o $@ $(FILES_kernel)
+
+FILES_console = $(Ds)/clConsole.o
+
+$(Dl)/Console.lib:	$(FILES_console)
+	$(LIBR) $(LIBFLAGS) -o $@ $(FILES_console)
+
+FILES_noconsole = $(Ds)/clNoConsole.o
+
+$(Dl)/noConsole.lib:	$(FILES_noconsole)
+	$(LIBR) $(LIBFLAGS) -o $@ $(FILES_noconsole)
+
+
+FILES_core =  $(Ds)/method.o  $(Ds)/object.o  $(Ds)/function.o  $(Ds)/types.o  $(Ds)/Core.o
+$(Dl)/Core.lib: $(FILES_core)
+	$(LIBR) $(LIBFLAGS) -o $@ $(FILES_core)
+
+
+FILES_language =  $(Ds)/pretty.o  $(Ds)/call.o  $(Ds)/control.o  $(Ds)/define.o  $(Ds)/Language.o
+$(Dl)/Language.lib: $(FILES_language)
+	$(LIBR) $(LIBFLAGS) -o $@ $(FILES_language)
+
+FILES_reader =  $(Ds)/read.o  $(Ds)/syntax.o  $(Ds)/file.o  $(Ds)/inspect.o  $(Ds)/Reader.o
+$(Dl)/Reader.lib: $(FILES_reader)
+	$(LIBR) $(LIBFLAGS) -o $@ $(FILES_reader)
+
+FILES_optimize =  $(Ds)/osystem.o  $(Ds)/odefine.o  $(Ds)/ocall.o  $(Ds)/otool.o  $(Ds)/ocontrol.o $(Ds)/Optimize.o
+$(Dl)/Optimize.lib: $(FILES_optimize)
+	$(LIBR) $(LIBFLAGS) -o $@ $(FILES_optimize)
+
+
+FILES_generate =  $(Ds)/gsystem.o  $(Ds)/cgen.o  $(Ds)/gexp.o  $(Ds)/copt.o  $(Ds)/gstat.o $(Ds)/Generate.o
+$(Dl)/Generate.lib: $(FILES_generate)
+	$(LIBR) $(LIBFLAGS) -o $@ $(FILES_generate)
+
+
+LIBS_claire = $(Dl)/Kernel.lib $(Dl)/Console.lib $(Dl)/Core.lib $(Dl)/Language.lib $(Dl)/Reader.lib \
+              $(Dl)/Optimize.lib $(Dl)/Generate.lib
+FILES_claire = $(Ds)/cclaire-s.o $(Ds)/ccmain.o
+sclaire:	$(FILES_claire) $(LIBS_claire) $(Dl)/noConsole.lib
+	$(CXX) $(CXXFLAGS) $(FILES_claire) $(LIBS_claire) -o sclaire
+
+
+
+# +----------------------------------------------------------------+
+# |  How to create a proper version of claire                      |
+# +----------------------------------------------------------------+
+
+cclaire:	ccmain.cl sclaire
+	./sclaire -s 3 3 -env unix -m Compile -cx ccmain -o cclaire
+	cp cclaire $(Dl)/claire
+	cp $(Dl)/*.lib $(Dd)
+
+
+# +----------------------------------------------------------------+
+# |  How to clean                                                  |
+# +----------------------------------------------------------------+
+
+clean:
+	$(DEL) sclaire claire
+	$(DEL) $(Ds)/*.o
+	$(DEL) $(Dl)/*.lib
+
+# a tool for desperate situations: convert dosfiles to unix files
+dos2f:
+	g++ dos2file.cpp -o dos2f

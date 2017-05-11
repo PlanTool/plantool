@@ -1,0 +1,105 @@
+
+TLLIB
+	"$(INTDIR)\adl.obj" \
+	"$(INTDIR)\btree.obj" \
+	"$(INTDIR)\cc.obj" \
+	"$(INTDIR)\color.obj" \
+	"$(INTDIR)\compute.obj" \
+	"$(INTDIR)\crchash.obj" \
+	"$(INTDIR)\current.obj" \
+	"$(INTDIR)\domain.obj" \
+	"$(INTDIR)\eval.obj" \
+	"$(INTDIR)\eval1.obj" \
+	"$(INTDIR)\formula.obj" \
+	"$(INTDIR)\hash.obj" \
+	"$(INTDIR)\heap.obj" \
+	"$(INTDIR)\idle.obj" \
+	"$(INTDIR)\iface.obj" \
+	"$(INTDIR)\internal.obj" \
+	"$(INTDIR)\interval.obj" \
+	"$(INTDIR)\isaac.obj" \
+	"$(INTDIR)\LEXPDDL.OBJ" \
+	"$(INTDIR)\list.obj" \
+	"$(INTDIR)\makeform.obj" \
+	"$(INTDIR)\makegen.obj" \
+	"$(INTDIR)\msort.obj" \
+	"$(INTDIR)\oper.obj" \
+	"$(INTDIR)\plan.obj" \
+	"$(INTDIR)\progress.obj" \
+	"$(INTDIR)\queue.obj" \
+	"$(INTDIR)\save.obj" \
+	"$(INTDIR)\search.obj" \
+	"$(INTDIR)\strips.obj" \
+	"$(INTDIR)\tl_tab.obj" \
+	"$(INTDIR)\tllex.obj" \
+	"$(INTDIR)\tllib.obj" \
+	"$(INTDIR)\tlparse.obj" \
+	"$(INTDIR)\user.obj" \
+	"$(INTDIR)\util.obj" \
+	"$(INTDIR)\var.obj" \
+	"$(INTDIR)\world.obj" \
+	"$(INTDIR)\zone.obj"
+
+TLPLAN
+	"$(INTDIR)\tlplan.obj" \
+	".\Debug\tllib.lib"
+
+TLWIN
+	"$(INTDIR)\wincmd.obj" \
+	"$(INTDIR)\winedit.obj" \
+	"$(INTDIR)\winmain.obj" \
+	"$(INTDIR)\winmain.res"
+
+TAXI
+	"$(INTDIR)\taxi.obj" \
+	"$(INTDIR)\userlib.obj" \
+	"..\Debug\tllib.lib"
+
+SLANEY
+	"$(INTDIR)\slaney.obj" \
+	"$(INTDIR)\userlib.obj" \
+	"..\Debug\tllib.lib"
+
+SCHEDULE
+	"$(INTDIR)\Schedule.obj" \
+	"$(INTDIR)\userlib.obj" \
+	"..\Debug\tllib.lib"
+
+RUBIK
+	"$(INTDIR)\rubik.obj" \
+	"$(INTDIR)\userlib.obj" \
+	"..\Debug\tllib.lib"
+
+LLOYD
+	"$(INTDIR)\lloyd.obj" \
+	"$(INTDIR)\userlib.obj" \
+	"..\Debug\tllib.lib"
+
+JOBSHOP
+	"$(INTDIR)\jobshop.obj" \
+	"$(INTDIR)\userlib.obj" \
+	"..\Debug\tllib.lib"
+
+FREECELL
+	"$(INTDIR)\FreeCell.obj" \
+	"$(INTDIR)\userlib.obj" \
+	"..\Debug\tllib.lib"
+
+CDF
+	"$(INTDIR)\cdf.obj" \
+	"$(INTDIR)\dcdflib.obj" \
+	"$(INTDIR)\ipmpar.obj" \
+	"$(INTDIR)\userlib.obj" \
+	"..\Debug\tllib.lib"
+
+BLOCKS
+	"$(INTDIR)\bblocks.obj" \
+	"$(INTDIR)\blocks.obj" \
+	"$(INTDIR)\userlib.obj" \
+	"..\Debug\tllib.lib"
+
+TYRE
+	"$(INTDIR)\tyre.obj" \
+	"$(INTDIR)\userlib.obj" \
+	"..\Debug\tllib.lib"
+

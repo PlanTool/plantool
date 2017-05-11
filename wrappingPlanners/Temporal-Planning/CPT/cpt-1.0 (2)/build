@@ -1,0 +1,44 @@
+#!/bin/bash
+
+export CLAIRE3_HOME=`pwd`/claire
+
+function usage {
+	echo usage: 
+	echo "   \"./build opt\"   : gcc optimized compilation (can take a while)"
+	echo "   \"./build fast\"  : no gcc optimisation \(much faster\)"
+	echo "   \"./build clean\" : removes compiled files"
+	exit 1
+	}
+
+if [ $# -ne 1 ]; then
+	usage
+fi
+
+export CPT_BUILD=one
+
+case $1 in
+    opt)
+	cd claire
+	make -f Makefile.unix
+	cd ../cpt-source
+	../claire/cclaire -s 7 7 -O -o ../cpt-1.0 -cm cptall
+	;;
+    fast)
+	cd claire
+	make -f Makefile.unix
+	cd ../cpt-source
+	../claire/cclaire -s 7 7 -o ../cpt-1.0 -cm cptall
+	;;
+    clean)
+	cd claire 
+	make -f Makefile.unix clean > /dev/null 2>/dev/null
+	rm cclaire* bin/public/* bin/public/unix/* include/choco.h 2>/dev/null
+	cd ../cpt-source
+	rm csrc/* cpt* *.mk 2>/dev/null
+	cd ..
+	rm cpt-1.0 
+	;;
+    *)
+    	usage
+	;;
+esac

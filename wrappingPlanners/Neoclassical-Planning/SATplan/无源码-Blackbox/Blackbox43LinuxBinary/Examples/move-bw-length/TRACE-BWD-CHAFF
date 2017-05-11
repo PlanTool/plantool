@@ -1,0 +1,54 @@
+blackbox version 4.0
+command line:  blackbox -o domain.pddl -f bw-large-c.pddl -solver chaff
+
+Begin solver specification
+    -maxint        0   -maxsec 0.000000  chaff
+End solver specification
+Loading domain file: domain.pddl
+Loading fact file: bw-large-c.pddl
+Problem name: bw-large-c
+Facts loaded.
+time: 1, 25 facts and 30 exclusive pairs.
+time: 2, 34 facts and 120 exclusive pairs.
+time: 3, 40 facts and 189 exclusive pairs.
+time: 4, 58 facts and 612 exclusive pairs.
+time: 5, 70 facts and 876 exclusive pairs.
+time: 6, 106 facts and 2637 exclusive pairs.
+time: 7, 117 facts and 2531 exclusive pairs.
+time: 8, 170 facts and 6200 exclusive pairs.
+time: 9, 179 facts and 4849 exclusive pairs.
+time: 10, 226 facts and 7726 exclusive pairs.
+time: 11, 229 facts and 5238 exclusive pairs.
+time: 12, 256 facts and 5971 exclusive pairs.
+time: 13, 256 facts and 4507 exclusive pairs.
+time: 14, 256 facts and 3827 exclusive pairs.
+time: 15, 256 facts and 3825 exclusive pairs.
+time: 16, 256 facts and 3825 exclusive pairs.
+time: 17, 256 facts and 3825 exclusive pairs.
+time: 18, 256 facts and 3825 exclusive pairs.
+time: 19, 256 facts and 3825 exclusive pairs.
+time: 20, 256 facts and 3825 exclusive pairs.
+time: 21, 256 facts and 3825 exclusive pairs.
+time: 22, 256 facts and 3825 exclusive pairs.
+time: 23, 256 facts and 3825 exclusive pairs.
+time: 24, 256 facts and 3825 exclusive pairs.
+time: 25, 256 facts and 3825 exclusive pairs.
+time: 26, 256 facts and 3825 exclusive pairs.
+time: 27, 256 facts and 3825 exclusive pairs.
+time: 28, 256 facts and 3825 exclusive pairs.
+20513 nodes created.
+
+####################################################
+goals at time 29:
+  on_14_1 on_1_5 on_5_10 on-table_10 on_15_13 
+on_13_8 on_8_9 on_9_4 on-table_4 on_12_2 
+on_2_3 on_3_11 on_11_7 on_7_6 on-table_6 
+clear_14 clear_15 clear_12 
+
+
+----------------------------------------------------
+** Turning off completeness check **
+Converting graph to wff
+number of action variables = 13939
+number of fluent variables = 5219
+total number variables = 19158

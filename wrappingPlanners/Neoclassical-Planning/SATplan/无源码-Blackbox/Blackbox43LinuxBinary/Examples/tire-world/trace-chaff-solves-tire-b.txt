@@ -1,0 +1,606 @@
+bash$ blackbox -o domain.pddl -f tire-b.pddl 
+blackbox version 3.8
+command line:  blackbox -o domain.pddl -f tire-b.pddl
+
+Begin solver specification
+    -maxint        0   -maxsec 10.000000  graphplan
+    -maxint        0   -maxsec 240.000000  chaff
+End solver specification
+Loading domain file: domain.pddl
+Loading fact file: tire-b.pddl
+Problem name: state6
+Facts loaded.
+time: 1, 97 facts and 1 exclusive pairs.
+time: 2, 104 facts and 15 exclusive pairs.
+time: 3, 116 facts and 46 exclusive pairs.
+time: 4, 116 facts and 34 exclusive pairs.
+time: 5, 121 facts and 83 exclusive pairs.
+time: 6, 130 facts and 200 exclusive pairs.
+time: 7, 150 facts and 742 exclusive pairs.
+Goals reachable at 7 steps but mutually exclusive.
+time: 8, 150 facts and 608 exclusive pairs.
+Goals reachable at 8 steps but mutually exclusive.
+time: 9, 150 facts and 492 exclusive pairs.
+Goals reachable at 9 steps but mutually exclusive.
+time: 10, 150 facts and 396 exclusive pairs.
+Goals reachable at 10 steps but mutually exclusive.
+time: 11, 162 facts and 672 exclusive pairs.
+Goals reachable at 11 steps but mutually exclusive.
+time: 12, 162 facts and 408 exclusive pairs.
+Goals first reachable in 12 steps.
+4053 nodes created.
+
+####################################################
+goals at time 13:
+  inflated_wheela inflated_wheelb inflated_wheelc inflated_wheeld on_wheela_hub1 
+on_wheelb_hub2 on_wheelc_hub3 on_wheeld_hub4 tight_nuts_hub1 tight_nuts_hub2 
+tight_nuts_hub3 tight_nuts_hub4 on-ground_hub1 on-ground_hub2 on-ground_hub3 
+in_jack_boot in_pump_boot in_wheel1_boot in_wrench_boot bbunopen_boot 
+
+
+
+----------------------------------------------------
+Invoking solver graphplan
+Result is Unsat
+Iteration was 25
+
+----------------------------------------------------
+Can't solve in 12 steps
+time: 13, 162 facts and 348 exclusive pairs.
+443 new nodes added.
+
+####################################################
+goals at time 14:
+  inflated_wheela inflated_wheelb inflated_wheelc inflated_wheeld on_wheela_hub1 
+on_wheelb_hub2 on_wheelc_hub3 on_wheeld_hub4 tight_nuts_hub1 tight_nuts_hub2 
+tight_nuts_hub3 tight_nuts_hub4 on-ground_hub1 on-ground_hub2 on-ground_hub3 
+in_jack_boot in_pump_boot in_wheel1_boot in_wrench_boot bbunopen_boot 
+
+
+
+----------------------------------------------------
+Invoking solver graphplan
+Result is Unsat
+Iteration was 53
+
+----------------------------------------------------
+Can't solve in 13 steps
+time: 14, 162 facts and 306 exclusive pairs.
+443 new nodes added.
+
+####################################################
+goals at time 15:
+  inflated_wheela inflated_wheelb inflated_wheelc inflated_wheeld on_wheela_hub1 
+on_wheelb_hub2 on_wheelc_hub3 on_wheeld_hub4 tight_nuts_hub1 tight_nuts_hub2 
+tight_nuts_hub3 tight_nuts_hub4 on-ground_hub1 on-ground_hub2 on-ground_hub3 
+in_jack_boot in_pump_boot in_wheel1_boot in_wrench_boot bbunopen_boot 
+
+
+
+----------------------------------------------------
+Invoking solver graphplan
+Result is Unsat
+Iteration was 8017
+
+----------------------------------------------------
+Can't solve in 14 steps
+time: 15, 162 facts and 306 exclusive pairs.
+443 new nodes added.
+
+####################################################
+goals at time 16:
+  inflated_wheela inflated_wheelb inflated_wheelc inflated_wheeld on_wheela_hub1 
+on_wheelb_hub2 on_wheelc_hub3 on_wheeld_hub4 tight_nuts_hub1 tight_nuts_hub2 
+tight_nuts_hub3 tight_nuts_hub4 on-ground_hub1 on-ground_hub2 on-ground_hub3 
+in_jack_boot in_pump_boot in_wheel1_boot in_wrench_boot bbunopen_boot 
+
+
+
+----------------------------------------------------
+Invoking solver graphplan
+Result is Unsat
+Iteration was 161033
+
+----------------------------------------------------
+Can't solve in 15 steps
+time: 16, 162 facts and 306 exclusive pairs.
+443 new nodes added.
+
+####################################################
+goals at time 17:
+  inflated_wheela inflated_wheelb inflated_wheelc inflated_wheeld on_wheela_hub1 
+on_wheelb_hub2 on_wheelc_hub3 on_wheeld_hub4 tight_nuts_hub1 tight_nuts_hub2 
+tight_nuts_hub3 tight_nuts_hub4 on-ground_hub1 on-ground_hub2 on-ground_hub3 
+in_jack_boot in_pump_boot in_wheel1_boot in_wrench_boot bbunopen_boot 
+
+
+
+----------------------------------------------------
+Invoking solver graphplan
+** Turning off completeness check **
+Result is Timeout
+Iteration was 2283900
+
+----------------------------------------------------
+Converting graph to wff
+number of action variables = 2321
+number of fluent variables = 1367
+total number variables = 3688
+number clauses = 54610
+Instance unsatisfiable
+Result is Unsat
+Iteration was 0
+
+----------------------------------------------------
+Can't solve in 16 steps
+time: 17, 162 facts and 306 exclusive pairs.
+443 new nodes added.
+
+####################################################
+goals at time 18:
+  inflated_wheela inflated_wheelb inflated_wheelc inflated_wheeld on_wheela_hub1 
+on_wheelb_hub2 on_wheelc_hub3 on_wheeld_hub4 tight_nuts_hub1 tight_nuts_hub2 
+tight_nuts_hub3 tight_nuts_hub4 on-ground_hub1 on-ground_hub2 on-ground_hub3 
+in_jack_boot in_pump_boot in_wheel1_boot in_wrench_boot bbunopen_boot 
+
+
+
+----------------------------------------------------
+Invoking solver graphplan
+Result is Timeout
+Iteration was 2090800
+
+----------------------------------------------------
+Converting graph to wff
+number of action variables = 2552
+number of fluent variables = 1480
+total number variables = 4032
+number clauses = 61244
+Instance unsatisfiable
+Result is Unsat
+Iteration was 0
+
+----------------------------------------------------
+Can't solve in 17 steps
+time: 18, 162 facts and 306 exclusive pairs.
+443 new nodes added.
+
+####################################################
+goals at time 19:
+  inflated_wheela inflated_wheelb inflated_wheelc inflated_wheeld on_wheela_hub1 
+on_wheelb_hub2 on_wheelc_hub3 on_wheeld_hub4 tight_nuts_hub1 tight_nuts_hub2 
+tight_nuts_hub3 tight_nuts_hub4 on-ground_hub1 on-ground_hub2 on-ground_hub3 
+in_jack_boot in_pump_boot in_wheel1_boot in_wrench_boot bbunopen_boot 
+
+
+
+----------------------------------------------------
+Invoking solver graphplan
+Result is Timeout
+Iteration was 2280300
+
+----------------------------------------------------
+Converting graph to wff
+number of action variables = 2783
+number of fluent variables = 1593
+total number variables = 4376
+number clauses = 67878
+Instance unsatisfiable
+Result is Unsat
+Iteration was 0
+
+----------------------------------------------------
+Can't solve in 18 steps
+time: 19, 162 facts and 306 exclusive pairs.
+443 new nodes added.
+
+####################################################
+goals at time 20:
+  inflated_wheela inflated_wheelb inflated_wheelc inflated_wheeld on_wheela_hub1 
+on_wheelb_hub2 on_wheelc_hub3 on_wheeld_hub4 tight_nuts_hub1 tight_nuts_hub2 
+tight_nuts_hub3 tight_nuts_hub4 on-ground_hub1 on-ground_hub2 on-ground_hub3 
+in_jack_boot in_pump_boot in_wheel1_boot in_wrench_boot bbunopen_boot 
+
+
+
+----------------------------------------------------
+Invoking solver graphplan
+Result is Timeout
+Iteration was 4150800
+
+----------------------------------------------------
+Converting graph to wff
+number of action variables = 3014
+number of fluent variables = 1706
+total number variables = 4720
+number clauses = 74512
+Instance unsatisfiable
+Result is Unsat
+Iteration was 0
+
+----------------------------------------------------
+Can't solve in 19 steps
+time: 20, 162 facts and 306 exclusive pairs.
+443 new nodes added.
+
+####################################################
+goals at time 21:
+  inflated_wheela inflated_wheelb inflated_wheelc inflated_wheeld on_wheela_hub1 
+on_wheelb_hub2 on_wheelc_hub3 on_wheeld_hub4 tight_nuts_hub1 tight_nuts_hub2 
+tight_nuts_hub3 tight_nuts_hub4 on-ground_hub1 on-ground_hub2 on-ground_hub3 
+in_jack_boot in_pump_boot in_wheel1_boot in_wrench_boot bbunopen_boot 
+
+
+
+----------------------------------------------------
+Invoking solver graphplan
+Result is Timeout
+Iteration was 2118700
+
+----------------------------------------------------
+Converting graph to wff
+number of action variables = 3245
+number of fluent variables = 1819
+total number variables = 5064
+number clauses = 81146
+Instance unsatisfiable
+Result is Unsat
+Iteration was 0
+
+----------------------------------------------------
+Can't solve in 20 steps
+time: 21, 162 facts and 306 exclusive pairs.
+443 new nodes added.
+
+####################################################
+goals at time 22:
+  inflated_wheela inflated_wheelb inflated_wheelc inflated_wheeld on_wheela_hub1 
+on_wheelb_hub2 on_wheelc_hub3 on_wheeld_hub4 tight_nuts_hub1 tight_nuts_hub2 
+tight_nuts_hub3 tight_nuts_hub4 on-ground_hub1 on-ground_hub2 on-ground_hub3 
+in_jack_boot in_pump_boot in_wheel1_boot in_wrench_boot bbunopen_boot 
+
+
+
+----------------------------------------------------
+Invoking solver graphplan
+Result is Timeout
+Iteration was 3485700
+
+----------------------------------------------------
+Converting graph to wff
+number of action variables = 3476
+number of fluent variables = 1932
+total number variables = 5408
+number clauses = 87780
+Instance unsatisfiable
+Result is Unsat
+Iteration was 0
+
+----------------------------------------------------
+Can't solve in 21 steps
+time: 22, 162 facts and 306 exclusive pairs.
+443 new nodes added.
+
+####################################################
+goals at time 23:
+  inflated_wheela inflated_wheelb inflated_wheelc inflated_wheeld on_wheela_hub1 
+on_wheelb_hub2 on_wheelc_hub3 on_wheeld_hub4 tight_nuts_hub1 tight_nuts_hub2 
+tight_nuts_hub3 tight_nuts_hub4 on-ground_hub1 on-ground_hub2 on-ground_hub3 
+in_jack_boot in_pump_boot in_wheel1_boot in_wrench_boot bbunopen_boot 
+
+
+
+----------------------------------------------------
+Invoking solver graphplan
+Result is Timeout
+Iteration was 2581900
+
+----------------------------------------------------
+Converting graph to wff
+number of action variables = 3707
+number of fluent variables = 2045
+total number variables = 5752
+number clauses = 94414
+Instance unsatisfiable
+Result is Unsat
+Iteration was 0
+
+----------------------------------------------------
+Can't solve in 22 steps
+time: 23, 162 facts and 306 exclusive pairs.
+443 new nodes added.
+
+####################################################
+goals at time 24:
+  inflated_wheela inflated_wheelb inflated_wheelc inflated_wheeld on_wheela_hub1 
+on_wheelb_hub2 on_wheelc_hub3 on_wheeld_hub4 tight_nuts_hub1 tight_nuts_hub2 
+tight_nuts_hub3 tight_nuts_hub4 on-ground_hub1 on-ground_hub2 on-ground_hub3 
+in_jack_boot in_pump_boot in_wheel1_boot in_wrench_boot bbunopen_boot 
+
+
+
+----------------------------------------------------
+Invoking solver graphplan
+Result is Timeout
+Iteration was 2647900
+
+----------------------------------------------------
+Converting graph to wff
+number of action variables = 3938
+number of fluent variables = 2158
+total number variables = 6096
+number clauses = 101048
+Instance unsatisfiable
+Result is Unsat
+Iteration was 0
+
+----------------------------------------------------
+Can't solve in 23 steps
+time: 24, 162 facts and 306 exclusive pairs.
+443 new nodes added.
+
+####################################################
+goals at time 25:
+  inflated_wheela inflated_wheelb inflated_wheelc inflated_wheeld on_wheela_hub1 
+on_wheelb_hub2 on_wheelc_hub3 on_wheeld_hub4 tight_nuts_hub1 tight_nuts_hub2 
+tight_nuts_hub3 tight_nuts_hub4 on-ground_hub1 on-ground_hub2 on-ground_hub3 
+in_jack_boot in_pump_boot in_wheel1_boot in_wrench_boot bbunopen_boot 
+
+
+
+----------------------------------------------------
+Invoking solver graphplan
+Result is Timeout
+Iteration was 2754400
+
+----------------------------------------------------
+Converting graph to wff
+number of action variables = 4169
+number of fluent variables = 2271
+total number variables = 6440
+number clauses = 107682
+Instance unsatisfiable
+Result is Unsat
+Iteration was 0
+
+----------------------------------------------------
+Can't solve in 24 steps
+time: 25, 162 facts and 306 exclusive pairs.
+443 new nodes added.
+
+####################################################
+goals at time 26:
+  inflated_wheela inflated_wheelb inflated_wheelc inflated_wheeld on_wheela_hub1 
+on_wheelb_hub2 on_wheelc_hub3 on_wheeld_hub4 tight_nuts_hub1 tight_nuts_hub2 
+tight_nuts_hub3 tight_nuts_hub4 on-ground_hub1 on-ground_hub2 on-ground_hub3 
+in_jack_boot in_pump_boot in_wheel1_boot in_wrench_boot bbunopen_boot 
+
+
+
+----------------------------------------------------
+Invoking solver graphplan
+Result is Timeout
+Iteration was 2610200
+
+----------------------------------------------------
+Converting graph to wff
+number of action variables = 4400
+number of fluent variables = 2384
+total number variables = 6784
+number clauses = 114316
+Instance unsatisfiable
+Result is Unsat
+Iteration was 0
+
+----------------------------------------------------
+Can't solve in 25 steps
+time: 26, 162 facts and 306 exclusive pairs.
+443 new nodes added.
+
+####################################################
+goals at time 27:
+  inflated_wheela inflated_wheelb inflated_wheelc inflated_wheeld on_wheela_hub1 
+on_wheelb_hub2 on_wheelc_hub3 on_wheeld_hub4 tight_nuts_hub1 tight_nuts_hub2 
+tight_nuts_hub3 tight_nuts_hub4 on-ground_hub1 on-ground_hub2 on-ground_hub3 
+in_jack_boot in_pump_boot in_wheel1_boot in_wrench_boot bbunopen_boot 
+
+
+
+----------------------------------------------------
+Invoking solver graphplan
+Result is Timeout
+Iteration was 2673800
+
+----------------------------------------------------
+Converting graph to wff
+number of action variables = 4631
+number of fluent variables = 2497
+total number variables = 7128
+number clauses = 120950
+Instance unsatisfiable
+Result is Unsat
+Iteration was 0
+
+----------------------------------------------------
+Can't solve in 26 steps
+time: 27, 162 facts and 306 exclusive pairs.
+443 new nodes added.
+
+####################################################
+goals at time 28:
+  inflated_wheela inflated_wheelb inflated_wheelc inflated_wheeld on_wheela_hub1 
+on_wheelb_hub2 on_wheelc_hub3 on_wheeld_hub4 tight_nuts_hub1 tight_nuts_hub2 
+tight_nuts_hub3 tight_nuts_hub4 on-ground_hub1 on-ground_hub2 on-ground_hub3 
+in_jack_boot in_pump_boot in_wheel1_boot in_wrench_boot bbunopen_boot 
+
+
+
+----------------------------------------------------
+Invoking solver graphplan
+Result is Timeout
+Iteration was 3983100
+
+----------------------------------------------------
+Converting graph to wff
+number of action variables = 4862
+number of fluent variables = 2610
+total number variables = 7472
+number clauses = 127584
+Instance unsatisfiable
+Result is Unsat
+Iteration was 0
+
+----------------------------------------------------
+Can't solve in 27 steps
+time: 28, 162 facts and 306 exclusive pairs.
+443 new nodes added.
+
+####################################################
+goals at time 29:
+  inflated_wheela inflated_wheelb inflated_wheelc inflated_wheeld on_wheela_hub1 
+on_wheelb_hub2 on_wheelc_hub3 on_wheeld_hub4 tight_nuts_hub1 tight_nuts_hub2 
+tight_nuts_hub3 tight_nuts_hub4 on-ground_hub1 on-ground_hub2 on-ground_hub3 
+in_jack_boot in_pump_boot in_wheel1_boot in_wrench_boot bbunopen_boot 
+
+
+
+----------------------------------------------------
+Invoking solver graphplan
+Result is Timeout
+Iteration was 2521800
+
+----------------------------------------------------
+Converting graph to wff
+number of action variables = 5093
+number of fluent variables = 2723
+total number variables = 7816
+number clauses = 134218
+Instance unsatisfiable
+Result is Unsat
+Iteration was 0
+
+----------------------------------------------------
+Can't solve in 28 steps
+time: 29, 162 facts and 306 exclusive pairs.
+443 new nodes added.
+
+####################################################
+goals at time 30:
+  inflated_wheela inflated_wheelb inflated_wheelc inflated_wheeld on_wheela_hub1 
+on_wheelb_hub2 on_wheelc_hub3 on_wheeld_hub4 tight_nuts_hub1 tight_nuts_hub2 
+tight_nuts_hub3 tight_nuts_hub4 on-ground_hub1 on-ground_hub2 on-ground_hub3 
+in_jack_boot in_pump_boot in_wheel1_boot in_wrench_boot bbunopen_boot 
+
+
+
+----------------------------------------------------
+Invoking solver graphplan
+Result is Timeout
+Iteration was 3923700
+
+----------------------------------------------------
+Converting graph to wff
+number of action variables = 5324
+number of fluent variables = 2836
+total number variables = 8160
+number clauses = 140852
+Instance unsatisfiable
+Result is Unsat
+Iteration was 0
+
+----------------------------------------------------
+Can't solve in 29 steps
+time: 30, 162 facts and 306 exclusive pairs.
+443 new nodes added.
+
+####################################################
+goals at time 31:
+  inflated_wheela inflated_wheelb inflated_wheelc inflated_wheeld on_wheela_hub1 
+on_wheelb_hub2 on_wheelc_hub3 on_wheeld_hub4 tight_nuts_hub1 tight_nuts_hub2 
+tight_nuts_hub3 tight_nuts_hub4 on-ground_hub1 on-ground_hub2 on-ground_hub3 
+in_jack_boot in_pump_boot in_wheel1_boot in_wrench_boot bbunopen_boot 
+
+
+
+----------------------------------------------------
+Invoking solver graphplan
+Result is Timeout
+Iteration was 2201700
+
+----------------------------------------------------
+Converting graph to wff
+number of action variables = 5555
+number of fluent variables = 2949
+total number variables = 8504
+number clauses = 147486
+Result is Sat
+Iteration was 0
+Performing plan justification:
+   18 actions were pruned in 0.00 seconds
+value of bb_prettyflag is 1
+
+----------------------------------------------------
+Begin plan
+1 (open-container boot)
+2 (fetch wrench boot)
+3 (fetch jack boot)
+3 (loosen nuts hub4)
+4 (jack-up hub4)
+5 (remove-nuts nuts hub4)
+6 (fetch wheeld boot)
+6 (remove-wheel wheel4 hub4)
+7 (put-on-wheel wheeld hub4)
+8 (put-on-nuts nuts hub4)
+9 (jack-down hub4)
+9 (fetch pump boot)
+9 (loosen nuts hub3)
+10 (jack-up hub3)
+10 (inflate wheela)
+10 (inflate wheelb)
+10 (inflate wheelc)
+10 (inflate wheeld)
+10 (tighten nuts hub4)
+11 (remove-nuts nuts hub3)
+12 (fetch wheelc boot)
+12 (remove-wheel wheel3 hub3)
+13 (put-on-wheel wheelc hub3)
+13 (loosen nuts hub2)
+14 (put-on-nuts nuts hub3)
+15 (jack-down hub3)
+16 (jack-up hub2)
+16 (tighten nuts hub3)
+17 (remove-nuts nuts hub2)
+18 (fetch wheelb boot)
+18 (remove-wheel wheel2 hub2)
+19 (put-on-wheel wheelb hub2)
+20 (put-on-nuts nuts hub2)
+20 (fetch wheela boot)
+21 (jack-down hub2)
+21 (loosen nuts hub1)
+22 (jack-up hub1)
+22 (tighten nuts hub2)
+23 (remove-nuts nuts hub1)
+24 (remove-wheel wheel1 hub1)
+25 (put-on-wheel wheela hub1)
+26 (put-on-nuts nuts hub1)
+27 (jack-down hub1)
+28 (put-away jack boot)
+28 (tighten nuts hub1)
+29 (put-away wrench boot)
+29 (put-away pump boot)
+29 (put-away wheel1 boot)
+30 (close-container boot)
+End plan
+----------------------------------------------------
+
+49 total actions in plan
+107805 entries in hash table, 5422927 hash hits, avg set size 30
+5530761 total set-creation steps (entries + hits + plan length - 1)
+7301201 actions tried
+
+####################################################
+Total elapsed time:   4 minutes, 49 seconds
+Time in milliseconds: 288858
+
+####################################################
+bash$ 

@@ -1,0 +1,36 @@
+Domain: logistics
+Version: logistics-strips-length
+
+Same as logistics-strips/, except that the problem instance
+have their (:length) specified.
+
+This directory contains a collection of logistics
+problems. This domain was originally developed by
+Manuela Veloso.
+
+We use the pure strips style encoding (no equality,
+no types). See domain01.pddl for operators. Original
+operator file is by Dan Weld. We made some minor
+fixes. See file header.
+
+prob001 --- prob009 are based on instances
+	reported in the literature, including:
+
+		Henry Kautz and Bart Selman, "Pushing the Envelope:
+		Planning, Propositional Logic, and Stochastic Search",
+		Proc. AAAI-96.
+
+		Henry Kautz and Bart Selman, "The Role of
+		Domain-Specific Knowledge in the Planning as Satisfiability Framework",
+		Proc. AIPS-98, Pittsburgh, PA, 1998.
+	
+prob009 --- prob030 are generated using GenLogStrips.c.
+
+All instances are tested and correctness verified.
+
+Problems prob020 and prob028 are particularly hard!  To solve them, try 
+
+-solver -maxsec 30 graphplan -then -maxsec 0 compact -b 8 -then satz -cutoff 100 -restart 50
+
+Collected by Henry Kautz and Bart Selman.
+kautz@research.att.com / selman@cs.cornell.edu

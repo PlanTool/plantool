@@ -1,0 +1,7522 @@
+(define (domain grounded-pathways-simplepreferences)
+  (:requirements :typing) 
+  (:predicates 
+     (is-violated-p0a)
+     (is-satisfied-p0a)
+     (is-violated-p0b)
+     (is-satisfied-p0b)
+     (is-violated-p0c)
+     (is-satisfied-p0c)
+     (is-violated-p0d)
+     (is-satisfied-p0d)
+     (is-violated-p0e)
+     (is-satisfied-p0e)
+     (is-violated-p0f)
+     (is-satisfied-p0f)
+     (is-violated-p0g)
+     (is-satisfied-p0g)
+     (is-violated-p0h)
+     (is-satisfied-p0h)
+     (is-violated-p0i)
+     (is-satisfied-p0i)
+     (is-violated-p0j)
+     (is-satisfied-p0j)
+     (is-violated-p0k)
+     (is-satisfied-p0k)
+     (is-violated-p10a)
+     (is-satisfied-p10a)
+     (is-violated-p1a)
+     (is-satisfied-p1a)
+     (is-violated-p2a)
+     (is-satisfied-p2a)
+     (is-violated-p3a)
+     (is-satisfied-p3a)
+     (is-violated-p4a)
+     (is-satisfied-p4a)
+     (is-violated-p5a)
+     (is-satisfied-p5a)
+     (is-violated-p6a)
+     (is-satisfied-p6a)
+     (is-violated-p7a)
+     (is-satisfied-p7a)
+     (is-violated-p8a)
+     (is-satisfied-p8a)
+     (is-violated-p9a)
+     (is-satisfied-p9a)
+     (available.c-abl)
+     (available.c-abl-prb)
+     (available.c-abl-prbp1)
+     (available.c-abl-prbp1p2)
+     (available.c-abl-prbp2)
+     (available.c-fos)
+     (available.c-myc)
+     (available.c-myc-max)
+     (available.c-myc-max-gcdc25a)
+     (available.c-tak1)
+     (available.cdc25a)
+     (available.cdc25c)
+     (available.cdc25cp2)
+     (available.cdk1p1p2)
+     (available.cdk1p1p2-cks1)
+     (available.cdk1p1p2-gadd45)
+     (available.cdk2)
+     (available.cdk2-cks1)
+     (available.cdk2-cyca)
+     (available.cdk2-cyce)
+     (available.cdk2-cycep1)
+     (available.cdk2p1)
+     (available.cdk2p1-cks1)
+     (available.cdk2p1-cyca)
+     (available.cdk2p1-cyce)
+     (available.cdk2p1-cycep1)
+     (available.cdk46p1)
+     (available.cdk46p1-cycd)
+     (available.cdk46p1-cycdp1)
+     (available.cdk46p3-cycd)
+     (available.cks1)
+     (available.cyca)
+     (available.cycd)
+     (available.cycdp1)
+     (available.cyce)
+     (available.cycep1)
+     (available.dp12)
+     (available.e2f1)
+     (available.e2f1-dp12)
+     (available.e2f13-dp12)
+     (available.e2f13-dp12-ge2)
+     (available.e2f3)
+     (available.e2f3-dp12)
+     (available.e2f5)
+     (available.e2f5-dp12)
+     (available.e2f5-dp12-ge2)
+     (available.e2f5-dp12p1)
+     (available.e2f6)
+     (available.e2f6-dp12)
+     (available.e2f6-dp12-ge2)
+     (available.gadd45)
+     (available.gcdc25a)
+     (available.ge2)
+     (available.hbp1)
+     (available.hbp1-p130)
+     (available.hdac1-p107-e2f4p1-dp12)
+     (available.hdac1-p107-e2f4p1-dp12-ge2)
+     (available.hdac1-p130-e2f4p1-dp12)
+     (available.hdac1-p130-e2f4p1-dp12-ge2)
+     (available.hdac1-p130-e2f5p1-dp12)
+     (available.hdac1-p130-e2f5p1-dp12-ge2)
+     (available.hdac1-prbp1-e2f13-dp12)
+     (available.hdac1-prbp1-e2f13-dp12-ge2)
+     (available.hdac1-prbp1-e2f4-dp12)
+     (available.hdac1-prbp1-e2f4-dp12-ge2)
+     (available.jun)
+     (available.jun-c-fos)
+     (available.m1433)
+     (available.m1433-cdc25cp2)
+     (available.max)
+     (available.mdm2)
+     (available.mdm2-e2f13-dp12)
+     (available.mdm2-prb)
+     (available.mdm2-prbp1)
+     (available.mdm2-prbp1p2)
+     (available.mdm2-prbp2)
+     (available.p107)
+     (available.p107p1)
+     (available.p130)
+     (available.p130-e2f5-dp12)
+     (available.p130-e2f5-dp12-ge2)
+     (available.p130-e2f5-dp12p1)
+     (available.p130-e2f5-dp12p1-ge2)
+     (available.p19arf)
+     (available.p21)
+     (available.p21-cdk2-cyca)
+     (available.p21-cdk2-cyce)
+     (available.p21-cdk2-cycep1)
+     (available.p21-cdk2p1-cyca)
+     (available.p21-cdk2p1-cyce)
+     (available.p21-cdk2p1-cycep1)
+     (available.p21-cdk46p1-cycd)
+     (available.p21-cdk46p1-cycdp1)
+     (available.p21-gadd45)
+     (available.p27)
+     (available.p27-cdk2-cyca)
+     (available.p27-cdk2-cyce)
+     (available.p27-cdk2-cycep1)
+     (available.p27-cdk2p1-cyca)
+     (available.p27-cdk2p1-cyce)
+     (available.p27-cdk2p1-cycep1)
+     (available.p27-cdk46p1-cycd)
+     (available.p27-cdk46p1-cycdp1)
+     (available.p53)
+     (available.p53-dp12)
+     (available.p53p1)
+     (available.p53p1-dp12)
+     (available.p57)
+     (available.p57-cdk2-cyca)
+     (available.p57-cdk2-cyce)
+     (available.p57-cdk2-cycep1)
+     (available.p57-cdk2p1-cyca)
+     (available.p57-cdk2p1-cyce)
+     (available.p57-cdk2p1-cycep1)
+     (available.p57-cdk46p1-cycd)
+     (available.p57-cdk46p1-cycdp1)
+     (available.pcna)
+     (available.pcna-cycd)
+     (available.pcna-cycdp1)
+     (available.pcna-gadd45)
+     (available.pcna-p21)
+     (available.pcna-p21-cdk2-cyca)
+     (available.pcna-p21-cdk2-cyce)
+     (available.pcna-p21-cdk2-cycep1)
+     (available.pcna-p21-cdk2p1-cyca)
+     (available.pcna-p21-cdk2p1-cyce)
+     (available.pcna-p21-cdk2p1-cycep1)
+     (available.pcna-p21-cdk46p1-cycd)
+     (available.pcna-p21-cdk46p1-cycdp1)
+     (available.pol)
+     (available.prb)
+     (available.prb-e2f13-dp12)
+     (available.prb-e2f13-dp12-ge2)
+     (available.prb-e2f4p1-dp12)
+     (available.prb-e2f4p1-dp12-ge2)
+     (available.prb-jun)
+     (available.prb-jun-c-fos)
+     (available.prbp1)
+     (available.prbp1-e2f13-dp12)
+     (available.prbp1-e2f13-dp12-ge2)
+     (available.prbp1-jun)
+     (available.prbp1-jun-c-fos)
+     (available.prbp1p2)
+     (available.prbp1p2-jun)
+     (available.prbp1p2-jun-c-fos)
+     (available.prbp2)
+     (available.prbp2-jun)
+     (available.prbp2-jun-c-fos)
+     (available.rpa)
+     (available.rpa-cyca)
+     (available.skp1)
+     (available.skp2)
+     (available.skp2-cdk2-cyca)
+     (available.skp2-cdk2p1-cyca)
+     (available.skp2-skp1)
+     (available.skp2-skp1-cdk2-cyca)
+     (available.skp2-skp1-cdk2p1-cyca)
+     (available.sp1)
+     (available.sp1-p107)
+     (available.sp1-p107p1)
+     (num-subs.l0)
+     (num-subs.l1)
+     (num-subs.l10)
+     (num-subs.l2)
+     (num-subs.l3)
+     (num-subs.l4)
+     (num-subs.l5)
+     (num-subs.l6)
+     (num-subs.l7)
+     (num-subs.l8)
+     (num-subs.l9)
+     (chosen.c-abl)
+     (chosen.c-tak1)
+     (chosen.cdc25c)
+     (chosen.cdk1p1p2)
+     (chosen.cdk2)
+     (chosen.cdk2p1)
+     (chosen.cdk46p1)
+     (chosen.cdk46p3-cycd)
+     (chosen.cks1)
+     (chosen.dp12)
+     (chosen.e2f1)
+     (chosen.e2f13-dp12)
+     (chosen.e2f3)
+     (chosen.e2f5)
+     (chosen.e2f5-dp12p1)
+     (chosen.e2f6)
+     (chosen.gcdc25a)
+     (chosen.ge2)
+     (chosen.hbp1)
+     (chosen.hdac1-p107-e2f4p1-dp12)
+     (chosen.hdac1-p130-e2f4p1-dp12)
+     (chosen.hdac1-p130-e2f5p1-dp12)
+     (chosen.hdac1-prbp1-e2f13-dp12)
+     (chosen.hdac1-prbp1-e2f4-dp12)
+     (chosen.jun)
+     (chosen.m1433)
+     (chosen.max)
+     (chosen.p130)
+     (chosen.p27)
+     (chosen.p53)
+     (chosen.p53p1)
+     (chosen.p57)
+     (chosen.pcna)
+     (chosen.prb)
+     (chosen.prb-e2f4p1-dp12)
+     (chosen.prbp2)
+     (chosen.rpa)
+     (chosen.skp1)
+     (chosen.skp2)
+     (chosen.sp1)
+  )
+  (:action synthesize.c-myc-max-gcdc25a.cdc25a
+   :precondition 
+     (and 
+      (available.c-myc-max-gcdc25a) 
+     )
+   :effect 
+     (and 
+      (available.cdc25a) 
+     )
+  )
+  (:action synthesize.e2f13-dp12-ge2.c-myc
+   :precondition 
+     (and 
+      (available.e2f13-dp12-ge2) 
+     )
+   :effect 
+     (and 
+      (available.c-myc) 
+     )
+  )
+  (:action synthesize.e2f13-dp12-ge2.cyca
+   :precondition 
+     (and 
+      (available.e2f13-dp12-ge2) 
+     )
+   :effect 
+     (and 
+      (available.cyca) 
+     )
+  )
+  (:action synthesize.e2f13-dp12-ge2.cycd
+   :precondition 
+     (and 
+      (available.e2f13-dp12-ge2) 
+     )
+   :effect 
+     (and 
+      (available.cycd) 
+     )
+  )
+  (:action synthesize.e2f13-dp12-ge2.cycdp1
+   :precondition 
+     (and 
+      (available.e2f13-dp12-ge2) 
+     )
+   :effect 
+     (and 
+      (available.cycdp1) 
+     )
+  )
+  (:action synthesize.e2f13-dp12-ge2.cyce
+   :precondition 
+     (and 
+      (available.e2f13-dp12-ge2) 
+     )
+   :effect 
+     (and 
+      (available.cyce) 
+     )
+  )
+  (:action synthesize.e2f13-dp12-ge2.cycep1
+   :precondition 
+     (and 
+      (available.e2f13-dp12-ge2) 
+     )
+   :effect 
+     (and 
+      (available.cycep1) 
+     )
+  )
+  (:action synthesize.e2f13-dp12-ge2.p107
+   :precondition 
+     (and 
+      (available.e2f13-dp12-ge2) 
+     )
+   :effect 
+     (and 
+      (available.p107) 
+     )
+  )
+  (:action synthesize.e2f13-dp12-ge2.p107p1
+   :precondition 
+     (and 
+      (available.e2f13-dp12-ge2) 
+     )
+   :effect 
+     (and 
+      (available.p107p1) 
+     )
+  )
+  (:action synthesize.e2f13-dp12-ge2.p19arf
+   :precondition 
+     (and 
+      (available.e2f13-dp12-ge2) 
+     )
+   :effect 
+     (and 
+      (available.p19arf) 
+     )
+  )
+  (:action synthesize.e2f13-dp12-ge2.pol
+   :precondition 
+     (and 
+      (available.e2f13-dp12-ge2) 
+     )
+   :effect 
+     (and 
+      (available.pol) 
+     )
+  )
+  (:action synthesize.e2f5-dp12-ge2.c-myc
+   :precondition 
+     (and 
+      (available.e2f5-dp12-ge2) 
+     )
+   :effect 
+     (and 
+      (available.c-myc) 
+     )
+  )
+  (:action synthesize.e2f5-dp12-ge2.cyca
+   :precondition 
+     (and 
+      (available.e2f5-dp12-ge2) 
+     )
+   :effect 
+     (and 
+      (available.cyca) 
+     )
+  )
+  (:action synthesize.e2f5-dp12-ge2.cycd
+   :precondition 
+     (and 
+      (available.e2f5-dp12-ge2) 
+     )
+   :effect 
+     (and 
+      (available.cycd) 
+     )
+  )
+  (:action synthesize.e2f5-dp12-ge2.cycdp1
+   :precondition 
+     (and 
+      (available.e2f5-dp12-ge2) 
+     )
+   :effect 
+     (and 
+      (available.cycdp1) 
+     )
+  )
+  (:action synthesize.e2f5-dp12-ge2.cyce
+   :precondition 
+     (and 
+      (available.e2f5-dp12-ge2) 
+     )
+   :effect 
+     (and 
+      (available.cyce) 
+     )
+  )
+  (:action synthesize.e2f5-dp12-ge2.cycep1
+   :precondition 
+     (and 
+      (available.e2f5-dp12-ge2) 
+     )
+   :effect 
+     (and 
+      (available.cycep1) 
+     )
+  )
+  (:action synthesize.e2f5-dp12-ge2.p107
+   :precondition 
+     (and 
+      (available.e2f5-dp12-ge2) 
+     )
+   :effect 
+     (and 
+      (available.p107) 
+     )
+  )
+  (:action synthesize.e2f5-dp12-ge2.p107p1
+   :precondition 
+     (and 
+      (available.e2f5-dp12-ge2) 
+     )
+   :effect 
+     (and 
+      (available.p107p1) 
+     )
+  )
+  (:action synthesize.e2f5-dp12-ge2.p19arf
+   :precondition 
+     (and 
+      (available.e2f5-dp12-ge2) 
+     )
+   :effect 
+     (and 
+      (available.p19arf) 
+     )
+  )
+  (:action synthesize.e2f5-dp12-ge2.pol
+   :precondition 
+     (and 
+      (available.e2f5-dp12-ge2) 
+     )
+   :effect 
+     (and 
+      (available.pol) 
+     )
+  )
+  (:action synthesize.p53.c-fos
+   :precondition 
+     (and 
+      (available.p53) 
+     )
+   :effect 
+     (and 
+      (available.c-fos) 
+     )
+  )
+  (:action synthesize.p53.gadd45
+   :precondition 
+     (and 
+      (available.p53) 
+     )
+   :effect 
+     (and 
+      (available.gadd45) 
+     )
+  )
+  (:action synthesize.p53.mdm2
+   :precondition 
+     (and 
+      (available.p53) 
+     )
+   :effect 
+     (and 
+      (available.mdm2) 
+     )
+  )
+  (:action synthesize.p53.p21
+   :precondition 
+     (and 
+      (available.p53) 
+     )
+   :effect 
+     (and 
+      (available.p21) 
+     )
+  )
+  (:action synthesize.p53p1.c-fos
+   :precondition 
+     (and 
+      (available.p53p1) 
+     )
+   :effect 
+     (and 
+      (available.c-fos) 
+     )
+  )
+  (:action synthesize.p53p1.gadd45
+   :precondition 
+     (and 
+      (available.p53p1) 
+     )
+   :effect 
+     (and 
+      (available.gadd45) 
+     )
+  )
+  (:action synthesize.p53p1.mdm2
+   :precondition 
+     (and 
+      (available.p53p1) 
+     )
+   :effect 
+     (and 
+      (available.mdm2) 
+     )
+  )
+  (:action synthesize.p53p1.p21
+   :precondition 
+     (and 
+      (available.p53p1) 
+     )
+   :effect 
+     (and 
+      (available.p21) 
+     )
+  )
+  (:action initialize.c-abl
+   :precondition 
+     (and 
+      (chosen.c-abl) 
+     )
+   :effect 
+     (and 
+      (available.c-abl) 
+     )
+  )
+  (:action initialize.c-tak1
+   :precondition 
+     (and 
+      (chosen.c-tak1) 
+     )
+   :effect 
+     (and 
+      (available.c-tak1) 
+     )
+  )
+  (:action initialize.cdc25c
+   :precondition 
+     (and 
+      (chosen.cdc25c) 
+     )
+   :effect 
+     (and 
+      (available.cdc25c) 
+     )
+  )
+  (:action initialize.cdk1p1p2
+   :precondition 
+     (and 
+      (chosen.cdk1p1p2) 
+     )
+   :effect 
+     (and 
+      (available.cdk1p1p2) 
+     )
+  )
+  (:action initialize.cdk2
+   :precondition 
+     (and 
+      (chosen.cdk2) 
+     )
+   :effect 
+     (and 
+      (available.cdk2) 
+     )
+  )
+  (:action initialize.cdk2p1
+   :precondition 
+     (and 
+      (chosen.cdk2p1) 
+     )
+   :effect 
+     (and 
+      (available.cdk2p1) 
+     )
+  )
+  (:action initialize.cdk46p1
+   :precondition 
+     (and 
+      (chosen.cdk46p1) 
+     )
+   :effect 
+     (and 
+      (available.cdk46p1) 
+     )
+  )
+  (:action initialize.cdk46p3-cycd
+   :precondition 
+     (and 
+      (chosen.cdk46p3-cycd) 
+     )
+   :effect 
+     (and 
+      (available.cdk46p3-cycd) 
+     )
+  )
+  (:action initialize.cks1
+   :precondition 
+     (and 
+      (chosen.cks1) 
+     )
+   :effect 
+     (and 
+      (available.cks1) 
+     )
+  )
+  (:action initialize.dp12
+   :precondition 
+     (and 
+      (chosen.dp12) 
+     )
+   :effect 
+     (and 
+      (available.dp12) 
+     )
+  )
+  (:action initialize.e2f1
+   :precondition 
+     (and 
+      (chosen.e2f1) 
+     )
+   :effect 
+     (and 
+      (available.e2f1) 
+     )
+  )
+  (:action initialize.e2f13-dp12
+   :precondition 
+     (and 
+      (chosen.e2f13-dp12) 
+     )
+   :effect 
+     (and 
+      (available.e2f13-dp12) 
+     )
+  )
+  (:action initialize.e2f3
+   :precondition 
+     (and 
+      (chosen.e2f3) 
+     )
+   :effect 
+     (and 
+      (available.e2f3) 
+     )
+  )
+  (:action initialize.e2f5
+   :precondition 
+     (and 
+      (chosen.e2f5) 
+     )
+   :effect 
+     (and 
+      (available.e2f5) 
+     )
+  )
+  (:action initialize.e2f5-dp12p1
+   :precondition 
+     (and 
+      (chosen.e2f5-dp12p1) 
+     )
+   :effect 
+     (and 
+      (available.e2f5-dp12p1) 
+     )
+  )
+  (:action initialize.e2f6
+   :precondition 
+     (and 
+      (chosen.e2f6) 
+     )
+   :effect 
+     (and 
+      (available.e2f6) 
+     )
+  )
+  (:action initialize.gcdc25a
+   :precondition 
+     (and 
+      (chosen.gcdc25a) 
+     )
+   :effect 
+     (and 
+      (available.gcdc25a) 
+     )
+  )
+  (:action initialize.ge2
+   :precondition 
+     (and 
+      (chosen.ge2) 
+     )
+   :effect 
+     (and 
+      (available.ge2) 
+     )
+  )
+  (:action initialize.hbp1
+   :precondition 
+     (and 
+      (chosen.hbp1) 
+     )
+   :effect 
+     (and 
+      (available.hbp1) 
+     )
+  )
+  (:action initialize.hdac1-p107-e2f4p1-dp12
+   :precondition 
+     (and 
+      (chosen.hdac1-p107-e2f4p1-dp12) 
+     )
+   :effect 
+     (and 
+      (available.hdac1-p107-e2f4p1-dp12) 
+     )
+  )
+  (:action initialize.hdac1-p130-e2f4p1-dp12
+   :precondition 
+     (and 
+      (chosen.hdac1-p130-e2f4p1-dp12) 
+     )
+   :effect 
+     (and 
+      (available.hdac1-p130-e2f4p1-dp12) 
+     )
+  )
+  (:action initialize.hdac1-p130-e2f5p1-dp12
+   :precondition 
+     (and 
+      (chosen.hdac1-p130-e2f5p1-dp12) 
+     )
+   :effect 
+     (and 
+      (available.hdac1-p130-e2f5p1-dp12) 
+     )
+  )
+  (:action initialize.hdac1-prbp1-e2f13-dp12
+   :precondition 
+     (and 
+      (chosen.hdac1-prbp1-e2f13-dp12) 
+     )
+   :effect 
+     (and 
+      (available.hdac1-prbp1-e2f13-dp12) 
+     )
+  )
+  (:action initialize.hdac1-prbp1-e2f4-dp12
+   :precondition 
+     (and 
+      (chosen.hdac1-prbp1-e2f4-dp12) 
+     )
+   :effect 
+     (and 
+      (available.hdac1-prbp1-e2f4-dp12) 
+     )
+  )
+  (:action initialize.jun
+   :precondition 
+     (and 
+      (chosen.jun) 
+     )
+   :effect 
+     (and 
+      (available.jun) 
+     )
+  )
+  (:action initialize.m1433
+   :precondition 
+     (and 
+      (chosen.m1433) 
+     )
+   :effect 
+     (and 
+      (available.m1433) 
+     )
+  )
+  (:action initialize.max
+   :precondition 
+     (and 
+      (chosen.max) 
+     )
+   :effect 
+     (and 
+      (available.max) 
+     )
+  )
+  (:action initialize.p130
+   :precondition 
+     (and 
+      (chosen.p130) 
+     )
+   :effect 
+     (and 
+      (available.p130) 
+     )
+  )
+  (:action initialize.p27
+   :precondition 
+     (and 
+      (chosen.p27) 
+     )
+   :effect 
+     (and 
+      (available.p27) 
+     )
+  )
+  (:action initialize.p53
+   :precondition 
+     (and 
+      (chosen.p53) 
+     )
+   :effect 
+     (and 
+      (available.p53) 
+     )
+  )
+  (:action initialize.p53p1
+   :precondition 
+     (and 
+      (chosen.p53p1) 
+     )
+   :effect 
+     (and 
+      (available.p53p1) 
+     )
+  )
+  (:action initialize.p57
+   :precondition 
+     (and 
+      (chosen.p57) 
+     )
+   :effect 
+     (and 
+      (available.p57) 
+     )
+  )
+  (:action initialize.pcna
+   :precondition 
+     (and 
+      (chosen.pcna) 
+     )
+   :effect 
+     (and 
+      (available.pcna) 
+     )
+  )
+  (:action initialize.prb
+   :precondition 
+     (and 
+      (chosen.prb) 
+     )
+   :effect 
+     (and 
+      (available.prb) 
+     )
+  )
+  (:action initialize.prb-e2f4p1-dp12
+   :precondition 
+     (and 
+      (chosen.prb-e2f4p1-dp12) 
+     )
+   :effect 
+     (and 
+      (available.prb-e2f4p1-dp12) 
+     )
+  )
+  (:action initialize.prbp2
+   :precondition 
+     (and 
+      (chosen.prbp2) 
+     )
+   :effect 
+     (and 
+      (available.prbp2) 
+     )
+  )
+  (:action initialize.rpa
+   :precondition 
+     (and 
+      (chosen.rpa) 
+     )
+   :effect 
+     (and 
+      (available.rpa) 
+     )
+  )
+  (:action initialize.skp1
+   :precondition 
+     (and 
+      (chosen.skp1) 
+     )
+   :effect 
+     (and 
+      (available.skp1) 
+     )
+  )
+  (:action initialize.skp2
+   :precondition 
+     (and 
+      (chosen.skp2) 
+     )
+   :effect 
+     (and 
+      (available.skp2) 
+     )
+  )
+  (:action initialize.sp1
+   :precondition 
+     (and 
+      (chosen.sp1) 
+     )
+   :effect 
+     (and 
+      (available.sp1) 
+     )
+  )
+  (:action choose.c-abl.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.c-abl)) 
+     )
+   :effect 
+     (and 
+      (chosen.c-abl) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.c-tak1.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.c-tak1)) 
+     )
+   :effect 
+     (and 
+      (chosen.c-tak1) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.cdc25c.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.cdc25c)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdc25c) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.cdk1p1p2.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.cdk1p1p2)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk1p1p2) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.cdk2.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.cdk2)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk2) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.cdk2p1.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.cdk2p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk2p1) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.cdk46p1.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.cdk46p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk46p1) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.cdk46p3-cycd.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.cdk46p3-cycd)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk46p3-cycd) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.cks1.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.cks1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cks1) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.dp12.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.dp12) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.e2f1.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.e2f1)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f1) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.e2f13-dp12.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.e2f13-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f13-dp12) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.e2f3.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.e2f3)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f3) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.e2f5.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.e2f5)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f5) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.e2f5-dp12p1.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.e2f5-dp12p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f5-dp12p1) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.e2f6.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.e2f6)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f6) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.gcdc25a.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.gcdc25a)) 
+     )
+   :effect 
+     (and 
+      (chosen.gcdc25a) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.ge2.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.ge2)) 
+     )
+   :effect 
+     (and 
+      (chosen.ge2) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.hbp1.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.hbp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.hbp1) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.hdac1-p107-e2f4p1-dp12.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.hdac1-p107-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p107-e2f4p1-dp12) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.hdac1-p130-e2f4p1-dp12.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.hdac1-p130-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p130-e2f4p1-dp12) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.hdac1-p130-e2f5p1-dp12.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.hdac1-p130-e2f5p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p130-e2f5p1-dp12) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.hdac1-prbp1-e2f13-dp12.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.hdac1-prbp1-e2f13-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-prbp1-e2f13-dp12) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.hdac1-prbp1-e2f4-dp12.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.hdac1-prbp1-e2f4-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-prbp1-e2f4-dp12) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.jun.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.jun)) 
+     )
+   :effect 
+     (and 
+      (chosen.jun) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.m1433.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.m1433)) 
+     )
+   :effect 
+     (and 
+      (chosen.m1433) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.max.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.max)) 
+     )
+   :effect 
+     (and 
+      (chosen.max) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.p130.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.p130)) 
+     )
+   :effect 
+     (and 
+      (chosen.p130) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.p27.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.p27)) 
+     )
+   :effect 
+     (and 
+      (chosen.p27) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.p53.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.p53)) 
+     )
+   :effect 
+     (and 
+      (chosen.p53) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.p53p1.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.p53p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.p53p1) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.p57.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.p57)) 
+     )
+   :effect 
+     (and 
+      (chosen.p57) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.pcna.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.pcna)) 
+     )
+   :effect 
+     (and 
+      (chosen.pcna) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.prb.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.prb)) 
+     )
+   :effect 
+     (and 
+      (chosen.prb) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.prb-e2f4p1-dp12.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.prb-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.prb-e2f4p1-dp12) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.prbp2.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.prbp2)) 
+     )
+   :effect 
+     (and 
+      (chosen.prbp2) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.rpa.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.rpa)) 
+     )
+   :effect 
+     (and 
+      (chosen.rpa) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.skp1.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.skp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.skp1) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.skp2.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.skp2)) 
+     )
+   :effect 
+     (and 
+      (chosen.skp2) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.sp1.l1.l0
+   :precondition 
+     (and 
+      (num-subs.l0) 
+       (not (chosen.sp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.sp1) 
+      (num-subs.l1) 
+      (not (num-subs.l0)) 
+     )
+  )
+  (:action choose.c-abl.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.c-abl)) 
+     )
+   :effect 
+     (and 
+      (chosen.c-abl) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.c-tak1.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.c-tak1)) 
+     )
+   :effect 
+     (and 
+      (chosen.c-tak1) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.cdc25c.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.cdc25c)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdc25c) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.cdk1p1p2.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.cdk1p1p2)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk1p1p2) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.cdk2.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.cdk2)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk2) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.cdk2p1.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.cdk2p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk2p1) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.cdk46p1.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.cdk46p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk46p1) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.cdk46p3-cycd.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.cdk46p3-cycd)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk46p3-cycd) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.cks1.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.cks1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cks1) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.dp12.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.dp12) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.e2f1.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.e2f1)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f1) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.e2f13-dp12.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.e2f13-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f13-dp12) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.e2f3.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.e2f3)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f3) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.e2f5.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.e2f5)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f5) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.e2f5-dp12p1.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.e2f5-dp12p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f5-dp12p1) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.e2f6.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.e2f6)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f6) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.gcdc25a.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.gcdc25a)) 
+     )
+   :effect 
+     (and 
+      (chosen.gcdc25a) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.ge2.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.ge2)) 
+     )
+   :effect 
+     (and 
+      (chosen.ge2) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.hbp1.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.hbp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.hbp1) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.hdac1-p107-e2f4p1-dp12.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.hdac1-p107-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p107-e2f4p1-dp12) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.hdac1-p130-e2f4p1-dp12.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.hdac1-p130-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p130-e2f4p1-dp12) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.hdac1-p130-e2f5p1-dp12.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.hdac1-p130-e2f5p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p130-e2f5p1-dp12) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.hdac1-prbp1-e2f13-dp12.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.hdac1-prbp1-e2f13-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-prbp1-e2f13-dp12) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.hdac1-prbp1-e2f4-dp12.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.hdac1-prbp1-e2f4-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-prbp1-e2f4-dp12) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.jun.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.jun)) 
+     )
+   :effect 
+     (and 
+      (chosen.jun) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.m1433.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.m1433)) 
+     )
+   :effect 
+     (and 
+      (chosen.m1433) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.max.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.max)) 
+     )
+   :effect 
+     (and 
+      (chosen.max) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.p130.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.p130)) 
+     )
+   :effect 
+     (and 
+      (chosen.p130) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.p27.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.p27)) 
+     )
+   :effect 
+     (and 
+      (chosen.p27) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.p53.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.p53)) 
+     )
+   :effect 
+     (and 
+      (chosen.p53) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.p53p1.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.p53p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.p53p1) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.p57.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.p57)) 
+     )
+   :effect 
+     (and 
+      (chosen.p57) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.pcna.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.pcna)) 
+     )
+   :effect 
+     (and 
+      (chosen.pcna) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.prb.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.prb)) 
+     )
+   :effect 
+     (and 
+      (chosen.prb) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.prb-e2f4p1-dp12.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.prb-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.prb-e2f4p1-dp12) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.prbp2.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.prbp2)) 
+     )
+   :effect 
+     (and 
+      (chosen.prbp2) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.rpa.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.rpa)) 
+     )
+   :effect 
+     (and 
+      (chosen.rpa) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.skp1.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.skp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.skp1) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.skp2.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.skp2)) 
+     )
+   :effect 
+     (and 
+      (chosen.skp2) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.sp1.l2.l1
+   :precondition 
+     (and 
+      (num-subs.l1) 
+       (not (chosen.sp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.sp1) 
+      (num-subs.l2) 
+      (not (num-subs.l1)) 
+     )
+  )
+  (:action choose.c-abl.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.c-abl)) 
+     )
+   :effect 
+     (and 
+      (chosen.c-abl) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.c-tak1.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.c-tak1)) 
+     )
+   :effect 
+     (and 
+      (chosen.c-tak1) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.cdc25c.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.cdc25c)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdc25c) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.cdk1p1p2.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.cdk1p1p2)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk1p1p2) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.cdk2.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.cdk2)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk2) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.cdk2p1.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.cdk2p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk2p1) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.cdk46p1.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.cdk46p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk46p1) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.cdk46p3-cycd.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.cdk46p3-cycd)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk46p3-cycd) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.cks1.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.cks1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cks1) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.dp12.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.dp12) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.e2f1.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.e2f1)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f1) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.e2f13-dp12.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.e2f13-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f13-dp12) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.e2f3.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.e2f3)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f3) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.e2f5.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.e2f5)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f5) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.e2f5-dp12p1.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.e2f5-dp12p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f5-dp12p1) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.e2f6.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.e2f6)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f6) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.gcdc25a.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.gcdc25a)) 
+     )
+   :effect 
+     (and 
+      (chosen.gcdc25a) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.ge2.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.ge2)) 
+     )
+   :effect 
+     (and 
+      (chosen.ge2) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.hbp1.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.hbp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.hbp1) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.hdac1-p107-e2f4p1-dp12.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.hdac1-p107-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p107-e2f4p1-dp12) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.hdac1-p130-e2f4p1-dp12.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.hdac1-p130-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p130-e2f4p1-dp12) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.hdac1-p130-e2f5p1-dp12.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.hdac1-p130-e2f5p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p130-e2f5p1-dp12) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.hdac1-prbp1-e2f13-dp12.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.hdac1-prbp1-e2f13-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-prbp1-e2f13-dp12) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.hdac1-prbp1-e2f4-dp12.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.hdac1-prbp1-e2f4-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-prbp1-e2f4-dp12) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.jun.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.jun)) 
+     )
+   :effect 
+     (and 
+      (chosen.jun) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.m1433.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.m1433)) 
+     )
+   :effect 
+     (and 
+      (chosen.m1433) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.max.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.max)) 
+     )
+   :effect 
+     (and 
+      (chosen.max) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.p130.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.p130)) 
+     )
+   :effect 
+     (and 
+      (chosen.p130) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.p27.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.p27)) 
+     )
+   :effect 
+     (and 
+      (chosen.p27) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.p53.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.p53)) 
+     )
+   :effect 
+     (and 
+      (chosen.p53) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.p53p1.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.p53p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.p53p1) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.p57.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.p57)) 
+     )
+   :effect 
+     (and 
+      (chosen.p57) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.pcna.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.pcna)) 
+     )
+   :effect 
+     (and 
+      (chosen.pcna) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.prb.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.prb)) 
+     )
+   :effect 
+     (and 
+      (chosen.prb) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.prb-e2f4p1-dp12.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.prb-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.prb-e2f4p1-dp12) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.prbp2.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.prbp2)) 
+     )
+   :effect 
+     (and 
+      (chosen.prbp2) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.rpa.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.rpa)) 
+     )
+   :effect 
+     (and 
+      (chosen.rpa) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.skp1.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.skp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.skp1) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.skp2.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.skp2)) 
+     )
+   :effect 
+     (and 
+      (chosen.skp2) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.sp1.l3.l2
+   :precondition 
+     (and 
+      (num-subs.l2) 
+       (not (chosen.sp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.sp1) 
+      (num-subs.l3) 
+      (not (num-subs.l2)) 
+     )
+  )
+  (:action choose.c-abl.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.c-abl)) 
+     )
+   :effect 
+     (and 
+      (chosen.c-abl) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.c-tak1.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.c-tak1)) 
+     )
+   :effect 
+     (and 
+      (chosen.c-tak1) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.cdc25c.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.cdc25c)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdc25c) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.cdk1p1p2.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.cdk1p1p2)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk1p1p2) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.cdk2.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.cdk2)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk2) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.cdk2p1.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.cdk2p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk2p1) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.cdk46p1.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.cdk46p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk46p1) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.cdk46p3-cycd.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.cdk46p3-cycd)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk46p3-cycd) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.cks1.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.cks1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cks1) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.dp12.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.dp12) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.e2f1.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.e2f1)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f1) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.e2f13-dp12.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.e2f13-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f13-dp12) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.e2f3.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.e2f3)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f3) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.e2f5.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.e2f5)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f5) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.e2f5-dp12p1.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.e2f5-dp12p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f5-dp12p1) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.e2f6.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.e2f6)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f6) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.gcdc25a.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.gcdc25a)) 
+     )
+   :effect 
+     (and 
+      (chosen.gcdc25a) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.ge2.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.ge2)) 
+     )
+   :effect 
+     (and 
+      (chosen.ge2) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.hbp1.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.hbp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.hbp1) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.hdac1-p107-e2f4p1-dp12.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.hdac1-p107-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p107-e2f4p1-dp12) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.hdac1-p130-e2f4p1-dp12.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.hdac1-p130-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p130-e2f4p1-dp12) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.hdac1-p130-e2f5p1-dp12.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.hdac1-p130-e2f5p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p130-e2f5p1-dp12) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.hdac1-prbp1-e2f13-dp12.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.hdac1-prbp1-e2f13-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-prbp1-e2f13-dp12) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.hdac1-prbp1-e2f4-dp12.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.hdac1-prbp1-e2f4-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-prbp1-e2f4-dp12) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.jun.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.jun)) 
+     )
+   :effect 
+     (and 
+      (chosen.jun) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.m1433.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.m1433)) 
+     )
+   :effect 
+     (and 
+      (chosen.m1433) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.max.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.max)) 
+     )
+   :effect 
+     (and 
+      (chosen.max) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.p130.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.p130)) 
+     )
+   :effect 
+     (and 
+      (chosen.p130) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.p27.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.p27)) 
+     )
+   :effect 
+     (and 
+      (chosen.p27) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.p53.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.p53)) 
+     )
+   :effect 
+     (and 
+      (chosen.p53) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.p53p1.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.p53p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.p53p1) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.p57.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.p57)) 
+     )
+   :effect 
+     (and 
+      (chosen.p57) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.pcna.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.pcna)) 
+     )
+   :effect 
+     (and 
+      (chosen.pcna) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.prb.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.prb)) 
+     )
+   :effect 
+     (and 
+      (chosen.prb) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.prb-e2f4p1-dp12.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.prb-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.prb-e2f4p1-dp12) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.prbp2.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.prbp2)) 
+     )
+   :effect 
+     (and 
+      (chosen.prbp2) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.rpa.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.rpa)) 
+     )
+   :effect 
+     (and 
+      (chosen.rpa) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.skp1.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.skp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.skp1) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.skp2.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.skp2)) 
+     )
+   :effect 
+     (and 
+      (chosen.skp2) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.sp1.l4.l3
+   :precondition 
+     (and 
+      (num-subs.l3) 
+       (not (chosen.sp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.sp1) 
+      (num-subs.l4) 
+      (not (num-subs.l3)) 
+     )
+  )
+  (:action choose.c-abl.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.c-abl)) 
+     )
+   :effect 
+     (and 
+      (chosen.c-abl) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.c-tak1.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.c-tak1)) 
+     )
+   :effect 
+     (and 
+      (chosen.c-tak1) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.cdc25c.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.cdc25c)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdc25c) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.cdk1p1p2.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.cdk1p1p2)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk1p1p2) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.cdk2.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.cdk2)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk2) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.cdk2p1.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.cdk2p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk2p1) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.cdk46p1.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.cdk46p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk46p1) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.cdk46p3-cycd.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.cdk46p3-cycd)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk46p3-cycd) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.cks1.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.cks1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cks1) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.dp12.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.dp12) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.e2f1.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.e2f1)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f1) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.e2f13-dp12.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.e2f13-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f13-dp12) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.e2f3.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.e2f3)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f3) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.e2f5.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.e2f5)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f5) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.e2f5-dp12p1.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.e2f5-dp12p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f5-dp12p1) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.e2f6.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.e2f6)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f6) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.gcdc25a.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.gcdc25a)) 
+     )
+   :effect 
+     (and 
+      (chosen.gcdc25a) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.ge2.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.ge2)) 
+     )
+   :effect 
+     (and 
+      (chosen.ge2) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.hbp1.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.hbp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.hbp1) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.hdac1-p107-e2f4p1-dp12.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.hdac1-p107-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p107-e2f4p1-dp12) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.hdac1-p130-e2f4p1-dp12.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.hdac1-p130-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p130-e2f4p1-dp12) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.hdac1-p130-e2f5p1-dp12.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.hdac1-p130-e2f5p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p130-e2f5p1-dp12) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.hdac1-prbp1-e2f13-dp12.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.hdac1-prbp1-e2f13-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-prbp1-e2f13-dp12) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.hdac1-prbp1-e2f4-dp12.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.hdac1-prbp1-e2f4-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-prbp1-e2f4-dp12) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.jun.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.jun)) 
+     )
+   :effect 
+     (and 
+      (chosen.jun) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.m1433.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.m1433)) 
+     )
+   :effect 
+     (and 
+      (chosen.m1433) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.max.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.max)) 
+     )
+   :effect 
+     (and 
+      (chosen.max) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.p130.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.p130)) 
+     )
+   :effect 
+     (and 
+      (chosen.p130) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.p27.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.p27)) 
+     )
+   :effect 
+     (and 
+      (chosen.p27) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.p53.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.p53)) 
+     )
+   :effect 
+     (and 
+      (chosen.p53) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.p53p1.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.p53p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.p53p1) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.p57.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.p57)) 
+     )
+   :effect 
+     (and 
+      (chosen.p57) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.pcna.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.pcna)) 
+     )
+   :effect 
+     (and 
+      (chosen.pcna) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.prb.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.prb)) 
+     )
+   :effect 
+     (and 
+      (chosen.prb) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.prb-e2f4p1-dp12.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.prb-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.prb-e2f4p1-dp12) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.prbp2.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.prbp2)) 
+     )
+   :effect 
+     (and 
+      (chosen.prbp2) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.rpa.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.rpa)) 
+     )
+   :effect 
+     (and 
+      (chosen.rpa) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.skp1.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.skp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.skp1) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.skp2.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.skp2)) 
+     )
+   :effect 
+     (and 
+      (chosen.skp2) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.sp1.l5.l4
+   :precondition 
+     (and 
+      (num-subs.l4) 
+       (not (chosen.sp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.sp1) 
+      (num-subs.l5) 
+      (not (num-subs.l4)) 
+     )
+  )
+  (:action choose.c-abl.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.c-abl)) 
+     )
+   :effect 
+     (and 
+      (chosen.c-abl) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.c-tak1.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.c-tak1)) 
+     )
+   :effect 
+     (and 
+      (chosen.c-tak1) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.cdc25c.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.cdc25c)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdc25c) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.cdk1p1p2.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.cdk1p1p2)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk1p1p2) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.cdk2.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.cdk2)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk2) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.cdk2p1.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.cdk2p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk2p1) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.cdk46p1.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.cdk46p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk46p1) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.cdk46p3-cycd.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.cdk46p3-cycd)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk46p3-cycd) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.cks1.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.cks1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cks1) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.dp12.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.dp12) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.e2f1.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.e2f1)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f1) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.e2f13-dp12.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.e2f13-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f13-dp12) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.e2f3.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.e2f3)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f3) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.e2f5.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.e2f5)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f5) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.e2f5-dp12p1.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.e2f5-dp12p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f5-dp12p1) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.e2f6.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.e2f6)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f6) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.gcdc25a.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.gcdc25a)) 
+     )
+   :effect 
+     (and 
+      (chosen.gcdc25a) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.ge2.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.ge2)) 
+     )
+   :effect 
+     (and 
+      (chosen.ge2) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.hbp1.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.hbp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.hbp1) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.hdac1-p107-e2f4p1-dp12.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.hdac1-p107-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p107-e2f4p1-dp12) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.hdac1-p130-e2f4p1-dp12.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.hdac1-p130-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p130-e2f4p1-dp12) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.hdac1-p130-e2f5p1-dp12.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.hdac1-p130-e2f5p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p130-e2f5p1-dp12) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.hdac1-prbp1-e2f13-dp12.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.hdac1-prbp1-e2f13-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-prbp1-e2f13-dp12) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.hdac1-prbp1-e2f4-dp12.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.hdac1-prbp1-e2f4-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-prbp1-e2f4-dp12) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.jun.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.jun)) 
+     )
+   :effect 
+     (and 
+      (chosen.jun) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.m1433.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.m1433)) 
+     )
+   :effect 
+     (and 
+      (chosen.m1433) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.max.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.max)) 
+     )
+   :effect 
+     (and 
+      (chosen.max) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.p130.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.p130)) 
+     )
+   :effect 
+     (and 
+      (chosen.p130) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.p27.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.p27)) 
+     )
+   :effect 
+     (and 
+      (chosen.p27) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.p53.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.p53)) 
+     )
+   :effect 
+     (and 
+      (chosen.p53) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.p53p1.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.p53p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.p53p1) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.p57.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.p57)) 
+     )
+   :effect 
+     (and 
+      (chosen.p57) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.pcna.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.pcna)) 
+     )
+   :effect 
+     (and 
+      (chosen.pcna) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.prb.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.prb)) 
+     )
+   :effect 
+     (and 
+      (chosen.prb) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.prb-e2f4p1-dp12.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.prb-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.prb-e2f4p1-dp12) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.prbp2.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.prbp2)) 
+     )
+   :effect 
+     (and 
+      (chosen.prbp2) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.rpa.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.rpa)) 
+     )
+   :effect 
+     (and 
+      (chosen.rpa) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.skp1.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.skp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.skp1) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.skp2.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.skp2)) 
+     )
+   :effect 
+     (and 
+      (chosen.skp2) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.sp1.l6.l5
+   :precondition 
+     (and 
+      (num-subs.l5) 
+       (not (chosen.sp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.sp1) 
+      (num-subs.l6) 
+      (not (num-subs.l5)) 
+     )
+  )
+  (:action choose.c-abl.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.c-abl)) 
+     )
+   :effect 
+     (and 
+      (chosen.c-abl) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.c-tak1.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.c-tak1)) 
+     )
+   :effect 
+     (and 
+      (chosen.c-tak1) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.cdc25c.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.cdc25c)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdc25c) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.cdk1p1p2.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.cdk1p1p2)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk1p1p2) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.cdk2.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.cdk2)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk2) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.cdk2p1.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.cdk2p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk2p1) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.cdk46p1.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.cdk46p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk46p1) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.cdk46p3-cycd.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.cdk46p3-cycd)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk46p3-cycd) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.cks1.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.cks1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cks1) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.dp12.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.dp12) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.e2f1.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.e2f1)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f1) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.e2f13-dp12.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.e2f13-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f13-dp12) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.e2f3.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.e2f3)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f3) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.e2f5.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.e2f5)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f5) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.e2f5-dp12p1.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.e2f5-dp12p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f5-dp12p1) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.e2f6.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.e2f6)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f6) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.gcdc25a.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.gcdc25a)) 
+     )
+   :effect 
+     (and 
+      (chosen.gcdc25a) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.ge2.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.ge2)) 
+     )
+   :effect 
+     (and 
+      (chosen.ge2) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.hbp1.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.hbp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.hbp1) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.hdac1-p107-e2f4p1-dp12.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.hdac1-p107-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p107-e2f4p1-dp12) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.hdac1-p130-e2f4p1-dp12.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.hdac1-p130-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p130-e2f4p1-dp12) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.hdac1-p130-e2f5p1-dp12.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.hdac1-p130-e2f5p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p130-e2f5p1-dp12) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.hdac1-prbp1-e2f13-dp12.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.hdac1-prbp1-e2f13-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-prbp1-e2f13-dp12) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.hdac1-prbp1-e2f4-dp12.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.hdac1-prbp1-e2f4-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-prbp1-e2f4-dp12) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.jun.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.jun)) 
+     )
+   :effect 
+     (and 
+      (chosen.jun) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.m1433.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.m1433)) 
+     )
+   :effect 
+     (and 
+      (chosen.m1433) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.max.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.max)) 
+     )
+   :effect 
+     (and 
+      (chosen.max) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.p130.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.p130)) 
+     )
+   :effect 
+     (and 
+      (chosen.p130) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.p27.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.p27)) 
+     )
+   :effect 
+     (and 
+      (chosen.p27) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.p53.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.p53)) 
+     )
+   :effect 
+     (and 
+      (chosen.p53) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.p53p1.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.p53p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.p53p1) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.p57.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.p57)) 
+     )
+   :effect 
+     (and 
+      (chosen.p57) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.pcna.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.pcna)) 
+     )
+   :effect 
+     (and 
+      (chosen.pcna) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.prb.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.prb)) 
+     )
+   :effect 
+     (and 
+      (chosen.prb) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.prb-e2f4p1-dp12.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.prb-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.prb-e2f4p1-dp12) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.prbp2.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.prbp2)) 
+     )
+   :effect 
+     (and 
+      (chosen.prbp2) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.rpa.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.rpa)) 
+     )
+   :effect 
+     (and 
+      (chosen.rpa) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.skp1.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.skp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.skp1) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.skp2.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.skp2)) 
+     )
+   :effect 
+     (and 
+      (chosen.skp2) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.sp1.l7.l6
+   :precondition 
+     (and 
+      (num-subs.l6) 
+       (not (chosen.sp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.sp1) 
+      (num-subs.l7) 
+      (not (num-subs.l6)) 
+     )
+  )
+  (:action choose.c-abl.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.c-abl)) 
+     )
+   :effect 
+     (and 
+      (chosen.c-abl) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.c-tak1.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.c-tak1)) 
+     )
+   :effect 
+     (and 
+      (chosen.c-tak1) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.cdc25c.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.cdc25c)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdc25c) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.cdk1p1p2.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.cdk1p1p2)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk1p1p2) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.cdk2.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.cdk2)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk2) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.cdk2p1.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.cdk2p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk2p1) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.cdk46p1.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.cdk46p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk46p1) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.cdk46p3-cycd.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.cdk46p3-cycd)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk46p3-cycd) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.cks1.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.cks1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cks1) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.dp12.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.dp12) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.e2f1.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.e2f1)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f1) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.e2f13-dp12.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.e2f13-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f13-dp12) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.e2f3.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.e2f3)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f3) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.e2f5.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.e2f5)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f5) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.e2f5-dp12p1.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.e2f5-dp12p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f5-dp12p1) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.e2f6.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.e2f6)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f6) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.gcdc25a.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.gcdc25a)) 
+     )
+   :effect 
+     (and 
+      (chosen.gcdc25a) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.ge2.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.ge2)) 
+     )
+   :effect 
+     (and 
+      (chosen.ge2) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.hbp1.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.hbp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.hbp1) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.hdac1-p107-e2f4p1-dp12.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.hdac1-p107-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p107-e2f4p1-dp12) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.hdac1-p130-e2f4p1-dp12.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.hdac1-p130-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p130-e2f4p1-dp12) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.hdac1-p130-e2f5p1-dp12.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.hdac1-p130-e2f5p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p130-e2f5p1-dp12) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.hdac1-prbp1-e2f13-dp12.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.hdac1-prbp1-e2f13-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-prbp1-e2f13-dp12) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.hdac1-prbp1-e2f4-dp12.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.hdac1-prbp1-e2f4-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-prbp1-e2f4-dp12) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.jun.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.jun)) 
+     )
+   :effect 
+     (and 
+      (chosen.jun) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.m1433.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.m1433)) 
+     )
+   :effect 
+     (and 
+      (chosen.m1433) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.max.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.max)) 
+     )
+   :effect 
+     (and 
+      (chosen.max) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.p130.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.p130)) 
+     )
+   :effect 
+     (and 
+      (chosen.p130) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.p27.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.p27)) 
+     )
+   :effect 
+     (and 
+      (chosen.p27) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.p53.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.p53)) 
+     )
+   :effect 
+     (and 
+      (chosen.p53) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.p53p1.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.p53p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.p53p1) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.p57.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.p57)) 
+     )
+   :effect 
+     (and 
+      (chosen.p57) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.pcna.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.pcna)) 
+     )
+   :effect 
+     (and 
+      (chosen.pcna) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.prb.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.prb)) 
+     )
+   :effect 
+     (and 
+      (chosen.prb) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.prb-e2f4p1-dp12.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.prb-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.prb-e2f4p1-dp12) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.prbp2.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.prbp2)) 
+     )
+   :effect 
+     (and 
+      (chosen.prbp2) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.rpa.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.rpa)) 
+     )
+   :effect 
+     (and 
+      (chosen.rpa) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.skp1.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.skp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.skp1) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.skp2.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.skp2)) 
+     )
+   :effect 
+     (and 
+      (chosen.skp2) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.sp1.l8.l7
+   :precondition 
+     (and 
+      (num-subs.l7) 
+       (not (chosen.sp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.sp1) 
+      (num-subs.l8) 
+      (not (num-subs.l7)) 
+     )
+  )
+  (:action choose.c-abl.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.c-abl)) 
+     )
+   :effect 
+     (and 
+      (chosen.c-abl) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.c-tak1.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.c-tak1)) 
+     )
+   :effect 
+     (and 
+      (chosen.c-tak1) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.cdc25c.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.cdc25c)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdc25c) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.cdk1p1p2.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.cdk1p1p2)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk1p1p2) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.cdk2.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.cdk2)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk2) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.cdk2p1.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.cdk2p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk2p1) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.cdk46p1.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.cdk46p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk46p1) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.cdk46p3-cycd.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.cdk46p3-cycd)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk46p3-cycd) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.cks1.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.cks1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cks1) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.dp12.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.dp12) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.e2f1.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.e2f1)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f1) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.e2f13-dp12.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.e2f13-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f13-dp12) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.e2f3.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.e2f3)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f3) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.e2f5.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.e2f5)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f5) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.e2f5-dp12p1.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.e2f5-dp12p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f5-dp12p1) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.e2f6.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.e2f6)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f6) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.gcdc25a.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.gcdc25a)) 
+     )
+   :effect 
+     (and 
+      (chosen.gcdc25a) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.ge2.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.ge2)) 
+     )
+   :effect 
+     (and 
+      (chosen.ge2) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.hbp1.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.hbp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.hbp1) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.hdac1-p107-e2f4p1-dp12.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.hdac1-p107-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p107-e2f4p1-dp12) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.hdac1-p130-e2f4p1-dp12.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.hdac1-p130-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p130-e2f4p1-dp12) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.hdac1-p130-e2f5p1-dp12.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.hdac1-p130-e2f5p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p130-e2f5p1-dp12) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.hdac1-prbp1-e2f13-dp12.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.hdac1-prbp1-e2f13-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-prbp1-e2f13-dp12) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.hdac1-prbp1-e2f4-dp12.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.hdac1-prbp1-e2f4-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-prbp1-e2f4-dp12) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.jun.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.jun)) 
+     )
+   :effect 
+     (and 
+      (chosen.jun) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.m1433.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.m1433)) 
+     )
+   :effect 
+     (and 
+      (chosen.m1433) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.max.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.max)) 
+     )
+   :effect 
+     (and 
+      (chosen.max) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.p130.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.p130)) 
+     )
+   :effect 
+     (and 
+      (chosen.p130) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.p27.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.p27)) 
+     )
+   :effect 
+     (and 
+      (chosen.p27) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.p53.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.p53)) 
+     )
+   :effect 
+     (and 
+      (chosen.p53) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.p53p1.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.p53p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.p53p1) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.p57.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.p57)) 
+     )
+   :effect 
+     (and 
+      (chosen.p57) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.pcna.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.pcna)) 
+     )
+   :effect 
+     (and 
+      (chosen.pcna) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.prb.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.prb)) 
+     )
+   :effect 
+     (and 
+      (chosen.prb) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.prb-e2f4p1-dp12.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.prb-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.prb-e2f4p1-dp12) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.prbp2.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.prbp2)) 
+     )
+   :effect 
+     (and 
+      (chosen.prbp2) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.rpa.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.rpa)) 
+     )
+   :effect 
+     (and 
+      (chosen.rpa) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.skp1.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.skp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.skp1) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.skp2.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.skp2)) 
+     )
+   :effect 
+     (and 
+      (chosen.skp2) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.sp1.l9.l8
+   :precondition 
+     (and 
+      (num-subs.l8) 
+       (not (chosen.sp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.sp1) 
+      (num-subs.l9) 
+      (not (num-subs.l8)) 
+     )
+  )
+  (:action choose.c-abl.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.c-abl)) 
+     )
+   :effect 
+     (and 
+      (chosen.c-abl) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.c-tak1.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.c-tak1)) 
+     )
+   :effect 
+     (and 
+      (chosen.c-tak1) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.cdc25c.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.cdc25c)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdc25c) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.cdk1p1p2.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.cdk1p1p2)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk1p1p2) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.cdk2.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.cdk2)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk2) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.cdk2p1.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.cdk2p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk2p1) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.cdk46p1.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.cdk46p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk46p1) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.cdk46p3-cycd.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.cdk46p3-cycd)) 
+     )
+   :effect 
+     (and 
+      (chosen.cdk46p3-cycd) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.cks1.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.cks1)) 
+     )
+   :effect 
+     (and 
+      (chosen.cks1) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.dp12.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.dp12) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.e2f1.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.e2f1)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f1) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.e2f13-dp12.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.e2f13-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f13-dp12) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.e2f3.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.e2f3)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f3) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.e2f5.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.e2f5)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f5) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.e2f5-dp12p1.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.e2f5-dp12p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f5-dp12p1) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.e2f6.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.e2f6)) 
+     )
+   :effect 
+     (and 
+      (chosen.e2f6) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.gcdc25a.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.gcdc25a)) 
+     )
+   :effect 
+     (and 
+      (chosen.gcdc25a) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.ge2.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.ge2)) 
+     )
+   :effect 
+     (and 
+      (chosen.ge2) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.hbp1.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.hbp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.hbp1) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.hdac1-p107-e2f4p1-dp12.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.hdac1-p107-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p107-e2f4p1-dp12) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.hdac1-p130-e2f4p1-dp12.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.hdac1-p130-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p130-e2f4p1-dp12) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.hdac1-p130-e2f5p1-dp12.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.hdac1-p130-e2f5p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-p130-e2f5p1-dp12) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.hdac1-prbp1-e2f13-dp12.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.hdac1-prbp1-e2f13-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-prbp1-e2f13-dp12) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.hdac1-prbp1-e2f4-dp12.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.hdac1-prbp1-e2f4-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.hdac1-prbp1-e2f4-dp12) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.jun.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.jun)) 
+     )
+   :effect 
+     (and 
+      (chosen.jun) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.m1433.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.m1433)) 
+     )
+   :effect 
+     (and 
+      (chosen.m1433) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.max.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.max)) 
+     )
+   :effect 
+     (and 
+      (chosen.max) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.p130.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.p130)) 
+     )
+   :effect 
+     (and 
+      (chosen.p130) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.p27.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.p27)) 
+     )
+   :effect 
+     (and 
+      (chosen.p27) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.p53.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.p53)) 
+     )
+   :effect 
+     (and 
+      (chosen.p53) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.p53p1.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.p53p1)) 
+     )
+   :effect 
+     (and 
+      (chosen.p53p1) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.p57.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.p57)) 
+     )
+   :effect 
+     (and 
+      (chosen.p57) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.pcna.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.pcna)) 
+     )
+   :effect 
+     (and 
+      (chosen.pcna) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.prb.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.prb)) 
+     )
+   :effect 
+     (and 
+      (chosen.prb) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.prb-e2f4p1-dp12.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.prb-e2f4p1-dp12)) 
+     )
+   :effect 
+     (and 
+      (chosen.prb-e2f4p1-dp12) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.prbp2.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.prbp2)) 
+     )
+   :effect 
+     (and 
+      (chosen.prbp2) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.rpa.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.rpa)) 
+     )
+   :effect 
+     (and 
+      (chosen.rpa) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.skp1.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.skp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.skp1) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.skp2.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.skp2)) 
+     )
+   :effect 
+     (and 
+      (chosen.skp2) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action choose.sp1.l10.l9
+   :precondition 
+     (and 
+      (num-subs.l9) 
+       (not (chosen.sp1)) 
+     )
+   :effect 
+     (and 
+      (chosen.sp1) 
+      (num-subs.l10) 
+      (not (num-subs.l9)) 
+     )
+  )
+  (:action associate-with-catalyze.cdc25c.c-tak1.cdc25cp2
+   :precondition 
+     (and 
+      (available.cdc25c) 
+      (available.c-tak1) 
+     )
+   :effect 
+     (and 
+      (available.cdc25cp2) 
+      (not (available.cdc25c)) 
+     )
+  )
+  (:action associate-with-catalyze.cyca.skp2-skp1.skp2-skp1
+   :precondition 
+     (and 
+      (available.cyca) 
+      (available.skp2-skp1) 
+     )
+   :effect 
+     (and 
+      (available.skp2-skp1) 
+      (not (available.cyca)) 
+     )
+  )
+  (:action associate-with-catalyze.prb.cdk46p3-cycd.prbp1
+   :precondition 
+     (and 
+      (available.prb) 
+      (available.cdk46p3-cycd) 
+     )
+   :effect 
+     (and 
+      (available.prbp1) 
+      (not (available.prb)) 
+     )
+  )
+  (:action associate-with-catalyze.prbp2.cdk46p3-cycd.prbp1p2
+   :precondition 
+     (and 
+      (available.prbp2) 
+      (available.cdk46p3-cycd) 
+     )
+   :effect 
+     (and 
+      (available.prbp1p2) 
+      (not (available.prbp2)) 
+     )
+  )
+  (:action associate.c-abl.prb.c-abl-prb
+   :precondition 
+     (and 
+      (available.c-abl) 
+      (available.prb) 
+     )
+   :effect 
+     (and 
+      (available.c-abl-prb) 
+      (not (available.prb)) 
+      (not (available.c-abl)) 
+     )
+  )
+  (:action associate.c-abl.prbp1.c-abl-prbp1
+   :precondition 
+     (and 
+      (available.c-abl) 
+      (available.prbp1) 
+     )
+   :effect 
+     (and 
+      (available.c-abl-prbp1) 
+      (not (available.prbp1)) 
+      (not (available.c-abl)) 
+     )
+  )
+  (:action associate.c-abl.prbp1p2.c-abl-prbp1p2
+   :precondition 
+     (and 
+      (available.c-abl) 
+      (available.prbp1p2) 
+     )
+   :effect 
+     (and 
+      (available.c-abl-prbp1p2) 
+      (not (available.prbp1p2)) 
+      (not (available.c-abl)) 
+     )
+  )
+  (:action associate.c-abl.prbp2.c-abl-prbp2
+   :precondition 
+     (and 
+      (available.c-abl) 
+      (available.prbp2) 
+     )
+   :effect 
+     (and 
+      (available.c-abl-prbp2) 
+      (not (available.prbp2)) 
+      (not (available.c-abl)) 
+     )
+  )
+  (:action associate.c-myc.max.c-myc-max
+   :precondition 
+     (and 
+      (available.c-myc) 
+      (available.max) 
+     )
+   :effect 
+     (and 
+      (available.c-myc-max) 
+      (not (available.max)) 
+      (not (available.c-myc)) 
+     )
+  )
+  (:action associate.c-myc-max.gcdc25a.c-myc-max-gcdc25a
+   :precondition 
+     (and 
+      (available.c-myc-max) 
+      (available.gcdc25a) 
+     )
+   :effect 
+     (and 
+      (available.c-myc-max-gcdc25a) 
+      (not (available.gcdc25a)) 
+      (not (available.c-myc-max)) 
+     )
+  )
+  (:action associate.cdk1p1p2.cks1.cdk1p1p2-cks1
+   :precondition 
+     (and 
+      (available.cdk1p1p2) 
+      (available.cks1) 
+     )
+   :effect 
+     (and 
+      (available.cdk1p1p2-cks1) 
+      (not (available.cks1)) 
+      (not (available.cdk1p1p2)) 
+     )
+  )
+  (:action associate.cdk1p1p2.gadd45.cdk1p1p2-gadd45
+   :precondition 
+     (and 
+      (available.cdk1p1p2) 
+      (available.gadd45) 
+     )
+   :effect 
+     (and 
+      (available.cdk1p1p2-gadd45) 
+      (not (available.gadd45)) 
+      (not (available.cdk1p1p2)) 
+     )
+  )
+  (:action associate.cdk2.cks1.cdk2-cks1
+   :precondition 
+     (and 
+      (available.cdk2) 
+      (available.cks1) 
+     )
+   :effect 
+     (and 
+      (available.cdk2-cks1) 
+      (not (available.cks1)) 
+      (not (available.cdk2)) 
+     )
+  )
+  (:action associate.cdk2.cyca.cdk2-cyca
+   :precondition 
+     (and 
+      (available.cdk2) 
+      (available.cyca) 
+     )
+   :effect 
+     (and 
+      (available.cdk2-cyca) 
+      (not (available.cyca)) 
+      (not (available.cdk2)) 
+     )
+  )
+  (:action associate.cdk2.cyce.cdk2-cyce
+   :precondition 
+     (and 
+      (available.cdk2) 
+      (available.cyce) 
+     )
+   :effect 
+     (and 
+      (available.cdk2-cyce) 
+      (not (available.cyce)) 
+      (not (available.cdk2)) 
+     )
+  )
+  (:action associate.cdk2.cycep1.cdk2-cycep1
+   :precondition 
+     (and 
+      (available.cdk2) 
+      (available.cycep1) 
+     )
+   :effect 
+     (and 
+      (available.cdk2-cycep1) 
+      (not (available.cycep1)) 
+      (not (available.cdk2)) 
+     )
+  )
+  (:action associate.cdk2p1.cks1.cdk2p1-cks1
+   :precondition 
+     (and 
+      (available.cdk2p1) 
+      (available.cks1) 
+     )
+   :effect 
+     (and 
+      (available.cdk2p1-cks1) 
+      (not (available.cks1)) 
+      (not (available.cdk2p1)) 
+     )
+  )
+  (:action associate.cdk2p1.cyca.cdk2p1-cyca
+   :precondition 
+     (and 
+      (available.cdk2p1) 
+      (available.cyca) 
+     )
+   :effect 
+     (and 
+      (available.cdk2p1-cyca) 
+      (not (available.cyca)) 
+      (not (available.cdk2p1)) 
+     )
+  )
+  (:action associate.cdk2p1.cyce.cdk2p1-cyce
+   :precondition 
+     (and 
+      (available.cdk2p1) 
+      (available.cyce) 
+     )
+   :effect 
+     (and 
+      (available.cdk2p1-cyce) 
+      (not (available.cyce)) 
+      (not (available.cdk2p1)) 
+     )
+  )
+  (:action associate.cdk2p1.cycep1.cdk2p1-cycep1
+   :precondition 
+     (and 
+      (available.cdk2p1) 
+      (available.cycep1) 
+     )
+   :effect 
+     (and 
+      (available.cdk2p1-cycep1) 
+      (not (available.cycep1)) 
+      (not (available.cdk2p1)) 
+     )
+  )
+  (:action associate.cdk46p1.cycd.cdk46p1-cycd
+   :precondition 
+     (and 
+      (available.cdk46p1) 
+      (available.cycd) 
+     )
+   :effect 
+     (and 
+      (available.cdk46p1-cycd) 
+      (not (available.cycd)) 
+      (not (available.cdk46p1)) 
+     )
+  )
+  (:action associate.cdk46p1.cycdp1.cdk46p1-cycdp1
+   :precondition 
+     (and 
+      (available.cdk46p1) 
+      (available.cycdp1) 
+     )
+   :effect 
+     (and 
+      (available.cdk46p1-cycdp1) 
+      (not (available.cycdp1)) 
+      (not (available.cdk46p1)) 
+     )
+  )
+  (:action associate.e2f1.dp12.e2f1-dp12
+   :precondition 
+     (and 
+      (available.e2f1) 
+      (available.dp12) 
+     )
+   :effect 
+     (and 
+      (available.e2f1-dp12) 
+      (not (available.dp12)) 
+      (not (available.e2f1)) 
+     )
+  )
+  (:action associate.e2f13-dp12.ge2.e2f13-dp12-ge2
+   :precondition 
+     (and 
+      (available.e2f13-dp12) 
+      (available.ge2) 
+     )
+   :effect 
+     (and 
+      (available.e2f13-dp12-ge2) 
+      (not (available.ge2)) 
+      (not (available.e2f13-dp12)) 
+     )
+  )
+  (:action associate.e2f3.dp12.e2f3-dp12
+   :precondition 
+     (and 
+      (available.e2f3) 
+      (available.dp12) 
+     )
+   :effect 
+     (and 
+      (available.e2f3-dp12) 
+      (not (available.dp12)) 
+      (not (available.e2f3)) 
+     )
+  )
+  (:action associate.e2f5.dp12.e2f5-dp12
+   :precondition 
+     (and 
+      (available.e2f5) 
+      (available.dp12) 
+     )
+   :effect 
+     (and 
+      (available.e2f5-dp12) 
+      (not (available.dp12)) 
+      (not (available.e2f5)) 
+     )
+  )
+  (:action associate.e2f5-dp12.ge2.e2f5-dp12-ge2
+   :precondition 
+     (and 
+      (available.e2f5-dp12) 
+      (available.ge2) 
+     )
+   :effect 
+     (and 
+      (available.e2f5-dp12-ge2) 
+      (not (available.ge2)) 
+      (not (available.e2f5-dp12)) 
+     )
+  )
+  (:action associate.e2f6.dp12.e2f6-dp12
+   :precondition 
+     (and 
+      (available.e2f6) 
+      (available.dp12) 
+     )
+   :effect 
+     (and 
+      (available.e2f6-dp12) 
+      (not (available.dp12)) 
+      (not (available.e2f6)) 
+     )
+  )
+  (:action associate.e2f6-dp12.ge2.e2f6-dp12-ge2
+   :precondition 
+     (and 
+      (available.e2f6-dp12) 
+      (available.ge2) 
+     )
+   :effect 
+     (and 
+      (available.e2f6-dp12-ge2) 
+      (not (available.ge2)) 
+      (not (available.e2f6-dp12)) 
+     )
+  )
+  (:action associate.hbp1.p130.hbp1-p130
+   :precondition 
+     (and 
+      (available.hbp1) 
+      (available.p130) 
+     )
+   :effect 
+     (and 
+      (available.hbp1-p130) 
+      (not (available.p130)) 
+      (not (available.hbp1)) 
+     )
+  )
+  (:action associate.hdac1-p107-e2f4p1-dp12.ge2.hdac1-p107-e2f4p1-dp12-ge2
+   :precondition 
+     (and 
+      (available.hdac1-p107-e2f4p1-dp12) 
+      (available.ge2) 
+     )
+   :effect 
+     (and 
+      (available.hdac1-p107-e2f4p1-dp12-ge2) 
+      (not (available.ge2)) 
+      (not (available.hdac1-p107-e2f4p1-dp12)) 
+     )
+  )
+  (:action associate.hdac1-p130-e2f4p1-dp12.ge2.hdac1-p130-e2f4p1-dp12-ge2
+   :precondition 
+     (and 
+      (available.hdac1-p130-e2f4p1-dp12) 
+      (available.ge2) 
+     )
+   :effect 
+     (and 
+      (available.hdac1-p130-e2f4p1-dp12-ge2) 
+      (not (available.ge2)) 
+      (not (available.hdac1-p130-e2f4p1-dp12)) 
+     )
+  )
+  (:action associate.hdac1-p130-e2f5p1-dp12.ge2.hdac1-p130-e2f5p1-dp12-ge2
+   :precondition 
+     (and 
+      (available.hdac1-p130-e2f5p1-dp12) 
+      (available.ge2) 
+     )
+   :effect 
+     (and 
+      (available.hdac1-p130-e2f5p1-dp12-ge2) 
+      (not (available.ge2)) 
+      (not (available.hdac1-p130-e2f5p1-dp12)) 
+     )
+  )
+  (:action associate.hdac1-prbp1-e2f13-dp12.ge2.hdac1-prbp1-e2f13-dp12-ge2
+   :precondition 
+     (and 
+      (available.hdac1-prbp1-e2f13-dp12) 
+      (available.ge2) 
+     )
+   :effect 
+     (and 
+      (available.hdac1-prbp1-e2f13-dp12-ge2) 
+      (not (available.ge2)) 
+      (not (available.hdac1-prbp1-e2f13-dp12)) 
+     )
+  )
+  (:action associate.hdac1-prbp1-e2f4-dp12.ge2.hdac1-prbp1-e2f4-dp12-ge2
+   :precondition 
+     (and 
+      (available.hdac1-prbp1-e2f4-dp12) 
+      (available.ge2) 
+     )
+   :effect 
+     (and 
+      (available.hdac1-prbp1-e2f4-dp12-ge2) 
+      (not (available.ge2)) 
+      (not (available.hdac1-prbp1-e2f4-dp12)) 
+     )
+  )
+  (:action associate.jun.c-fos.jun-c-fos
+   :precondition 
+     (and 
+      (available.jun) 
+      (available.c-fos) 
+     )
+   :effect 
+     (and 
+      (available.jun-c-fos) 
+      (not (available.c-fos)) 
+      (not (available.jun)) 
+     )
+  )
+  (:action associate.m1433.cdc25cp2.m1433-cdc25cp2
+   :precondition 
+     (and 
+      (available.m1433) 
+      (available.cdc25cp2) 
+     )
+   :effect 
+     (and 
+      (available.m1433-cdc25cp2) 
+      (not (available.cdc25cp2)) 
+      (not (available.m1433)) 
+     )
+  )
+  (:action associate.mdm2.e2f13-dp12.mdm2-e2f13-dp12
+   :precondition 
+     (and 
+      (available.mdm2) 
+      (available.e2f13-dp12) 
+     )
+   :effect 
+     (and 
+      (available.mdm2-e2f13-dp12) 
+      (not (available.e2f13-dp12)) 
+      (not (available.mdm2)) 
+     )
+  )
+  (:action associate.mdm2.prb.mdm2-prb
+   :precondition 
+     (and 
+      (available.mdm2) 
+      (available.prb) 
+     )
+   :effect 
+     (and 
+      (available.mdm2-prb) 
+      (not (available.prb)) 
+      (not (available.mdm2)) 
+     )
+  )
+  (:action associate.mdm2.prbp1.mdm2-prbp1
+   :precondition 
+     (and 
+      (available.mdm2) 
+      (available.prbp1) 
+     )
+   :effect 
+     (and 
+      (available.mdm2-prbp1) 
+      (not (available.prbp1)) 
+      (not (available.mdm2)) 
+     )
+  )
+  (:action associate.mdm2.prbp1p2.mdm2-prbp1p2
+   :precondition 
+     (and 
+      (available.mdm2) 
+      (available.prbp1p2) 
+     )
+   :effect 
+     (and 
+      (available.mdm2-prbp1p2) 
+      (not (available.prbp1p2)) 
+      (not (available.mdm2)) 
+     )
+  )
+  (:action associate.mdm2.prbp2.mdm2-prbp2
+   :precondition 
+     (and 
+      (available.mdm2) 
+      (available.prbp2) 
+     )
+   :effect 
+     (and 
+      (available.mdm2-prbp2) 
+      (not (available.prbp2)) 
+      (not (available.mdm2)) 
+     )
+  )
+  (:action associate.p130.e2f5-dp12.p130-e2f5-dp12
+   :precondition 
+     (and 
+      (available.p130) 
+      (available.e2f5-dp12) 
+     )
+   :effect 
+     (and 
+      (available.p130-e2f5-dp12) 
+      (not (available.e2f5-dp12)) 
+      (not (available.p130)) 
+     )
+  )
+  (:action associate.p130.e2f5-dp12p1.p130-e2f5-dp12p1
+   :precondition 
+     (and 
+      (available.p130) 
+      (available.e2f5-dp12p1) 
+     )
+   :effect 
+     (and 
+      (available.p130-e2f5-dp12p1) 
+      (not (available.e2f5-dp12p1)) 
+      (not (available.p130)) 
+     )
+  )
+  (:action associate.p130-e2f5-dp12.ge2.p130-e2f5-dp12-ge2
+   :precondition 
+     (and 
+      (available.p130-e2f5-dp12) 
+      (available.ge2) 
+     )
+   :effect 
+     (and 
+      (available.p130-e2f5-dp12-ge2) 
+      (not (available.ge2)) 
+      (not (available.p130-e2f5-dp12)) 
+     )
+  )
+  (:action associate.p130-e2f5-dp12p1.ge2.p130-e2f5-dp12p1-ge2
+   :precondition 
+     (and 
+      (available.p130-e2f5-dp12p1) 
+      (available.ge2) 
+     )
+   :effect 
+     (and 
+      (available.p130-e2f5-dp12p1-ge2) 
+      (not (available.ge2)) 
+      (not (available.p130-e2f5-dp12p1)) 
+     )
+  )
+  (:action associate.p21.cdk2-cyca.p21-cdk2-cyca
+   :precondition 
+     (and 
+      (available.p21) 
+      (available.cdk2-cyca) 
+     )
+   :effect 
+     (and 
+      (available.p21-cdk2-cyca) 
+      (not (available.cdk2-cyca)) 
+      (not (available.p21)) 
+     )
+  )
+  (:action associate.p21.cdk2-cyce.p21-cdk2-cyce
+   :precondition 
+     (and 
+      (available.p21) 
+      (available.cdk2-cyce) 
+     )
+   :effect 
+     (and 
+      (available.p21-cdk2-cyce) 
+      (not (available.cdk2-cyce)) 
+      (not (available.p21)) 
+     )
+  )
+  (:action associate.p21.cdk2-cycep1.p21-cdk2-cycep1
+   :precondition 
+     (and 
+      (available.p21) 
+      (available.cdk2-cycep1) 
+     )
+   :effect 
+     (and 
+      (available.p21-cdk2-cycep1) 
+      (not (available.cdk2-cycep1)) 
+      (not (available.p21)) 
+     )
+  )
+  (:action associate.p21.cdk2p1-cyca.p21-cdk2p1-cyca
+   :precondition 
+     (and 
+      (available.p21) 
+      (available.cdk2p1-cyca) 
+     )
+   :effect 
+     (and 
+      (available.p21-cdk2p1-cyca) 
+      (not (available.cdk2p1-cyca)) 
+      (not (available.p21)) 
+     )
+  )
+  (:action associate.p21.cdk2p1-cyce.p21-cdk2p1-cyce
+   :precondition 
+     (and 
+      (available.p21) 
+      (available.cdk2p1-cyce) 
+     )
+   :effect 
+     (and 
+      (available.p21-cdk2p1-cyce) 
+      (not (available.cdk2p1-cyce)) 
+      (not (available.p21)) 
+     )
+  )
+  (:action associate.p21.cdk2p1-cycep1.p21-cdk2p1-cycep1
+   :precondition 
+     (and 
+      (available.p21) 
+      (available.cdk2p1-cycep1) 
+     )
+   :effect 
+     (and 
+      (available.p21-cdk2p1-cycep1) 
+      (not (available.cdk2p1-cycep1)) 
+      (not (available.p21)) 
+     )
+  )
+  (:action associate.p21.cdk46p1-cycd.p21-cdk46p1-cycd
+   :precondition 
+     (and 
+      (available.p21) 
+      (available.cdk46p1-cycd) 
+     )
+   :effect 
+     (and 
+      (available.p21-cdk46p1-cycd) 
+      (not (available.cdk46p1-cycd)) 
+      (not (available.p21)) 
+     )
+  )
+  (:action associate.p21.cdk46p1-cycdp1.p21-cdk46p1-cycdp1
+   :precondition 
+     (and 
+      (available.p21) 
+      (available.cdk46p1-cycdp1) 
+     )
+   :effect 
+     (and 
+      (available.p21-cdk46p1-cycdp1) 
+      (not (available.cdk46p1-cycdp1)) 
+      (not (available.p21)) 
+     )
+  )
+  (:action associate.p21.gadd45.p21-gadd45
+   :precondition 
+     (and 
+      (available.p21) 
+      (available.gadd45) 
+     )
+   :effect 
+     (and 
+      (available.p21-gadd45) 
+      (not (available.gadd45)) 
+      (not (available.p21)) 
+     )
+  )
+  (:action associate.p27.cdk2-cyca.p27-cdk2-cyca
+   :precondition 
+     (and 
+      (available.p27) 
+      (available.cdk2-cyca) 
+     )
+   :effect 
+     (and 
+      (available.p27-cdk2-cyca) 
+      (not (available.cdk2-cyca)) 
+      (not (available.p27)) 
+     )
+  )
+  (:action associate.p27.cdk2-cyce.p27-cdk2-cyce
+   :precondition 
+     (and 
+      (available.p27) 
+      (available.cdk2-cyce) 
+     )
+   :effect 
+     (and 
+      (available.p27-cdk2-cyce) 
+      (not (available.cdk2-cyce)) 
+      (not (available.p27)) 
+     )
+  )
+  (:action associate.p27.cdk2-cycep1.p27-cdk2-cycep1
+   :precondition 
+     (and 
+      (available.p27) 
+      (available.cdk2-cycep1) 
+     )
+   :effect 
+     (and 
+      (available.p27-cdk2-cycep1) 
+      (not (available.cdk2-cycep1)) 
+      (not (available.p27)) 
+     )
+  )
+  (:action associate.p27.cdk2p1-cyca.p27-cdk2p1-cyca
+   :precondition 
+     (and 
+      (available.p27) 
+      (available.cdk2p1-cyca) 
+     )
+   :effect 
+     (and 
+      (available.p27-cdk2p1-cyca) 
+      (not (available.cdk2p1-cyca)) 
+      (not (available.p27)) 
+     )
+  )
+  (:action associate.p27.cdk2p1-cyce.p27-cdk2p1-cyce
+   :precondition 
+     (and 
+      (available.p27) 
+      (available.cdk2p1-cyce) 
+     )
+   :effect 
+     (and 
+      (available.p27-cdk2p1-cyce) 
+      (not (available.cdk2p1-cyce)) 
+      (not (available.p27)) 
+     )
+  )
+  (:action associate.p27.cdk2p1-cycep1.p27-cdk2p1-cycep1
+   :precondition 
+     (and 
+      (available.p27) 
+      (available.cdk2p1-cycep1) 
+     )
+   :effect 
+     (and 
+      (available.p27-cdk2p1-cycep1) 
+      (not (available.cdk2p1-cycep1)) 
+      (not (available.p27)) 
+     )
+  )
+  (:action associate.p27.cdk46p1-cycd.p27-cdk46p1-cycd
+   :precondition 
+     (and 
+      (available.p27) 
+      (available.cdk46p1-cycd) 
+     )
+   :effect 
+     (and 
+      (available.p27-cdk46p1-cycd) 
+      (not (available.cdk46p1-cycd)) 
+      (not (available.p27)) 
+     )
+  )
+  (:action associate.p27.cdk46p1-cycdp1.p27-cdk46p1-cycdp1
+   :precondition 
+     (and 
+      (available.p27) 
+      (available.cdk46p1-cycdp1) 
+     )
+   :effect 
+     (and 
+      (available.p27-cdk46p1-cycdp1) 
+      (not (available.cdk46p1-cycdp1)) 
+      (not (available.p27)) 
+     )
+  )
+  (:action associate.p53.dp12.p53-dp12
+   :precondition 
+     (and 
+      (available.p53) 
+      (available.dp12) 
+     )
+   :effect 
+     (and 
+      (available.p53-dp12) 
+      (not (available.dp12)) 
+      (not (available.p53)) 
+     )
+  )
+  (:action associate.p53p1.dp12.p53p1-dp12
+   :precondition 
+     (and 
+      (available.p53p1) 
+      (available.dp12) 
+     )
+   :effect 
+     (and 
+      (available.p53p1-dp12) 
+      (not (available.dp12)) 
+      (not (available.p53p1)) 
+     )
+  )
+  (:action associate.p57.cdk2-cyca.p57-cdk2-cyca
+   :precondition 
+     (and 
+      (available.p57) 
+      (available.cdk2-cyca) 
+     )
+   :effect 
+     (and 
+      (available.p57-cdk2-cyca) 
+      (not (available.cdk2-cyca)) 
+      (not (available.p57)) 
+     )
+  )
+  (:action associate.p57.cdk2-cyce.p57-cdk2-cyce
+   :precondition 
+     (and 
+      (available.p57) 
+      (available.cdk2-cyce) 
+     )
+   :effect 
+     (and 
+      (available.p57-cdk2-cyce) 
+      (not (available.cdk2-cyce)) 
+      (not (available.p57)) 
+     )
+  )
+  (:action associate.p57.cdk2-cycep1.p57-cdk2-cycep1
+   :precondition 
+     (and 
+      (available.p57) 
+      (available.cdk2-cycep1) 
+     )
+   :effect 
+     (and 
+      (available.p57-cdk2-cycep1) 
+      (not (available.cdk2-cycep1)) 
+      (not (available.p57)) 
+     )
+  )
+  (:action associate.p57.cdk2p1-cyca.p57-cdk2p1-cyca
+   :precondition 
+     (and 
+      (available.p57) 
+      (available.cdk2p1-cyca) 
+     )
+   :effect 
+     (and 
+      (available.p57-cdk2p1-cyca) 
+      (not (available.cdk2p1-cyca)) 
+      (not (available.p57)) 
+     )
+  )
+  (:action associate.p57.cdk2p1-cyce.p57-cdk2p1-cyce
+   :precondition 
+     (and 
+      (available.p57) 
+      (available.cdk2p1-cyce) 
+     )
+   :effect 
+     (and 
+      (available.p57-cdk2p1-cyce) 
+      (not (available.cdk2p1-cyce)) 
+      (not (available.p57)) 
+     )
+  )
+  (:action associate.p57.cdk2p1-cycep1.p57-cdk2p1-cycep1
+   :precondition 
+     (and 
+      (available.p57) 
+      (available.cdk2p1-cycep1) 
+     )
+   :effect 
+     (and 
+      (available.p57-cdk2p1-cycep1) 
+      (not (available.cdk2p1-cycep1)) 
+      (not (available.p57)) 
+     )
+  )
+  (:action associate.p57.cdk46p1-cycd.p57-cdk46p1-cycd
+   :precondition 
+     (and 
+      (available.p57) 
+      (available.cdk46p1-cycd) 
+     )
+   :effect 
+     (and 
+      (available.p57-cdk46p1-cycd) 
+      (not (available.cdk46p1-cycd)) 
+      (not (available.p57)) 
+     )
+  )
+  (:action associate.p57.cdk46p1-cycdp1.p57-cdk46p1-cycdp1
+   :precondition 
+     (and 
+      (available.p57) 
+      (available.cdk46p1-cycdp1) 
+     )
+   :effect 
+     (and 
+      (available.p57-cdk46p1-cycdp1) 
+      (not (available.cdk46p1-cycdp1)) 
+      (not (available.p57)) 
+     )
+  )
+  (:action associate.pcna.cycd.pcna-cycd
+   :precondition 
+     (and 
+      (available.pcna) 
+      (available.cycd) 
+     )
+   :effect 
+     (and 
+      (available.pcna-cycd) 
+      (not (available.cycd)) 
+      (not (available.pcna)) 
+     )
+  )
+  (:action associate.pcna.cycdp1.pcna-cycdp1
+   :precondition 
+     (and 
+      (available.pcna) 
+      (available.cycdp1) 
+     )
+   :effect 
+     (and 
+      (available.pcna-cycdp1) 
+      (not (available.cycdp1)) 
+      (not (available.pcna)) 
+     )
+  )
+  (:action associate.pcna.gadd45.pcna-gadd45
+   :precondition 
+     (and 
+      (available.pcna) 
+      (available.gadd45) 
+     )
+   :effect 
+     (and 
+      (available.pcna-gadd45) 
+      (not (available.gadd45)) 
+      (not (available.pcna)) 
+     )
+  )
+  (:action associate.pcna.p21.pcna-p21
+   :precondition 
+     (and 
+      (available.pcna) 
+      (available.p21) 
+     )
+   :effect 
+     (and 
+      (available.pcna-p21) 
+      (not (available.p21)) 
+      (not (available.pcna)) 
+     )
+  )
+  (:action associate.pcna-p21.cdk2-cyca.pcna-p21-cdk2-cyca
+   :precondition 
+     (and 
+      (available.pcna-p21) 
+      (available.cdk2-cyca) 
+     )
+   :effect 
+     (and 
+      (available.pcna-p21-cdk2-cyca) 
+      (not (available.cdk2-cyca)) 
+      (not (available.pcna-p21)) 
+     )
+  )
+  (:action associate.pcna-p21.cdk2-cyce.pcna-p21-cdk2-cyce
+   :precondition 
+     (and 
+      (available.pcna-p21) 
+      (available.cdk2-cyce) 
+     )
+   :effect 
+     (and 
+      (available.pcna-p21-cdk2-cyce) 
+      (not (available.cdk2-cyce)) 
+      (not (available.pcna-p21)) 
+     )
+  )
+  (:action associate.pcna-p21.cdk2-cycep1.pcna-p21-cdk2-cycep1
+   :precondition 
+     (and 
+      (available.pcna-p21) 
+      (available.cdk2-cycep1) 
+     )
+   :effect 
+     (and 
+      (available.pcna-p21-cdk2-cycep1) 
+      (not (available.cdk2-cycep1)) 
+      (not (available.pcna-p21)) 
+     )
+  )
+  (:action associate.pcna-p21.cdk2p1-cyca.pcna-p21-cdk2p1-cyca
+   :precondition 
+     (and 
+      (available.pcna-p21) 
+      (available.cdk2p1-cyca) 
+     )
+   :effect 
+     (and 
+      (available.pcna-p21-cdk2p1-cyca) 
+      (not (available.cdk2p1-cyca)) 
+      (not (available.pcna-p21)) 
+     )
+  )
+  (:action associate.pcna-p21.cdk2p1-cyce.pcna-p21-cdk2p1-cyce
+   :precondition 
+     (and 
+      (available.pcna-p21) 
+      (available.cdk2p1-cyce) 
+     )
+   :effect 
+     (and 
+      (available.pcna-p21-cdk2p1-cyce) 
+      (not (available.cdk2p1-cyce)) 
+      (not (available.pcna-p21)) 
+     )
+  )
+  (:action associate.pcna-p21.cdk2p1-cycep1.pcna-p21-cdk2p1-cycep1
+   :precondition 
+     (and 
+      (available.pcna-p21) 
+      (available.cdk2p1-cycep1) 
+     )
+   :effect 
+     (and 
+      (available.pcna-p21-cdk2p1-cycep1) 
+      (not (available.cdk2p1-cycep1)) 
+      (not (available.pcna-p21)) 
+     )
+  )
+  (:action associate.pcna-p21.cdk46p1-cycd.pcna-p21-cdk46p1-cycd
+   :precondition 
+     (and 
+      (available.pcna-p21) 
+      (available.cdk46p1-cycd) 
+     )
+   :effect 
+     (and 
+      (available.pcna-p21-cdk46p1-cycd) 
+      (not (available.cdk46p1-cycd)) 
+      (not (available.pcna-p21)) 
+     )
+  )
+  (:action associate.pcna-p21.cdk46p1-cycdp1.pcna-p21-cdk46p1-cycdp1
+   :precondition 
+     (and 
+      (available.pcna-p21) 
+      (available.cdk46p1-cycdp1) 
+     )
+   :effect 
+     (and 
+      (available.pcna-p21-cdk46p1-cycdp1) 
+      (not (available.cdk46p1-cycdp1)) 
+      (not (available.pcna-p21)) 
+     )
+  )
+  (:action associate.prb.e2f13-dp12.prb-e2f13-dp12
+   :precondition 
+     (and 
+      (available.prb) 
+      (available.e2f13-dp12) 
+     )
+   :effect 
+     (and 
+      (available.prb-e2f13-dp12) 
+      (not (available.e2f13-dp12)) 
+      (not (available.prb)) 
+     )
+  )
+  (:action associate.prb.jun.prb-jun
+   :precondition 
+     (and 
+      (available.prb) 
+      (available.jun) 
+     )
+   :effect 
+     (and 
+      (available.prb-jun) 
+      (not (available.jun)) 
+      (not (available.prb)) 
+     )
+  )
+  (:action associate.prb-e2f13-dp12.ge2.prb-e2f13-dp12-ge2
+   :precondition 
+     (and 
+      (available.prb-e2f13-dp12) 
+      (available.ge2) 
+     )
+   :effect 
+     (and 
+      (available.prb-e2f13-dp12-ge2) 
+      (not (available.ge2)) 
+      (not (available.prb-e2f13-dp12)) 
+     )
+  )
+  (:action associate.prb-e2f4p1-dp12.ge2.prb-e2f4p1-dp12-ge2
+   :precondition 
+     (and 
+      (available.prb-e2f4p1-dp12) 
+      (available.ge2) 
+     )
+   :effect 
+     (and 
+      (available.prb-e2f4p1-dp12-ge2) 
+      (not (available.ge2)) 
+      (not (available.prb-e2f4p1-dp12)) 
+     )
+  )
+  (:action associate.prb-jun.c-fos.prb-jun-c-fos
+   :precondition 
+     (and 
+      (available.prb-jun) 
+      (available.c-fos) 
+     )
+   :effect 
+     (and 
+      (available.prb-jun-c-fos) 
+      (not (available.c-fos)) 
+      (not (available.prb-jun)) 
+     )
+  )
+  (:action associate.prbp1.e2f13-dp12.prbp1-e2f13-dp12
+   :precondition 
+     (and 
+      (available.prbp1) 
+      (available.e2f13-dp12) 
+     )
+   :effect 
+     (and 
+      (available.prbp1-e2f13-dp12) 
+      (not (available.e2f13-dp12)) 
+      (not (available.prbp1)) 
+     )
+  )
+  (:action associate.prbp1.jun.prbp1-jun
+   :precondition 
+     (and 
+      (available.prbp1) 
+      (available.jun) 
+     )
+   :effect 
+     (and 
+      (available.prbp1-jun) 
+      (not (available.jun)) 
+      (not (available.prbp1)) 
+     )
+  )
+  (:action associate.prbp1-e2f13-dp12.ge2.prbp1-e2f13-dp12-ge2
+   :precondition 
+     (and 
+      (available.prbp1-e2f13-dp12) 
+      (available.ge2) 
+     )
+   :effect 
+     (and 
+      (available.prbp1-e2f13-dp12-ge2) 
+      (not (available.ge2)) 
+      (not (available.prbp1-e2f13-dp12)) 
+     )
+  )
+  (:action associate.prbp1-jun.c-fos.prbp1-jun-c-fos
+   :precondition 
+     (and 
+      (available.prbp1-jun) 
+      (available.c-fos) 
+     )
+   :effect 
+     (and 
+      (available.prbp1-jun-c-fos) 
+      (not (available.c-fos)) 
+      (not (available.prbp1-jun)) 
+     )
+  )
+  (:action associate.prbp1p2.jun.prbp1p2-jun
+   :precondition 
+     (and 
+      (available.prbp1p2) 
+      (available.jun) 
+     )
+   :effect 
+     (and 
+      (available.prbp1p2-jun) 
+      (not (available.jun)) 
+      (not (available.prbp1p2)) 
+     )
+  )
+  (:action associate.prbp1p2-jun.c-fos.prbp1p2-jun-c-fos
+   :precondition 
+     (and 
+      (available.prbp1p2-jun) 
+      (available.c-fos) 
+     )
+   :effect 
+     (and 
+      (available.prbp1p2-jun-c-fos) 
+      (not (available.c-fos)) 
+      (not (available.prbp1p2-jun)) 
+     )
+  )
+  (:action associate.prbp2.jun.prbp2-jun
+   :precondition 
+     (and 
+      (available.prbp2) 
+      (available.jun) 
+     )
+   :effect 
+     (and 
+      (available.prbp2-jun) 
+      (not (available.jun)) 
+      (not (available.prbp2)) 
+     )
+  )
+  (:action associate.prbp2-jun.c-fos.prbp2-jun-c-fos
+   :precondition 
+     (and 
+      (available.prbp2-jun) 
+      (available.c-fos) 
+     )
+   :effect 
+     (and 
+      (available.prbp2-jun-c-fos) 
+      (not (available.c-fos)) 
+      (not (available.prbp2-jun)) 
+     )
+  )
+  (:action associate.rpa.cyca.rpa-cyca
+   :precondition 
+     (and 
+      (available.rpa) 
+      (available.cyca) 
+     )
+   :effect 
+     (and 
+      (available.rpa-cyca) 
+      (not (available.cyca)) 
+      (not (available.rpa)) 
+     )
+  )
+  (:action associate.skp2.cdk2-cyca.skp2-cdk2-cyca
+   :precondition 
+     (and 
+      (available.skp2) 
+      (available.cdk2-cyca) 
+     )
+   :effect 
+     (and 
+      (available.skp2-cdk2-cyca) 
+      (not (available.cdk2-cyca)) 
+      (not (available.skp2)) 
+     )
+  )
+  (:action associate.skp2.cdk2p1-cyca.skp2-cdk2p1-cyca
+   :precondition 
+     (and 
+      (available.skp2) 
+      (available.cdk2p1-cyca) 
+     )
+   :effect 
+     (and 
+      (available.skp2-cdk2p1-cyca) 
+      (not (available.cdk2p1-cyca)) 
+      (not (available.skp2)) 
+     )
+  )
+  (:action associate.skp2.skp1.skp2-skp1
+   :precondition 
+     (and 
+      (available.skp2) 
+      (available.skp1) 
+     )
+   :effect 
+     (and 
+      (available.skp2-skp1) 
+      (not (available.skp1)) 
+      (not (available.skp2)) 
+     )
+  )
+  (:action associate.skp2-skp1.cdk2-cyca.skp2-skp1-cdk2-cyca
+   :precondition 
+     (and 
+      (available.skp2-skp1) 
+      (available.cdk2-cyca) 
+     )
+   :effect 
+     (and 
+      (available.skp2-skp1-cdk2-cyca) 
+      (not (available.cdk2-cyca)) 
+      (not (available.skp2-skp1)) 
+     )
+  )
+  (:action associate.skp2-skp1.cdk2p1-cyca.skp2-skp1-cdk2p1-cyca
+   :precondition 
+     (and 
+      (available.skp2-skp1) 
+      (available.cdk2p1-cyca) 
+     )
+   :effect 
+     (and 
+      (available.skp2-skp1-cdk2p1-cyca) 
+      (not (available.cdk2p1-cyca)) 
+      (not (available.skp2-skp1)) 
+     )
+  )
+  (:action associate.sp1.p107.sp1-p107
+   :precondition 
+     (and 
+      (available.sp1) 
+      (available.p107) 
+     )
+   :effect 
+     (and 
+      (available.sp1-p107) 
+      (not (available.p107)) 
+      (not (available.sp1)) 
+     )
+  )
+  (:action associate.sp1.p107p1.sp1-p107p1
+   :precondition 
+     (and 
+      (available.sp1) 
+      (available.p107p1) 
+     )
+   :effect 
+     (and 
+      (available.sp1-p107p1) 
+      (not (available.p107p1)) 
+      (not (available.sp1)) 
+     )
+  )
+)

@@ -1,0 +1,32 @@
+SYNCNEXT="sync-next"
+FIRST="domain"
+
+echo "Checking automata files..."
+for file in a-* 
+do
+  if [ -f "$file" ]
+  then  
+  SECOND=$file
+  sed -e "s/sync-next/sync-automaton-"$SECOND"/g"  "$FIRST" > grounded-"$FIRST".pddl
+  FIRST=$SECOND 
+fi
+done
+echo
+echo "...substitution done."
+
+echo "Checking preference automata files..."
+for file in p-* 
+do
+  if [ -f "$file" ]
+  then  
+  SECOND=$file
+  sed -e "s/sync-next/sync-automaton-"$SECOND"/g"  "$FIRST" > grounded-"$FIRST".pddl
+  FIRST=$SECOND 
+fi
+done
+
+echo
+echo "...substitution done."
+
+sed -e "s/sync-next/sync-ordinary/g" "$FIRST" > grounded-"$FIRST".pddl
+

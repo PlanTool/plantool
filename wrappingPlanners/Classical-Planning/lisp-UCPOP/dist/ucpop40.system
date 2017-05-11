@@ -1,0 +1,95 @@
+" (c) 1990, 1991, 1992, 1993, 1994, 1995 Copyright (c) University of Washington
+
+  All rights reserved. Use of this software is permitted for non-commercial
+  research purposes, and it may be copied only for that use.  All copies must
+  include this copyright message.  This software is made available AS IS, and
+  neither the authors nor the University of Washington make any warranty about
+  the software or its performance.
+
+  When you first acquire this software please send mail to
+  bug-snlp@cs.washington.edu; the same address should be used for problems."
+
+;;;
+;;; CMU Public-domain defsystem for UCPOP 4.0
+;;;
+
+(in-package 'user)
+
+(unless (find-package 'ucpop) (make-package 'ucpop))
+(unless (find-package 'variable) (make-package 'variable))
+(unless (find-package 'ptrace) (make-package 'ptrace :nicknames '(vcr pdb)))
+(unless (find-package 'vcr-external) (make-package 'vcr-external :nicknames
+						   '(vext)))
+
+(mk:defsystem ucpop40
+    :source-pathname "/projects/ai/planners/ucpop40/"
+    :source-extension "lisp"
+    :binary-pathname "/projects/ai/planners/ucpop40/"
+    :components 
+    ("variable" 
+     "struct"
+     "choose"
+     "rules"
+     ("plan-utils" :depends-on ("struct" "variable"))
+     ("ucpop" :depends-on ("struct"
+#+:clim-2		    "pdb"
+                           ))
+     ("zlifo" :depends-on ("struct"
+#+:clim-2		    "pdb"
+                           ))
+     ("scr" :depends-on ("choose" "rules"))
+     ("safety" :depends-on ("interface"))
+     ("controllers" :depends-on ("interface"))
+     ("interface" :depends-on ("scr" "plan-utils" "struct"
+#+:clim-2				      "pdb"
+      ))
+     (:module domains
+	      :depends-on ("interface")
+	      :source-pathname "domains/"
+	      :components
+	      ("domains"
+	       "truckworld"
+	       "safety-domain"
+;;; 	       "processp/p-metal"
+	       ))
+#+:clim-2(:module pdb
+	      :depends-on ("scr" "struct" "variable")
+	      :source-pathname "pdb/"
+	      :components
+	      ("pdb-help"
+	       "shell"
+	       
+	       "recording"
+	       "vcr-interface"
+	       "structs"
+	       "options"
+	       
+	       
+	       "shell-present"
+	       "shell-commands"
+	       
+	       "dialogs"
+	       
+	       "vcr-present"
+	       "vcr-commands"
+	       "plan-present"
+	       "plan-commands"
+	       "browser-present"
+	       "browser-commands"
+	       
+ 	       "layout"
+	       "translation"
+	       "compute-tree"
+	       ))
+#+:clim-2(:module vext
+		  :depends-on ("pdb" "interface")
+		  :source-pathname "pdb/"
+		  :components ("vcr-externals"))
+))
+
+
+(defun compile-ucpop () (mk:operate-on-system 'ucpop40 'compile))
+(defun load-ucpop () (mk:operate-on-system 'ucpop40 'load))
+
+
+

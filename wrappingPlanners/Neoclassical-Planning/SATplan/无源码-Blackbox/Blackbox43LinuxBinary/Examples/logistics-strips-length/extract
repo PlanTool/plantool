@@ -1,0 +1,13 @@
+#!/bin/ksh
+
+if (( $# != 2 && $# != 1 )); then
+   print - "Use: extract FIELD FILE"
+   print - "  where FIELD can be any of: solver, plan, literal, cnf, model"
+   print - "  and FILE is the output of blackbox"
+   exit 1
+fi
+
+gawk '
+    /End '$1'/{ Okay=0; }
+    (Okay==1){ print; }
+    /Begin '$1'/{ Okay=1; }' $2

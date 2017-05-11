@@ -1,0 +1,2673 @@
+
+adl.c,5090
+LINEARPLANP plpSuccessors;82,1684
+LINEARPLANP plpLastSuccessor;83,1753
+LINEARPLANP plpSuccessorWorld;84,1824
+LINEARPLANP plpNegPlan;87,1889
+LINEARPLANP plpLevel0Plan;88,1952
+BTREEP *apbtNegWorld;apbtNegWorld89,2037
+HBTREEP *aphbtNegWorld;aphbtNegWorld90,2094
+BOOL bRelaxedModeNeg=92,2156
+BOOL bUnderNot=93,2241
+BOOL bUnderRelaxedModifyWorld=94,2325
+BOOL bUseHWorld=95,2426
+BOOL bUseHWorldFF=97,2553
+BOOL bMutexMode=99,2682
+BOOL bExtractingRelaxedPlan=101,2748
+BOOL bVerifyingPreservedProperty=104,2902
+BOOL nOcclusionPenalty;107,2999
+BOOL nMutexPenalty;108,3074
+BOOL bComputingOcclusions=109,3145
+BOOL bOcclusions=110,3224
+static LISTP plThisLevelActions;113,3296
+int nFFDepth;118,3429
+int nFFOperNumber;119,3488
+int nFFOperInstance;120,3555
+CELLP pcFFActionInstance;121,3642
+BINDINGP pbCurrentActionBindings;122,3730
+int nGenSuccessorsOperNumber;124,3816
+int nGenSuccessorsInstanceNumber;125,3910
+OPERINSTANCEP poiCurrentInstance;126,4020
+BOOL EvalDefADLOperator368,10626
+BOOL EvalDefADLHOperator424,12204
+static BOOL ADLParse490,14000
+CELLP MakeModifyWorldForm613,17223
+static CELLP MakeOperatorForm650,17976
+BOOL EvalModifyWorldRelaxed682,18668
+BOOL EvalModifyWorldNullAdvance740,20528
+BOOL EvalModifyWorldExecute754,20874
+BOOL EvalModifyWorld792,21635
+CELLP ProgressModifyWorld1025,29233
+int CurrentModifyWorld1049,29649
+LINEARPLANP GenerateSuccessors1080,30270
+static CELLP CompileSuccessor1179,33195
+static CELLP CompileOtherFormula1211,34137
+static CELLP CompileAndFormula1309,36748
+static CELLP CompileAndRecurse1422,39694
+static CELLP FindFreeVars1508,42388
+int firstRunGoalDistances=1609,44643
+int nOcclusionPenalty=1613,44863
+BOOL bComputeOcclusion=1614,44888
+int totalGoals=1615,44914
+int totalPreferences=1616,44943
+int total_preferences 1617,44968
+double dDiscountedMetricMultiplier=1618,45063
+double dMetricMultiplier=1619,45136
+double dBestMetricMultiplier=1620,45197
+double dOptimisticMetricMultiplier=1621,45263
+double dPreferenceMultiplier=1622,45335
+double dGoalMultiplier=1623,45400
+double dHeuristicExponent=1624,45459
+double dMetricDiscountFactor=1625,45522
+int nDiscountedMetricPriority=1627,45589
+int nOptimisticMetricPriority=1628,45659
+int nBestRelaxedMetricPriority=1629,45729
+int nPreferenceDistancePriority=1630,45801
+int nMetricPriority=1631,45873
+static int nRelPlanDepth;1636,45971
+void ResetGoalDistanceStatics(1639,46076
+int TotalNumberOfGoals(1655,46516
+int NumberOfGoalsSatisfied(1667,46841
+int NumberOfGoalsSatisfied_H(1685,47389
+int NumberOfGoalsSatisfied_H_costvector(1705,48005
+int TotalNumberOfPreferences(1732,48832
+int NumberOfPreferencesSatisfied(1756,49713
+int NumberOfPreferencesSatisfiedWithCost(1763,49973
+void InitGoalDistance(1773,50303
+void InitGoalDistance2(1788,50682
+CELLP ComputeGoalDistance_simple1825,51801
+WORLDSUMP ComputeAllDistances1886,53687
+CELLP ComputeGoalDistance_CRC1987,56688
+CELLP ComputeGoalDistance_CRC_Negations2129,61063
+CELLP ComputeGoalDistance2281,65942
+CELLP ComputeGoalDistanceNeg2296,66425
+int nQualPreferenceNumber=2320,67071
+int QualPreferenceValue(2333,67410
+WORLDSUMP ComputeAllDistances_Qual2345,67694
+CELLP ComputeGoalDistance_CRC_Negations_Qualprefs2458,70841
+BOOL modifying_subformula(2634,76625
+static void change_nonadding_forall_actions(2651,77065
+void InitGoalDistanceQual(2667,77535
+BOOL bHSPIgnoreOperator;2698,78391
+CELLP ComputeGoalDistance_CRC_Negations_Qualprefs_HSP2701,78516
+int nFixPoints;3003,87521
+int nRealFixPoints;3004,87537
+CELLP ComputeGoalDistance_CRC_Negations_Qualprefs_HSP_unreleffs3007,87559
+static LISTP * pplActionInstances;3307,96751
+static LISTP * pplIdealActionInstances;3308,96786
+static int nFFActionInstanceCounter;3309,96826
+static LISTP plHelpfulActions;3310,96863
+static LISTP * pplRelaxedPlan;3311,96894
+static LISTP * pplIdealRelaxedPlan;3312,96925
+static int * anIdealMutexPenalties;3313,96961
+static BOOL bStoreRelaxedPlan=3314,96997
+static LISTP AddToHelpful3316,97077
+static HBTREEP complementNode3354,98094
+static OPERINSTANCEP RelPlanSelectOperator_IDEAL 3386,98835
+static OPERINSTANCEP RelPlanSelectOperator_MIN3500,102516
+static OPERINSTANCEP RelPlanSelectOperator_BASIC3591,105223
+static OPERINSTANCEP RelPlanSelectOperator_BASIC_backtrack3617,105817
+void RelaxedPlanFromNode_ORIG3650,106682
+void undoInstanceRelPlan3743,110332
+BOOL propertyIsPreserved3759,110653
+BOOL RelaxedPlanFromNode_BACKTRACK3807,111957
+BOOL EvalDescPredicate_Extract_Relaxed_Plan 3913,116104
+int RelaxedPlanLength3951,116991
+void Penalties4028,119270
+int njbEval,4205,124812
+int njbEval,njbCallsEvalAdd;4205,124812
+CELLP ComputeGoalDistance_QualPreferences_FF_unreleffs4208,124884
+CELLP ComputeGoalDistance_QualPreferences_FF_unreleffs_preserve4534,135292
+static void SetQuantifierEvalersFF(4864,145939
+CELLP ComputeGoalDistance_PDDLPreferences_FF_unreleffs4872,146159
+CELLP ComputeGoalDistanceQual5229,157703
+CELLP ComputeGoalDistanceHspUnreleffs5242,158010
+CELLP ComputeGoalDistanceFFUnreleffs5253,158229
+CELLP ComputeGoalDistanceFFPDDLPrefs5264,158449
+
+adl.h,45
+#define __ADL_H4,29
+#define INFTY 189,5637
+
+bfs.c,48
+void bfs11,281
+static int InsertVertex84,2861
+
+btree.c,1299
+#define MIN_BTREE_STACK	59,1830
+#define BTREE_STACK_SIGNATURE	60,1888
+BTREEP *ppbtStack=ppbtStack64,1980
+int nBTreeSP=65,2023
+int nBTreeMaxSP=66,2068
+BTREEP MakeBTree160,4495
+static BTREEP CopyBTree191,4962
+BOOL ArgLt_Hash219,5525
+BOOL ArgsLtQ_Hash239,5907
+BOOL ArgsLtQ274,6448
+int ArgsCmpQ_Hash319,7257
+int ArgsCmpQ365,8093
+int ArgsCmpQWithVars_Hash417,9231
+int ArgsCmpQWithVars453,9881
+BTREEP BTreeSearch549,11550
+static LISTP GetReversedPath611,12813
+static BTREEP BTreeMin693,14399
+int BTreeCount737,15054
+BTREEP *BTreeEnumerateBTreeEnumerate764,15582
+static BTREEP BTreeSuccessor816,17160
+BTREEP BTreeInsert984,21137
+static BTREEP Insert998,21451
+BTREEP BTreeDelete1086,23995
+BOOL BTreeEqQ1164,26034
+static BOOL BTreeCheck1185,26362
+LISTP BTreeToList1275,28769
+static LISTP BTreeWalk1294,29268
+CELLP BTreeToFormulaList1336,30479
+static CELLP NewBTreeWalk1355,30991
+CELLP BTreeGenerator1424,32838
+CELLP BTreeGeneratorWithBoundVars1711,39140
+void MarkBTree1961,46456
+void BTreeSizeOf1993,46914
+BTREEP BTreeBalance2057,48132
+static void FillNodeArray2091,48719
+static BTREEP BTreeBuild2112,49058
+static int BTreeDepth2138,49484
+void InitBTreeStack(2218,50963
+void ResizeBTreeStack(2233,51309
+void MarkBTreeStack(2259,51882
+void ResetBTreeStack2297,52597
+
+btree.h,158
+#define __BTREE_H4,56
+#define CheckBTreeStack(8,101
+#define GetBTreeSP(9,171
+#define SetBTreeSP(10,204
+#define BTreePush(11,240
+#define BTreePop(12,294
+
+cc.c,552
+CELLP MakeCCTrueForm45,1639
+CELLP MakeCCFalseForm58,1906
+CELLP MakeCCAtomicForm71,2175
+CELLP MakeCCNotForm119,3449
+CELLP MakeCCAndForm188,5391
+CELLP MakeCCOrForm288,7954
+CELLP MakeCCXorForm426,11864
+CELLP MakeCCImpliesForm604,17278
+CELLP MakeCCIfThenElseForm802,23126
+CELLP MakeCCForAllForm1003,29630
+CELLP MakeCCExistsForm1074,31541
+CELLP MakeCCExistsXForm1179,34642
+CELLP MakeCCBindingForm1310,38602
+CELLP MakeCCNextForm1355,39599
+CELLP MakeCCEventuallyForm1375,40059
+CELLP MakeCCAlwaysForm1405,40765
+CELLP MakeCCUntilForm1452,41897
+
+color.c,257
+static char *psBlanks=psBlanks48,1068
+DECLSPEC void PColorFormulaList56,1301
+DECLSPEC void PColorFormula89,1997
+static int PColorTerm199,4836
+DECLSPEC void EColorFormulaList278,6828
+DECLSPEC void EColorFormula311,7508
+static int EColorTerm421,10347
+
+compute.c,1699
+DECLSPEC CELLP ComputeTerms66,1299
+DECLSPEC BOOL ComputeTermsNoCopy100,2058
+DECLSPEC CELLP ComputeTerm142,2841
+CELLP ComputeLiteral195,4058
+CELLP ComputeVariable226,4585
+CELLP ComputeArray253,5036
+BOOL ArrayIndex289,5763
+CELLP ComputeDescMacro360,7478
+CELLP ComputeDefFunction384,7931
+CELLP ComputeDefMacro455,9660
+CELLP ExpandArrays525,11324
+CELLP MakeArray565,12069
+CELLP ComputeGoal627,13647
+CELLP ComputeCurrent649,13998
+CELLP ComputePrevious671,14356
+CELLP ComputeAStar709,14974
+CELLP ComputeOptimalCost748,15646
+CELLP ComputeBestAction769,15958
+CELLP ComputePlanLength791,16323
+CELLP ComputePlanCost815,16728
+CELLP ComputePlanDuration837,17113
+CELLP ComputeActionName858,17422
+CELLP ComputeActionCost879,17726
+CELLP ComputeActionDuration900,18043
+CELLP ComputeActionPriority921,18376
+CELLP ComputeWorldNumber943,18763
+CELLP ComputeWorldCounter959,19004
+CELLP ComputeClosedlistLength974,19232
+CELLP ComputeGetPlanName1022,20072
+CELLP ComputePlanStatus1043,20365
+CELLP ComputeWorldsGenerated1064,20685
+CELLP ComputeWorldsSearched1085,21023
+CELLP ComputeWorldsPruned1106,21354
+CELLP ComputeWorldsDiscarded1127,21682
+CELLP ComputeWorldsUnexamined1148,22024
+CELLP ComputePlanCPUTime1169,22375
+CELLP ComputeGetCPUTime1190,22704
+CELLP ComputeGetBestRelaxedMetric1211,23033
+CELLP ComputeGetNumberWorldFixedPoints1242,23664
+CELLP ComputeGetNumberRealFixedPoints1273,24289
+CELLP ComputeGetBestPreferenceValue1302,24825
+CELLP ComputeGetSearchDepthLimit1332,25363
+CELLP ComputeSearchMaxDepth1353,25694
+CELLP ComputeGetSearchHeuristicLimit1374,26034
+CELLP ComputeSearchMaxHeuristic1395,26388
+CELLP ComputeOpenFile1416,26705
+CELLP ComputeMakeLiteral1477,28290
+
+crchash.c,550
+#define CRC_MINHASHBITS	60,1441
+#define CRC_THRESHOLD	61,1469
+typedef struct CRCHashCell63,1495
+}CRCHASH, *CRCHASHP;CRCHASHP67,1626
+static CRCHASHP *pphHashTable;pphHashTable71,1666
+static int nHashSize;72,1724
+static int nHashCount;73,1778
+static int nHashMax;74,1832
+static unsigned int nHashMask;75,1886
+int CRCHashCreate(93,2219
+int CRCHashClear(127,2732
+int CRCHashInsert148,3081
+LINEARPLANP CRCHashSearch203,4053
+int CRCHashDelete245,4904
+int CRCHashCount(286,5778
+static int CRCHashExpand(313,6313
+void MarkCRCHash(364,7421
+
+current.c,658
+int CurrentFalse67,1525
+int CurrentTrue87,1788
+int CurrentNot107,2065
+int CurrentAnd136,2640
+int CurrentOr177,3443
+int CurrentXor217,4244
+int CurrentImplies270,5402
+int CurrentIfThenElse308,6130
+int CurrentForAll373,7536
+int CurrentExists433,8889
+int CurrentExistsX490,10137
+int CurrentAlways562,11620
+int CurrentEventually589,12120
+int CurrentNext616,12572
+int CurrentUntil636,12904
+int CurrentTAlways680,13829
+int CurrentDelta721,14572
+int CurrentTEventually761,15603
+int CurrentTUntil798,16285
+int CurrentBinding861,17766
+int CurrentGoal889,18367
+int CurrentCurrent914,18803
+int CurrentPrevious939,19248
+int CurrentAtomic981,20022
+
+current.h,25
+#define __CURRENT_H4,37
+
+domain.c,821
+SYMBOLINFO asiWorldSymbols[asiWorldSymbols110,3072
+BOOL abUnRelaxableSymbols[abUnRelaxableSymbols111,3167
+BOOL abHSPIgnoredSymbols[abHSPIgnoredSymbols112,3272
+BOOL abWatchedPreserve[abWatchedPreserve113,3408
+int nNumberOfWorldSymbols;114,3570
+int nNumberOfDescribedSymbols;115,3652
+int nNumberOfCheckedSymbols;116,3719
+BINDINGP pbGlobalVariables;118,3799
+CELLP pcSearchGlobalInit;119,3866
+void MarkSymbolInfo127,4023
+char *GetSymbolNameGetSymbolName150,4404
+SYMBOLINFOP GetSymbolInfoPtr169,4663
+void InsertSymbolInfo220,5877
+BOOL PredicateQ393,11008
+BOOL FunctionQ409,11253
+BOOL GeneratorQ422,11457
+BOOL DescribedQ443,11826
+BOOL DefinedQ462,12110
+BOOL ExternalQ481,12389
+int StringToSymbolType502,12771
+CELLP GetDefParameters560,14085
+CELLP GetDefLocals	570,14254
+CELLP GetDefFormula580,14450
+
+domain.h,450
+#define __DOMAIN_H4,35
+#define SymbolInfoName(10,108
+#define SymbolInfoSymbolType(11,156
+#define SymbolInfoArity(12,213
+#define SymbolInfoEvalType(13,261
+#define SymbolInfoFunction(14,315
+#define SymbolInfoFormula(15,370
+#define SetSymbolInfoName(19,441
+#define SetSymbolInfoSymbolType(20,500
+#define SetSymbolInfoArity(21,568
+#define SetSymbolInfoEvalType(22,628
+#define SetSymbolInfoFunction(23,693
+#define SetSymbolInfoFormula(24,759
+
+eval1.c,6294
+DECLSPEC FILE *pfTraceStream;pfTraceStream61,1103
+CELLP pcTLForm;63,1179
+LINEARPLANP plpInitialWorld;64,1244
+LINEARPLANP plpFinalPlan;65,1299
+CELLP pcInitialFacts;66,1361
+CELLP pcInitializationSequence;67,1407
+CELLP pcGoalSequence;68,1471
+CELLP pcHeuristicFn;69,1517
+CELLP pcPriorityFn;70,1572
+CELLP pcPrintWorld;71,1621
+CELLP pcGoalAddendum;72,1674
+CELLP pcPostActionSequence;74,1721
+CELLP pcBDF=75,1785
+CELLP pcMetricFn=78,1866
+CELLP pcOptimisticMetricFn=79,1918
+CELLP pcCountSatPrefsFn=80,1991
+CELLP pcTotalPrefsFn=81,2071
+CELLP pcQualpreferenceValueFn=82,2148
+CELLP pcHPreserved;83,2243
+SEARCHP pfSearchStrategy=85,2301
+MERGEP  MergeCompareFn=86,2355
+CELLP pcGoalFormula=89,2470
+CELLP pcPreferenceFormula=90,2557
+FINALWORLDGOALQP pfFinalWorldGoalQ=93,2723
+jmp_buf *pjbCurrentJump;pjbCurrentJump94,2772
+CELLP pcSSForm;95,2841
+char *psStatisticsFile;psStatisticsFile96,2893
+jmp_buf jbTLPlannerJump;97,2955
+BOOL bAtemporalControl=99,3014
+BOOL bConcurrentPlanning=100,3082
+BOOL bCycleChecking=101,3145
+BOOL bTimingStatistics=102,3206
+BOOL bBackTracking=103,3274
+BOOL bPruningAllSuccessors=104,3335
+int nPddlSupport=105,3409
+CELLP pcPredefinedPlan;107,3495
+RNG arRNGTable[arRNGTable109,3573
+RNGP prCurrentRNG=118,3809
+static CELLP NewMakeSymbolInfoForm130,4077
+int nSearchLimit=180,5372
+double dPlanTimeout=181,5397
+BOOL EvalSetSearchLimit193,5605
+CELLP ComputeGetSearchLimit222,6084
+BOOL EvalResetSearchLimit247,6492
+struct StrategyTab262,6784
+static struct StrategyTab astStrategyTable[astStrategyTable268,6899
+struct MergeTypeTab283,7626
+static struct MergeTypeTab astMergeTypeTable[astMergeTypeTable289,7691
+BOOL EvalSetSearchStrategy331,9070
+BOOL EvalSetMergeFnType367,10024
+CELLP ComputeGetSearchStrategy413,11059
+BOOL EvalResetSearchStrategy449,11808
+BOOL EvalSetRNG471,12248
+CELLP ComputeGetRNG506,12848
+BOOL EvalResetRNG527,13178
+BOOL EvalSetControl546,13517
+BOOL EvalEnable584,14308
+BOOL EvalDisable640,15730
+int nTrace=690,17042
+BOOL bVerbose=691,17080
+BOOL bVerboseShowExpandedPlans=692,17142
+BOOL bVerboseShowExpandedWorlds=693,17180
+BOOL bVerboseFFShowRelaxedPlans=694,17219
+BOOL bVerboseFFShowRelaxedWorlds=695,17258
+BOOL EvalVerboseOn700,17341
+BOOL EvalVerboseOff715,17564
+BOOL EvalVerboseShowExpandedPlansOn730,17806
+BOOL EvalVerboseShowExpandedPlansOff745,18113
+BOOL EvalVerboseShowExpandedWorldsOn762,18426
+BOOL EvalVerboseShowExpandedWorldsOff777,18737
+BOOL EvalVerboseFFShowRelaxedWorldsOn794,19055
+BOOL EvalVerboseFFShowRelaxedWorldsOff809,19371
+BOOL EvalVerboseFFShowRelaxedPlansOn824,19689
+BOOL EvalVerboseFFShowRelaxedPlansOff839,20000
+BOOL EvalSetTraceLevel864,20395
+CELLP ComputeGetTraceLevel891,20826
+void FunctionTracerProlog945,22167
+void FunctionTracer998,24338
+BOOL EvalSetStatisticsFile1104,27094
+BOOL EvalSetGoalAddendum1128,27559
+CELLP ComputeGetGoalAddendum1160,28125
+BOOL EvalResetGoalAddendum1184,28509
+static void ResetGoalAddendum(1203,28804
+BOOL EvalSetHeuristicFn1227,29365
+BOOL EvalSetMetricFn1254,29910
+BOOL EvalSetHeuristicPreservedProperty1281,30427
+BOOL EvalSetQualpreferenceValueFn1306,30923
+BOOL EvalSetCountSatPrefsFn1333,31501
+BOOL EvalSetTotalPrefsFn1361,32059
+BOOL EvalSetOptimisticMetricFn1389,32640
+BOOL EvalSetGoalMultiplier1413,33093
+BOOL EvalSetMetricDiscount1447,33865
+BOOL EvalSetHelpfulListPriority1482,34650
+BOOL EvalSetHeuristicExponent1539,36109
+BOOL EvalSetPreferenceMultiplier1573,36905
+BOOL EvalSetQualpreferenceNumber1607,37713
+BOOL EvalSetMetricMultiplier1643,38492
+BOOL EvalSetDiscountedMetricMultiplier1677,39280
+BOOL EvalSetDiscountedMetricPriority1712,40139
+BOOL EvalSetMetricPriority1747,40988
+BOOL EvalSetPreferenceDistancePriority1782,41758
+BOOL EvalSetOptimisticMetricPriority1816,42637
+BOOL EvalSetBestRelaxedMetricPriority1851,43501
+BOOL EvalSetBestMetricMultiplier1888,44366
+BOOL EvalSetOptimisticMetricMultiplier1922,45187
+BOOL EvalSetPlanTimeout1956,46036
+CELLP ComputeGetHeuristicFn2000,46959
+CELLP ComputeHeuristicFn2024,47360
+CELLP ComputeMetricFn2049,47806
+BOOL EvalResetHeuristicFn2079,48310
+static void ResetHeuristicFn(2102,48680
+BOOL EvalSetPriorityFn2129,49384
+CELLP ComputeGetPriorityFn2164,50044
+BOOL EvalResetPriorityFn2192,50498
+void ResetPriorityFn(2215,50854
+CELLP pcDomainStart=2224,51050
+CELLP pcDomainEnd=2225,51100
+BOOL EvalResetDomains2238,51340
+BOOL EvalDefDomain2262,51805
+BOOL EvalListDomains2288,52287
+static void ListDomains(2314,52723
+BOOL EvalLoadDomain2358,53691
+void MarkDomains(2400,54529
+BOOL EvalLoadFile2415,54815
+BOOL EvalLoadPddlProblem2439,55251
+BOOL EvalSetPrintWorldFn2466,55781
+BOOL EvalResetPrintWorldFn2513,56866
+void ResetPrintWorldFn(2536,57244
+BOOL EvalPrintDeltaTime2554,57757
+BOOL EvalDeclareDescribedSymbols2607,59415
+BOOL EvalDeclareDefinedSymbols2813,65460
+BOOL EvalDeclareGlobalVariables2904,68140
+BOOL EvalDeclareExternalSymbols3017,71346
+BOOL EvalDeclareMacroOperators3140,74686
+BOOL EvalDeclareElidedOperators3196,76058
+BOOL EvalDefine3234,76865
+BOOL EvalDefDefinedPredicate3284,78093
+BOOL EvalDefDefinedGenerator3396,80769
+BOOL EvalDefDefinedFunction3508,83444
+BOOL EvalDefDefinedMacro3618,86034
+BOOL EvalClearWorldSymbols3742,89019
+BOOL EvalClearOperators3806,90537
+BOOL EvalClearEventQueue3827,90892
+BOOL EvalPrintPlanList3846,91173
+BOOL EvalPrintPddlPlan3883,91820
+BOOL EvalPrintPddl3Plan3900,92114
+BOOL PrintPlanList3973,93730
+BOOL EvalSetInitialWorld4023,94605
+BOOL EvalSetInitializationSequence4098,96791
+BOOL EvalSetPostActionSequence4132,97644
+BOOL EvalSetBDFPreference4162,98291
+BOOL EvalSetInitialFacts4190,98877
+LINEARPLANP GetInitialPlan(4221,99488
+BOOL ClassicGoalQ4257,100532
+static void ProcessClassicGoal4288,101244
+void ProcessExtendedGoal4338,102528
+BOOL ExtendedGoalQ4351,102782
+BOOL EvalSetGoalType4387,103514
+BOOL EvalSetGoal4433,104372
+BOOL EvalSetPreferences4479,105407
+BOOL EvalSetGoalFormula4524,106241
+BOOL EvalSetGoalSequence4583,107571
+BOOL EvalSetTLControl4627,108623
+CELLP ComputeGetTLControl4650,109003
+BOOL EvalResetTLControl4672,109379
+void ResetTLControl(4695,109742
+BOOL EvalLoadPlan4709,110066
+BOOL EvalSelectInitialWorld4793,112093
+BOOL EvalSelectFinalWorld4820,112480
+BOOL EvalSelectNextWorld4847,112853
+BOOL EvalSelectPreviousWorld4874,113253
+
+eval.c,3020
+#define MINFILE 56,1168
+#define MAXFILE 57,1186
+DECLSPEC char *psPlanName=psPlanName63,1258
+DECLSPEC BOOL bImmediateExit;64,1317
+FILETABLE aftFileTable[aftFileTable66,1376
+int nSearchDepthLimit;68,1435
+double dfSearchHeuristicLimit;69,1487
+BOOL EvalDefPredicate87,1958
+BOOL EvalTrue156,3431
+BOOL EvalFalse177,3673
+BOOL EvalAnd200,4009
+BOOL EvalAndRelaxed_H227,4576
+BOOL EvalAndRelaxed_FF273,5499
+BOOL EvalOr344,6935
+BOOL EvalXor382,7618
+BOOL EvalImplies422,8237
+BOOL EvalIfThenElse459,9053
+BOOL EvalIfThenElse_RESET487,9532
+BOOL EvalNot527,10254
+BOOL EvalNotRelaxed545,10515
+BOOL EvalNotRelaxedNeg 563,10841
+BOOL EvalEq595,11450
+BOOL EvalForAll645,12585
+BOOL EvalForAll_H686,13422
+BOOL EvalForAll_FF735,14405
+BOOL EvalForAll_HNoReset790,15652
+BOOL EvalForAllNoGenerator838,16558
+BOOL EvalExistsNoGenerator866,17000
+BOOL EvalExistsXNoGenerator894,17442
+BOOL EvalExists951,18598
+BOOL EvalExists_H989,19412
+BOOL EvalExistsX1063,21104
+BOOL EvalExistsX_H1105,21965
+BOOL EvalGoal1158,23017
+BOOL EvalCurrent1181,23359
+BOOL EvalPrevious1204,23708
+BOOL EvalAssign1243,24373
+BOOL EvalAssignAppend1274,25016
+BOOL EvalSearchGlobalInitialization1316,25912
+BOOL EvalPrint1356,26731
+BOOL EvalPlan1434,28412
+BOOL EvalSetPlanName1514,30353
+BOOL EvalResetPlanName1554,31133
+BOOL EvalExit1573,31393
+BOOL EvalPrintWorld1593,31647
+BOOL EvalPrintWorldList1619,32100
+BOOL EqFormQ1678,33337
+BOOL PlusEqFormQ1694,33554
+BOOL MinusEqFormQ1710,33788
+BOOL TrueFormQ1727,34045
+BOOL FalseFormQ1744,34272
+BOOL AndFormQ1764,34560
+BOOL OrFormQ1785,34920
+BOOL XorFormQ1805,35196
+BOOL NotFormQ1845,35833
+BOOL ImpliesFormQ1865,36128
+BOOL GoalFormQ1885,36436
+BOOL PreviousFormQ1901,36670
+static BOOL PermuteFormQ1917,36918
+BOOL ForAllFormQ1937,37233
+BOOL ExistsFormQ1957,37538
+BOOL ExistsXFormQ1977,37863
+static BOOL NextFormQ1997,38161
+static BOOL EventuallyFormQ2017,38479
+static BOOL AlwaysFormQ2037,38805
+static BOOL UntilFormQ2057,39111
+static BOOL TUntilFormQ2079,39485
+static BOOL TEventuallyFormQ2099,39815
+static BOOL TAlwaysFormQ2119,40149
+static BOOL DeltaFormQ2139,40458
+BOOL BindingFormQ2159,40767
+BOOL AtomicFormQ2199,41559
+BOOL AddFormQ2234,42261
+BOOL DelFormQ2250,42497
+CELLP GetBindingVars2272,42906
+CELLP GetBindingVals2292,43222
+CELLP GetBindingFormula2312,43548
+DECLSPEC CELLP LookupVar2335,43939
+DECLSPEC void SetVarX2378,44817
+DECLSPEC void AppendVarX2410,45371
+DECLSPEC void SetArrayX2441,46019
+DECLSPEC BINDINGP ExtendBindings2483,46905
+BINDINGP CopyBindingsShared2524,48095
+CELLP GetDeltaFormula2582,49562
+CELLP GetBFISpec2602,49872
+CELLP GetBFFormulas2622,50155
+BOOL FnLitQ2642,50425
+BOOL EvalRedirect2663,50750
+BOOL EvalCloseFile2732,52479
+void CloseAllFiles(2777,53360
+void InitFileHandles(2798,53682
+DECLSPEC FILE *HandleToFileStreamHandleToFileStream2846,55691
+BOOL EvalSetSearchDepthLimit2862,55924
+BOOL EvalResetSearchDepthLimit2888,56356
+BOOL EvalSetSearchHeuristicLimit2905,56581
+BOOL EvalResetSearchHeuristicLimit2931,57024
+
+eval.h,228
+#define __EVAL_H4,31
+#define STDOUT 6,49
+#define STDIN 7,66
+#define STDERR 8,82
+#define STDLOG 9,99
+#define MINFILE 10,116
+#define MAXFILE 11,134
+typedef struct FileTable13,154
+}FILETABLE, *FILETABLEP;FILETABLEP18,293
+
+FloydWarshall.c,48
+void FloydWarshall9,204
+void PrintPath154,945
+
+formula.c,11696
+#define ARG_UNKNOWN	55,1189
+#define ARG_BOOL	56,1212
+#define ARG_TERM	57,1232
+#define ARG_DESCRIBED	58,1252
+BOOL bADLPre;125,2651
+ACTION aTrueAction=131,2854
+ACTION aFalseAction=142,2982
+ACTION aNotAction=153,3118
+ACTION aUNotAction=164,3241
+ACTION aAndAction=175,3366
+ACTION aOrAction=186,3487
+ACTION aXorAction=197,3601
+ACTION aImpliesAction=208,3722
+ACTION aIfThenElseAction=219,3871
+ACTION aEqAction=230,4043
+ACTION aPlusEqAction=241,4167
+ACTION aMinusEqAction=252,4303
+ACTION aForAllAction=263,4440
+ACTION aForAllActionNoReset=274,4582
+ACTION aExistsAction=285,4731
+ACTION aExistsXAction=296,4874
+ACTION aAlwaysAction=308,5024
+ACTION aEventuallyAction=319,5169
+ACTION aNextAction=330,5334
+ACTION aUntilAction=341,5469
+ACTION aTAlwaysAction=352,5606
+ACTION aTEventuallyAction=363,5755
+ACTION aTUntilAction=374,5924
+ACTION aBindingAction=385,6069
+ACTION aDeltaAction=396,6218
+ACTION aAddAction=408,6357
+ACTION aDelAction=419,6475
+ACTION aSDelAction=430,6669
+ACTION aPrintWorldAction=442,6866
+ACTION aPrintDeltaTimeAction=453,7025
+ACTION aPrintWorldListAction=464,7201
+ACTION aPrintAction=476,7378
+ACTION aSetPlanNameAction=487,7516
+ACTION aSetPlanTimeoutAction=498,7680
+ACTION aResetPlanNameAction=509,7853
+ACTION aGetPlanNameAction=520,8025
+ACTION aExitAction=531,8173
+ACTION aAssignAction=542,8307
+ACTION aAssignAppendAction=553,8445
+ACTION aSearchGlobalInitializationAction=564,8602
+ACTION aGoalAction=576,8827
+ACTION aCurrentAction=587,8959
+ACTION aPreviousAction=598,9115
+ACTION aPermuteAction=609,9279
+ACTION aArrayAction=621,9414
+ACTION aAStarAction=632,9539
+ACTION aOptimalCostAction=643,9664
+ACTION aGoalDistanceAction=654,9811
+ACTION aGoalDistanceHspUnreleffsAction=665,9961
+ACTION aGoalDistanceFFUnreleffsAction=676,10149
+ACTION aGoalDistanceQualpreferencesAction=687,10334
+ACTION aGoalDistanceFFPDDLPrefs=698,10519
+ACTION aGoalDistanceNegAction=709,10699
+ACTION aBestActionAction=720,10859
+ACTION aPlanLengthAction=731,11003
+ACTION aPlanCostAction=742,11147
+ACTION aPlanDurationAction=753,11285
+ACTION aActionNameAction=764,11435
+ACTION aActionCostAction=775,11579
+ACTION aActionDurationAction=786,11723
+ACTION aActionPriorityAction=797,11879
+ACTION aWorldNumberAction=808,12035
+ACTION aWorldCounterAction=819,12182
+ACTION aClosedlistLengthAction=830,12332
+ACTION aPreAction=854,12687
+ACTION aVarGenAction=865,12833
+ACTION aLiteralAction=877,12962
+ACTION aIdentAction=888,13091
+ACTION aFloatAction=899,13219
+ACTION aIntegerAction=910,13346
+ACTION aStringAction=921,13475
+ACTION aISpecAction=932,13603
+ACTION aDefPredicateAction=944,13731
+ACTION aDefGeneratorAction=955,13888
+ACTION aDefFunctionAction=966,14028
+ACTION aDefMacroAction=977,14165
+ACTION aModifyWorldAction=990,14319
+ACTION aOperatorAction=1001,14492
+ACTION aDummyAction=1014,14620
+ACTION aClearWorldSymbolsAction=1028,14831
+ACTION aClearOperatorsAction=1039,15019
+ACTION aDeclareDefinedSymbolsAction=1050,15194
+ACTION aDeclareDescribedSymbolsAction=1061,15398
+ACTION aDeclareExternalSymbolsAction=1072,15610
+ACTION aDeclareGlobalVariablesAction=1083,15819
+ACTION aDeclareMacroOperatorsAction=1094,16027
+ACTION aDeclareElidedOperatorsAction=1105,16231
+ACTION aDefineAction=1116,16439
+ACTION aDefADLOperatorAction=1127,16581
+ACTION aDefADLHOperatorAction=1138,16757
+ACTION aDefDefinedFunctionAction=1149,16936
+ACTION aDefDefinedGeneratorAction=1160,17128
+ACTION aDefDefinedMacroAction=1171,17324
+ACTION aDefDefinedPredicateAction=1182,17504
+ACTION aDefDomainAction=1193,17700
+ACTION aDefStripsOperatorAction=1204,17855
+ACTION aGetHeuristicFnAction=1215,18043
+ACTION aHeuristicFnAction=1226,18200
+ACTION aGetPriorityFnAction=1237,18347
+ACTION aGetSearchLimitAction=1248,18501
+ACTION aGetSearchStrategyAction=1259,18658
+ACTION aGetTLControlAction=1270,18824
+ACTION aGetGoalAddendumAction=1281,18975
+ACTION aGetTraceLevelAction=1292,19135
+ACTION aListDomainsAction=1303,19289
+ACTION aLoadDomainAction=1314,19452
+ACTION aLoadFileAction=1325,19611
+ACTION aLoadPddlProblemAction=1336,19762
+ACTION aLoadPlanAction=1347,19942
+ACTION aPlanAction=1358,20093
+ACTION aClearEventQueueAction=1369,20222
+ACTION aPrintPlanListAction=1380,20386
+ACTION aPrintPddlPlanAction=1391,20558
+ACTION aPrintPddl3PlanAction=1402,20730
+ACTION aResetDomainsAction=1413,20905
+ACTION aResetHeuristicFnAction=1424,21072
+ACTION aResetPrintWorldFnAction=1435,21256
+ACTION aResetPriorityFnAction=1446,21445
+ACTION aResetSearchLimitAction=1457,21625
+ACTION aResetSearchStrategyAction=1468,21809
+ACTION aResetTLControlAction=1479,22005
+ACTION aSetControlAction=1490,22181
+ACTION aEnableAction=1501,22340
+ACTION aDisableAction=1512,22482
+ACTION aSetGoalAddendumAction=1523,22628
+ACTION aResetGoalAddendumAction=1534,22808
+ACTION aSetHeuristicFnAction=1545,22996
+ACTION aSetMetricFnAction=1556,23172
+ACTION aSetHeuristicPreservedPropertyAction=1567,23336
+ACTION aSetQualpreferenceValueFnAction=1578,23573
+ACTION aSetQualpreferenceNumberAction=1589,23790
+ACTION aSetCountSatPrefsFnAction=1600,24002
+ACTION aSetTotalPrefsFnAction=1611,24196
+ACTION aSetOptimisticMetricFnAction=1622,24377
+ACTION aSetPreferenceMultiplierAction=1633,24582
+ACTION aSetDiscountedMetricPriorityAction=1644,24794
+ACTION aSetOptimisticMetricPriorityAction=1656,25024
+ACTION aSetBestRelaxedMetricPriorityAction=1667,25253
+ACTION aSetPreferenceDistancePriorityAction=1678,25483
+ACTION aSetMetricPriorityAction=1689,25714
+ACTION aSetMetricMultiplierAction=1700,25902
+ACTION aSetDiscountedMetricMultiplierAction=1711,26098
+ACTION aSetBestMetricMultiplierAction=1722,26335
+ACTION aSetOptimisticMetricMultiplierAction=1733,26548
+ACTION aSetGoalMultiplierAction=1744,26785
+ACTION aSetHeuristicExponentAction=1755,26973
+ACTION aSetMetricDiscountAction=1766,27173
+ACTION aSetHelpfulListPriority=1778,27362
+ACTION aSetInitialFactsAction=1790,27566
+ACTION aSetInitialWorldAction=1803,27748
+ACTION aSetInitializationSequenceAction=1814,27928
+ACTION aSetPostActionSequenceAction=1825,28148
+ACTION aSetBDFPreferenceAction=1836,28353
+ACTION aSetGoalAction=1847,28537
+ACTION aSetPreferencesAction=1858,28684
+ACTION aSetGoalSequenceAction=1869,28859
+ACTION aSetGoalFormulaAction=1880,29039
+ACTION aSetGoalTypeAction=1891,29215
+ACTION aSetPrintWorldFnAction=1902,29379
+ACTION aSetPriorityFnAction=1913,29560
+ACTION aSetSearchLimitAction=1924,29732
+ACTION aSetSearchStrategyAction=1935,29908
+ACTION aSetMergeFnTypeAction=1946,30096
+ACTION aSetStatisticsFileAction=1957,30273
+ACTION aSetTLControlAction=1968,30461
+ACTION aSetTraceLevelAction=1979,30629
+ACTION aVerboseOffAction=1990,30801
+ACTION aVerboseOnAction=2001,30960
+ACTION aVerboseShowExpandedPlansOffAction=2013,31116
+ACTION aVerboseShowExpandedPlansOnAction=2024,31346
+ACTION aVerboseShowExpandedWorldsOffAction=2035,31572
+ACTION aVerboseShowExpandedWorldsOnAction=2046,31806
+ACTION aVerboseFFShowRelaxedPlansOffAction=2058,32036
+ACTION aVerboseFFShowRelaxedPlansOnAction=2069,32271
+ACTION aVerboseFFShowRelaxedWorldsOffAction=2080,32502
+ACTION aVerboseFFShowRelaxedWorldsOnAction=2091,32741
+ACTION aUpdateWorldAction=2103,32976
+ACTION aLtAction=2117,33171
+ACTION aLeAction=2128,33295
+ACTION aGtAction=2139,33420
+ACTION aGeAction=2150,33544
+ACTION aSeedAction=2161,33669
+ACTION aRandAction=2173,33804
+ACTION aRandomAction=2184,33929
+ACTION aExpAction=2195,34060
+ACTION aLogAction=2206,34182
+ACTION aRoundAction=2217,34304
+ACTION aIntAction=2228,34432
+ACTION aFloorAction=2239,34554
+ACTION aCeilAction=2250,34682
+ACTION aPlusAction=2261,34807
+ACTION aMinusAction=2272,34929
+ACTION aMultiplyAction=2283,35053
+ACTION aDivideAction=2294,35183
+ACTION aModAction=2305,35309
+ACTION aMaxAction=2316,35431
+ACTION aMinAction=2327,35553
+ACTION aConditionalExpAction=2338,35675
+ACTION aExptAction=2349,35831
+ACTION aSqrtAction=2360,35956
+ACTION aAbsAction=2371,36081
+ACTION aPosIntAction=2383,36206
+ACTION aLtPosIntAction=2394,36338
+ACTION aIsBetweenAction=2405,36476
+ACTION aNearestFirstAction=2416,36637
+ACTION aNearestFirstExAction=2427,36787
+ACTION aClosestFirstAction=2438,36944
+ACTION aClosestFirstExAction=2449,37094
+ACTION aLowestFirstAction=2460,37251
+ACTION aAllPairsShortestPathAction=2471,37398
+ACTION aInTheSetAction=2504,37935
+ACTION aSelectInitialWorldAction=2516,38093
+ACTION aSelectFinalWorldAction=2527,38285
+ACTION aSelectNextWorldAction=2538,38469
+ACTION aSelectPreviousWorldAction=2549,38649
+ACTION aCloseFileAction=2560,38845
+ACTION aRedirectAction=2571,39000
+ACTION aOpenFileAction=2582,39150
+ACTION aMakeLiteralAction=2593,39288
+ACTION aSetRNGAction=2604,39435
+ACTION aResetRNGAction=2615,39578
+ACTION aGetRNGAction=2626,39727
+ACTION aPlanStatusAction=2637,39859
+ACTION aWorldsGeneratedAction=2648,40003
+ACTION aWorldsSearchedAction=2659,40162
+ACTION aWorldsPrunedAction=2670,40318
+ACTION aWorldsDiscardedAction=2681,40468
+ACTION aWorldsUnexaminedAction=2692,40627
+ACTION aPlanCPUTimeAction=2703,40789
+ACTION aGetCPUTimeAction=2714,40937
+ACTION aGetBestRelaxedMetricAction=2725,41082
+ACTION aGetNoWorldFixedPointsAction=2736,41258
+ACTION aGetNoRealFixedPointsAction=2747,41442
+ACTION aGetBestPreferenceValueAction=2758,41623
+ACTION aSetSearchDepthLimitAction=2769,41805
+ACTION aResetSearchDepthLimitAction=2780,42002
+ACTION aGetSearchDepthLimitAction=2791,42207
+ACTION aSearchMaxDepthAction=2802,42380
+ACTION aSetSearchHeuristicLimitAction=2813,42537
+ACTION aResetSearchHeuristicLimitAction=2824,42750
+ACTION aGetSearchHeuristicLimitAction=2835,42971
+ACTION aSearchMaxHeuristicAction=2846,43156
+ACTION aDelayedActionAction=2857,43325
+ACTION aGlobalDelayedActionAction=2868,43496
+ACTION aWaitForNextEventAction=2879,43692
+ACTION aReachableEventAction=2890,43877
+ACTION aCurrentTimeAction=2901,44052
+ACTION aInhibitDelayedActionAction=2912,44199
+void InitActionName2931,44612
+CELLP ListToFormula2954,45187
+static BOOL ListToVarGen4199,100043
+static BOOL ListToVars4269,101572
+DECLSPEC CELLP CopyCellList4333,102839
+DECLSPEC CELLP CopyCellListReturnEndCell4355,103316
+DECLSPEC CELLP CopyPrefixCellList4380,103918
+DECLSPEC CELLP CopyCell4411,104621
+DECLSPEC CELLP CopyCell24435,104966
+DECLSPEC CELLP CopyFormulaList4454,105254
+DECLSPEC CELLP CopyFormula4505,106541
+void MarkFormulaList4548,107436
+void MarkFormula4577,107884
+static void MarkForm4604,108267
+void FormulaListSizeOf4655,109345
+void FormulaSizeOf4685,109897
+static void FormSizeOf4713,110427
+CELLP AppendFormula4799,112247
+CELLP ReverseFormulaList4842,113069
+CELLP FormulaDifference4871,113463
+CELLP FormulaIntersection4923,114561
+BOOL FormulaIntersects4958,115151
+CELLP FormulaUnion4988,115689
+BOOL FormulaListEqQ5031,116385
+BOOL FormulaEqQ5068,117142
+CELLP FormulaMemQ5203,119685
+DECLSPEC void PrintFormulaList5227,120111
+static char *psBlanks=psBlanks5258,120684
+DECLSPEC void PrintFormula5260,120791
+int PrintTerm5332,122446
+DECLSPEC void PrintFlatFormula5399,124018
+void PrintFlatTerm5456,125281
+DECLSPEC BOOL FormulaToInteger5505,126439
+DECLSPEC BOOL FormulaToDouble5542,127302
+DECLSPEC BOOL FormulaToString5579,128077
+static void ArgListCheck5610,128781
+DECLSPEC char *SaveNameSaveName5688,131089
+DECLSPEC char *MakeNameMakeName5724,131888
+DECLSPEC CELLP CompileArgForm5757,132579
+static CELLP CompileQForm5785,133090
+static CELLP CompileArrayForm5823,133839
+DECLSPEC CELLP CompileDummyForm5853,134454
+static CELLP CompileISpecForm5881,134981
+static CELLP CompileVarGenForm5963,137103
+static CELLP CompilePreForm5999,137994
+void ZoneCopyFormulaList6032,138633
+void ZoneCopyFormula6079,139538
+void ZoneRelocFormulaList6123,140295
+void ZoneRelocFormula6183,141477
+
+formula.h,25
+#define __FORMULA_H4,37
+
+gate.c,179
+typedef struct NameStack20,288
+}NAMESTACK, *PNAMESTACK;PNAMESTACK24,408
+BOOL bRunTime;28,453
+static PNAMESTACK pnNameStack;32,536
+void EnterGate41,692
+void ExitGate69,1304
+
+gate.h,22
+#define __GATE_H4,59
+
+hash.c,467
+const int anFibonacci[anFibonacci89,3009
+void HashError132,3943
+int HashCreate171,4744
+static int HashExpand210,5394
+void HashClear269,6713
+int HashInsert293,7189
+int HashSearch398,9648
+int HashDelete468,11294
+int HashCount534,12927
+void HashScan564,13494
+static int Hash597,14213
+static int ReHash632,15221
+static int PrimeGen658,15785
+typedef struct ResizeTab	684,16428
+}RESIZETAB, *RESIZETABP;RESIZETABP690,16671
+static int ResizeExpand737,17532
+
+hash.h,22
+#define __HASH_H2,17
+
+hashrelax.c,613
+#define CRC_MINHASHBITS	31,413
+#define CRC_THRESHOLD	32,441
+typedef struct RelCRCHashCell35,468
+} RELCRCHASH, *RELCRCHASHP;RELCRCHASHP39,629
+static RELCRCHASHP *pphRelHashTable;pphRelHashTable43,676
+static int nRelHashSize;44,740
+static int nRelHashCount;45,797
+static int nRelHashMax;46,854
+static unsigned int nRelHashMask;47,911
+int RelCRCHashCreate(65,1253
+int RelCRCHashClear(99,1805
+WORLDSUMP RelCRCHashInsert120,2175
+WORLDSUMP RelCRCHashInsert_Qual176,3374
+WORLDSUMP RelCRCHashSearch241,4701
+int RelCRCHashCount(320,6513
+static int RelCRCHashExpand(347,7066
+void RelMarkCRCHash(398,8222
+
+hashrelax.h,72
+typedef struct worldsum 9,104
+} WORLDSUM, *WORLDSUMP;WORLDSUMP16,275
+
+hbtree.c,849
+#define MIN_BTREE_STACK	33,582
+#define BTREE_STACK_SIGNATURE	34,640
+HBTREEP *pphbtStack=pphbtStack37,717
+int nHBTreeSP=38,762
+int nHBTreeMaxSP=39,808
+void addAddedFact95,2136
+HBTREEP HBTreeInsert115,2561
+static LISTP InsertOperInstance131,3051
+static HBTREEP HInsert151,3510
+HBTREEP HBTreeSearch294,8139
+HBTREEP HBTreeDelete331,8725
+static HBTREEP HBTreeSuccessor394,10427
+static LISTP HGetReversedPath451,11514
+static HBTREEP HBTreeMin485,12173
+HBTREEP BTree2HBTree502,12375
+HBTREEP HMakeBTree543,13460
+HBTREEP HMakeBTree_FF574,14008
+CELLP HBTreeGenerator614,14828
+CELLP HBTreeGeneratorWithBoundVars693,16388
+void HInitBTreeStack(848,20196
+void HResizeBTreeStack(863,20552
+void HResetBTreeStack886,21060
+int HBTreeCount916,21825
+LISTP HBTreeToList939,22270
+static LISTP HBTreeWalk958,22776
+void MarkHBTreeStack(992,23684
+
+hbtree.h,163
+#define __HBTREE_H2,19
+#define HCheckBTreeStack(8,73
+#define HGetBTreeSP(9,147
+#define HSetBTreeSP(10,182
+#define HBTreePush(11,220
+#define HBTreePop(12,277
+
+heap.c,344
+#define Parent(30,542
+#define Left(31,569
+#define Right(32,594
+#define HEAP_MINLENGTH	34,625
+HEAPP CreateHeap(57,1076
+static void Heapify79,1466
+void HeapBuild(112,2338
+void HeapSort(126,2486
+LINEARPLANP HeapExtractMin(148,2946
+void HeapInsert168,3365
+BOOL HeapDelete194,4056
+static void HeapExpand(227,4658
+void MarkHeap(255,5256
+
+heap.h,54
+typedef struct heap 3,11
+} HEAP, *HEAPP;HEAPP7,180
+
+idle.c,428
+BOOL IdleFormula57,1299
+BOOL IdleAnd83,1771
+BOOL IdleOr116,2304
+BOOL IdleXor156,3019
+BOOL IdleImplies197,3704
+BOOL IdleIfThenElse230,4372
+BOOL IdleNot260,4953
+BOOL IdleIgnoreOp288,5487
+BOOL IdleUntil313,5900
+BOOL IdleTAlways343,6504
+BOOL IdleDelta380,7264
+BOOL IdleTEventually443,8887
+BOOL IdleTUntil474,9532
+BOOL IdleForAll522,10659
+BOOL IdleExists587,12169
+BOOL IdleExistsX657,13881
+BOOL IdleBinding716,15179
+
+idle.h,22
+#define __IDLE_H4,31
+
+iface.c,238
+DECLSPEC void TermError28,608
+BOOL NoEvaluator54,1274
+BOOL NoIdler78,1827
+CELLP NoProgressor102,2400
+int NoCurrentor127,3000
+CELLP NoComputor151,3593
+BOOL NoGenerator175,4171
+CELLP NoCCForm201,4820
+CELLP CCNotImplemented226,5419
+
+iface.h,78
+#define __IFACE_H4,33
+typedef BOOL (*FINALWORLDGOALQP)FINALWORLDGOALQP8,93
+
+internal.c,2017
+#define Parent(42,750
+#define Left(43,777
+#define Right(44,802
+CELLP ComputePlus154,3138
+CELLP ComputeMinus227,4493
+CELLP ComputeMultiply335,6661
+CELLP ComputeDivide416,8175
+CELLP ComputeMod562,11144
+CELLP ComputeMax638,12713
+CELLP ComputeMin691,13713
+CELLP ComputeConditionalExp738,14637
+CELLP ComputeExpt784,15448
+CELLP ComputeSqrt897,17710
+CELLP ComputeAbs951,18718
+CELLP ComputeExp1027,20280
+CELLP ComputeLog1071,21058
+CELLP ComputeRand1155,22731
+CELLP ComputeRandom1176,23028
+BOOL EvalSeed1216,23905
+CELLP ComputeRound1245,24380
+CELLP ComputeInt1292,25267
+CELLP ComputeFloor1336,26044
+CELLP ComputeCeil1388,27095
+BOOL EvalLt1442,28202
+BOOL GenerateLt1478,28875
+BOOL EvalLe1520,30041
+BOOL GenerateLe1556,30728
+BOOL EvalGt1595,31814
+BOOL GenerateGt1631,32490
+BOOL EvalGe1673,33643
+BOOL GenerateGe1709,34333
+BOOL GeneratePosInt1756,35710
+BOOL GenerateLtPosInt1785,36536
+BOOL GenerateIsBetween1826,37705
+BOOL EvalIsBetween1896,39341
+BOOL GenerateInTheSet1949,40382
+BOOL EvalInTheSet1997,41423
+BOOL GenerateNearestFirst2078,44274
+static void MarkNearestFirst2250,49124
+BOOL GenerateNearestFirstEx2299,51431
+static void MarkNearestFirstEx2490,56685
+static BOOL InsertVertex2516,57322
+BOOL GenerateClosestFirst2598,60730
+static void MarkClosestFirst2853,68469
+static void VHeapInsert2873,68912
+static int VHeapExtractMin2894,69373
+static void VHeapify2916,69757
+static void VHeapPercolate2950,70651
+static int VHeapCompareFn2980,71259
+BOOL GenerateClosestFirstEx3070,74622
+static void MarkClosestFirstEx3320,82105
+static void VHeapInsertEx3344,82629
+static int VHeapExtractMinEx3365,83098
+static void VHeapifyEx3387,83489
+static void VHeapPercolateEx3421,84393
+static int VHeapCompareFnEx3451,85007
+BOOL GenerateLowestFirst3508,86528
+static void MarkLowestFirst3601,89065
+static int LFCompare3615,89263
+static double TermToDouble3638,89623
+#define INDEX(3673,90504
+BOOL GenerateAllPairsShortestPath3675,90566
+static void MarkAllPairsShortestPath3944,97630
+
+internal.h,75
+#define __INTERNAL_H2,21
+typedef struct rng8,97
+}RNG, *RNGP;RNGP14,309
+
+interval.c,70
+CELLP LShiftForm54,975
+BOOL ISpecLt0106,2011
+BOOL ISpec0In136,2517
+
+interval.h,26
+#define __INTERVAL_H4,39
+
+isaac.c,282
+#define ISAACSIZL 14,256
+#define ISAACSIZE 15,332
+#define ind(17,366
+#define rngstep(18,452
+#define mix(25,593
+typedef struct IsaacCtx	37,810
+}ISAACCTX, *ISAACCTXP;ISAACCTXP45,1035
+static ISAACCTXP picContext;49,1077
+unsigned int IsaacRand(58,1205
+void IsaacSeed103,2183
+
+lexpddl.c,7461
+#define yy_create_buffer 1,0
+#define yy_delete_buffer 2,44
+#define yy_scan_buffer 3,88
+#define yy_scan_string 4,128
+#define yy_scan_bytes 5,168
+#define yy_flex_debug 6,206
+#define yy_init_buffer 7,244
+#define yy_flush_buffer 8,284
+#define yy_load_buffer_state 9,326
+#define yy_switch_to_buffer 10,378
+#define yyin 11,428
+#define yyleng 12,448
+#define yylex 13,472
+#define yyout 14,494
+#define yyrestart 15,516
+#define yytext 16,546
+#define yywrap 17,570
+#define FLEX_SCANNER25,756
+#define YY_FLEX_MAJOR_VERSION 26,777
+#define YY_FLEX_MINOR_VERSION 27,809
+#define __cplusplus35,964
+#define YY_USE_PROTOS46,1108
+#define YY_USE_CONST49,1182
+#define YY_USE_PROTOS55,1245
+#define YY_USE_CONST56,1267
+#define YY_USE_CONST66,1431
+#define YY_USE_PROTOS67,1452
+#define yyconst 71,1502
+#define yyconst73,1530
+#define YY_PROTO(78,1576
+#define YY_PROTO(80,1612
+#define YY_NULL 84,1680
+#define YY_SC_TO_UI(91,1927
+#define BEGIN 97,2158
+#define YY_START 103,2355
+#define YYSTATE 104,2393
+#define YY_STATE_EOF(107,2476
+#define YY_NEW_FILE 110,2596
+#define YY_END_OF_BUFFER_CHAR 112,2635
+#define YY_BUF_SIZE 115,2704
+typedef struct yy_buffer_state *YY_BUFFER_STATE;YY_BUFFER_STATE117,2731
+#define EOB_ACT_CONTINUE_SCAN 122,2828
+#define EOB_ACT_END_OF_FILE 123,2860
+#define EOB_ACT_LAST_MATCH 124,2890
+#define yyless(142,3464
+#define unput(152,3689
+typedef unsigned int yy_size_t;158,3927
+struct yy_buffer_state161,3961
+#define YY_BUFFER_NEW 203,5012
+#define YY_BUFFER_NORMAL 204,5036
+#define YY_BUFFER_EOF_PENDING 215,5534
+static YY_BUFFER_STATE yy_current_buffer 218,5571
+#define YY_CURRENT_BUFFER 224,5767
+static char yy_hold_char;228,5880
+static int yy_n_chars;230,5907
+int yyleng;233,5980
+static char *yy_c_buf_p yy_c_buf_p236,6038
+static int yy_init 237,6076
+static int yy_start 238,6137
+static int yy_did_buffer_switch_on_eof;243,6316
+#define YY_FLUSH_BUFFER 253,6761
+#define yy_new_buffer 263,7197
+#define yy_set_interactive(265,7237
+#define yy_set_bol(272,7442
+#define YY_AT_BOL(279,7615
+typedef unsigned char YY_CHAR;281,7667
+FILE *yyin yyin282,7698
+typedef int yy_state_type;283,7744
+#define yytext_ptr 285,7792
+#define YY_DO_BEFORE_ACTION 295,8187
+#define YY_NUM_RULES 302,8341
+#define YY_END_OF_BUFFER 303,8365
+static yyconst short int yy_accept[yy_accept304,8393
+static yyconst int yy_ec[yy_ec367,11951
+static yyconst int yy_meta[yy_meta399,13664
+static yyconst short int yy_base[yy_base408,14023
+static yyconst short int yy_def[yy_def472,17620
+static yyconst short int yy_nxt[yy_nxt536,21216
+static yyconst short int yy_chk[yy_chk631,26671
+static yy_state_type yy_last_accepting_state;726,32126
+static char *yy_last_accepting_cpos;yy_last_accepting_cpos727,32172
+#define REJECT 732,32312
+#define yymore(733,32356
+#define YY_MORE_ADJ 734,32402
+char *yytext;yytext735,32424
+#define INITIAL 736,32438
+#define YY_INPUT(786,33265
+#define YYSTYPE 792,33375
+#define YY_DECL 797,33464
+#define ECHO 802,33556
+#define XATOM_IDENT	807,33617
+#define XATOM_LIST	808,33660
+typedef struct XList	810,33697
+}XLIST, *XLISTP;XLISTP817,33979
+static char *psDomain;psDomain861,34759
+YY_DECL;864,34806
+#define	OPEN_BRAC	868,34872
+#define	CLOSE_BRAC	869,34894
+#define	OPEN_SQ	870,34917
+#define	CLOSE_SQ	871,34937
+#define	DEFINE	872,34958
+#define	DOMAIN	873,34977
+#define	REQS	874,34996
+#define	EQUALITY	875,35013
+#define	STRIPS	876,35034
+#define	ADL	877,35053
+#define	TYPING	878,35069
+#define	DISJUNCTIVE_PRECONDS	879,35088
+#define	EXT_PRECS	880,35121
+#define	UNIV_PRECS	881,35143
+#define	QUANT_PRECS	882,35166
+#define	COND_EFFS	883,35190
+#define	FLUENTS	884,35212
+#define	TIME	885,35232
+#define	DURATIVE_ACTIONS	886,35249
+#define	DURATION_INEQUALITIES	887,35278
+#define	CONTINUOUS_EFFECTS	888,35312
+#define	ACTION	889,35343
+#define	PROCESS	890,35362
+#define	EVENT	891,35382
+#define	DURATIVE_ACTION	892,35400
+#define	CONSTANTS	893,35428
+#define	PREDS	894,35450
+#define	FUNCTIONS	895,35468
+#define	TYPES	896,35490
+#define	ARGS	897,35508
+#define	PRE	898,35525
+#define	CONDITION	899,35541
+#define	START_PRE	900,35563
+#define	END_PRE	901,35585
+#define	EFFECTS	902,35605
+#define	INITIAL_EFFECT	903,35625
+#define	FINAL_EFFECT	904,35652
+#define	INVARIANT	905,35677
+#define	DURATION	906,35699
+#define	AT_START	907,35720
+#define	AT_END	908,35741
+#define	OVER_ALL	909,35760
+#define	AND	910,35781
+#define	OR	911,35797
+#define	EXISTS	912,35812
+#define	FORALL	913,35831
+#define	IMPLY	914,35850
+#define	NOT	915,35868
+#define	WHEN	916,35884
+#define	EITHER	917,35901
+#define	PROBLEM	918,35920
+#define	FORDOMAIN	919,35940
+#define	INITIALLY	920,35962
+#define	OBJECTS	921,35984
+#define	GOALS	922,36004
+#define	EQ	923,36022
+#define	LENGTH	924,36037
+#define	SERIAL	925,36056
+#define	PARALLEL	926,36075
+#define	METRIC	927,36096
+#define	MINIMIZE	928,36115
+#define	MAXIMIZE	929,36136
+#define	HASHT	930,36157
+#define	DURATION_VAR	931,36175
+#define	TOTAL_TIME	932,36200
+#define	INCREASE	933,36223
+#define	DECREASE	934,36244
+#define	SCALE_UP	935,36265
+#define	SCALE_DOWN	936,36286
+#define	ASSIGN	937,36309
+#define	GREATER	938,36328
+#define	GREATEQ	939,36348
+#define	LESS	940,36368
+#define	LESSEQ	941,36385
+#define	Q	942,36404
+#define	COLON	943,36418
+#define	BOGUS	944,36436
+#define	NAME	945,36454
+#define	FUNCTION_SYMBOL	946,36471
+#define	INTVAL	947,36499
+#define	FLOATVAL	948,36518
+#define	HYPHEN	949,36539
+#define	PLUS	950,36558
+#define	MUL	951,36575
+#define	DIV	952,36591
+#define	UMINUS	953,36607
+#define BADTOK 954,36626
+static int yy_start_stack_ptr 986,37218
+static int yy_start_stack_depth 987,37253
+static int *yy_start_stack yy_start_stack988,37290
+#define YY_NO_PUSH_STATE 1000,37567
+#define YY_NO_POP_STATE 1001,37594
+#define YY_NO_TOP_STATE 1002,37620
+#define YY_READ_BUF_SIZE 1022,38036
+#define ECHO 1031,38255
+#define YY_INPUT(1038,38447
+#define yyterminate(1061,39217
+#define YY_START_STACK_INCR 1066,39352
+#define YY_FATAL_ERROR(1071,39442
+#define YY_DECL 1078,39617
+#define YY_USER_ACTION1085,39790
+#define YY_BREAK 1090,39883
+#define YY_RULE_SETUP 1093,39915
+static int yy_get_next_buffer(1680,53952
+static yy_state_type yy_get_previous_state(1810,56997
+static yy_state_type yy_try_NUL_trans(1845,57901
+static void yyunput(1875,58705
+static int yyinput(1918,59729
+void yyrestart(1988,61068
+void yy_switch_to_buffer(2003,61357
+void yy_load_buffer_state(2033,62087
+YY_BUFFER_STATE yy_create_buffer(2046,62365
+void yy_delete_buffer(2077,63080
+void yy_init_buffer(2103,63519
+void yy_flush_buffer(2130,63949
+YY_BUFFER_STATE yy_scan_buffer(2158,64523
+YY_BUFFER_STATE yy_scan_string(2196,65408
+YY_BUFFER_STATE yy_scan_bytes(2213,65675
+static void yy_push_state(2252,66469
+static void yy_pop_state(2285,67146
+static int yy_top_state(2296,67345
+#define YY_EXIT_FAILURE 2303,67457
+static void yy_fatal_error(2307,67512
+#define yyless(2322,67765
+static void yy_flex_strncpy(2339,68087
+static void *yy_flex_alloc(yy_flex_alloc2355,68338
+static void *yy_flex_realloc(yy_flex_realloc2365,68508
+static void yy_flex_free(2383,69079
+int main(2393,69206
+static XLISTP ParsePddl(2407,69424
+static BOOL ParseXList2427,69687
+DECLSPEC void LoadPddlProblem2471,70579
+static BOOL TranslatePddlProblem2570,72713
+static LISTP TranslateXList2866,80457
+static int ListType2905,81214
+static XLISTP NewXList2926,81515
+static XLISTP CopyXList2953,82021
+int yywrap(2968,82268
+
+list.c,261
+DECLSPEC LISTP NewList57,1825
+LISTP CopyAtom180,4306
+LISTP CopyList216,4928
+void MarkList301,6551
+LISTP Cons415,8563
+void PrintList520,10300
+void ZoneCopyAtom856,17489
+void ZoneCopyList877,17772
+void ZoneRelocAtom902,18157
+void ZoneRelocList926,18522
+
+list.h,22
+#define __LIST_H2,17
+
+makeform.c,1082
+CELLP pcTrue;36,647
+CELLP pcFalse;37,661
+void InitTrueForm(48,825
+CELLP MakeTrueForm(61,1102
+void InitFalseForm(78,1286
+CELLP MakeFalseForm(91,1569
+DECLSPEC CELLP MakeAndForm111,1804
+CELLP MakeNotForm141,2311
+CELLP MakeOrForm179,2865
+CELLP MakeXorForm209,3362
+CELLP MakeImpliesForm239,3896
+CELLP MakeIfThenElseForm280,4611
+CELLP MakeInTheSetForm320,5405
+CELLP MakeForAllForm356,6022
+CELLP MakeExistsForm398,6830
+CELLP MakeExistsXForm440,7640
+CELLP MakeBindingForm487,8612
+CELLP MakeDeltaForm547,9729
+DECLSPEC CELLP MakeIntegerForm581,10245
+DECLSPEC CELLP MakeFloatForm614,10839
+DECLSPEC CELLP MakeStringForm651,11542
+DECLSPEC CELLP MakeLiteralForm678,12040
+DECLSPEC CELLP MakeAddForm735,13238
+DECLSPEC CELLP MakeSymbolInfoForm763,13825
+CELLP MakeSearchGlobalInitializationForm823,15285
+CELLP MakeOptimalCostForm(860,15973
+CELLP MakeBestActionForm(881,16363
+DECLSPEC CELLP MakeEqForm904,16814
+DECLSPEC CELLP MakeGlobalDelayedActionForm941,17433
+DECLSPEC CELLP MakeSetInitializationSequenceForm981,18286
+DECLSPEC CELLP MakeSetInitialWorldForm1007,18850
+
+makegen.c,607
+typedef struct DefinedContext35,549
+}DEFINEDCONTEXT, *DEFINEDCONTEXTP;DEFINEDCONTEXTP39,690
+typedef struct PermuteContext41,726
+}PERMUTECONTEXT, *PERMUTECONTEXTP;PERMUTECONTEXTP45,838
+BOOL GenerateDescPredicate116,2463
+BOOL GenerateDescPredicate_STD136,3029
+BOOL GenerateDescPredicate_H183,4093
+static BOOL FindNext_H231,5218
+static BOOL FindNext286,6336
+BOOL TestTuple334,7307
+BOOL GenerateDefGenerator366,7996
+static void SetBindings488,11035
+BOOL GenerateEq516,11632
+BOOL GenerateGoal631,14304
+BOOL GenerateCurrent655,14718
+BOOL GeneratePrevious679,15138
+BOOL GeneratePermute719,15873
+
+makegen.h,25
+#define __MAKEGEN_H2,20
+
+msort.c,97
+MERGELISTP MergeSort24,313
+static MERGELISTP Divide52,1033
+MERGELISTP MergeSortedLists83,1623
+
+msort.h,124
+typedef struct MergeList	7,84
+}MERGELIST, *MERGELISTP;MERGELISTP10,194
+typedef int (*MERGECOMPAREP)MERGECOMPAREP12,220
+
+oper.c,694
+OPERATORP poOperators;25,401
+OPERATORP poHOperators;26,458
+int nNumberOfOperators;27,535
+int nNumberOfHOperators;28,602
+MACROOPERATORP pmoMacroOperators;29,671
+MACROOPERATORP pmoMacroOperEnd=30,745
+ELIDEDOPERATORP peoElidedOperators;31,856
+ELIDEDOPERATORP peoElidedOperEnd=32,933
+static OPERATORP poOperEnd=36,1068
+static OPERATORP poHOperEnd=37,1158
+OPERATORP MakeOperator69,2212
+OPERATORP MakeHOperator106,3159
+void MarkOperator148,4032
+void ClearOps(178,4501
+MACROOPERATORP AddMacroOperator198,4829
+void MarkMacroOperator229,5557
+void FreeMacroOperators(247,5805
+ELIDEDOPERATORP AddElidedOperator259,6016
+void MarkElidedOperator286,6583
+void FreeElidedOperators(302,6792
+
+oper.h,22
+#define __OPER_H4,31
+
+plan.c,1056
+SEARCHRESULT srSearchResult;125,3394
+double dfPddlTime;126,3463
+double dPlanStopTime;127,3512
+double dfStartLastPlan;226,7091
+BOOL TLPlanner229,7117
+static BOOL BeforePlanning(549,17787
+static LINEARPLANP plpPrefixTail;633,19766
+static LINEARPLANP plpMacroWorld;634,19842
+static LINEARPLANP plpSuffix;635,19915
+LINEARPLANP plpSuffixTail;636,19976
+static char *psMacroDomain;psMacroDomain637,20053
+static void InitMacroExpandPlan(639,20122
+static BOOL MacroExpandPlan668,21118
+static LINEARPLANP MakeLinearPlan793,24571
+static LINEARPLANP MakeLinearPlanNoHeuristic839,26318
+void MarkLinearPlan872,27179
+LINEARPLANP CopyLinearPlan916,28252
+int PlanCount939,28793
+LINEARPLANP PlanExtend978,29699
+LINEARPLANP PlanExtendNoHeuristic1006,30433
+BOOL PlanExtendedEqQ1041,31443
+BOOL PlanClassicEqQ1067,31944
+BOOL PlanGoalQ1109,33047
+LINEARPLANP FollowLinearPlan1134,33447
+static void LogStatistics1159,33883
+static void PlanSizeOf1204,35301
+void PrintPddlPlan1284,37201
+void PrintPddl3Plan1365,39252
+static BOOL FormulaCallsQ1440,40967
+
+plan.h,358
+#define __PLAN_H4,31
+#define LinearPlanTLForm(8,66
+#define LinearPlanTime(9,123
+#define LinearPlanCost(10,176
+#define LinearPlanLength(11,229
+#define LinearPlanParent(12,282
+#define SetLinearPlanTLForm(16,358
+#define SetLinearPlanTime(17,419
+#define SetLinearPlanCost(18,476
+#define SetLinearPlanLength(19,533
+#define SetLinearPlanPrevious(20,593
+
+progress.c,826
+#define USE_BINDING_FORMULAS	56,1413
+CELLP ProgressFalse124,3332
+CELLP ProgressTrue150,3733
+CELLP ProgressNot182,4513
+CELLP ProgressAnd262,7247
+CELLP ProgressOr407,11635
+CELLP ProgressXor560,17054
+CELLP ProgressImplies700,21376
+CELLP ProgressIfThenElse805,25812
+CELLP ProgressForAll979,32041
+static void AddInstance1061,33785
+CELLP ProgressExists1173,38419
+CELLP ProgressExistsX1309,43560
+CELLP ProgressAlways1427,46396
+CELLP ProgressEventually1491,48169
+CELLP ProgressNext1544,49305
+CELLP ProgressUntil1601,51872
+CELLP ProgressTAlways1713,55520
+CELLP ProgressDelta1793,57665
+CELLP ProgressTEventually1863,60471
+CELLP ProgressTUntil1992,66815
+CELLP ProgressBinding2134,71035
+CELLP ProgressGoal2183,72280
+CELLP ProgressCurrent2215,72938
+CELLP ProgressPrevious2244,73484
+CELLP ProgressAtomic2284,74363
+
+progress.h,26
+#define __PROGRESS_H4,39
+
+queue.c,581
+typedef struct tq34,500
+}TQ, *TQP;TQP43,834
+typedef struct tqlink45,846
+}TQLINK, *TQLINKP;TQLINKP50,1025
+static TQ tqHead;56,1082
+void ClearQueue(78,1599
+BOOL EvalGlobalDelayedAction102,2279
+BOOL EvalDelayedAction190,4338
+BOOL EvalInhibitDelayedAction296,6715
+BOOL EvalWaitForNextEvent457,10592
+void MarkTimeQueue(611,14452
+BINDINGP CopyBindings646,15080
+void DumpQueue(672,15471
+void DumpQueueEvents709,16455
+BOOL EvalReachableEvent758,17639
+void QueueDelete796,18266
+CELLP ComputeCurrentTime823,18699
+CELLP Instantiate848,19180
+static CELLP Instant860,19369
+
+queue.h,48
+int nDelayedAction;5,115
+int nWaitEvent;6,135
+
+save.c,250
+void MarkDomainData(83,2065
+void MarkHelpfulActions239,4915
+void MarkPlanList258,5224
+void MarkParentPlans278,5514
+void MarkBindings297,5802
+void CollectGarbage(328,6327
+static void MarkSymbolTable346,6629
+static void MarkStringTable367,6982
+
+save.h,22
+#define __SAVE_H4,31
+
+search.c,1996
+typedef struct PlanList43,715
+}PLANLIST, *PLANLISTP;PLANLISTP47,840
+BOOL bReExpandSingleSuc=139,2797
+double dfFathersHeuristic;140,2878
+LISTP plCurrentHelpfulActions;141,2977
+int nHelpfulPreferredRounds=142,3064
+int nHelpfulTotalRounds=143,3194
+static CELLP pcSortValueFn;150,3381
+BOOL bUserAbort;154,3495
+TIMESTAT tsTimers;155,3534
+LINEARPLANP plpOpen;157,3582
+LINEARPLANP plpClosed;158,3643
+int njbNodeCounter;445,12902
+char *BreadthFirstBreadthFirst459,13203
+char *BreadthFirstPriorityBreadthFirstPriority703,20554
+char *BestFirstBestFirst759,22405
+char *BestFirstDelayedHeuristicBestFirstDelayedHeuristic1020,29821
+char *BestFirstHelpfulListBestFirstHelpfulList1282,37123
+char *DepthFirstDepthFirst1631,47265
+char *DepthFirstPriorityDepthFirstPriority1978,57542
+char *DepthBestFirstDepthBestFirst2005,58331
+char *DepthFirstNoBacktrackingDepthFirstNoBacktracking2036,59374
+char *FollowPredefinedPlanFollowPredefinedPlan2209,64581
+LINEARPLANP PlanSuccessorFn2373,69470
+LINEARPLANP NoBacktrackingSuccessorFn2453,71781
+static LINEARPLANP PrioritySuccessorFn2488,72570
+static int PriorityCompareFn2515,73128
+static LINEARPLANP HeuristicSuccessorFn2535,73495
+BOOL HeuristicCompareFn2563,74207
+static LINEARPLANP AppendPlans2627,75338
+static LINEARPLANP MergePlans2669,76159
+int MergeCompareNumericFn2695,76713
+int MergeCompareNumericPreferShortFn2764,78141
+int MergePreferenceValueFirstFn2832,79574
+int MergePreferenceEasyFirstFn2920,81630
+int MergeGoalPreferenceValueFirstFn3033,84272
+int MergeGoalPreferenceEasyFirstFn3125,86376
+LINEARPLANP CycleFilter3252,89310
+static BOOL PlanHasCycleQ3299,90216
+static LINEARPLANP FilterOldStates3366,91997
+static LINEARPLANP FilterWorstOldStates3471,95198
+double CalculateHeuristic3578,98179
+double CalculatePriority3602,98628
+static void DiscardWorld3628,99162
+static void PruneList3710,101061
+static void PruneUnreachable3786,102956
+static void ResetTimers(3815,103535
+void PrintTimers3836,104022
+
+search.h,56
+#define __SEARCH_H4,35
+MERGEP MergeCompareFn;179,5355
+
+strhash.c,529
+#define MAX_STR_HASH 18,277
+typedef struct StrIden 20,354
+} STRIDEN, *STRIDENP;STRIDENP23,420
+static STRIDENP *StrHash;StrHash25,443
+static int nStrHashSize;26,469
+static int nStrHashCollisions;27,494
+int StrHashCreate(31,559
+void StrHashClear(40,743
+static const int anFibonacci[anFibonacci46,823
+static int StrPosIdent(94,1966
+int StrHashSearchInsert(105,2112
+void MarkStrHash(162,3141
+int StrHashGetCount(178,3363
+int StrHashGetCollisions(181,3412
+int StrHashGetTableSize(184,3472
+void StrHashDump(188,3526
+
+strips.c,146
+BOOL EvalDefStripsOperator217,6584
+static BOOL NewStripsParse280,8370
+static CELLP CompileSuccessor416,11759
+static CELLP MakeForAll465,13141
+
+strips.h,24
+#define __STRIPS_H2,19
+
+tllex.c,4413
+#define FLEX_SCANNER7,159
+#define YY_FLEX_MAJOR_VERSION 8,180
+#define YY_FLEX_MINOR_VERSION 9,212
+#define __cplusplus18,387
+#define YY_USE_PROTOS28,511
+#define YY_USE_CONST31,585
+#define YY_USE_PROTOS37,648
+#define YY_USE_CONST38,670
+#define YY_USE_CONST48,834
+#define YY_USE_PROTOS49,855
+#define yyconst 53,905
+#define yyconst55,933
+#define YY_PROTO(60,979
+#define YY_PROTO(62,1015
+#define YY_NULL 66,1083
+#define YY_SC_TO_UI(73,1330
+#define BEGIN 79,1561
+#define YY_START 85,1758
+#define YYSTATE 86,1796
+#define YY_STATE_EOF(89,1879
+#define YY_NEW_FILE 92,1999
+#define YY_END_OF_BUFFER_CHAR 94,2038
+#define YY_BUF_SIZE 97,2107
+typedef struct yy_buffer_state *YY_BUFFER_STATE;YY_BUFFER_STATE99,2134
+#define EOB_ACT_CONTINUE_SCAN 104,2231
+#define EOB_ACT_END_OF_FILE 105,2263
+#define EOB_ACT_LAST_MATCH 106,2293
+#define yyless(124,2867
+#define unput(135,3122
+typedef unsigned int yy_size_t;141,3360
+struct yy_buffer_state144,3394
+#define YY_BUFFER_NEW 186,4445
+#define YY_BUFFER_NORMAL 187,4469
+#define YY_BUFFER_EOF_PENDING 198,4967
+static YY_BUFFER_STATE yy_current_buffer 201,5004
+#define YY_CURRENT_BUFFER 207,5200
+static char yy_hold_char;211,5313
+static int yy_n_chars;213,5340
+int yyleng;216,5413
+static char *yy_c_buf_p yy_c_buf_p219,5471
+static int yy_init 220,5509
+static int yy_start 221,5570
+static int yy_did_buffer_switch_on_eof;226,5749
+#define YY_FLUSH_BUFFER 236,6194
+#define yy_new_buffer 246,6633
+#define yy_set_interactive(248,6673
+#define yy_set_bol(255,6878
+#define YY_AT_BOL(262,7051
+#define yywrap(265,7104
+#define YY_SKIP_YYWRAP266,7123
+typedef unsigned char YY_CHAR;267,7146
+FILE *yyin yyin268,7177
+typedef int yy_state_type;269,7223
+#define yytext_ptr 271,7271
+#define YY_DO_BEFORE_ACTION 281,7666
+#define YY_NUM_RULES 289,7855
+#define YY_END_OF_BUFFER 290,7879
+static yyconst short int yy_accept[yy_accept291,7907
+static yyconst int yy_ec[yy_ec301,8309
+static yyconst int yy_meta[yy_meta333,10022
+static yyconst short int yy_base[yy_base340,10221
+static yyconst short int yy_def[yy_def350,10657
+static yyconst short int yy_nxt[yy_nxt360,11092
+static yyconst short int yy_chk[yy_chk375,11801
+static yy_state_type yy_last_accepting_state;390,12510
+static char *yy_last_accepting_cpos;yy_last_accepting_cpos391,12556
+#define REJECT 396,12696
+static int yy_more_flag 397,12740
+static int yy_more_len 398,12769
+#define yymore(399,12797
+#define YY_MORE_ADJ 400,12833
+#define YY_RESTORE_YY_MORE_OFFSET401,12865
+char *yytext;yytext402,12899
+#define INITIAL 403,12913
+#define YY_INPUT(451,13679
+#define ECHO 457,13800
+YY_DECL;460,13837
+#define YY_NO_UNPUT 467,14000
+#define STRINGSTATE 469,14046
+#define COMMENTSTATE 471,14069
+static int yy_start_stack_ptr 507,14750
+static int yy_start_stack_depth 508,14785
+static int *yy_start_stack yy_start_stack509,14822
+#define YY_NO_PUSH_STATE 521,15099
+#define YY_NO_POP_STATE 522,15126
+#define YY_NO_TOP_STATE 523,15152
+#define YY_READ_BUF_SIZE 543,15568
+#define ECHO 552,15787
+#define YY_INPUT(559,15979
+#define yyterminate(582,16749
+#define YY_START_STACK_INCR 587,16884
+#define YY_FATAL_ERROR(592,16974
+#define YY_DECL 599,17149
+#define YY_USER_ACTION606,17322
+#define YY_BREAK 611,17415
+#define YY_RULE_SETUP 614,17447
+static int yy_get_next_buffer(1084,27888
+static yy_state_type yy_get_previous_state(1216,31010
+static yy_state_type yy_try_NUL_trans(1251,31913
+static void yyunput(1281,32715
+static int yyinput(1325,33774
+void yyrestart(1398,35292
+void yy_switch_to_buffer(1413,35581
+void yy_load_buffer_state(1443,36311
+YY_BUFFER_STATE yy_create_buffer(1456,36589
+void yy_delete_buffer(1487,37304
+void yy_init_buffer(1508,37633
+void yy_flush_buffer(1535,38063
+YY_BUFFER_STATE yy_scan_buffer(1566,38660
+YY_BUFFER_STATE yy_scan_string(1604,39545
+YY_BUFFER_STATE yy_scan_bytes(1621,39827
+static void yy_push_state(1660,40621
+static void yy_pop_state(1693,41298
+static int yy_top_state(1704,41497
+#define YY_EXIT_FAILURE 1711,41609
+static void yy_fatal_error(1715,41664
+#define yyless(1730,41917
+static void yy_flex_strncpy(1747,42225
+static int yy_flex_strlen(1763,42497
+static void *yy_flex_alloc(yy_flex_alloc1779,42698
+static void *yy_flex_realloc(yy_flex_realloc1789,42868
+static void yy_flex_free(1807,43439
+int main(1817,43566
+DECLSPEC void LoadFile1835,43857
+DECLSPEC CELLP StringToFormula1930,45977
+
+tllex.h,45
+#define YYSTYPE 6,71
+#define YY_DECL 8,162
+
+tllib.c,70
+HINSTANCE hInstance;18,208
+DECLSPEC BOOL WINAPI DllEntryPoint22,356
+
+tlparse.c,1544
+typedef struct STab44,785
+}STAB, *STABP;STABP48,887
+static STAB asStringTable[asStringTable74,1476
+int nLineNumber;369,14084
+char *psCurrentFile;psCurrentFile370,14130
+char *yysol;yysol371,14179
+char *apsStringTab[apsStringTab372,14236
+HASHTAB htSymbolTable;374,14305
+HASHTAB htStringTable;375,14358
+FILE *pfInput;pfInput377,14412
+char *psInput;psInput378,14457
+CELLP pcParsedFormula;381,14644
+BOOL bInteractiveMode=382,14705
+CELLP pcCurrentCommand;384,14771
+LINEARPLANP plpCurrentPlan;385,14829
+BOOL bNT;387,14892
+DECLSPEC void InitPlanner(409,15328
+static void InitStringTable(739,26664
+void InitSymbolTable(776,27493
+DECLSPEC void ClosePlanner(790,27759
+void ExecuteList812,28400
+void TranslateList866,29669
+SYMBOLP AddToSymbolTable888,30025
+int SymbolLookup948,31376
+void yyerror970,31820
+#define YY_NULL 986,32003
+int yy_input988,32022
+int string_input1045,32827
+BOOL Reserved1084,33386
+void DoEscapes1215,36188
+void MarkCurrentCommand(1269,36982
+static HWND hWndCommand;1281,37222
+static HANDLE hReadDoneSemaphore;1282,37275
+static HANDLE hWriteDoneSemaphore;1283,37350
+static HANDLE hCommandThread;1284,37427
+static char acCommandBuffer[acCommandBuffer1285,37484
+static jmp_buf jbOuterJump;1286,37546
+DECLSPEC void InitPlannerThread1299,37763
+static void WINAPI PlannerThreadProc1326,38437
+static char *ReadCommandReadCommand1351,38991
+DECLSPEC BOOL WriteCommand1381,39598
+DECLSPEC int CommandPuts1401,39923
+DECLSPEC void CommandPrintf1436,40548
+DECLSPEC void AbortPlanner(1461,40964
+
+tlparse.h,67
+#define __TLPARSE_H2,20
+char *psCurrentFile;psCurrentFile15,230
+
+tlplan.c,51
+static jmp_buf jbOuterJump;33,417
+int main45,611
+
+tlplan.h,16384
+#define __TLPLAN_H16,169
+#define FALSE 20,233
+#define TRUE 21,249
+#define NOT_FALSE 22,264
+#define BOOL 23,331
+#define BOOLP 24,348
+#define DWORD 25,368
+#define DECLSPECX 28,409
+#define DECLSPEC 30,471
+#define DECLSPEC 32,516
+#define DECLSPECX35,568
+#define DECLSPEC36,586
+#define _MAX_PATH 37,603
+#define MAX(42,659
+#define MIN(43,696
+#define NULL 46,746
+#define SYMTABSIZE 48,762
+#define STRINGTABSIZE 49,829
+#define MAXSYMBOLS 50,898
+#define MAXMACROOPERATORS 51,971
+#define PDDL_UNSUPPORTED	55,1066
+#define PDDL_IGNORE_METRIC	56,1134
+#define PDDL_PRIORITY_METRIC	57,1210
+#define PDDL_COST_METRIC	58,1293
+#define PLAN_ALIVE	62,1396
+#define PLAN_PRUNED	63,1448
+#define PLAN_FILTERED	64,1511
+#define PLAN_LIMIT	65,1577
+#define HSP_COST_FROM_IGNORED_OPERATOR 68,1645
+#define INSTRUMENT 73,1851
+#define ENTER(77,1906
+#define EXIT(78,1940
+#define ENTER(80,1974
+#define EXIT(81,1993
+#define TIMING 86,2055
+#define StartTimer(89,2084
+#define StopTimer(92,2161
+#define StartTimer(96,2260
+#define StopTimer(97,2282
+#define IdentName(100,2321
+#define GetName(101,2384
+#define STRING_LPAREN	105,2513
+#define STRING_RPAREN	106,2542
+#define STRING_ASSIGN	107,2571
+#define STRING_LT	108,2600
+#define STRING_LE	109,2626
+#define STRING_EQ	110,2652
+#define STRING_GT	111,2678
+#define STRING_GE	112,2704
+#define STRING_ASTAR	113,2730
+#define STRING_ACTION_PRIORITY	114,2758
+#define STRING_ADD	115,2794
+#define STRING_ALWAYS	116,2822
+#define STRING_AND	117,2852
+#define STRING_ATEMPORAL	118,2880
+#define STRING_BEST_ACTION	119,2912
+#define STRING_CLASSIC	120,2946
+#define STRING_COST	121,2977
+#define STRING_DEL	122,3006
+#define STRING_DELTA	123,3034
+#define STRING_DOMAIN_GLOBAL	124,3063
+#define STRING_DURATION	125,3098
+#define STRING_EVENTUALLY	126,3130
+#define STRING_EXISTSX	127,3163
+#define STRING_EXISTS	128,3194
+#define STRING_EXTENDED	129,3224
+#define STRING_FALSE	130,3256
+#define STRING_FORALL	131,3285
+#define STRING_FUNCTION	132,3315
+#define STRING_GENERATOR	133,3347
+#define STRING_GOAL	134,3379
+#define STRING_IF_THEN_ELSE	135,3408
+#define STRING_IMPLIES	136,3443
+#define STRING_ISPEC	137,3474
+#define STRING_NEXT	138,3503
+#define STRING_NO_PLAN	139,3532
+#define STRING_NOT	140,3563
+#define STRING_OPTIMAL_COST	141,3591
+#define STRING_OR	142,3626
+#define STRING_PLAN_COST	143,3653
+#define STRING_PLAN_LENGTH	144,3685
+#define STRING_SET_PLAN_NAME	145,3719
+#define STRING_DEPTH_BEST_FIRST	146,3754
+#define STRING_PRE	147,3792
+#define STRING_PREDICATE	148,3820
+#define STRING_PREVIOUS	149,3852
+#define STRING_PRINT	150,3884
+#define STRING_PRINT_WORLD	151,3913
+#define STRING_PRIORITY	152,3947
+#define STRING_RESOURCES	153,3979
+#define STRING_SEARCH_GLOBAL	154,4011
+#define STRING_OPERATOR	155,4046
+#define STRING_DEF_DEFINED_GENERATOR	156,4078
+#define STRING_GET_GOAL_ADDENDUM	157,4119
+#define STRING_T_ALWAYS	158,4157
+#define STRING_T_EVENTUALLY	159,4189
+#define STRING_T_UNTIL	160,4224
+#define STRING_TEMPORAL	161,4255
+#define STRING_TRUE	162,4287
+#define STRING_UNKNOWN	163,4316
+#define STRING_UNTIL	164,4347
+#define STRING_WORLD_GLOBAL	165,4376
+#define STRING_WORLD_HEURISTIC_RANK	166,4411
+#define STRING_WORLD_NUMBER	167,4452
+#define STRING_XOR	168,4487
+#define STRING_BREADTH_FIRST	169,4515
+#define STRING_BREADTH_FIRST_PRIORITY	170,4550
+#define STRING_BEST_FIRST	171,4592
+#define STRING_DEPTH_FIRST	172,4625
+#define STRING_DEPTH_FIRST_PRIORITY	173,4659
+#define STRING_DEPTH_FIRST_NO_BACKTRACKING	174,4700
+#define STRING_PLUS	175,4746
+#define STRING_MINUS	176,4775
+#define STRING_STAR	177,4804
+#define STRING_SLASH	178,4833
+#define STRING_MOD	179,4862
+#define STRING_MAX	180,4890
+#define STRING_MIN	181,4918
+#define STRING_EXPT	182,4946
+#define STRING_SQRT	183,4975
+#define STRING_ABS	184,5004
+#define STRING_EXP	185,5032
+#define STRING_LOG	186,5060
+#define STRING_RAND	187,5088
+#define STRING_SEED	188,5117
+#define STRING_ROUND	189,5146
+#define STRING_INT	190,5175
+#define STRING_FLOOR	191,5203
+#define STRING_CEIL	192,5232
+#define STRING_POS_INT	193,5261
+#define STRING_LT_POS_INT	194,5292
+#define STRING_IS_BETWEEN	195,5325
+#define STRING_PERMUTE	196,5358
+#define STRING_EXIT	197,5389
+#define STRING_RANDOM	198,5418
+#define STRING_CLEAR_WORLD_SYMBOLS	199,5448
+#define STRING_DECLARE_DEFINED_SYMBOLS	200,5488
+#define STRING_DECLARE_DESCRIBED_SYMBOLS	201,5531
+#define STRING_DECLARE_EXTERNAL_SYMBOLS	202,5575
+#define STRING_DECLARE_GLOBAL_VARIABLES	203,5619
+#define STRING_MACRO	204,5663
+#define STRING_DEFINE	205,5692
+#define STRING_DEF_ADL_OPERATOR	206,5723
+#define STRING_DEF_DEFINED_FUNCTION	207,5762
+#define STRING_DEF_DEFINED_PREDICATE	208,5804
+#define STRING_DEF_DOMAIN	209,5846
+#define STRING_DEF_STRIPS_OPERATOR	210,5880
+#define STRING_GET_HEURISTIC_FN	211,5921
+#define STRING_PRINT_WORLD_LIST	212,5960
+#define STRING_GET_PRIORITY_FN	213,5999
+#define STRING_GET_SEARCH_LIMIT	214,6037
+#define STRING_GET_SEARCH_STRATEGY	215,6076
+#define STRING_GET_TL_CONTROL	216,6117
+#define STRING_GET_TRACE_LEVEL	217,6154
+#define STRING_LIST_DOMAINS	218,6192
+#define STRING_LOAD_DOMAIN	219,6228
+#define STRING_LOAD_FILE	220,6263
+#define STRING_PLAN	221,6296
+#define STRING_PRINT_PLAN_LIST	222,6326
+#define STRING_RESET_DOMAINS	223,6364
+#define STRING_RESET_HEURISTIC_FN	224,6400
+#define STRING_RESET_PRINT_WORLD_FN	225,6440
+#define STRING_RESET_PRIORITY_FN	226,6482
+#define STRING_RESET_SEARCH_LIMIT	227,6521
+#define STRING_RESET_SEARCH_STRATEGY	228,6561
+#define STRING_RESET_TL_CONTROL	229,6603
+#define STRING_SET_CONTROL	230,6642
+#define STRING_SET_HEURISTIC_FN	231,6677
+#define STRING_SET_INITIAL_FACTS	232,6716
+#define STRING_SET_INITIAL_WORLD	233,6755
+#define STRING_SET_INITIALIZATION_SEQUENCE	234,6794
+#define STRING_SET_GOAL	235,6841
+#define STRING_SET_GOAL_TYPE	236,6874
+#define STRING_SET_PRINT_WORLD_FN	237,6910
+#define STRING_SET_PRIORITY_FN	238,6950
+#define STRING_SET_SEARCH_LIMIT	239,6988
+#define STRING_SET_SEARCH_STRATEGY	240,7027
+#define STRING_SET_STATISTICS_FILE	241,7068
+#define STRING_SET_TL_CONTROL	242,7109
+#define STRING_SET_TRACE_LEVEL	243,7146
+#define STRING_VERBOSE_OFF	244,7184
+#define STRING_VERBOSE_ON	245,7219
+#define STRING_ACTION_NAME	246,7253
+#define STRING_ACTION_COST	247,7288
+#define STRING_ACTION_DURATION	248,7323
+#define STRING_LOCAL_VARS	249,7361
+#define STRING_SELECT_INITIAL_WORLD	250,7395
+#define STRING_SELECT_FINAL_WORLD	251,7437
+#define STRING_SELECT_NEXT_WORLD	252,7477
+#define STRING_SELECT_PREVIOUS_WORLD	253,7516
+#define STRING_CURRENT	254,7558
+#define STRING_WRITE	255,7590
+#define STRING_APPEND	256,7620
+#define STRING_READ	257,7651
+#define STRING_OPEN_FILE	258,7681
+#define STRING_CLOSE_FILE	259,7714
+#define STRING_FIBONACCI	260,7748
+#define STRING_MS	261,7781
+#define STRING_ISAAC	262,7809
+#define STRING_SET_RNG	263,7839
+#define STRING_RESET_RNG	264,7871
+#define STRING_GET_RNG	265,7904
+#define STRING_DEF_DEFINED_MACRO	266,7936
+#define STRING_ASSIGN_APPEND	267,7975
+#define STRING_REDIRECT	268,8011
+#define STRING_PLAN_DURATION	269,8044
+#define STRING_PLAN_STATUS	270,8080
+#define STRING_WORLDS_GENERATED	271,8115
+#define STRING_WORLDS_SEARCHED	272,8154
+#define STRING_WORLDS_PRUNED	273,8192
+#define STRING_WORLDS_DISCARDED	274,8228
+#define STRING_WORLDS_UNEXAMINED	275,8267
+#define STRING_PLAN_CPU_TIME	276,8306
+#define STRING_SET_SEARCH_DEPTH_LIMIT	277,8342
+#define STRING_GET_SEARCH_DEPTH_LIMIT	278,8385
+#define STRING_SEARCH_MAX_DEPTH	279,8428
+#define STRING_SET_SEARCH_HEURISTIC_LIMIT	280,8467
+#define STRING_GET_SEARCH_HEURISTIC_LIMIT	281,8513
+#define STRING_SEARCH_MAX_HEURISTIC	282,8559
+#define STRING_RESET_SEARCH_DEPTH_LIMIT	283,8601
+#define STRING_RESET_SEARCH_HEURISTIC_LIMIT	284,8646
+#define STRING_OK	285,8694
+#define STRING_GET_CPU_TIME	286,8722
+#define STRING_HEURISTIC_FN	287,8758
+#define	STRING_SET_GOAL_ADDENDUM	288,8794
+#define STRING_RESET_GOAL_ADDENDUM	289,8833
+#define STRING_GET_PLAN_NAME	290,8874
+#define STRING_RESET_PLAN_NAME	291,8910
+#define STRING_BINDING	292,8948
+#define STRING_MODIFY_WORLD	293,8980
+#define STRING_USER_ABORT	294,9016
+#define STRING_ENABLE	295,9050
+#define STRING_DISABLE	296,9081
+#define STRING_CYCLE_CHECKING	297,9113
+#define STRING_TIMING_STATISTICS	298,9150
+#define STRING_NO_CYCLE_CHECK	299,9189
+#define STRING_IN_THE_SET	300,9226
+#define STRING_BACKTRACKING	301,9260
+#define STRING_PRUNING_ALL_SUCCESSORS	302,9296
+#define STRING_CONCURRENT_PLANNING	303,9339
+#define STRING_WAIT_FOR_NEXT_EVENT	304,9380
+#define STRING_DELAYED_ACTION	305,9421
+#define STRING_GLOBAL_DELAYED_ACTION	306,9458
+#define STRING_LOAD_PLAN	307,9500
+#define STRING_MAKE_LITERAL	308,9533
+#define STRING_SET_GOAL_SEQUENCE	309,9569
+#define STRING_SET_GOAL_FORMULA	310,9608
+#define STRING_CURRENT_TIME	311,9647
+#define STRING_INHIBIT_DELAYED_ACTION	312,9683
+#define STRING_PLUS_EQ	313,9726
+#define STRING_MINUS_EQ	314,9758
+#define STRING_PRINT_DELTA_TIME	315,9791
+#define STRING_REWRITABLE	316,9830
+#define STRING_PDDL_SUPPORT	317,9864
+#define STRING_DECLARE_MACRO_OPERATORS	318,9900
+#define STRING_CLEAR_OPERATORS	319,9944
+#define STRING_NEAREST_FIRST	320,9982
+#define STRING_DECLARE_ELIDED_OPERATORS	321,10018
+#define STRING_LOAD_PDDL_PROBLEM	322,10063
+#define STRING_CLEAR_EVENT_QUEUE	323,10102
+#define STRING_CLOSEST_FIRST	324,10141
+#define STRING_UPDATE_WORLD	325,10177
+#define STRING_LOWEST_FIRST	326,10213
+#define STRING_PRINT_PDDL_PLAN	327,10249
+#define STRING_REACHABLE_EVENT	328,10287
+#define STRING_ALL_PAIRS_SHORTEST_PATH	329,10325
+#define STRING_NEAREST_FIRST_EX	330,10369
+#define STRING_CLOSEST_FIRST_EX	331,10408
+#define STRING_CONDITIONAL_EXP	332,10447
+#define STRING_SDEL	333,10485
+#define STRING_GOAL_DISTANCE	334,10512
+#define STRING_SET_METRIC_FN 335,10548
+#define STRING_SET_PREFERENCES 336,10600
+#define STRING_SET_POSTACTION_SEQUENCE 337,10652
+#define STRING_SET_GOAL_MULTIPLIER 338,10704
+#define STRING_SET_PREFERENCE_MULTIPLIER 339,10756
+#define STRING_SET_METRIC_MULTIPLIER 340,10808
+#define STRING_SET_OPTIMISTIC_METRIC_MULTIPLIER 341,10860
+#define STRING_SET_OPTIMISTIC_METRIC_FN 342,10923
+#define STRING_SET_HEURISTIC_EXPONENT 343,10986
+#define STRING_SET_METRIC_DISCOUNT 344,11049
+#define STRING_SET_PLAN_TIMEOUT 345,11112
+#define STRING_PRINT_PDDL3_PLAN 346,11175
+#define STRING_WORLD_COUNTER 347,11238
+#define STRING_SET_COUNT_SAT_PREFS_FN 348,11298
+#define STRING_GET_BEST_RELAXED_METRIC 349,11358
+#define STRING_SET_BEST_METRIC_MULTIPLIER 350,11419
+#define STRING_SET_DISCOUNTED_METRIC_MULTIPLIER 351,11479
+#define STRING_CLOSEDLIST_LENGTH 352,11545
+#define STRING_GOAL_DISTANCE_NEG	353,11605
+#define STRING_SET_MERGE_FN_TYPE	354,11645
+#define STRING_SET_QUALPREFERENCE_VALUE_FN	355,11685
+#define STRING_SET_QUALPREFERENCE_NUMBER	356,11734
+#define STRING_NUMERIC 357,11782
+#define STRING_QUALPREFERENCE_VALUE_FIRST 358,11850
+#define STRING_QUALPREFERENCE_EASY_FIRST 359,11915
+#define STRING_GET_BEST_PREFERENCE_VALUE 360,11980
+#define STRING_GOAL_DISTANCE_QUALPREFERENCES 361,12045
+#define STRING_GOAL_QUALPREFERENCE_VALUE_FIRST 362,12114
+#define STRING_GOAL_QUALPREFERENCE_EASY_FIRST 363,12184
+#define STRING_SET_BDF_PREFERENCE 364,12254
+#define STRING_NO_RELAXING 365,12297
+#define	STRING_DEF_ADL_H_OPERATOR 366,12340
+#define	STRING_HSP_IGNORE 367,12383
+#define STRING_UNREL_EFFECTS 368,12418
+#define STRING_UNOT 369,12453
+#define STRING_GET_NO_WORLD_FIXED_POINTS 370,12488
+#define STRING_GET_NO_REAL_FIXED_POINTS 371,12537
+#define STRING_GOAL_DISTANCE_HSP_UNRELEFFS 372,12582
+#define STRING_GOAL_DISTANCE_FF_UNRELEFFS 373,12629
+#define STRING_VERBOSE_SHOW_EXPANDED_PLANS_ON 374,12675
+#define STRING_VERBOSE_SHOW_EXPANDED_PLANS_OFF 375,12725
+#define STRING_VERBOSE_SHOW_EXPANDED_WORLDS_ON 376,12776
+#define STRING_VERBOSE_SHOW_EXPANDED_WORLDS_OFF 377,12827
+#define STRING_VERBOSE_FF_SHOW_RELAXED_PLANS_ON 378,12879
+#define STRING_VERBOSE_FF_SHOW_RELAXED_PLANS_OFF 379,12931
+#define STRING_VERBOSE_FF_SHOW_RELAXED_WORLDS_ON 380,12984
+#define STRING_VERBOSE_FF_SHOW_RELAXED_WORLDS_OFF 381,13037
+#define STRING_BEST_FIRST_DELAYED_HEURISTIC 382,13091
+#define STRING_BEST_FIRST_HELPFUL_LIST 383,13139
+#define STRING_SET_HELPFUL_LIST_PRIORITY 384,13182
+#define STRING_SET_DISCOUNTED_METRIC_PRIORITY 385,13227
+#define STRING_SET_OPTIMISTIC_METRIC_PRIORITY 386,13277
+#define STRING_SET_BEST_RELAXED_METRIC_PRIORITY 387,13327
+#define STRING_SET_PREFERENCE_DISTANCE_PRIORITY 388,13379
+#define STRING_SET_METRIC_PRIORITY 389,13431
+#define STRING_GOAL_DISTANCE_FF_PDDL_PREFS 390,13470
+#define STRING_SET_TOTAL_PREFS_FN 391,13517
+#define	STRING_SET_HEURISTIC_PRESERVED_PROPERTY 392,13555
+#define STRING_WATCH_HEURISTIC_PRESERVE 393,13607
+#define STRING__MAX	395,13652
+typedef union LitVal	404,13821
+}LITVAL, *LITVALP;LITVALP421,14751
+typedef struct OperInstance 423,14771
+} OPERINSTANCE, *OPERINSTANCEP;OPERINSTANCEP434,15450
+struct FFActionInstance436,15483
+typedef struct Cell444,15729
+}CELL, *CELLP;CELLP448,15849
+typedef struct List	451,15866
+}LIST, *LISTP;LISTP457,16088
+typedef struct HCell 459,16104
+} HCELL, *HCELLP;HCELLP475,16618
+typedef struct Formula	478,16638
+}FORMULA, *FORMULAP;FORMULAP488,17153
+typedef struct Symbol	490,17175
+}SYMBOL, *SYMBOLP;SYMBOLP495,17348
+typedef struct Binding	497,17368
+}BINDING, *BINDINGP;BINDINGP503,17626
+typedef struct BTree	505,17648
+}BTREE, *BTREEP;BTREEP513,18096
+typedef struct HBTree	515,18114
+} HBTREE, *HBTREEP;HBTREEP537,19879
+typedef struct GContext	543,19928
+}GCONTEXT, *GCONTEXTP;GCONTEXTP546,20079
+typedef struct IContext	548,20103
+}ICONTEXT, *ICONTEXTP;ICONTEXTP552,20288
+typedef struct LContext	554,20312
+}LCONTEXT, *LCONTEXTP;LCONTEXTP559,20541
+typedef struct NFContext	561,20565
+}NFCONTEXT, *NFCONTEXTP;NFCONTEXTP575,21349
+typedef struct NFXContext	577,21375
+}NFXCONTEXT, *NFXCONTEXTP;NFXCONTEXTP592,22179
+typedef struct CFContext	594,22207
+}CFCONTEXT, *CFCONTEXTP;CFCONTEXTP611,23097
+typedef struct CFXContext	613,23123
+}CFXCONTEXT, *CFXCONTEXTP;CFXCONTEXTP631,24028
+typedef struct LFContext	633,24056
+}LFCONTEXT, *LFCONTEXTP;LFCONTEXTP640,24416
+typedef struct APSPContext	642,24442
+}APSPCONTEXT, *APSPCONTEXTP;APSPCONTEXTP657,25127
+typedef struct BTContext	659,25157
+}BTCONTEXT, *BTCONTEXTP;BTCONTEXTP664,25404
+typedef struct BTOContext	666,25430
+}BTOCONTEXT, *BTOCONTEXTP;BTOCONTEXTP671,25668
+typedef struct PredContext	673,25696
+}PREDCONTEXT, *PREDCONTEXTP;PREDCONTEXTP678,25939
+#define EVAL_UNKNOWN	682,25994
+#define EVAL_DESCRIBED	683,26018
+#define EVAL_DEFINED	684,26044
+#define EVAL_EXTERNAL	685,26068
+#define SYMBOL_UNKNOWN	687,26094
+#define SYMBOL_PREDICATE	688,26120
+#define SYMBOL_FUNCTION	689,26147
+#define SYMBOL_GENERATOR	690,26174
+#define SYMBOL_MACRO	691,26201
+#define VARIABLE_UNKNOWN	695,26255
+#define DOMAIN_GLOBAL	696,26282
+#define SEARCH_GLOBAL	697,26307
+#define WORLD_GLOBAL	698,26332
+typedef struct ArrayInfo700,26357
+}ARRAYINFO, *ARRAYINFOP;ARRAYINFOP709,26767
+typedef struct LinearPlan716,27036
+}LINEARPLAN, *LINEARPLANP;LINEARPLANP745,28662
+typedef struct SearchResult747,28690
+}SEARCHRESULT, *SEARCHRESULTP;SEARCHRESULTP768,29595
+typedef struct ISpec770,29627
+}ISPEC, *ISPECP;ISPECP778,29957
+typedef struct Action	780,29975
+}ACTION, *ACTIONP;ACTIONP797,30820
+typedef struct SymbolInfo799,30840
+}SYMBOLINFO, *SYMBOLINFOP;SYMBOLINFOP810,31393
+#define HASH__SUCCESS	814,31446
+#define HASH__TABLE_FULL	815,31471
+#define HASH__DUPLICATE_KEY	816,31499
+#define HASH__NOT_FOUND	817,31530
+#define HASH__NO_MEMORY	818,31558
+typedef struct HashTab820,31587
+}HASHTAB, *HASHTABP;HASHTABP827,31878
+typedef struct Operator853,32744
+} OPERATOR, *OPERATORP;OPERATORP863,33379
+typedef struct MacroOperator	865,33404
+}MACROOPERATOR, *MACROOPERATORP;MACROOPERATORP871,33654
+typedef struct ElidedOperator	873,33688
+}ELIDEDOPERATOR, *ELIDEDOPERATORP;ELIDEDOPERATORP877,33852
+typedef BOOL (*EVALP)EVALP879,33888
+typedef struct Cell *(*COMPUTEP)COMPUTEP880,33941
+typedef void (*COMMANDP)COMMANDP881,34005
+typedef struct Cell *(*FUNCTIONP)FUNCTIONP882,34046
+typedef BOOL (*GENERATORP)GENERATORP883,34096
+typedef char *(*SEARCHP)SEARCHP886,34204
+typedef int (*MERGEP)MERGEP897,34427
+typedef struct TimeStat	903,34486
+}TIMESTAT, *TIMESTATP;TIMESTATP917,35346
+
+tl_tab.c,3100
+#define YYBISON 5,71
+#define	ATOM_IDENT	7,121
+#define	ATOM_INTEGER	8,144
+#define	ATOM_FLOAT	9,169
+#define	ATOM_STRING	10,192
+#define	ATOM_INFINITY	11,216
+#define	ATOM_LOWER_OPEN	12,242
+#define	ATOM_LOWER_CLOSED	13,270
+#define	ATOM_UPPER_OPEN	14,300
+#define	ATOM_UPPER_CLOSED	15,328
+#define	ATOM_LISTP	16,358
+#define	ATOM_BTREEP	17,381
+#define	ATOM_FUNCTIONP	18,405
+#define	ATOM_FORMULAP	19,432
+#define	ATOM_OPERATORP	20,458
+#define	ATOM_SYMBOLINFOP	21,485
+#define	ATOM_ARRAYINFOP	22,514
+#define	ATOM_ISPECP	23,542
+#define	ATOM_BADTOK	24,566
+#define ATOM_HBTREEP 25,590
+#define YYDEBUG 64,1260
+#define YYERROR_VERBOSE 65,1278
+YY_DECL;68,1363
+#define YYSTYPE 72,1462
+#define const78,1546
+#define	YYFINAL	84,1577
+#define	YYFLAG	85,1597
+#define	YYNTBASE	86,1620
+#define YYTRANSLATE(88,1641
+static const char yytranslate[yytranslate90,1710
+static const short yyprhs[yyprhs122,3719
+static const short yyrhs[yyrhs128,3925
+static const short yyrline[yyrline141,4446
+static const char * const yytname[yytname151,4704
+static const short yyr1[yyr1160,5185
+static const short yyr2[yyr2166,5389
+static const short yydefact[yydefact172,5593
+static const short yydefgoto[yydefgoto179,5879
+static const short yypact[yypact183,5974
+static const short yypgoto[yypgoto190,6258
+#define	YYLAST	195,6352
+static const short yytable[yytable198,6373
+static const short yycheck[yycheck204,6629
+#define YYPURE 209,6884
+#define YYSTACK_USE_ALLOCA245,8361
+#define YYSTACK_USE_ALLOCA248,8435
+#define alloca 249,8462
+#define YYSTACK_USE_ALLOCA252,8667
+#define YYSTACK_USE_ALLOCA269,9308
+#define YYSTACK_USE_ALLOCA274,9513
+#define alloca 275,9540
+#define YYSTACK_ALLOC 286,9808
+#define YYSTACK_ALLOC 288,9843
+#define yyerrok	295,10027
+#define yyclearin	296,10062
+#define YYEMPTY	297,10099
+#define YYEOF	298,10119
+#define YYACCEPT	299,10136
+#define YYABORT 300,10170
+#define YYERROR	301,10203
+#define YYFAIL	306,10439
+#define YYRECOVERING(307,10469
+#define YYBACKUP(308,10509
+#define YYTERROR	320,10843
+#define YYERRCODE	321,10862
+#define YYLEX	324,10900
+#define YYLEX	330,10984
+#define YYLEX	332,11042
+#define YYLEX	336,11136
+#define YYLEX	338,11185
+int	yychar;347,11328
+YYSTYPE	yylval;348,11371
+YYLTYPE yylloc;352,11474
+int yynerrs;356,11560
+int yydebug;360,11661
+#define YYINITDEPTH 368,11903
+#define YYMAXDEPTH 379,12132
+__yy_memcpy 395,12736
+#define YYPARSE_PARAM_ARG 433,13599
+#define YYPARSE_PARAM_DECL434,13645
+#define YYPARSE_PARAM_ARG 436,13700
+#define YYPARSE_PARAM_DECL 437,13740
+#define YYPARSE_PARAM_ARG440,13847
+#define YYPARSE_PARAM_DECL441,13873
+yyparse(454,14083
+#define YYPOPSTACK 475,14794
+#define YYPOPSTACK 477,14849
+  *++yyvsp yyvsp982,26044
+  yyn 1006,26648
+  yystate 1008,26668
+    yystate 1012,26824
+  goto yynewstate;1014,26866
+  goto yyerrlab1;1067,28033
+  yyerrstatus 1089,28558
+  goto yyerrhandle;1091,28625
+  yyn 1098,28832
+  yystate 1106,29085
+  yyn 1124,29385
+  yyn 1132,29557
+  *++yyvsp yyvsp1151,29851
+  *++yylsp yylsp1153,29892
+  yystate 1156,29921
+  goto yynewstate;1157,29938
+
+tl_tab.h,583
+#define YYSTYPE 2,16
+#define	ATOM_IDENT	4,43
+#define	ATOM_INTEGER	5,66
+#define	ATOM_FLOAT	6,91
+#define	ATOM_STRING	7,114
+#define	ATOM_INFINITY	8,138
+#define	ATOM_LOWER_OPEN	9,164
+#define	ATOM_LOWER_CLOSED	10,192
+#define	ATOM_UPPER_OPEN	11,222
+#define	ATOM_UPPER_CLOSED	12,250
+#define	ATOM_LISTP	13,280
+#define	ATOM_BTREEP	14,303
+#define	ATOM_FUNCTIONP	15,327
+#define	ATOM_FORMULAP	16,354
+#define	ATOM_OPERATORP	17,380
+#define	ATOM_SYMBOLINFOP	18,407
+#define	ATOM_ARRAYINFOP	19,436
+#define	ATOM_ISPECP	20,464
+#define	ATOM_BADTOK	21,488
+#define ATOM_HBTREEP 22,512
+
+user.c,205
+typedef struct library41,803
+}LIBRARY, *LIBRARYP;LIBRARYP46,974
+LIBRARYP plLibList;52,1047
+BOOL NewLibrary61,1278
+void CloseLibraries(133,2974
+void MarkLibraries(161,3473
+BOOL GetLibSymbol177,3641
+
+util.c,1006
+static char acErrorBuf[acErrorBuf49,1090
+static int iFib=53,1171
+static int jFib=54,1219
+static unsigned int nFibSeed=55,1266
+static unsigned int anFibCoef[anFibCoef57,1332
+static int nMSSeed;78,1623
+static unsigned int anCRCTab[anCRCTab84,1677
+FILE *pfError;pfError154,4872
+FILE *pfJBCRC;pfJBCRC155,4929
+int nErrorCount;156,4966
+DECLSPEC void *MemAllocMemAlloc174,5367
+void *CopyAllocCopyAlloc204,5877
+DECLSPEC void *StrAllocAndPos(StrAllocAndPos237,6489
+DECLSPEC void *IdentAllocAndPos(IdentAllocAndPos318,8292
+void Message434,10670
+DECLSPEC void ErrorMessage460,11115
+void ErrorExit497,11909
+void DumpBindings522,12275
+double GetInternalRunTime(545,12853
+#define CLK_TCK 561,13119
+static double GetWinRunTime(604,14717
+unsigned int SizeOfMemory(648,15469
+int stricmp680,16001
+char *strlwrstrlwr703,16321
+unsigned int CRC32725,16577
+BOOL FormatText760,17248
+DECLSPEC int FibRand(946,21868
+DECLSPEC void FibSeed976,22370
+int MSRand(1023,23103
+void MSSeed1035,23308
+
+util.h,120
+#define __UTIL_H2,17
+#define StringEqQ(9,163
+#define StringLtQ(10,205
+#define Free(11,249
+#define stricmp 106,1711
+
+var.c,106
+BOOL VarQ39,592
+CELLP VariablesIn68,1130
+static BOOL NotVarOccursQ112,1930
+BOOL VariableFreeQ147,2538
+
+world.c,2888
+int nWorldNumber;71,2051
+LINEARPLANP plpGoalWorld;72,2094
+double dEvalTotalCost;75,2146
+static BTREEP *apbtNewWorld;apbtNewWorld81,2258
+static HBTREEP *aphbtNewWorld;aphbtNewWorld82,2313
+static CELLP pcAdd;84,2373
+CELLP pcAddEnd;86,2438
+static CELLP pcDel;87,2454
+CELLP pcDelEnd;89,2522
+static HCELLP pcAddHinfo;91,2539
+static HCELLP pcAddHinfoEnd;92,2621
+static HCELLP pcDelHinfo;93,2650
+static HCELLP pcDelHinfoEnd;94,2676
+BTREEP *MakeWorld(MakeWorld198,4707
+HBTREEP *MakeWorld_H(MakeWorld_H211,4931
+void MarkWorld232,5248
+void WorldSizeOf256,5553
+BTREEP *CopyWorldCopyWorld290,6213
+HBTREEP *CopyWorld_HCopyWorld_H307,6542
+LINEARPLANP MakeWorldAction446,10267
+LINEARPLANP MakeWorldAction_H495,11416
+BOOL PrintWorldX544,12422
+LINEARPLANP CreateInitialWorldAction588,13395
+void InitializeMacroWorld677,15806
+LINEARPLANP CreateGoalWorldAction723,16960
+LINEARPLANP GetGoalWorld814,19183
+BOOL PrintWorld850,20049
+BOOL PrintHWorld909,21405
+static BTREEP InsertArgTree996,23474
+static HBTREEP InsertArgTree_H1015,23948
+static HBTREEP InsertArgTree_FF1035,24452
+static CELLP FindValueArgTree1127,26382
+static CELLP FindValueArgTree_H1145,26632
+static LISTP ArgTreeToList1179,27253
+static LISTP ArgTreeToList_H1198,27652
+static LISTP ArgTreeToListTransform1218,28058
+static LISTP ArgTreeToListTransform_H1258,28976
+CELLP ArgTreeToFormulaList1312,30352
+static CELLP NewArgTreeToListTransform1340,31026
+BOOL WorldEqQ1391,32176
+void WorldSignature1481,34108
+static unsigned int BTreeSignatureR1568,36067
+static unsigned int FormulaListSignature1738,40215
+static unsigned int FormulaSignature1778,41110
+BOOL EvalAdd1857,43089
+BOOL EvalAdd_H1954,45725
+BOOL EvalAdd_FF2023,47493
+BOOL EvalDel2151,51043
+BOOL EvalDel_H2213,52498
+BOOL EvalDel_FF2286,54188
+BOOL EvalNODel 2392,56704
+BOOL EvalUpdateWorld2414,57101
+static int nSeed;2432,57416
+static int MSRandx(2434,57458
+static CELLP PermuteFormulaList2494,58900
+void UpdateWorld(2553,60338
+int AddsFromUpdateWorld(2651,63082
+int AddsFromUpdateWorld_H(2780,66280
+int AddsFromUpdateWorld_H_unreleffs(2935,70559
+int AddsFromUpdateWorld_FF_unreleffs(3106,75419
+int AddsFromUpdateExecute(3277,80636
+BOOL EvalDescPredicateStd 3505,88056
+BOOL EvalDescPredicateRelaxedNeg3530,88696
+BOOL EvalDescPredicateStd_H 3546,89076
+BOOL EvalDescPredicateRelaxedNeg_H3578,89805
+LISTP pcFFSupFacts;3604,90419
+BOOL EvalDescPredicateStd_FF 3607,90441
+BOOL EvalDescPredicateStd_VP 3673,92379
+BOOL EvalDescPredicateStd_FF_MM 3707,93179
+BOOL EvalDescPredicateRelaxedNeg_FF3772,95361
+BOOL EvalDescPredicateRelaxedNeg_FF_MM3818,96384
+BOOL EvalDescPredicate_VP3864,97455
+BOOL EvalDescPredicate3895,98131
+CELLP ComputeDescFunction3967,100020
+CELLP ComputeDescFunction_Std3981,100351
+CELLP ComputeDescFunction_H4014,101109
+static CELLP ComputePlusEq4127,103193
+static CELLP ComputeMinusEq4200,104561
+
+world.h,504
+#define __WORLD_H2,18
+#define LinearPlanWorld(8,69
+#define LinearPlanHWorld(9,121
+#define LinearPlanActionName(10,175
+#define LinearPlanActionDuration(11,234
+#define LinearPlanActionCost(12,300
+#define LinearPlanActionPriority(13,359
+#define SetLinearPlanWorld(17,443
+#define SetLinearPlanActionName(18,507
+#define SetLinearPlanActionDuration(19,577
+#define SetLinearPlanActionCost(20,654
+#define SetLinearPlanActionPriority(21,724
+#define GetSymbolArgs(23,802
+#define PutSymbolArgs(24,846
+
+zone.c,752
+#define MASK	52,1606
+#define MINSIZE	53,1684
+#define SHIFT	54,1737
+#define GRANULARITY	55,1781
+#define ALLOCATION	56,1860
+#define ROUNDUP(58,1937
+#define VMALLOC 63,2066
+#define VFREE 64,2090
+#define VMALLOC 66,2126
+#define VFREE 67,2149
+ZONE zScratch;72,2205
+ZONE zPermanent;73,2250
+ZONEP pzCurrent;74,2298
+int nZoneLimit;75,2339
+static int nReserved;79,2404
+void *ZoneAllocZoneAlloc112,2967
+DECLSPEC void ZoneFree212,5330
+static BOOL ExtendZone269,6506
+BOOL InitZone317,7660
+void ZoneClear371,8893
+void SetZone486,11724
+void ZoneStatistics501,11931
+void ZoneCollect542,13067
+void ZoneDelta646,15580
+void *ZoneCopyZoneCopy669,16022
+void ZoneReloc735,17577
+static void *VMallocVMalloc791,18683
+static void VFree812,19082
+
+zone.h,410
+#define ZoneUnmark(5,83
+#define ZoneMark(6,171
+#define ZoneMarkedQ(7,255
+#define ZoneSizeOf(8,343
+#define FREE	10,426
+#define RESERVED_P	11,475
+#define RESERVED_S	12,543
+#define MARKED	13,609
+#define RELOCATED	14,687
+typedef struct alloc	16,746
+}ALLOC, *ALLOCP;ALLOCP22,996
+typedef struct zone	24,1014
+}ZONE, *ZONEP;ZONEP37,1580
+typedef struct memory	39,1596
+}MEMORY, *MEMORYP;MEMORYP45,1859
+
+var.h,0
+
+user.h,0
+
+strhash.h,0
+
+makeform.h,0
+
+lexpddl.h,0
+
+isaac.h,0
+
+crchash.h,0
+
+compute.h,0
+
+color.h,0
+
+cc.h,0

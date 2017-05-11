@@ -1,0 +1,105 @@
+#  ***************************************************************
+#  *   Makefile for the CLAIRE system.                           *
+#  *   Windows NT version - CLAIRE 3.0                           *
+#  *   last modified: Feb 7th, 2000                              *
+#  *   simplified version: copy .libs from public to debug !     *
+#  ***************************************************************
+
+all:	cclaire.exe
+
+
+# -------------------------------------------
+# |      1. directories                      |
+# -------------------------------------------
+#
+
+# directories
+ROOT = $(CLAIRE3_HOME)                  #edit: current directory = CLAIRE_HOME
+
+Dl = $(ROOT)\bin\public\ntv            # where the libs are placed
+Dd = $(ROOT)\bin\debug\ntv             # where the debug libs are placed
+Ds = $(ROOT)\csrc
+Dh = $(ROOT)\include
+Do = $(ROOT)\objs
+
+#utilities
+DEL = del
+CC = cl
+LIBR = lib
+LINK = link
+
+# define the various directories in which the source may be found ---------------
+
+#flags
+CLFLAGS = -c /I$(Dh) /DCLWIN /DCLPC /O2
+LKFLAGS = /NOLOGO /DEBUG /SUBSYSTEM:CONSOLE /MAP /STACK:800 user32.lib gdi32.lib shell32.lib comdlg32.lib
+LFLAGS = /nologo
+
+.SUFFIXES : .exe .obj .cpp
+
+#dependency rule
+{$(Ds)}.cpp{$(Do)}.obj:
+	$(CC) $(CLFLAGS) /Fo$(Do)\$(<B).obj /Tp $<
+
+
+KernelF = $(Do)\Clalloc.OBJ $(Do)\Clbag.OBJ $(Do)\Clenv.obj $(Do)\Clport.obj $(Do)\Clstring.obj $(Do)\Clreflect.obj $(Do)\Kernel.obj
+
+$(Dl)\Kernel.lib:	$(KernelF)
+	$(LIBR) $(LFLAGS) /OUT:$@ $(KernelF)
+
+$(Dl)\Console.lib: $(Do)\clConsole.obj
+	$(LIBR) $(LFLAGS) /OUT:$@ $(Do)\clConsole.obj
+
+$(Dl)\noConsole.lib: $(Do)\clNoConsole.obj
+	$(LIBR) $(LFLAGS) /OUT:$@ $(Do)\clNoConsole.obj
+
+
+CoreF =  $(Do)\method.obj  $(Do)\object.obj  $(Do)\function.obj  $(Do)\types.obj $(Do)\Core.obj
+$(Dl)\Core.lib: $(CoreF)
+	$(LIBR) $(LFLAGS) /OUT:$@ $(CoreF)
+
+LanguageF =  $(Do)\pretty.obj  $(Do)\call.obj  $(Do)\control.obj  $(Do)\define.obj $(Do)\Language.obj
+$(Dl)\Language.lib: $(LanguageF)
+	$(LIBR) $(LFLAGS) /OUT:$@ $(LanguageF)
+
+ReaderF =  $(Do)\read.obj  $(Do)\syntax.obj  $(Do)\file.obj  $(Do)\inspect.obj $(Do)\Reader.obj
+$(Dl)\Reader.lib: $(ReaderF)
+	$(LIBR) $(LFLAGS) /OUT:$@ $(ReaderF)
+
+OptimizeF =  $(Do)\osystem.obj  $(Do)\odefine.obj  $(Do)\ocall.obj  $(Do)\otool.obj  $(Do)\ocontrol.obj $(Do)\Optimize.obj
+$(Dl)\Optimize.lib: $(OptimizeF)
+	$(LIBR) $(LFLAGS) /OUT:$@ $(OptimizeF)
+
+GenerateF =  $(Do)\gsystem.obj  $(Do)\cgen.obj  $(Do)\gexp.obj  $(Do)\copt.obj  $(Do)\gstat.obj $(Do)\Generate.obj
+$(Dl)\Generate.lib: $(GenerateF)
+	$(LIBR) $(LFLAGS) /OUT:$@ $(GenerateF)
+
+FILES = $(Do)\cclaire-s.obj $(Do)\ccmain.obj
+
+sclaire.exe: $(Dl)\Kernel.lib $(Dl)\Console.lib $(Dl)\noConsole.lib $(Dl)\Core.lib $(Dl)\Language.lib $(Dl)\Reader.lib $(Dl)\Optimize.lib $(Dl)\Generate.lib $(FILES)
+     $(LINK) $(LKFLAGS) $(Dl)\Core.lib $(Dl)\Language.lib $(Dl)\Reader.lib $(Dl)\Optimize.lib $(Dl)\Generate.lib $(Dl)\Kernel.lib $(Dl)\console.lib /OUT:sclaire.exe $(FILES)
+
+
+# +----------------------------------------------------------------+
+# |  How to create a proper version of claire                      |
+# +----------------------------------------------------------------+
+
+cclaire.exe:	ccmain.cl sclaire.exe
+	sclaire -s 3 3 -env ntv -m Compile -cx ccmain -o cclaire
+	copy cclaire.exe $(Dl)\claire.exe
+        copy $(Dl)\*.lib $(Dd)
+
+
+# +----------------------------------------------------------------+
+# |  How to clean                                                  |
+# +----------------------------------------------------------------+
+
+clean:
+	$(DEL) *.exe
+	$(DEL) *.map
+	$(DEL) *.ilk
+	$(DEL) *.pdb
+	$(DEL) csrc\*.obj
+	$(DEL) objs\*.obj
+	$(DEL) $(Dl)\*.lib
+

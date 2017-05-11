@@ -1,0 +1,19 @@
+Domain: blocks-world
+Version: prodigy-bw
+
+The same as the domain "prodigy-bw" in the
+PDDL 1.3 distribution
+
+	strict-domains/fridge/domain04.pddl
+
+with renamed examples and added examples from the paper
+
+		Henry Kautz and Bart Selman, "Pushing the Envelope:
+		Planning, Propositional Logic, and Stochastic Search",
+		Proc. AAAI-96.
+
+The larger problems in this set cause "out of memory" errors for
+blackbox version 2.0.
+
+
+12 June 1998, Henry Kautz

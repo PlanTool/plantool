@@ -1,0 +1,7 @@
+Domain: bulldozer
+Versions: bulldozer
+
+This is the same as the PDDL 1.3 distribution domain
+	strict-domains/travel/domain01.pddl
+but with the simplifed domain02.pddl and domain03.pddl eliminated.
+
