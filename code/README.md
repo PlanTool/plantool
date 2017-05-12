@@ -1,5 +1,4 @@
 # 2017.05.12  更新：重新将规划期分类，并删除其他语言的代码，剩余的都是C/C++/Python的
-
 ## 下面是对应各个规划器的网址，代码是从上面下载的，其他的说明也在上面，不清楚的可以上去看。
 
 STAPLAN:  http://www.cs.rochester.edu/users/faculty/kautz/satplan/index.htm
