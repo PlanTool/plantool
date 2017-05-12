@@ -14,7 +14,7 @@ import wx.lib.buttons as buttons
 #from ctypes import *
 
 
-logging.basicConfig(filename='debug.log', filemode='w', level=logging.DEBUG)
+#logging.basicConfig(filename='debug.log', filemode='w', level=logging.DEBUG)
 
 def str2bool(v):
     return v.lower() in ("yes", "true", "t", "1")
@@ -44,7 +44,7 @@ class RunModelThread(threading.Thread):
 
 class PlannerGUI(wx.Frame):
     def __init__(self, app_name, bcolor, track_id='D', app_size=(1000, 750)):
-        logging.debug( 'Initializing PlannerGUI...\n' )
+        #logging.debug( 'Initializing PlannerGUI...\n' )
         wx.Frame.__init__(self, None, -1, 'PlanTool', size=app_size)  
         self.panel = wx.Panel(self, -1)
         if bcolor:
@@ -95,7 +95,7 @@ class PlannerGUI(wx.Frame):
         elif self.track_id == 'U': #Uncertainty Track
             self.PlannerList = [''] 
         elif self.track_id == 'L': #Learning Track
-            self.PlannerList = ['DUP','DPR']
+            self.PlannerList = ['DUP','DPR','HTNML']
         self.planner_text, self.planner_choice = self.TF_choice("Select a planner:", 
             (15,150), (200, 145), self.PlannerList, self.choice_init)
 
@@ -141,6 +141,7 @@ class PlannerGUI(wx.Frame):
         choose_text = wx.StaticText(self.panel, -1, label, st_pos, style=wx.ALIGN_LEFT)
         choose_text.SetFont(wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.BOLD))
         temp_choice = wx.Choice(self.panel, -1, ch_pos, choices=choose_list)
+        temp_choice.SetSelection(-1)
         if func:
             self.Bind(wx.EVT_CHOICE, func, temp_choice)
         return choose_text, temp_choice
@@ -187,6 +188,8 @@ class PlannerGUI(wx.Frame):
             pass
         elif self.track_id == 'L':
             if p == 0:
+                self.train_DPR_flag = 0
+                self.test_DPR_flag = 0
                 if self.train_word2vec_text:
                     self.train_word2vec_text.Destroy()
                     self.train_word2vec_choice.Destroy()
@@ -203,14 +206,14 @@ class PlannerGUI(wx.Frame):
 
             elif p == 1:
                 self.DPR_init()
+                self.train_DUP_flag = 0
+                self.test_DUP_flag = 0
                 if self.train_DUP_text:
                     self.train_DUP_destroy()
-                if self.train_DUP_flag:
-                    self.train_DUP_flag = 0
+                if self.train_DUP_flag:                  
                     if self.DUPSettingFrame:
                         self.DUPSettingFrame.Destroy()
-                if self.test_DUP_text:
-                    self.test_DUP_flag = 0
+                if self.test_DUP_text:                 
                     self.test_DUP_destroy()
                 self.train_word2vec_list = ['False', 'True']
                 self.train_word2vec_text, self.train_word2vec_choice = self.TF_choice("Train word2vec model:", 
@@ -226,7 +229,7 @@ class PlannerGUI(wx.Frame):
         output_label_font = wx.Font(18, wx.SCRIPT, wx.NORMAL, wx.BOLD)
         output_label.SetFont(output_label_font)
         self.OutputText = wx.TextCtrl(self.panel, -1,"",
-        size=(640, 560), pos=(340,60), style=wx.TE_MULTILINE | wx.TE_READONLY | wx.TE_RICH2) 
+        size=(640, 560), pos=(340,60), style=wx.TE_MULTILINE | wx.TE_RICH2 )#| wx.TE_READONLY ) 
         output_font = wx.Font(self.out_size, self.out_style, wx.NORMAL, wx.NORMAL)
         self.OutputText.SetFont(output_font)
         self.pointer = self.OutputText.GetInsertionPoint()
@@ -475,6 +478,9 @@ class PlannerGUI(wx.Frame):
         envarg.add_argument("--penal_radix", type=float, default=5.0, help="Penalty radix according to action rate.")
         envarg.add_argument("--action_label", type=int, default=2, help="An integer refer to the label of actions.")
         envarg.add_argument("--non_action_label", type=int, default=1, help="An integer refer to the label of non-actions.")
+        envarg.add_argument("--user", default='fengwf', help="Mysql account, user name.")
+        envarg.add_argument("--passwd", default='123', help="Mysql password.")
+        envarg.add_argument("--db", default='test', help="Mysql database name.")
 
         memarg = parser.add_argument_group('Replay memory')
         memarg.add_argument("--replay_size", type=int, default=10000, help="Maximum size of replay memory.")
@@ -587,171 +593,325 @@ class PlannerGUI(wx.Frame):
         from EADQN import DeepQLearner
         from Agent import Agent
 
-        if args.use_gpu:
-            args.cnn_format = 'NCHW'
         if args.words_num != 500:
             args.num_actions = 2*args.words_num
         tables_num = len(args.actionDB.split())
-        logging.debug( '\n\nargs of DPR:\n'+str(args)+'\n' ) 
+        #logging.debug( '\n\nargs of DPR:\n'+str(args)+'\n' ) 
 
         start = time.time()
         localtime = time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(time.time()))
-        logging.debug('\nCurrent time is: %s'%localtime)
-        logging.debug('\nStarting at main.py...')
+        #logging.debug('\nCurrent time is: %s'%localtime)
+        #logging.debug('\nStarting at main.py...')
         self.OutputText.AppendText('\nCurrent time is: %s'%localtime)
         self.OutputText.AppendText('\n\nStart running DPR main function...\n')
         train_out = open(args.result_dir + "_train.txt",'w')
         test_out = open(args.result_dir + "_test.txt",'w')
 
-        #Initial environment, replay memory, deep q net and agent
-        gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=args.gpu_rate)
-        with tf.Session(config=tf.ConfigProto(gpu_options=gpu_options)) as sess:
-            net = DeepQLearner(args, sess)
-            env = Environment(args)
-            mem = ReplayMemory(args.replay_size, args)
-            agent = Agent(env, mem, net, args)
+        if args.use_gpu:
+            args.cnn_format = 'NCHW'
+            #Initial environment, replay memory, deep q net and agent
+            gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=args.gpu_rate)
+            with tf.Session(config=tf.ConfigProto(gpu_options=gpu_options)) as sess:
+                net = DeepQLearner(args, sess)
+                env = Environment(args)
+                mem = ReplayMemory(args.replay_size, args)
+                agent = Agent(env, mem, net, args)
 
 
-            if args.load_weights:
-                logging.debug('\nLoading weights from %s...\n'%args.load_weights)
-                self.OutputText.AppendText('\nLoading weights from %s...\n'%args.load_weights)
-                net.load_weights(args.load_weights)  
+                if args.load_weights:
+                    #logging.debug('\nLoading weights from %s...\n'%args.load_weights)
+                    self.OutputText.AppendText('\nLoading weights from %s...\n'%args.load_weights)
+                    net.load_weights(args.load_weights)  
 
-            if args.test_one:
-                ws, act_seq, st = agent.test_one(args.text_dir)
-                #logging.debug('\nText_vec: %s'%str(env.text_vec))
-                logging.debug('\nStates: %s\n'%str(st))
-                logging.debug('\nWords: %s\n'%str(ws))
-                logging.debug('\n\nAction_squence: %s\n'%str(act_seq))
-                self.OutputText.AppendText('Words: %s\n'%str(ws))
-                self.OutputText.AppendText('\nAction_squence: %s\n'%str(act_seq))
-            else:
-                # loop over epochs
-                for epoch in xrange(args.start_epoch, args.epochs):
-                    train_out.write(str(args)+'\n')
-                    train_out.write('\nCurrent time is: %s'%localtime)
-                    train_out.write('\nStarting at main.py...')
-                    if args.train_steps:
-                        agent.train(args.train_steps, epoch)
-                        if args.save_weights_prefix:
-                            filename = args.save_weights_prefix + "_%d.prm" % (epoch + 1)
-                            net.save_weights(filename)
+                if args.test_one:
+                    ws, act_seq, st = agent.test_one(args.text_dir)
+                    ##logging.debug('\nText_vec: %s'%str(env.text_vec))
+                    #logging.debug('\nStates: %s\n'%str(st))
+                    #logging.debug('\nWords: %s\n'%str(ws))
+                    #logging.debug('\n\nAction_squence: %s\n'%str(act_seq))
+                    #self.OutputText.AppendText('Words: %s\n'%str(ws))
+                    for ind,s in enumerate(env.sents):
+                        self.OutputText.AppendText('\nSentences %d: %s\n'%(ind,str(s)))
+                    self.OutputText.AppendText('\nAction sequence:\n')
+                    for ac in act_seq:
+                        self.OutputText.AppendText('\t%s\n'%ac)
+                else:
+                    # loop over epochs
+                    for epoch in xrange(args.start_epoch, args.epochs):
+                        train_out.write(str(args)+'\n')
+                        train_out.write('\nCurrent time is: %s'%localtime)
+                        train_out.write('\nStarting at main.py...')
+                        if args.train_steps:
+                            agent.train(args.train_steps, epoch)
+                            if args.save_weights_prefix:
+                                filename = args.save_weights_prefix + "_%d.prm" % (epoch + 1)
+                                net.save_weights(filename)
 
-                    if args.train_steps > 0:
-                        cnt = 0
-                        ras = 0
-                        tas = 0
-                        tta = 0
-                        for i in range(env.size):
-                            text_vec_tags = env.saved_text_vec[i,:,-1]
-                            state_tags = env.saved_states[i,:,-1]
-                            sum_tags = sum(text_vec_tags)
-                            if not sum_tags:
-                                break
-                            count = 0
-                            right_actions = 0
-                            tag_actions = 0
-                            total_actions = 0
-                            total_words = args.num_actions/2
-                            temp_words = env.saved_text_length[i]
-                            if temp_words > total_words:
-                                temp_words = total_words
+                        if args.train_steps > 0:
+                            cnt = 0
+                            ras = 0
+                            tas = 0
+                            tta = 0
+                            for i in range(env.size):
+                                text_vec_tags = env.saved_text_vec[i,:,-1]
+                                state_tags = env.saved_states[i,:,-1]
+                                sum_tags = sum(text_vec_tags)
+                                if not sum_tags:
+                                    break
+                                count = 0
+                                right_actions = 0
+                                tag_actions = 0
+                                total_actions = 0
+                                total_words = args.num_actions/2
+                                temp_words = env.saved_text_length[i]
+                                if temp_words > total_words:
+                                    temp_words = total_words
 
-                            logging.debug( "text_vec_tags",text_vec_tags )
-                            logging.debug( 'state_tags',state_tags )
-                            for t in text_vec_tags:
-                                if t == args.action_label:
-                                    total_actions += 1
+                                #logging.debug( "text_vec_tags",text_vec_tags )
+                                #logging.debug( 'state_tags',state_tags )
+                                for t in text_vec_tags:
+                                    if t == args.action_label:
+                                        total_actions += 1
 
-                            train_out.write('\n\nText:'+str(i))
-                            train_out.write('\ntotal words: %d\n'%temp_words)
-                            logging.debug( '\ntotal words: %d\n'%temp_words )
-                            train_out.write('\nsaved_text_vec:\n')
-                            train_out.write(str(env.saved_text_vec[i,:,-1]))
-                            train_out.write('\nsaved_states:\n')
-                            train_out.write(str(env.saved_states[i,:,-1]))
+                                train_out.write('\n\nText:'+str(i))
+                                train_out.write('\ntotal words: %d\n'%temp_words)
+                                #logging.debug( '\ntotal words: %d\n'%temp_words )
+                                train_out.write('\nsaved_text_vec:\n')
+                                train_out.write(str(env.saved_text_vec[i,:,-1]))
+                                train_out.write('\nsaved_states:\n')
+                                train_out.write(str(env.saved_states[i,:,-1]))
 
-                            for s in xrange(temp_words):
-                                if state_tags[s] == 0:
-                                    count += 1
-                                elif state_tags[s] == args.action_label:
-                                    tag_actions += 1
-                                    if text_vec_tags[s] == state_tags[s]:
-                                        right_actions += 1
+                                for s in xrange(temp_words):
+                                    if state_tags[s] == 0:
+                                        count += 1
+                                    elif state_tags[s] == args.action_label:
+                                        tag_actions += 1
+                                        if text_vec_tags[s] == state_tags[s]:
+                                            right_actions += 1
 
-                            cnt += count
-                            ras += right_actions
-                            tta += tag_actions
-                            tas += total_actions
-                            if total_actions > 0:
-                                recall = float(right_actions)/total_actions
+                                cnt += count
+                                ras += right_actions
+                                tta += tag_actions
+                                tas += total_actions
+                                if total_actions > 0:
+                                    recall = float(right_actions)/total_actions
+                                else:
+                                    recall = 0
+                                if tag_actions > 0:
+                                    precision = float(right_actions)/tag_actions
+                                else:
+                                    precision = 0
+                                rp = recall + precision
+                                if rp > 0:
+                                    F_value = (2.0*recall*precision)/(recall+precision)
+                                else:
+                                    F_value = 0
+                                train_out.write('\nWords left: %d'%count)
+                                train_out.write('\nAcions: %d'%total_actions)
+                                train_out.write('\nRight_actions: %d'%right_actions)
+                                train_out.write('\nTag_actions: %d'%tag_actions)
+                                train_out.write('\nActions_recall: %f'%recall)
+                                train_out.write('\nActions_precision: %f'%precision)
+                                train_out.write('\nF_measure: %f'%F_value)
+                                #logging.debug( '\nText: %d'%i )
+                                #logging.debug( '\nWords left: %d'%count )
+                                #logging.debug( 'Acions: %d'%total_actions )
+                                #logging.debug( 'Right_actions: %d'%right_actions )
+                                #logging.debug( 'Tag_actions: %d'%tag_actions )
+                                #logging.debug( 'Actions_recall: %f'%recall )
+                                #logging.debug( 'Actions_precision: %f'%precision )
+                                #logging.debug( 'F_measure: %f'%F_value )
+
+                            if tas > 0:
+                                average_recall = float(ras)/tas
                             else:
-                                recall = 0
-                            if tag_actions > 0:
-                                precision = float(right_actions)/tag_actions
+                                average_recall = 0
+                            if tta > 0:
+                                average_precision = float(ras)/tta
                             else:
-                                precision = 0
-                            rp = recall + precision
-                            if rp > 0:
-                                F_value = (2.0*recall*precision)/(recall+precision)
+                                average_precision = 0
+                            arp = average_recall + average_precision
+                            if arp > 0:
+                                ave_F_value = (2*average_recall*average_precision)/(average_recall+average_precision)
                             else:
-                                F_value = 0
-                            train_out.write('\nWords left: %d'%count)
-                            train_out.write('\nAcions: %d'%total_actions)
-                            train_out.write('\nRight_actions: %d'%right_actions)
-                            train_out.write('\nTag_actions: %d'%tag_actions)
-                            train_out.write('\nActions_recall: %f'%recall)
-                            train_out.write('\nActions_precision: %f'%precision)
-                            train_out.write('\nF_measure: %f'%F_value)
-                            logging.debug( '\nText: %d'%i )
-                            logging.debug( '\nWords left: %d'%count )
-                            logging.debug( 'Acions: %d'%total_actions )
-                            logging.debug( 'Right_actions: %d'%right_actions )
-                            logging.debug( 'Tag_actions: %d'%tag_actions )
-                            logging.debug( 'Actions_recall: %f'%recall )
-                            logging.debug( 'Actions_precision: %f'%precision )
-                            logging.debug( 'F_measure: %f'%F_value )
-
-                        if tas > 0:
-                            average_recall = float(ras)/tas
-                        else:
-                            average_recall = 0
-                        if tta > 0:
-                            average_precision = float(ras)/tta
-                        else:
-                            average_precision = 0
-                        arp = average_recall + average_precision
-                        if arp > 0:
-                            ave_F_value = (2*average_recall*average_precision)/(average_recall+average_precision)
-                        else:
-                            ave_F_value = 0
-                        train_out.write('\nTotal words left: %d'%cnt)
-                        train_out.write('\nTotal acions: %d'%tas)
-                        train_out.write('\nTotal right_acions: %d'%ras)
-                        train_out.write('\nTotal tag_acions: %d'%tta)
-                        train_out.write('\nAverage_actions_recall: %f'%average_recall)
-                        train_out.write('\nAverage_actions_precision: %f'%average_precision)
-                        train_out.write('\nAverage_F_measure: %f'%ave_F_value)
-                        logging.debug( '\nTotal words left: %d'%cnt )
-                        logging.debug( 'Total acions: %d'%tas )
-                        logging.debug( 'Total right_actions: %d'%ras )
-                        logging.debug( 'Total tag_actions: %d'%tta )
-                        logging.debug( 'Average_actions_recall: %f'%average_recall )
-                        logging.debug( 'Average_actions_precision: %f'%average_precision )
-                        logging.debug( 'Average_F_measure: %f'%ave_F_value )
+                                ave_F_value = 0
+                            train_out.write('\nTotal words left: %d'%cnt)
+                            train_out.write('\nTotal acions: %d'%tas)
+                            train_out.write('\nTotal right_acions: %d'%ras)
+                            train_out.write('\nTotal tag_acions: %d'%tta)
+                            train_out.write('\nAverage_actions_recall: %f'%average_recall)
+                            train_out.write('\nAverage_actions_precision: %f'%average_precision)
+                            train_out.write('\nAverage_F_measure: %f'%ave_F_value)
+                            #logging.debug( '\nTotal words left: %d'%cnt )
+                            #logging.debug( 'Total acions: %d'%tas )
+                            #logging.debug( 'Total right_actions: %d'%ras )
+                            #logging.debug( 'Total tag_actions: %d'%tta )
+                            #logging.debug( 'Average_actions_recall: %f'%average_recall )
+                            #logging.debug( 'Average_actions_precision: %f'%average_precision )
+                            #logging.debug( 'Average_F_measure: %f'%ave_F_value )
 
 
-                    if args.train_test:
-                        agent.train_test(args.words_num, args.test_text_num*tables_num, test_out)
-                    train_out.close()
-                    test_out.close()
+                        if args.train_test:
+                            agent.train_test(args.words_num, args.test_text_num*tables_num, test_out)
+                        train_out.close()
+                        test_out.close()
 
-            end = time.time()
-            localtime = time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(time.time()))
-            logging.debug('\nTotal time cost: %ds'%(end-start))
-            logging.debug('\nCurrent time is: %s\n'%localtime)
-            self.OutputText.AppendText('Total time cost: %ds\n'%(end-start))
-            self.OutputText.AppendText('Current time is: %s\n'%localtime)
+                end = time.time()
+                localtime = time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(time.time()))
+                #logging.debug('\nTotal time cost: %ds'%(end-start))
+                #logging.debug('\nCurrent time is: %s\n'%localtime)
+                self.OutputText.AppendText('Total time cost: %ds\n'%(end-start))
+                self.OutputText.AppendText('Current time is: %s\n'%localtime)
+        else:
+            with tf.Session() as sess:
+                net = DeepQLearner(args, sess)
+                env = Environment(args)
+                mem = ReplayMemory(args.replay_size, args)
+                agent = Agent(env, mem, net, args)
+
+
+                if args.load_weights:
+                    #logging.debug('\nLoading weights from %s...\n'%args.load_weights)
+                    self.OutputText.AppendText('\nLoading weights from %s...\n'%args.load_weights)
+                    net.load_weights(args.load_weights)  
+
+                if args.test_one:
+                    ws, act_seq, st = agent.test_one(args.text_dir)
+                    ##logging.debug('\nText_vec: %s'%str(env.text_vec))
+                    #logging.debug('\nStates: %s\n'%str(st))
+                    #logging.debug('\nWords: %s\n'%str(ws))
+                    #logging.debug('\n\nAction_squence: %s\n'%str(act_seq))
+                    self.OutputText.AppendText('Words: %s\n'%str(ws))
+                    self.OutputText.AppendText('\nAction_squence: %s\n'%str(act_seq))
+                else:
+                    # loop over epochs
+                    for epoch in xrange(args.start_epoch, args.epochs):
+                        train_out.write(str(args)+'\n')
+                        train_out.write('\nCurrent time is: %s'%localtime)
+                        train_out.write('\nStarting at main.py...')
+                        if args.train_steps:
+                            agent.train(args.train_steps, epoch)
+                            if args.save_weights_prefix:
+                                filename = args.save_weights_prefix + "_%d.prm" % (epoch + 1)
+                                net.save_weights(filename)
+
+                        if args.train_steps > 0:
+                            cnt = 0
+                            ras = 0
+                            tas = 0
+                            tta = 0
+                            for i in range(env.size):
+                                text_vec_tags = env.saved_text_vec[i,:,-1]
+                                state_tags = env.saved_states[i,:,-1]
+                                sum_tags = sum(text_vec_tags)
+                                if not sum_tags:
+                                    break
+                                count = 0
+                                right_actions = 0
+                                tag_actions = 0
+                                total_actions = 0
+                                total_words = args.num_actions/2
+                                temp_words = env.saved_text_length[i]
+                                if temp_words > total_words:
+                                    temp_words = total_words
+
+                                #logging.debug( "text_vec_tags",text_vec_tags )
+                                #logging.debug( 'state_tags',state_tags )
+                                for t in text_vec_tags:
+                                    if t == args.action_label:
+                                        total_actions += 1
+
+                                train_out.write('\n\nText:'+str(i))
+                                train_out.write('\ntotal words: %d\n'%temp_words)
+                                #logging.debug( '\ntotal words: %d\n'%temp_words )
+                                train_out.write('\nsaved_text_vec:\n')
+                                train_out.write(str(env.saved_text_vec[i,:,-1]))
+                                train_out.write('\nsaved_states:\n')
+                                train_out.write(str(env.saved_states[i,:,-1]))
+
+                                for s in xrange(temp_words):
+                                    if state_tags[s] == 0:
+                                        count += 1
+                                    elif state_tags[s] == args.action_label:
+                                        tag_actions += 1
+                                        if text_vec_tags[s] == state_tags[s]:
+                                            right_actions += 1
+
+                                cnt += count
+                                ras += right_actions
+                                tta += tag_actions
+                                tas += total_actions
+                                if total_actions > 0:
+                                    recall = float(right_actions)/total_actions
+                                else:
+                                    recall = 0
+                                if tag_actions > 0:
+                                    precision = float(right_actions)/tag_actions
+                                else:
+                                    precision = 0
+                                rp = recall + precision
+                                if rp > 0:
+                                    F_value = (2.0*recall*precision)/(recall+precision)
+                                else:
+                                    F_value = 0
+                                train_out.write('\nWords left: %d'%count)
+                                train_out.write('\nAcions: %d'%total_actions)
+                                train_out.write('\nRight_actions: %d'%right_actions)
+                                train_out.write('\nTag_actions: %d'%tag_actions)
+                                train_out.write('\nActions_recall: %f'%recall)
+                                train_out.write('\nActions_precision: %f'%precision)
+                                train_out.write('\nF_measure: %f'%F_value)
+                                #logging.debug( '\nText: %d'%i )
+                                #logging.debug( '\nWords left: %d'%count )
+                                #logging.debug( 'Acions: %d'%total_actions )
+                                #logging.debug( 'Right_actions: %d'%right_actions )
+                                #logging.debug( 'Tag_actions: %d'%tag_actions )
+                                #logging.debug( 'Actions_recall: %f'%recall )
+                                #logging.debug( 'Actions_precision: %f'%precision )
+                                #logging.debug( 'F_measure: %f'%F_value )
+
+                            if tas > 0:
+                                average_recall = float(ras)/tas
+                            else:
+                                average_recall = 0
+                            if tta > 0:
+                                average_precision = float(ras)/tta
+                            else:
+                                average_precision = 0
+                            arp = average_recall + average_precision
+                            if arp > 0:
+                                ave_F_value = (2*average_recall*average_precision)/(average_recall+average_precision)
+                            else:
+                                ave_F_value = 0
+                            train_out.write('\nTotal words left: %d'%cnt)
+                            train_out.write('\nTotal acions: %d'%tas)
+                            train_out.write('\nTotal right_acions: %d'%ras)
+                            train_out.write('\nTotal tag_acions: %d'%tta)
+                            train_out.write('\nAverage_actions_recall: %f'%average_recall)
+                            train_out.write('\nAverage_actions_precision: %f'%average_precision)
+                            train_out.write('\nAverage_F_measure: %f'%ave_F_value)
+                            #logging.debug( '\nTotal words left: %d'%cnt )
+                            #logging.debug( 'Total acions: %d'%tas )
+                            #logging.debug( 'Total right_actions: %d'%ras )
+                            #logging.debug( 'Total tag_actions: %d'%tta )
+                            #logging.debug( 'Average_actions_recall: %f'%average_recall )
+                            #logging.debug( 'Average_actions_precision: %f'%average_precision )
+                            #logging.debug( 'Average_F_measure: %f'%ave_F_value )
+
+
+                        if args.train_test:
+                            agent.train_test(args.words_num, args.test_text_num*tables_num, test_out)
+                        train_out.close()
+                        test_out.close()
+
+                end = time.time()
+                localtime = time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(time.time()))
+                #logging.debug('\nTotal time cost: %ds'%(end-start))
+                #logging.debug('\nCurrent time is: %s\n'%localtime)
+                self.OutputText.AppendText('Total time cost: %ds\n'%(end-start))
+                self.OutputText.AppendText('Current time is: %s\n'%localtime)
+
+        tf.reset_default_graph()
 
 
     def __train_DPR_show(self, event):
@@ -816,13 +976,13 @@ class PlannerGUI(wx.Frame):
 
     def DUP_main(self, thread, args):
         from shallow_plan import ShallowPlan
-        SPlan = ShallowPlan(args)
+        SPlan = ShallowPlan(args, self.OutputText)
         SPlan.run()
 
 
     def DUP_test(self, thread, args):
         from shallow_plan import ShallowPlan
-        SPlan = ShallowPlan(args)
+        SPlan = ShallowPlan(args, self.OutputText)
         SPlan.test('')
 
 
@@ -863,7 +1023,7 @@ class PlannerGUI(wx.Frame):
             text_type, wx.OPEN)
         if dialog.ShowModal() == wx.ID_OK:
             self.DUP_test_input = dialog.GetPath().encode('utf-8') 
-            self.test_DUP_button.SetLabelText(re.sub(r'.*/','',self.text_dir))
+            self.test_DUP_button.SetLabelText(re.sub(r'.*/','',self.DUP_test_input))
             self.test_DUP_flag = 1
         dialog.Destroy()
 
@@ -885,7 +1045,7 @@ class PlannerGUI(wx.Frame):
 
 
     def __ipp_show(self):
-        self.ipp_info_list = [str(i) for i in range(9)]
+        self.ipp_info_list = [str(i) for i in range(1,9)]
         self.ipp_info_text, self.ipp_info_choice = self.TF_choice("Information level:", 
             (15,190), (200, 185), self.ipp_info_list)
         self.__ipp_help()
@@ -894,13 +1054,7 @@ class PlannerGUI(wx.Frame):
     def __ipp_help(self):
         self.pointer = self.OutputText.GetInsertionPoint()
         self.OutputText.AppendText("\n\nusage of ipp:\n\n");
-        self.OutputText.AppendText("OPTIONS   DESCRIPTIONS\n\n");
-        self.OutputText.AppendText("-p <str>    path for operator and fact file\n");
-        self.OutputText.AppendText("-o <str>    operator file name\n");
-        self.OutputText.AppendText("-f <str>    fact file name\n\n");
-
-        self.OutputText.AppendText("-i <num>    run-time information level( preset: 1 )\n");
-        self.OutputText.AppendText("     0      nothing\n");
+        self.OutputText.AppendText("run-time information level( preset: 1 )\n");
         self.OutputText.AppendText("     1      info on action number, graph, search and plan\n");
         self.OutputText.AppendText("     2      1 + info on problem constants, types and predicates\n");  
         self.OutputText.AppendText("     3      1 + 2 + loaded operators, initial and goal state\n");
@@ -909,13 +1063,6 @@ class PlannerGUI(wx.Frame):
         self.OutputText.AppendText("     6      1 + actions, initial and goal state after expansion of variables\n"); 
         self.OutputText.AppendText("     7      1 + facts selected as relevant to the problem\n");
         self.OutputText.AppendText("     8      1 + final domain representation\n");
-        self.OutputText.AppendText(" > 100      1 + various debugging information\n\n");
-
-        self.OutputText.AppendText("-W          write complete graph to text files after planning\n");
-        self.OutputText.AppendText("-w <str>    specify name for graph output files( preset: graph )\n\n");
-
-        self.OutputText.AppendText("-m <num>    build graph up to level <num> without search\n");
-        self.OutputText.AppendText("-S          don't do complete subset test in memoization\n\n");
         tp_point = self.pointer
         self.pointer = self.OutputText.GetInsertionPoint()
         self.OutputText.SetStyle(tp_point, self.pointer, wx.TextAttr("sienna", wx.NullColour))
@@ -933,28 +1080,19 @@ class PlannerGUI(wx.Frame):
         self.hsp_a_text, self.hsp_a_choice = self.TF_choice("Algorithm:", 
             (15,190), (200, 185), self.HSP_algorithm)
         self.hsp_d_text, self.hsp_d_choice = self.TF_choice("Direction:", 
-            (15,230), (200, 225), self.HSP_algorithm)
+            (15,230), (200, 225), self.HSP_direction)
         self.hsp_h_text, self.hsp_h_choice = self.TF_choice("Heuristic:", 
-            (15,270), (200, 265), self.HSP_algorithm)
+            (15,270), (200, 265), self.HSP_heuristic)
         self.__hsp_help()
 
 
     def __hsp_help(self):
         self.pointer = self.OutputText.GetInsertionPoint()
         self.OutputText.AppendText("\n\nusage of hsp:\n\n");
-        self.OutputText.AppendText( "hsp <flags>* [ <algorithm> | -S <schedule> ] <problem.pddl> <domain.pddl>\n\n" );
-        self.OutputText.AppendText( "where <flags> are among:\n" );
-        self.OutputText.AppendText( "   -v <level>\t\tVerbose level >= 0 (default is 1).\n" );
-        self.OutputText.AppendText( "    r <output_file>\t\tdefault is 'hsp_output.txt'.\n" );
-        self.OutputText.AppendText( "   -w <weight>\t\tFloat to weight the heuristic component of the cost function.\n\n" );
-        self.OutputText.AppendText( "<algorithm> is:\n" );
-        self.OutputText.AppendText( "   -a <algorithm>\tEither 'bfs' or 'gbfs'.\n" );
-        self.OutputText.AppendText( "   -d <direction>\tEither 'forward' or 'backward'.\n" );
-        self.OutputText.AppendText( "   -h <heuristic>\tOne of 'h1plus', 'h1max', 'h2plus', 'h2max'.\n\n" );
-        self.OutputText.AppendText( "<schedule> is a colon separated <option> list where each option has\n" );
-        self.OutputText.AppendText( "form '[<direction>,<heuristic>,<msecs>]'. The options are performed\n" );
-        self.OutputText.AppendText( "sequentially until one finds a plan, or no more options are available\n" );
-        self.OutputText.AppendText( "(each option is attempted with the given time constraint).\n\n" );
+        self.OutputText.AppendText("OPTIONS   DESCRIPTIONS\n\n");
+        self.OutputText.AppendText("Algorithm:\n\tEither 'bfs' or 'gbfs'.\n" );
+        self.OutputText.AppendText("Direction of Searching:\n\tEither 'forward' or 'backward'.\n" );
+        self.OutputText.AppendText("Heuristic Methods:\n\tOne of 'h1plus', 'h1max', 'h2plus', 'h2max'.\n\n" );
         tp_point = self.pointer
         self.pointer = self.OutputText.GetInsertionPoint()
         self.OutputText.SetStyle(tp_point, self.pointer, wx.TextAttr("coral", wx.NullColour))
@@ -982,11 +1120,7 @@ class PlannerGUI(wx.Frame):
     def __ff_help(self):
         self.pointer = self.OutputText.GetInsertionPoint()
         self.OutputText.AppendText("\n\nusage of ff:\n");
-        self.OutputText.AppendText("\nOPTIONS   DESCRIPTIONS\n\n");
-        self.OutputText.AppendText("-p <str>    path for operator and fact file\n");
-        self.OutputText.AppendText("-o <str>    operator file name\n");
-        self.OutputText.AppendText("-f <str>    fact file name\n\n");
-        self.OutputText.AppendText("-i <num>    run-time information level( preset: 1 )\n");
+        self.OutputText.AppendText("run-time information level( preset: 1 )\n");
         self.OutputText.AppendText("      0     only times\n");
         self.OutputText.AppendText("      1     problem name, planning process infos\n");
         self.OutputText.AppendText("      2     save pure output action sequences in file\n");
@@ -1038,14 +1172,10 @@ class PlannerGUI(wx.Frame):
         self.pointer = self.OutputText.GetInsertionPoint()
         self.OutputText.AppendText("\n\nusage of graphplan:\n");
         self.OutputText.AppendText("\nOPTIONS   DESCRIPTIONS\n\n");
-        self.OutputText.AppendText("-h          for this list\n");
-        self.OutputText.AppendText("-o <str>    operator file name\n");
-        self.OutputText.AppendText("-f <str>    fact file name\n\n");
-        self.OutputText.AppendText("-t <num>    to specify a fixed number of time steps\n");
-        self.OutputText.AppendText("-i <num>    to specify info level 1 or 2 (default is 0)\n\n");
-        self.OutputText.AppendText("-O <str>    to specify options you want\n");
-        self.OutputText.AppendText("-d          give default values to everything not specified\n\n");
-        self.OutputText.AppendText("for example: graphplan -o fixit_ops -f fixit_facts1 -O IL -d \n\n");
+        self.OutputText.AppendText("Default Setting:\n\tuse default values or not.\n");
+        self.OutputText.AppendText("Time Steps:\n\tto specify a fixed number of time steps\n");
+        self.OutputText.AppendText("Information Level\n\tto specify info level 1 or 2 (default is 0)\n\n");
+        self.OutputText.AppendText("Options\n\tto specify options you want\n");
         tp_point = self.pointer
         self.pointer = self.OutputText.GetInsertionPoint()
         self.OutputText.SetStyle(tp_point, self.pointer, wx.TextAttr("green", wx.NullColour))
@@ -1125,13 +1255,16 @@ class PlannerGUI(wx.Frame):
         self.thread_finished(thread)
 
 
-    def Test_Button(self, event):
+    def Test_Button(self, event): 
+        pass
+        '''
         self.test_DUP_flag = 1 - self.test_DUP_flag
         self.OutputText.AppendText('\n-----  self.train_DUP_flag: %d  -----\n'%self.train_DUP_flag)
         self.OutputText.AppendText('\n-----  self.test_DUP_flag: %d  -----\n'%self.test_DUP_flag)
         self.OutputText.AppendText('\n-----  self.train_DPR_flag: %d  -----\n'%self.train_DPR_flag)
         self.OutputText.AppendText('\n-----  self.test_DPR_flag: %d  -----\n'%self.test_DPR_flag)
         self.OutputText.AppendText('\nStart testing DPR model...\n')
+
         if self.thread_count == 0 and self.test_DPR_flag:
             dic = self.DPR_args.__dict__
             for k in dic.keys():
@@ -1139,7 +1272,7 @@ class PlannerGUI(wx.Frame):
             self.DPRthreadTest = RunModelThread('DPRthreadTest', self.DPR_main, self.DPR_args, self)
             self.DPRthreadTest.start()
             self.thread_count += 1
-        '''
+        
         if self.count == 0:
             self.thread = RunModelThread('test_thread', self.test_thread, 1.5, self)
             self.thread.start()
@@ -1171,7 +1304,7 @@ class PlannerGUI(wx.Frame):
         _ctypes.dlclose(self.lib._handle)
         self.lib = ''
         self.OutputText.AppendText('\nThe planning is done!\n')
-        logging.debug( 'testing...\n' )
+        #logging.debug( 'testing...\n' )
         self.count += 1
         self.statusBar.SetStatusText('tesing %d'%self.count, self.count%3)
         '''
@@ -1215,9 +1348,9 @@ class PlannerGUI(wx.Frame):
                     argv = ['hsp', 'r', temp[0], '-a', self.HSP_algorithm[a], '-d', 
                     self.HSP_direction[d], '-h', self.HSP_heuristic[h], self.pro_file, self.dom_file ]
                 else:
-                    argv = ['hsp', '-a', self.HSP_algorithm[a], '-d', self.HSP_direction[d], 
+                    argv = ['hsp', 'r', 'hsp_output.txt', '-a', self.HSP_algorithm[a], '-d', self.HSP_direction[d], 
                     '-h', self.HSP_heuristic[h], self.pro_file, self.dom_file ]
-                logging.debug( argv+'\n' )
+                #self.OutputText.AppendText( str(argv)+'\n' )
             elif pl == 'ff':
                 num = self.ff_info_choice.GetSelection()
                 if temp:
@@ -1260,9 +1393,14 @@ class PlannerGUI(wx.Frame):
                 self.OutputText.AppendText(
                     '\nThe planning is done!\nResult of it is saved in %s\n'%temp[0])
             else:
-                with open(pl+'_output.txt') as f:
+                #self.OutputText.AppendText( pl+'_output.txt' )
+                #with open(pl+'_output.txt') as f:
+                if os.path.isfile(pl+'_output.txt'):
+                    f = open(pl+'_output.txt')
                     self.OutputText.AppendText(f.read())
                     self.OutputText.AppendText('\nThe planning is done!\n')
+                    f.close()
+                    os.system('rm '+pl+'_output.txt')
 
         elif self.track_id == 'U':
             pass
@@ -1289,12 +1427,18 @@ class PlannerGUI(wx.Frame):
 
             elif self.test_DPR_flag:
                 self.OutputText.AppendText('\nStart testing DPR model...\n')
+                self.OutputText.AppendText('\nAll arguments of DPr model:\n')
                 dic = self.DPR_args.__dict__
                 for k in dic.keys():
-                    self.OutputText.AppendText('%s:\t%s\n'%(k, str(dic[k])))
-                self.DPRthreadTest = RunModelThread('DPRthreadTest', self.DPR_main, self.DPR_args, self)
-                self.DPRthreadTest.start()
-                self.thread_count += 1
+                    self.OutputText.AppendText('\t%s:\t\t%s\n'%(k, str(dic[k])))
+                #self.OutputText.AppendText('\nIt will take dozens of seconds. Please wait patiently.\n')
+                #tp_point = self.pointer
+                #self.pointer = self.OutputText.GetInsertionPoint()
+                #self.OutputText.SetStyle(tp_point, self.pointer, wx.TextAttr("red", wx.NullColour))
+                self.DPR_main('', self.DPR_args)
+                #self.DPRthreadTest = RunModelThread('DPRthreadTest', self.DPR_main, self.DPR_args, self)
+                #self.DPRthreadTest.start()
+                #self.thread_count += 1
 
             elif self.train_DPR_flag:
                 self.OutputText.AppendText('\nStart training DPR model...\n')
@@ -1310,18 +1454,25 @@ class PlannerGUI(wx.Frame):
                 dic = self.DUP_args.__dict__
                 for k in dic.keys():
                     self.OutputText.AppendText('%s:\t%s\n'%(k, str(dic[k])))
+                #from shallow_plan import ShallowPlan
+                #SPlan = ShallowPlan(self.DUP_args, self.OutputText)
+                #SPlan.run()
                 self.DUPthreadTrain = RunModelThread('DUPthreadTrain', self.DUP_main, self.DUP_args, self)
                 self.DUPthreadTrain.start()
                 self.thread_count += 1
 
             elif self.test_DUP_flag:
                 self.OutputText.AppendText('\nStart testing DUP model...\n')
+                self.OutputText.AppendText('\nAll arguments of DUP model:\n')
                 dic = self.DUP_args.__dict__
                 for k in dic.keys():
-                    self.OutputText.AppendText('%s:\t%s\n'%(k, str(dic[k])))
-                self.DUPthreadTest = RunModelThread('DUPthreadTest', self.DUP_test, self.DUP_args, self)
-                self.DUPthreadTest.start()
-                self.thread_count += 1
+                    self.OutputText.AppendText('\t%s:\t\t%s\n'%(k, str(dic[k])))
+                from shallow_plan import ShallowPlan
+                SPlan = ShallowPlan(self.DUP_args, self.OutputText)
+                SPlan.test('')
+                #self.DUPthreadTest = RunModelThread('DUPthreadTest', self.DUP_test, self.DUP_args, self)
+                #self.DUPthreadTest.start()
+                #self.thread_count += 1
             else:
                 pass
                  
@@ -1702,6 +1853,11 @@ class MainWindow(wx.Frame):
         h = img1.GetHeight()
         img2 = img1.Scale(w, h)
         logo = wx.StaticBitmap(self.panel, -1, wx.BitmapFromImage(img2))
+        img3 = wx.Image('icons/planlab_logo.png', wx.BITMAP_TYPE_ANY)
+        w2 = img3.GetWidth()
+        h2 = img3.GetHeight()
+        img4 = img3.Scale(w/2, h/2)
+        self.logo2 = wx.StaticBitmap(self.panel, -1, wx.BitmapFromImage(img4))
 
         app_name = wx.StaticText(self.panel, -1, 'PlanTool')
         app_name.SetFont(wx.Font(24, wx.SCRIPT, wx.NORMAL, wx.BOLD))
@@ -1721,14 +1877,18 @@ class MainWindow(wx.Frame):
         det_but = buttons.GenButton(self.panel, -1, 'Deterministic Track')
         unc_but = buttons.GenButton(self.panel, -1, 'Uncertainty Track')
         lrn_but = buttons.GenButton(self.panel, -1, 'Learning Track')
+        csm_but = buttons.GenButton(self.panel, -1, 'Case-Based Model-Lite Planning')
         self.Bind(wx.EVT_BUTTON, self.DeterministicTrack, det_but)
         self.Bind(wx.EVT_BUTTON, self.UncertaintyTrack, unc_but)
         self.Bind(wx.EVT_BUTTON, self.LearningTrack, lrn_but)
+        self.Bind(wx.EVT_BUTTON, self.CaseBasedShallow, csm_but)
         box = wx.StaticBox(self.panel, -1, 'Applications')
         self.button_box = wx.StaticBoxSizer(box, wx.VERTICAL)
-        self.button_box.Add(det_but, 0, wx.EXPAND|wx.ALL, 2)
-        self.button_box.Add(unc_but, 0, wx.EXPAND|wx.ALL, 2)
-        self.button_box.Add(lrn_but, 0, wx.EXPAND|wx.ALL, 2)
+        self.button_box.Add(det_but, 0, wx.EXPAND|wx.ALL, 5)
+        self.button_box.Add(unc_but, 0, wx.EXPAND|wx.ALL, 5)
+        self.button_box.Add(lrn_but, 0, wx.EXPAND|wx.ALL, 5)
+        self.button_box.Add(csm_but, 0, wx.EXPAND|wx.ALL, 5)
+        self.button_box.Add(self.logo2, 0, wx.EXPAND|wx.ALL, 30)
 
 
     def set_gen_button(self, but_name, fs=8, fsty=wx.NORMAL, fity=wx.NORMAL, 
@@ -1776,6 +1936,7 @@ class MainWindow(wx.Frame):
         self.child_frame.Show()
 
     def UncertaintyTrack(self, event): pass
+    def CaseBasedShallow(self, event): pass
     def LearningTrack(self, event): 
         self.child_frame = PlannerGUI("LearningTrack\nof Planning", 'aquamarine', 'L')
         self.child_frame.Show()
@@ -1836,18 +1997,19 @@ class PlanToolAbout(wx.Dialog):
 class MyApp(wx.App):
     def __init__(self, redirect = True, filename = None):
         c_time = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
-        logging.debug( "\n%s\nInitializing MyApp..."%c_time )
+        #logging.debug( "\n%s\nInitializing MyApp..."%c_time )
         wx.App.__init__(self, redirect, filename)
         
     def OnInit(self):
         self.parent_frame = MainWindow()
         self.parent_frame.Show()
         #self.SetTopWindow(self.parent_frame)
-        print >> sys.stderr, "\n-----A pretend error message-----\n" 
+        #print >> sys.stderr, "\n-----A pretend error message-----\n" 
         return True
     
     def OnExit(self):
-        logging.debug( "\nExiting Myapp...\n" )
+        pass
+        #logging.debug( "\nExiting Myapp...\n" )
 
 
 
@@ -1855,6 +2017,6 @@ class MyApp(wx.App):
 if __name__ == '__main__':
     start_time = time.time()
     app = MyApp(redirect = False)
-    logging.debug( "Begin a MainLoop\n" )
+    #logging.debug( "Begin a MainLoop\n" )
     app.MainLoop()    
-    logging.debug( "Finish a MainLoop\n" )
+    #logging.debug( "Finish a MainLoop\n" )

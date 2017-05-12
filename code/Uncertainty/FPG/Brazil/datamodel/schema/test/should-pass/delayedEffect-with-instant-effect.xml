@@ -1,0 +1,34 @@
+<domain name="one-action">
+  <predicates>
+    <predicate name="a"/>
+    <predicate name="b"/>
+  </predicates>
+  <functions>
+    <function name="func-1"/>
+  </functions>
+  <actions>
+    <action name="a">
+      <effect>
+	<and>
+	  <predicate name="a"/>
+	  <delayedEffect>
+	    <fixedDelay duration="5"/>
+	    <and>
+	      <predicate name="a"/>
+	      <predicate name="b"/>
+	      <increase>
+		<function name="func-1"/>
+		<number>10</number>
+	      </increase>
+	    </and>
+	  </delayedEffect>
+	  <delayedEffect>
+	    <normalDelay mean="10" standardDeviation="5"/>
+	    <predicate name="a"/>
+	  </delayedEffect>
+	  
+	</and>
+      </effect>
+    </action>
+  </actions>
+</domain>

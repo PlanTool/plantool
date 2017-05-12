@@ -1,0 +1,3 @@
+echo -n "testing prob $2 in $1: "
+cd $1
+~/translator/translator-t0 -f -c domain.pddl $2|grep valid

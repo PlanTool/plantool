@@ -1,0 +1,179 @@
+#!/bin/bash
+rm -f a-* p-* automata/p-P1* automata/p-P2* automata/p-P3* automata/p-P4* automta/p-P5* automata/p-P6* automata/p-P7* automata/p-P8* automata/p-P9* automata/p-P10* automata/a-* automata/p-* automata/grounded-* automata/*.pddl automata/BFSCANCELED automata/foundplan
+
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+echo "@@ Solving problem =" $1 "@@"
+echo "@@         domain  =" $2 "@@"
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+isdurative=`grep -c durative $2`
+
+# if(( $isdurative == 0 ))
+#  then
+#       echo "This is not a Durative problem"
+#  else
+#       echo "This is a Durative problem"
+# fi
+
+isadl=`grep -c "(when" $2`
+
+# if(( $isadl == 0 ))
+#  then
+#       echo "This is not an ADL problem"
+#  else
+#       echo "This is an ADL problem"
+# fi
+
+sed ' /(:constraints/! s/constraints/constraint/g' $2 > dfile
+
+ if(($isadl == 0))
+     then
+     #echo "Reading PDDL problem file " $1
+     ./mips-xxl -f $1 -o dfile -G
+ else
+     ./mips-xxl -f $1 -o dfile -A
+ fi
+
+echo "Grouding of domain, problem and LTL done."
+
+mv groundedproblem.pddl automata/grounded-problem.pddl
+
+mv groundeddomain.pddl automata/domain
+
+numAutomata=1
+
+echo "Checking automata files..."
+    for file in a-* 
+    do 
+      if [ -f "$file" ] 
+	  then
+	  let "numAutomata+=1"
+	  echo a-numAutomata
+	  echo $numAutomata
+          if(($isdurative == 0))
+            then
+	      ../ltl2ba/ltl2ba -F "$file" > automata/"$file" 
+            else
+              ../ltl2ba/ltl2ba -t -F "$file" > automata/"$file" 
+           fi
+       fi
+    done
+echo "   ... ltl2ba automata conversion done."
+
+echo "Checking preference automata files..."
+
+for file in p-* 
+  do 
+  if [ -f "$file" ] 
+    then  
+      let "numAutomata+=1"
+      echo p-numAutomata
+      echo $numAutomata
+      if(($isdurative == 0))
+        then
+           ../ltl2ba/ltl2ba -P -F "$file" > automata/"$file"
+        else
+          ../ltl2ba/ltl2ba -t -P -F  "$file" > automata/"$file" 
+       fi
+    fi 
+  done
+echo "   ... ltl2ba preference conversion done."
+
+echo "Linking automata ..."
+
+cd automata
+
+./adapt
+
+PARAMETERS="grounded-problem.pddl grounded-domain.pddl" 
+
+
+echo "Checking automata files..."
+for file in a-* 
+do 
+if [ -f "$file" ]
+  then  
+PARAMETERS=$PARAMETERS" grounded-"$file".pddl"
+fi
+done
+echo "...PDDL automata read."
+
+echo "Checking preference files..."
+for file in p-* 
+do 
+if [ -f "$file" ]
+  then  
+PARAMETERS=$PARAMETERS" grounded-"$file".pddl"
+fi
+done
+
+echo "   ... preference automata read."
+
+
+echo "Merging automata ..."
+echo $PARAMETERS
+
+
+
+./merge $PARAMETERS
+
+echo "   ... done"
+echo "Running MIPS-XXL on domain-merge.pddl and problem-merge.pddl"
+
+let "numAutomata *= 5"
+
+echo "../mips-xxl -B problem-merge.pddl -o domain-merge.pddl -h $numAutomata -O"
+
+../mips-xxl -D -f problem-merge.pddl -o domain-merge.pddl -h $numAutomata -O
+
+exit 0
+
+#The functionaity below is not supported in this MIPS-XXL version.
+
+if [ -f "BFSCANCELED" ]
+  then
+    ../mips-xxl -X -B -f problem-merge.pddl -o domain-merge.pddl -h $numAutomata -O
+    exit 0
+fi
+
+if [ ! -f "newgoal.pddl" ]
+  then
+    exit 0
+fi
+
+PARAMETERS2="problem-merge.pddl newgoal.pddl"
+
+echo $PARAMETERS2
+
+
+./add_newgoal $PARAMETERS2
+rm newgoal.pddl
+
+
+echo "...ran mips-xxl with domain-merge.pddl and new-problem-merge.pddl"
+
+
+../mips-xxl -f new-problem-merge.pddl -o domain-merge.pddl -h $numAutomata  -O
+
+if [ -f "BFSCANCELED" ]
+    then
+    ../mips-xxl -X -B -f problem-merge.pddl -o domain-merge.pddl -h $numAutomata -O
+    exit 0
+fi
+
+
+while  [ -f "newgoal.pddl" ] 
+  do      
+  ./add_newgoal $PARAMETERS2
+  rm newgoal.pddl
+  
+  ../mips-xxl -f new-problem-merge.pddl -o domain-merge.pddl -h $numAutomata  -O
+  if [ -f "BFSCANCELED" ]
+      then
+      break
+  fi
+done
+
+if [ -f "BFSCANCELED" ]
+    then
+    ../mips-xxl -X -B -f problem-merge.pddl -o domain-merge.pddl -h $numAutomata -O
+fi

@@ -1,0 +1,45 @@
+head	1.1;
+access;
+symbols;
+locks
+	hlp:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2009.04.15.17.30.16;	author hlp;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@OCAMLMAKEFILE = ../OCamlMakefile
+
+SOURCES = strat.mli \
+          pres_intf.mli pres_impl.ml \
+          nopres_intf.mli nopres_impl.ml \
+          weak_intf.mli weak_impl.ml \
+          res.mli res.ml
+RESULT  = res
+
+LIBINSTALL_FILES = res.mli strat.mli pres_intf.mli nopres_intf.mli \
+                   strat.cmi pres_intf.cmi nopres_intf.cmi weak_intf.cmi \
+		   res.cmi res.cma res.cmxa res.a
+
+all:
+
+install:	libinstall
+uninstall:	libuninstall
+
+clean::  clean-doc
+
+-include $(OCAMLMAKEFILE)
+@

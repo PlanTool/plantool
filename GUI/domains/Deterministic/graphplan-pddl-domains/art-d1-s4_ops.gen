@@ -1,0 +1,199 @@
+#!/usr/misc/bin/perl -w
+# Generate the operators for art-d1-s4_ops
+
+$domain = "art-d1-s4";
+$ops = "_ops";
+$facts = "_facts";
+
+sub Usage
+{
+    print STDERR "Usage: $0 <num-of-ops>\n";
+    exit (1);
+}
+
+sub RandomPermutation
+{
+    local (@arr) = @_;
+    local ($i, $remainlen, $j);
+    local ($len) = scalar (@arr);
+    foreach $i (0 .. $#arr)
+    {
+        $remainlen = $len - $i;
+        $swapi = int (rand ($remainlen) + $i);
+        if ($swapi != $i)
+        {
+            $temp = $arr[$i];
+            $arr[$i] = $arr[$swapi];
+            $arr[$swapi] = $temp;
+        }
+    }
+    @arr;
+}                
+
+sub GenPOps
+{
+    local ($num)= @_;
+    local ($succ);
+    foreach $i (1 .. $num)
+    {
+        $succ = $i + 1;
+        print "(operator A1-${i}\n";
+        print "    (params)\n";
+        print "    (preconds (I$i))\n";
+        print "    (effects (P$i) (del I$succ)))\n";
+    }
+    print "\n";
+}
+
+sub GenQOps
+{
+    local ($num)= @_;
+    local ($prec);
+    local ($noti) = "";
+    foreach $i (1 .. $num)
+    {
+        $noti .= "(del I$i) ";
+    }
+    chop ($noti);
+    foreach $i (1 .. $num)
+    {
+        $prec = $i - 1;
+        print "(operator A2-${i}\n";
+        print "    (params)\n";
+        print "    (preconds (P$i) (do-Q) (not Q$i))\n";
+        print "    (effects (P$i) (Q$i) $noti))\n";
+    }
+    print "\n";
+}
+
+sub GenROps
+{
+    local ($num)= @_;
+    local ($prec, $j);
+    local ($delallq);
+    local ($allnotq) = "";
+    foreach $i (1 .. $num)
+    {
+        $allnotq .= "(not Q$i) ";
+    }
+    chop ($allnotq);
+    foreach $i (1 .. $num)
+    {
+        $succ = $i + 1;
+        $delallq = "";
+        foreach $j (1 .. $num)
+        {
+            $delallq .= "(del Q$j) " unless $i == $j;
+        }
+        chop ($delallq);
+        print "(operator A3-${i}\n";
+        print "    (params)\n";
+        print "    (preconds (Q$i) (not R$i))\n";
+        print "    (effects (R$i) (del S$succ) (not S$succ)\n";
+        print "        $delallq\n" if $delallq;
+        print "        $allnotq))\n";
+    }
+    print "\n";
+}
+
+sub GenSOps
+{
+    local ($num)= @_;
+    local ($prec);
+    local ($allnotq, $delallq, $allnotr, $delallr);
+    $allnotq = "";
+    $delallq = "";
+    $allnotr = "";
+    foreach $i (1 .. $num)
+    {
+        $allnotq .= "(not Q$i) ";
+        $delallq .= "(del Q$i) ";
+        $allnotr .= "(not R$i) ";
+    }
+    chop ($allnotq);
+    chop ($delallq);
+    chop ($allnotr);
+    foreach $i (1 .. $num)
+    {
+        $delallr = "";
+        foreach $j (1 .. $num)
+        {
+            $delallr .= "(del R$j) " unless $i == $j;
+        }
+        chop ($delallr);
+        print "(operator A4-${i}\n";
+        print "    (params)\n";
+        print "    (preconds (not Q$i) (R$i) (not S$i))\n";
+        print "    (effects (S$i) (do-Q) (del P$i)\n";
+        print "        $allnotq\n";
+        print "        $delallq\n";
+        print "        $delallr\n" if $delallr;
+        print "        $allnotr))\n";
+    }
+    print "\n";
+}
+
+sub GenPreconds
+{
+    local ($num) = @_;
+    local ($i);
+    print "(preconds (do-Q)";
+    foreach $i (1 .. $num)
+    {
+        print " (I$i)";
+    }
+    print "\n    ";
+    foreach $i (1 .. $num)
+    {
+        print " (not Q$i)";
+    }
+    print "\n    ";
+    foreach $i (1 .. $num)
+    {
+        print " (not R$i)";
+    }
+    print "\n    ";
+    foreach $i (1 .. $num)
+    {
+        print " (not S$i)";
+    }
+    print ")\n\n";
+}
+
+sub GenEffects
+{
+    local ($num) = @_;
+    local (@Sarr, @Srand) = ();
+    local ($i);
+    foreach $i (1 .. $num)
+    {
+        push (@Sarr, "(S$i)");
+    }
+    @Srand = &RandomPermutation (@Sarr);
+    print "(effects @Srand)\n";
+}
+
+&Usage unless @ARGV;
+srand (time | $$);
+$num_ops = $ARGV[0] + 0;
+&Usage unless $num_ops > 0;
+
+$ops_file = "${domain}_${num_ops}$ops";
+open (OPS_FILE, ">$ops_file") ||
+    die ("Couldn't open $ops_file: $!\n");
+$old_stdout = select (OPS_FILE);
+print "#\n";
+&GenPOps ($num_ops);
+&GenQOps ($num_ops);
+&GenROps ($num_ops);
+&GenSOps ($num_ops);
+close (OPS_FILE);
+
+$facts_file = "${domain}_${num_ops}$facts";
+open (FACTS_FILE, ">$facts_file") ||
+    die ("Couldn't open $facts_file: $!\n");
+select (FACTS_FILE);
+&GenPreconds ($num_ops);
+&GenEffects ($num_ops);
+close (FACTS_FILE);
+select ($old_stdout);

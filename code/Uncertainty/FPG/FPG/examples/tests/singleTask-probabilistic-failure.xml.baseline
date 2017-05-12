@@ -1,0 +1,47 @@
+Regression output:
+State @1013
+	True predicates:
+	Resource levels:
+	Past event queue:
+		Event start action (1): 'A' @ 1 queued at 1 pointing to 0x80a07e0 (1)
+		Event end action (1): 'A' @ 101 queued at 1 pointing to 0x80a07e0 (1)
+		Event start outcome (1): 'Failure' @ 101 queued at 101 pointing to 0x80a0c18 (1)
+		Event end outcome (1): 'Failure' @ 101 queued at 101 pointing to 0x80a0c18 (1)
+		Event start action (2): 'A' @ 104 queued at 104 pointing to 0x80a07e0 (2)
+		Event end action (2): 'A' @ 204 queued at 104 pointing to 0x80a07e0 (2)
+		Event start outcome (2): 'Failure' @ 204 queued at 204 pointing to 0x80a0c18 (2)
+		Event end outcome (2): 'Failure' @ 204 queued at 204 pointing to 0x80a0c18 (2)
+		Event start action (3): 'A' @ 204 queued at 204 pointing to 0x80a07e0 (3)
+		Event end action (3): 'A' @ 304 queued at 204 pointing to 0x80a07e0 (3)
+		Event start outcome (3): 'Failure' @ 304 queued at 304 pointing to 0x80a0c18 (3)
+		Event end outcome (3): 'Failure' @ 304 queued at 304 pointing to 0x80a0c18 (3)
+		Event start action (4): 'A' @ 305 queued at 305 pointing to 0x80a07e0 (4)
+		Event end action (4): 'A' @ 405 queued at 305 pointing to 0x80a07e0 (4)
+		Event start outcome (4): 'Failure' @ 405 queued at 405 pointing to 0x80a0c18 (4)
+		Event end outcome (4): 'Failure' @ 405 queued at 405 pointing to 0x80a0c18 (4)
+		Event start action (5): 'A' @ 406 queued at 406 pointing to 0x80a07e0 (5)
+		Event end action (5): 'A' @ 506 queued at 406 pointing to 0x80a07e0 (5)
+		Event start outcome (5): 'Failure' @ 506 queued at 506 pointing to 0x80a0c18 (5)
+		Event end outcome (5): 'Failure' @ 506 queued at 506 pointing to 0x80a0c18 (5)
+		Event start action (6): 'A' @ 507 queued at 507 pointing to 0x80a07e0 (6)
+		Event end action (6): 'A' @ 607 queued at 507 pointing to 0x80a07e0 (6)
+		Event start outcome (6): 'Failure' @ 607 queued at 607 pointing to 0x80a0c18 (6)
+		Event end outcome (6): 'Failure' @ 607 queued at 607 pointing to 0x80a0c18 (6)
+		Event start action (7): 'A' @ 612 queued at 612 pointing to 0x80a07e0 (7)
+		Event end action (7): 'A' @ 712 queued at 612 pointing to 0x80a07e0 (7)
+		Event start outcome (7): 'Failure' @ 712 queued at 712 pointing to 0x80a0c18 (7)
+		Event end outcome (7): 'Failure' @ 712 queued at 712 pointing to 0x80a0c18 (7)
+		Event start action (8): 'A' @ 713 queued at 713 pointing to 0x80a07e0 (8)
+		Event end action (8): 'A' @ 813 queued at 713 pointing to 0x80a07e0 (8)
+		Event start outcome (8): 'Failure' @ 813 queued at 813 pointing to 0x80a0c18 (8)
+		Event end outcome (8): 'Failure' @ 813 queued at 813 pointing to 0x80a0c18 (8)
+		Event start action (9): 'A' @ 813 queued at 813 pointing to 0x80a07e0 (9)
+		Event end action (9): 'A' @ 913 queued at 813 pointing to 0x80a07e0 (9)
+		Event start outcome (9): 'Failure' @ 913 queued at 913 pointing to 0x80a0c18 (9)
+		Event end outcome (9): 'Failure' @ 913 queued at 913 pointing to 0x80a0c18 (9)
+		Event start action (10): 'A' @ 913 queued at 913 pointing to 0x80a07e0 (10)
+	Future event queue:
+		Event end action (10): 'A' @ 1013 queued at 913 pointing to 0x80a07e0 (10)
+		Event terminal state (0): 'Plan ends' @ 1013 queued at 1013 pointing to 0 (0)
+			Terminal state type  = 'Out of time'
+

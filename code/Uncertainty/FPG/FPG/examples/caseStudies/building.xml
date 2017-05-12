@@ -1,0 +1,390 @@
+<domain name="building">
+  <predicates>
+    <predicate name="Planning approval"/>
+    <predicate name="Site prepared"/>
+    <predicate name="Concrete available"/>
+    <predicate name="Foundations ready"/>
+    <predicate name="Core ready"/>
+    <predicate name="Floors complete"/>
+    <predicate name="Fittings complete"/>
+    <predicate name="Power connected"/>
+    <predicate name="Water connected"/>
+    <predicate name="Tennants contracted"/>
+    <predicate name="Bonus Tennants"/>
+    <predicate name="Grand opening held"/>
+    <predicate name="Concrete"/>
+    <predicate name="Core"/>
+    <predicate name="Fitting"/>
+    <predicate name="Util"/>
+  </predicates>
+  <functions/>
+  <actions>
+    <action backgroundColour="#33FF88" name="Marketing">
+      <precondition/>
+      <over-all/>
+      <effect>
+	<delay duration="46656" type="fixed"/>
+      </effect>
+      <probabilistic>
+	<outcome backgroundColour="#88FF33" label="success" probability="0.95">
+	  <effect>
+	    <delay mean="21584" standardDeviation="3072" type="normal"/>
+	    <predicate name="Tennants contracted" negated="0"/>
+	  </effect>
+	</outcome>
+	<outcome backgroundColour="#88FF33" label="failure" probability="0.05">
+	  <effect>
+	    <delay mean="21584" standardDeviation="3072" type="normal"/>
+	  </effect>
+	</outcome>
+      </probabilistic>
+    </action>
+    <action backgroundColour="#33FF88" name="Dig big hole">
+      <precondition negated="false" type="and">
+	<predicate name="Planning approval"/>
+      </precondition>
+      <over-all/>
+      <effect>
+	<delay duration="20000" type="fixed"/>
+      </effect>
+      <probabilistic>
+	<outcome backgroundColour="#88FF33" label="success" probability="1.0">
+	  <effect>
+	    <delay mean="23000" standardDeviation="3000" type="normal"/>
+	    <predicate name="Site prepared" negated="0"/>
+	  </effect>
+	</outcome>
+      </probabilistic>
+    </action>
+    <action backgroundColour="#33FF88" name="Deliver pre-mix concrete">
+      <precondition negated="false" type="and">
+	<predicate name="Concrete"/>
+      </precondition>
+      <over-all/>
+      <effect>
+	<delay duration="35000" type="fixed"/>
+	<predicate name="Concrete" negated="1"/>
+      </effect>
+      <probabilistic>
+	<outcome backgroundColour="#88FF33" label="success" probability="0.9">
+	  <effect>
+	    <delay mean="23000" standardDeviation="3000" type="normal"/>
+	    <predicate name="Concrete" negated="1"/>
+	    <predicate name="Concrete available" negated="0"/>
+	  </effect>
+	</outcome>
+	<outcome backgroundColour="#88FF33" label="failure" probability="0.1">
+	  <effect>
+	    <delay mean="13000" standardDeviation="6000" type="normal"/>
+	    <predicate name="Concrete" negated="1"/>
+	  </effect>
+	</outcome>
+      </probabilistic>
+    </action>
+    <action backgroundColour="#33FF88" name="Make concrete">
+      <precondition negated="false" type="and">
+	<predicate name="Concrete"/>
+      </precondition>
+      <over-all/>
+      <effect>
+	<delay duration="46656" type="fixed"/>
+	<predicate name="Concrete" negated="1"/>
+      </effect>
+      <probabilistic>
+	<outcome backgroundColour="#88FF33" label="success" probability="0.95" >
+	  <effect>
+	    <delay duration="25000" type="fixed"/>
+	    <predicate name="Concrete" negated="0"/>
+	    <predicate name="Concrete available" negated="0"/>
+	  </effect>
+	</outcome>
+	<outcome backgroundColour="#88FF33" label="failure" probability="0.05" >
+	  <effect>
+	    <delay duration="20000" type="fixed"/>
+	  </effect>
+	</outcome>
+      </probabilistic>
+    </action>
+    <action backgroundColour="#33FF88" name="Lay foundations">
+      <precondition negated="false" type="and">
+	<predicate name="Site prepared" negated="0"/>
+	<predicate name="Concrete available" negated="0"/>
+      </precondition>
+      <over-all/>
+      <effect>
+	<delay duration="46656" type="fixed"/>
+      </effect>
+      <probabilistic>
+	<outcome backgroundColour="#88FF33" label="success" probability="1.0">
+	  <effect>
+	    <delay duration="30000" type="fixed"/>
+	    <predicate name="Foundations ready" negated="0"/>
+	  </effect>
+	</outcome>
+      </probabilistic>
+    </action>
+    <action backgroundColour="#33FF88" name="Single elevator shaft construction">
+      <precondition negated="false" type="and">
+	<predicate name="Core" negated="0"/>
+	<predicate name="Foundations ready" negated="0"/>
+	<predicate name="Concrete available" negated="0"/>
+      </precondition>
+      <over-all/>
+      <effect>
+	<delay duration="46656" type="fixed"/>
+      </effect>
+      <probabilistic>
+	<outcome backgroundColour="#88FF33" label="success" probability="0.95">
+	  <effect>
+	    <delay duration="30000" type="fixed"/>
+	    <predicate name="Core ready" negated="0"/>
+	    <predicate name="Core" negated="1"/>
+	  </effect>
+	</outcome>
+	<outcome backgroundColour="#88FF33" label="failure" probability="0.05">
+	  <effect>
+	    <delay duration="20000" type="fixed"/>
+	    <predicate name="Core" negated="1"/>
+	  </effect>
+	</outcome>
+      </probabilistic>
+    </action>
+    <action backgroundColour="#33FF88" name="Double elevator shaft construction">
+      <precondition negated="false" type="and">
+	<predicate name="Core" negated="0"/>
+	<predicate name="Foundations ready" negated="0"/>
+	<predicate name="Concrete available" negated="0"/>
+      </precondition>
+      <over-all/>
+      <effect>
+	<delay duration="46656" type="fixed"/>
+      </effect>
+      <probabilistic>
+	<outcome backgroundColour="#88FF33" label="success" probability="0.95" >
+	  <effect>
+	    <delay duration="30000" type="fixed"/>
+	    <predicate name="Core ready" negated="0"/>
+	    <predicate name="Bonus Tennants" negated="0"/>
+	    <predicate name="Core" negated="1"/>
+	  </effect>
+	</outcome>
+	<outcome backgroundColour="#88FF33" label="failure" probability="0.05" >
+	  <effect>
+	    <delay duration="20000" type="fixed"/>
+	    <predicate name="Core" negated="1"/>
+	  </effect>
+	</outcome>
+      </probabilistic>
+    </action>
+    <action backgroundColour="#33FF88" name="Build floors">
+      <precondition negated="false" type="and">
+	<predicate name="Core ready" negated="0"/>
+	<predicate name="Concrete available" negated="0"/>
+      </precondition>
+      <over-all/>
+      <effect>
+	<delay duration="46656" type="fixed"/>
+      </effect>
+      <probabilistic>
+	<outcome backgroundColour="#88FF33" label="success" probability="0.95">
+	  <effect>
+	    <delay duration="30000" type="fixed"/>
+	    <predicate name="Floors complete" negated="0"/>
+	  </effect>
+	</outcome>
+	<outcome backgroundColour="#88FF33" label="failure" probability="0.05">
+	  <effect>
+	    <delay duration="10000" type="fixed"/>
+	  </effect>
+	</outcome>
+      </probabilistic>
+    </action>
+    <action backgroundColour="#33FF88" name="Fitting by regular contracter">
+      <precondition negated="false" type="and">
+	<predicate name="Fitting" negated="1"/>
+	<predicate name="Floors complete" negated="0"/>
+      </precondition>
+      <over-all/>
+      <effect>
+	<delay duration="46656" type="fixed"/>
+      </effect>
+      <probabilistic>
+	<outcome backgroundColour="#88FF33" label="success" probability="0.85">
+	  <effect>
+	    <delay duration="30000" type="fixed"/>
+	    <predicate name="Fittings complete" negated="0"/>
+	    <predicate name="Fitting" negated="1"/>
+	  </effect>
+	</outcome>
+	<outcome backgroundColour="#88FF33" label="failure" probability="0.15">
+	  <effect>
+	    <delay duration="2000" type="fixed"/>
+	    <predicate name="Fitting" negated="1"/>
+	  </effect>
+	</outcome>
+      </probabilistic>
+    </action>
+    <action backgroundColour="#33FF88" name="Fitting out-sourced">
+      <precondition negated="false" type="and">
+	<predicate name="Fitting" negated="0"/>
+	<predicate name="Floors complete" negated="0"/>
+      </precondition>
+      <over-all/>
+      <effect>
+	<delay duration="46656" type="fixed"/>
+      </effect>
+      <probabilistic>
+	<outcome backgroundColour="#88FF33" label="success" probability="0.95" >
+	  <effect>
+	    <delay duration="1000" type="fixed"/>
+	    <predicate name="Fittings complete" negated="0"/>
+	    <predicate name="Fitting" negated="1"/>
+	  </effect>
+	</outcome>
+	<outcome backgroundColour="#88FF33" label="failure" probability="0.05" >
+	  <effect>
+	    <delay duration="20000" type="fixed"/>
+	    <predicate name="Fitting" negated="1"/>
+	  </effect>
+	</outcome>
+      </probabilistic>
+    </action>
+    <action backgroundColour="#33FF88" name="Connect to council utilities">
+      <precondition negated="false" type="and">
+	<predicate name="Util" negated="0"/>
+	<predicate name="Planning approval" negated="0"/>
+	<predicate name="Fittings complete" negated="0"/>
+      </precondition>
+      <over-all/>
+      <effect>
+	<delay duration="46656" type="fixed"/>
+      </effect>
+      <probabilistic>
+	<outcome backgroundColour="#88FF33" label="success" probability="0.80">
+	  <effect>
+	    <delay duration="30000" type="fixed"/>
+	    <predicate name="Power connected" negated="0"/>
+	    <predicate name="Water connected" negated="0"/>
+	    <predicate name="Util" negated="1"/>
+	  </effect>
+	</outcome>
+	<outcome backgroundColour="#88FF33" label="failure" probability="0.2">
+	  <effect>
+	    <delay duration="10000" type="fixed"/>
+	    <predicate name="Util" negated="1"/>
+	  </effect>
+	</outcome>
+      </probabilistic>
+    </action>
+    <action backgroundColour="#33FF88" name="Solar power rig">
+      <precondition negated="false" type="and">
+	<predicate name="Util" negated="0"/>
+	<predicate name="Floors complete" negated="0"/>
+      </precondition>
+      <over-all/>
+      <effect>
+	<delay duration="46656" type="fixed"/>
+      </effect>
+      <probabilistic>
+	<outcome backgroundColour="#88FF33" label="success" probability="0.95" >
+	  <effect>
+	    <delay duration="35000" type="fixed"/>
+	    <predicate name="Power connected" negated="0"/>
+	    <predicate name="Util" negated="1"/>
+	  </effect>
+	</outcome>
+	<outcome backgroundColour="#88FF33" label="failure" probability="0.05" >
+	  <effect>
+	    <delay duration="12000" type="fixed"/>
+	    <predicate name="Util" negated="1"/>
+	  </effect>
+	</outcome>
+      </probabilistic>
+    </action>
+    <action backgroundColour="#33FF88" name="Water Purification and Recyc rig">
+      <precondition negated="false" type="and">
+	<predicate name="Util" negated="0"/>
+	<predicate name="Floors complete" negated="0"/>
+      </precondition>
+      <over-all/>
+      <effect>
+	<delay duration="46656" type="fixed"/>
+      </effect>
+      <probabilistic>
+	<outcome backgroundColour="#88FF33" label="success" probability="0.95" >
+	  <effect>
+	    <delay duration="30000" type="fixed"/>
+	    <predicate name="Water connected" negated="0"/>
+	    <predicate name="Util" negated="1"/>
+	  </effect>
+	</outcome>
+	<outcome backgroundColour="#88FF33" label="failure" probability="0.05" >
+	  <effect>
+	    <delay duration="10000" type="fixed"/>
+	    <predicate name="Util" negated="1"/>
+	  </effect>
+	</outcome>
+      </probabilistic>
+    </action>
+    <action backgroundColour="#33FF88" name="Grand Opening">
+      <precondition negated="false" type="and">
+	<predicate name="Fittings complete" negated="0"/>
+	<predicate name="Power connected" negated="0"/>
+	<predicate name="Water connected" negated="0"/>
+	<predicate name="Tennants contracted" negated="0"/> 
+      </precondition>
+      <over-all/>
+      <effect>
+	<delay duration="46656" type="fixed"/>
+      </effect>
+      <probabilistic>
+	<outcome backgroundColour="#88FF33" label="success" probability="0.95" >
+	  <effect>
+	    <delay duration="18000" type="fixed"/>
+	    <predicate name="Grand opening held" negated="0"/>
+	  </effect>
+	</outcome>
+	<outcome backgroundColour="#88FF33" label="failure" probability="0.05" >
+	  <effect>
+	    <delay duration="18000" type="fixed"/>
+	  </effect>
+	</outcome>
+      </probabilistic>
+    </action>
+    <action backgroundColour="#33FF88" name="Grand Opening with Bonus Tennants">
+      <precondition negated="false" type="and">
+	<predicate name="Fittings complete" negated="0"/>
+	<predicate name="Power connected" negated="0"/>
+	<predicate name="Water connected" negated="0"/>
+	<predicate name="Bonus Tennants" negated="0"/> 
+	<predicate name="Tennants contracted" negated="0"/> 
+      </precondition>
+      <over-all/>
+      <effect>
+	<delay duration="46656" type="fixed"/>
+      </effect>
+      <probabilistic>
+	<outcome backgroundColour="#88FF33" label="success" probability="1.0">
+         <effect>
+	  <delay duration="20000" type="fixed"/>
+	  <predicate name="Grand opening held" negated="0"/>
+         </effect>
+	</outcome>
+      </probabilistic>
+    </action>
+  </actions>
+  <problem>
+    <init>
+      <predicate name="Planning approval"/>
+      <predicate name="Core"/>
+      <predicate name="Fitting"/>
+      <predicate name="Util"/>
+      <predicate name="Concrete"/>
+    </init>
+    <goal negated="false" type="and">
+      <condition>
+        <predicate name="Grand opening held"/>
+      </condition>
+    </goal>
+  </problem>
+  </domain>

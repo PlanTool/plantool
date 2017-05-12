@@ -1,0 +1,160 @@
+#old style
+I assume operator A1 is supposed to be different from the rest for this.
+
+(operator A*
+ (params)
+ (preconds)
+ (effects (g*)))
+
+(operator A1
+ (params)
+ (preconds (g*))
+ (effects (g1)))
+
+(operator A2
+ (params)
+ (preconds (g*) (g1))
+ (effects (g1) (g2)))
+
+(operator A3
+ (params)
+ (preconds (g*) (g2))
+ (effects (g2) (g3)))
+
+(operator A4
+ (params)
+ (preconds (g*) (g3))
+ (effects (g3) (g4)))
+
+(operator A5
+ (params)
+ (preconds (g*) (g4))
+ (effects (g4) (g5)))
+
+(operator A6
+ (params)
+ (preconds (g*) (g5))
+ (effects (g5) (g6)))
+
+(operator A7
+ (params)
+ (preconds (g*) (g6))
+ (effects (g6) (g7)))
+
+(operator A8
+ (params)
+ (preconds (g*) (g7))
+ (effects (g7) (g8)))
+
+(operator A9
+ (params)
+ (preconds (g*) (g8))
+ (effects (g8) (g9)))
+
+(operator A10
+ (params)
+ (preconds (g*) (g9))
+ (effects (g9) (g10)))
+
+
+(operator A11
+ (params)
+ (preconds (g*) (g10))
+ (effects (g11)))
+
+(operator A12
+ (params)
+ (preconds (g*) (g11))
+ (effects (g11) (g12)))
+
+(operator A13
+ (params)
+ (preconds (g*) (g12))
+ (effects (g12) (g13)))
+
+(operator A14
+ (params)
+ (preconds (g*) (g13))
+ (effects (g13) (g14)))
+
+(operator A15
+ (params)
+ (preconds (g*) (g14))
+ (effects (g14) (g15)))
+
+(operator A16
+ (params)
+ (preconds (g*) (g15))
+ (effects (g15) (g16)))
+
+(operator A17
+ (params)
+ (preconds (g*) (g16))
+ (effects (g16) (g17)))
+
+(operator A18
+ (params)
+ (preconds (g*) (g17))
+ (effects (g17) (g18)))
+
+(operator A19
+ (params)
+ (preconds (g*) (g18))
+ (effects (g18) (g19)))
+
+(operator A20
+ (params)
+ (preconds (g*) (g19))
+ (effects (g19) (g20)))
+
+
+(operator A21
+ (params)
+ (preconds (g*) (g20))
+ (effects (g21)))
+
+(operator A22
+ (params)
+ (preconds (g*) (g21))
+ (effects (g21) (g22)))
+
+(operator A23
+ (params)
+ (preconds (g*) (g22))
+ (effects (g22) (g23)))
+
+(operator A24
+ (params)
+ (preconds (g*) (g23))
+ (effects (g23) (g24)))
+
+(operator A25
+ (params)
+ (preconds (g*) (g24))
+ (effects (g24) (g25)))
+
+(operator A26
+ (params)
+ (preconds (g*) (g25))
+ (effects (g25) (g26)))
+
+(operator A27
+ (params)
+ (preconds (g*) (g26))
+ (effects (g26) (g27)))
+
+(operator A28
+ (params)
+ (preconds (g*) (g27))
+ (effects (g27) (g28)))
+
+(operator A29
+ (params)
+ (preconds (g*) (g28))
+ (effects (g28) (g29)))
+
+(operator A30
+ (params)
+ (preconds (g*) (g29))
+ (effects (g29) (g30)))
+

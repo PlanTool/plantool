@@ -1,0 +1,52 @@
+ (define (domain ulm-office)
+  (:requirements :adl :typing)
+  (:types object room weight type)
+  (:predicates (at ?x - room)
+               (location ?o - object  ?r - room) 
+               (arm-empty)
+               (weight-is ?o  - object?w)  
+               (holding ?o - object)
+               (type ?obj  - object ?basket - type )
+               (in ?obj - object ?bin - object))
+
+(:action move-robot
+ :parameters (?r1 ?r2 - room)
+ :precondition (at ?r1)
+ :effect (and  (at ?r2) (not (at ?r1))))
+ 
+
+(:action take-object
+ :parameters (?o - object ?r - room ?w - weight)
+ :precondition (and (at ?r) (location ?o ?r) (arm-empty )
+                    (weight-is ?o ?w) (not (eq ?w too-much)))
+ :effect (and (holding ?o)
+              (not (location ?o ?r)) (not (arm-empty))))
+ 
+ 
+(:action drop-object
+ :parameters (?o - object ?r - room ?obj - object)
+ :precondition (and (at ?r) (holding ?o) (type ?obj basket))
+ :effect       (and (location ?o ?r) (arm-empty) (not (holding ?o))))
+
+
+(:action put-in-basket
+ :parameters  (?obj - object ?bin - object ?r - room)
+ :precondition (and (at ?r) (location ?bin ?r) (type ?bin basket) 
+                    (holding ?obj))
+ :effect (and (in ?obj ?bin) (arm-empty) (not (holding ?obj))))
+
+ 
+(:action remove-from-basket
+ :parameters (?obj - object ?bin - object ?r - room)
+ :precondition (and (at ?r) (holding ?bin) (in ?obj ?bin) 
+                    (type ?bin basket))
+ :effect (and (location ?obj ?r) (not (in ?obj ?bin))))
+
+ 
+(:action empty-basket
+ :parameters (?bin - object ?r - room)
+ :precondition (and (holding ?bin) (at ?r) (type ?bin basket))
+ :effect (forall (?obj - object) 
+                (when (in ?obj ?bin)(not (in ?obj ?bin))))))
+ 
+

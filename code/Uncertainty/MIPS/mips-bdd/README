@@ -1,0 +1,72 @@
+MIPS-BDD, (c) Stefan Edelkamp, University of Dortmund
+
+Slightly revised competition version 2007
+
+Re
+
+Includes:
+
+- Cost-optimal search for linear metrics with integer coefficients
+
+- PDB optimization with genetic algorithms (not used in the competition)
+
+---
+
+Bidirectional BFS in propositional domains and simple preferences
+
+Grounding input 
+
+./ground <domain-file> <problem-file>
+
+writes domain.pddl problem.pddl and problem.psas
+
+Calling the solver 
+
+./bdd-solver
+
+writes mips-solution and simple-solution 
+
+./bdd-solver -? 
+
+provides some command line options of the solver
+
+---
+
+Generic call, also for qualitative preferences
+
+./compile <domain.pddl> <problem.pddl>
+
+Changes in subdir <automata>, where also the solution files are
+written
+
+./compile /data/jabbar/domains/pathways/Propositional/domain_p02.pddl  /data/jabbar/domains/pathways/Propositional/p02.pddlProgram calls ltl2ba in its subdir.
+
+(dots removed by top-level script)
+
+Example
+
+./compile /data/jabbar/domains/pathways/Propositional/domain_p02.pddl
+/data/jabbar/domains/pathways/Propositional/p02.pddl
+
+./compile /data/jabbar/domains/pathways/Propositional/domain_p02.pddl  /data/jabbar/domains/pathways/Propositional/p02.pddl
+
+--
+
+Known issues:
+
+- GAlib and Buddy library changes random seed, to be adapted 
+
+- Growth of BDD-sizes to be adapted to exploit different amounts of 
+main memory, default for 16 GB exploration
+
+ INITIAL_NODES 32000000
+ MAX_INCREASE  128000000
+
+- implementation of temporal modalities "hold", "within", etc. commented 
+
+- Growth of BDD-sizes beyond 2GB RAM only possible on 64-bit machines
+
+- Search direction for propositional domains hard-coded, default 
+bidirectional search; backward direction problematic in some domains.
+
+

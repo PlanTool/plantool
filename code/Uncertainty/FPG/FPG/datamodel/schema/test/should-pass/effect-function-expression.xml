@@ -1,0 +1,33 @@
+<domain name="one-action">
+  <predicates>
+    <predicate name="a"/>
+    <predicate name="b"/>
+  </predicates>
+  <functions>
+    <function name="func-1"/>
+  </functions>
+  <actions>
+    <action name="a">
+      <effect>
+	<and>
+	  <increase>
+	    <function name="func-1"/>
+	    <add>
+	      <number>5</number>
+	      <minus>
+		<number>10</number>
+		<multiply>
+		  <function name="func-1"/>
+		  <divide>
+		    <number>10</number>
+		    <number>20</number>
+		  </divide>
+		</multiply>
+	      </minus>
+	    </add>
+	  </increase>
+	</and>
+      </effect>
+    </action>
+  </actions>
+</domain>

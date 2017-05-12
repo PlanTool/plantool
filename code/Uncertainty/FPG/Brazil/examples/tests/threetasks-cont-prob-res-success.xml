@@ -1,0 +1,106 @@
+
+<domain name="new">
+  <predicates>
+    <predicate name="IntermediateGoal"/>
+    <predicate name="Goal"/>
+  </predicates>
+  <functions>
+    <function name="money"/>
+  </functions>
+  <actions>
+    <action backgroundColour="#98FB98" name="A">
+      <precondition>
+        <functionCondition type="gt">
+	  <function name="money"/>
+	  <number>3</number>    
+	</functionCondition>
+      </precondition>
+      <over-all/>
+      <at-start>
+        <functionEffect type="decrease">
+          <function name="money"/>
+          <number>3</number>
+        </functionEffect>
+      </at-start>
+      <effect>
+        <delay mean="100" type="normal" standardDeviation="20"/>
+      </effect>
+      <probabilistic>
+	<outcome label="Failure" probability="0.45"/>
+        <outcome label="Success" probability="0.55">
+          <effect>
+            <predicate name="IntermediateGoal" negated="false"/>
+	  </effect>
+	</outcome>
+
+      </probabilistic>
+    </action>
+
+    <action backgroundColour="#98FB98" name="B">
+      <precondition>
+        <functionCondition type="gt">
+	  <function name="money"/>
+	  <number>2</number>    
+	</functionCondition>
+      </precondition>
+      <over-all/>
+      <at-start>
+        <functionEffect type="decrease">
+          <function name="money"/>
+          <number>2</number>
+        </functionEffect>
+      </at-start>
+      <effect>
+        <delay lambda="0.01" type="exponential"/>
+      </effect>
+      <probabilistic>
+	<outcome label="Failure" probability="0.49"/>
+        <outcome label="Success" probability="0.51">
+          <effect>
+            <predicate name="IntermediateGoal" negated="false"/>
+	  </effect>
+	</outcome>
+      </probabilistic>
+    </action>
+
+    <action backgroundColour="#98FB98" name="G">
+      <precondition>
+        <predicate name="IntermediateGoal" negated="false"/>
+      </precondition>
+      <over-all/>
+      <at-start/>
+      <effect>
+        <delay lambda="0.01" type="exponential"/>
+      </effect>
+      <probabilistic>
+        <outcome label="Goal" probability="1.0">
+          <effect>
+            <predicate name="Goal" negated="false"/>
+	  </effect>
+	</outcome>
+      </probabilistic>
+    </action>
+ 
+ </actions>
+  <problem>
+    <init> 
+        <predicates/>
+        <functions>
+        <assign>
+          <function name="money"/>
+          <number value="3"/>
+        </assign>
+      </functions>
+    </init>
+    <goal>
+      <predicate name="Goal"/>
+    </goal>
+  </problem>
+
+  <properties>
+	<property>
+		<name> planner regression test </name>
+		<value/>
+	</property>
+  </properties>
+</domain>

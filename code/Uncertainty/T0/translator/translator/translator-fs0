@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+if [[ "a" == "a$TRANSLATOR_HOME" ]]; then
+    a="."
+else
+    a=$TRANSLATOR_HOME
+fi
+export TRANSLATOR_HOME=$a
+
+$a/translator -l result_translator-fs0 -s 'fs0:inf' $*

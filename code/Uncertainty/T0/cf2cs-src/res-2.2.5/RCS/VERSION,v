@@ -1,0 +1,25 @@
+head	1.1;
+access;
+symbols;
+locks
+	hlp:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2009.04.15.17.27.55;	author hlp;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@release-2-2-5
+@

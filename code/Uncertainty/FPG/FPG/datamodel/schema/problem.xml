@@ -1,0 +1,10 @@
+<!--
+    XML Schema for Brazil Problem Definition language.
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <xsd:include schemaLocation="types.xml"/>
+
+  <xsd:element name="problem" type="BrazilProblem"/>
+  
+</xsd:schema>

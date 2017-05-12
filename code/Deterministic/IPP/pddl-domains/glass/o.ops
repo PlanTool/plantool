@@ -1,0 +1,34 @@
+(define (domain glass)
+(:predicates (at ?y -  physobj ?x - location)
+             (holding ?x - physobj) 
+             (in-box ?x - physobj)
+             (broken ?g - physobj)
+             (glass ?x - physobj))
+            
+
+(:action move
+  :parameters  (?from ?to - location)
+  :precondition (at truck  ?from) 
+  :effect (and (at truck  ?to) (not (at truck  ?from))
+          (forall (?g - physobj) (when (and (glass ?g) (holding ?g))
+                     (broken ?g)))))
+  
+(:action pickup
+  :parameters (?at - location ?obj - physobj)
+  :precondition  (and (at truck ?at) (at ?obj ?at))
+  :effect (and (holding ?obj) (not (at ?obj ?at))))
+  
+(:action putdown
+  :parameters (?at - location ?obj - physobj)
+  :precondition  (and (at truck  ?at) (holding ?obj))
+  :effect (and (at ?obj ?at) (not (holding ?obj))))
+
+(:action putin
+  :parameters (?at - location ?obj - physobj)
+  :precondition  (and (at truck  ?at) (at ?obj ?at) (holding box))
+  :effect (and (in-box ?obj) (not (at ?obj ?at))))
+
+(:action takeout
+  :parameters (?at - location ?obj - physobj)
+  :precondition  (and (at truck  ?at) (holding box) (in-box ?obj))
+  :effect (and (at ?obj ?at) (not (in-box ?obj)))))

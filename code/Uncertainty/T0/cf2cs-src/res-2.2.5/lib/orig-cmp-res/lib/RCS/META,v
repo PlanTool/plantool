@@ -1,0 +1,30 @@
+head	1.1;
+access;
+symbols;
+locks
+	hlp:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2009.04.15.17.30.16;	author hlp;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@name="res"
+version="2.2.4"
+description="RES - resizable contiguous memory"
+requires=""
+archive(byte)="res.cma"
+archive(native)="res.cmxa"
+@

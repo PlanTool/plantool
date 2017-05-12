@@ -1,0 +1,21 @@
+<domain name="one-action">
+  <predicates>
+    <predicate name="a"/>
+    <predicate name="b"/>
+  </predicates>
+  <functions>
+    <function name="func-1"/>
+  </functions>
+  <actions>
+    <action name="a">
+      <probabilistic>
+	<outcome probability="0.01">
+	  <predicate name="a"/>
+	</outcome>
+	<outcome probability="0.99">
+	  <predicate name="a"/>
+	</outcome>
+      </probabilistic>
+    </action>
+  </actions>
+</domain>

@@ -1,0 +1,194 @@
+
+<domain name="new">
+  <predicates>
+    <predicate name="Racing"/>
+    <predicate name="Pitting"/>
+    <predicate name="StartOfRace"/>
+  </predicates>
+  <functions>
+    <function name="LapsDone"/>
+    <function name="Fuel"/>
+  </functions>
+  <actions>
+
+    <action backgroundColour="#98FB98" name="3StopRacing">
+      <precondition>
+        <functionCondition type="ge">
+          <function name="Fuel"/>
+          <number>20</number>
+        </functionCondition>
+        <predicate name="Racing" negated="true"/>
+        <predicate name="Pitting" negated="true"/>
+      </precondition>
+      <over-all/>
+      <at-start>
+        <predicate name="Racing" negated="false"/>
+        <predicate name="StartOfRace" negated="true"/></at-start>
+      <effect>
+        <delay duration="20448" type="fixed"/>
+      </effect>
+      <probabilistic>
+        <outcome backgroundColour="#ffcc33" label="Clear" probability="0.5">
+          <effect>
+    
+            <delay lambda="0.0001" type="exponential"/>
+            <predicate name="Racing" negated="true"/>
+            
+            <functionEffect type="decrease">
+              <function name="Fuel"/>
+              <number>20</number>
+            </functionEffect>
+            <functionEffect type="increase">
+              <function name="LapsDone"/>
+              <number>20</number>
+            </functionEffect></effect>
+          <at-start/>
+        </outcome>
+        <outcome backgroundColour="#ff3366" label="BackMarkers" probability="0.5">
+          <effect>
+            <delay mean="9632" standardDeviation="4464" type="normal"/>
+            <functionEffect type="increase">
+              <function name="LapsDone"/>
+              <number>20</number>
+            </functionEffect>
+            <predicate name="Racing" negated="true"/>
+            <functionEffect type="decrease">
+              <function name="Fuel"/>
+              <number>20</number>
+            </functionEffect>
+          </effect>
+          <at-start/>
+        </outcome>
+      </probabilistic>
+    </action>
+    <action backgroundColour="#98FB98" name="2StopPit">
+      <precondition>
+        <functionCondition type="le">
+          <function name="Fuel"/>
+          <number>0</number>
+        </functionCondition>
+        <predicate name="Racing" negated="true"/>
+        <predicate name="Pitting" negated="true"/>
+      </precondition>
+      <over-all/>
+      <at-start>
+        <predicate name="Pitting" negated="false"/>
+      </at-start>
+      <effect>
+        <delay mean="6048" standardDeviation="2736" type="normal"/>
+        <functionEffect type="assign">
+          <function name="Fuel"/>
+          <number>30</number>
+        </functionEffect>
+        <predicate name="Pitting" negated="true"/></effect>
+      <probabilistic/>
+    </action>
+
+    <action backgroundColour="#98FB98" name="2StopRacing">
+      <precondition>
+        <functionCondition type="ge">
+          <function name="Fuel"/>
+          <number>30</number>
+        </functionCondition>
+        <predicate name="Racing" negated="true"/>
+        <predicate name="Pitting" negated="true"/>
+      </precondition>
+      <over-all/>
+      <at-start>
+        <predicate name="Racing" negated="false"/>
+        <predicate name="StartOfRace" negated="true"/></at-start>
+      <effect>
+        <delay duration="57456" type="fixed"/>
+      </effect>
+      <probabilistic>
+        <outcome backgroundColour="#3366ff" label="Clear" probability="0.5">
+          <effect>
+    
+            <delay lambda="7.0753e-05" type="exponential"/>
+            <functionEffect type="increase">
+              <function name="LapsDone"/>
+              <number>30</number>
+            </functionEffect>
+            <predicate name="Racing" negated="true"/>
+            <functionEffect type="decrease">
+              <function name="Fuel"/>
+              <number>30</number>
+            </functionEffect>
+          </effect>
+          <at-start/>
+        </outcome>
+        <outcome backgroundColour="#33ff66" label="BackMarkers" probability="0.5">
+          <effect>
+            <delay mean="12368" standardDeviation="7200" type="normal"/>
+            <functionEffect type="increase">
+              <function name="LapsDone"/>
+              <number>30</number>
+            </functionEffect>
+            <predicate name="Racing" negated="true"/>
+            <functionEffect type="decrease">
+              <function name="Fuel"/>
+              <number>30</number>
+            </functionEffect>
+          </effect>
+          <at-start/>
+        </outcome>
+      </probabilistic>
+    </action>
+
+
+    <action backgroundColour="#98FB98" name="3StopPit">
+      <precondition>
+        <functionCondition type="le">
+          <function name="Fuel"/>
+          <number>0</number>
+        </functionCondition>
+        <predicate name="Racing" negated="true"/>
+        <predicate name="Pitting" negated="true"/>
+      </precondition>
+      <over-all/>
+      <at-start>
+        <predicate name="Pitting" negated="false"/>
+      </at-start>
+      <effect>
+        
+        <functionEffect type="assign">
+          <function name="Fuel"/>
+          <number>20</number>
+        </functionEffect>
+        <delay mean="27792" standardDeviation="6912" type="normal"/>
+        <predicate name="Pitting" negated="true"/></effect>
+      <probabilistic/>
+    </action>
+  </actions>
+  <problem>
+    <init> 
+        <predicates>
+        <predicate name="StartOfRace"/>
+      </predicates>
+        <functions>
+        <assign>
+          <function name="LapsDone"/>
+          <number value="0"/>
+        </assign>
+        <assign>
+          <function name="Fuel"/>
+          <number value="20"/>
+        </assign>
+      </functions>
+    </init>
+    <goal>
+      <functionCondition type="ge">
+        <function name="LapsDone"/>
+        <number>80</number>
+      </functionCondition>
+    </goal>
+  </problem>
+
+<!--
+<properties> <property> <name> planner naive policy </name> <value/> </property> </properties> 
+-->
+
+
+
+
+</domain>

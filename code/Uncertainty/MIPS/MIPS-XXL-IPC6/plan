@@ -1,0 +1,30 @@
+#!/bin/bash
+
+rm plan?; rm prob?; rm groundedproblem.pddl; rm groundeddomain.pddl; rm mipsSolution.soln; rm dom.*.pddl 
+
+echo removing existing solution file 
+rm -f $2.soln
+echo "eliminating -number"
+sed s/"- number"//g $1 > dom.0.pddl
+sed s/":numeric-fluents"//g dom.0.pddl > dom.1.pddl
+sed s/":goal-utilities"/":preferences"/g dom.1.pddl > dom.2.pddl
+sed s/":action-costs"/":fluents"/g dom.2.pddl > dom.3.pddl
+sed s/"([ ]*-[ ]* [0-9]*[.]*[0-9]*"/"(-  "/ $2 > prob.1.pddl
+
+sed s/"total-cost"/"is-cost"/g dom.3.pddl > domainForGrounding.pddl
+sed s/"total-cost"/"is-cost"/g prob.1.pddl > problemForGrounding.pddl
+./mips-xxl -G -o domainForGrounding.pddl -f problemForGrounding.pddl 
+./mips-xxl -Z -o groundeddomain.pddl -f groundedproblem.pddl -O $4
+out=$?
+
+if [ $out = 0 ]; then
+    echo "MIPS-XXL terminated with optimal solution in " $3
+    mv mipsSolution.soln $3
+else
+    echo
+    echo "Incomplete exploration with MIPS-XXL!" 
+fi
+# For sub-optimal intermediate solution (if any), flip the variable 
+# sub_optimal_solutions in external.c. The solutions can then be 
+# found in mipsSolution.soln"
+

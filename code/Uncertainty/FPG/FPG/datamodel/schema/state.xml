@@ -1,0 +1,66 @@
+<!--
+    XML Schema for Brazil State Definition language.
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <xsd:include schemaLocation="types.xml"/>
+
+  <xsd:complexType name="BrazilState">
+    <xsd:sequence>
+      <xsd:element name="startTime" type="BrazilTime" 
+		   minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="currentTime" type="BrazilTime" 
+		   minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="currentPredicates" type="BrazilPredicates"
+		   minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="currentFunctions" type="BrazilFunctions"
+		   minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="eventQueue" type="BrazilEvents"
+		   minOccurs="1" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+ 
+  
+  <!--
+      The guts of the event queue
+    -->
+  <xsd:complexType name="BrazilEvents">
+    <xsd:sequence>
+      <xsd:element name="event" type="BrazilEventDefinition" 
+		   minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <!--
+    A single event, including it's type, a memory pointer, do at time 
+    and insert time
+    -->
+  <xsd:complexType name="BrazilEventDefinition">
+    <xsd:sequence>
+      <xsd:element name="type" type="BrazilEventTypes"/>
+      <!-- Identifier for task/outcome/effect for readability and when
+	   memory pointer is invalid --> 
+      <xsd:element name="name" type="xsd:string"/> 
+      <xsd:element name="pointer" type="xsd:nonNegativeInteger"/> 
+      <xsd:element name="timeToOccur" type="BrazilTime"/> 
+      <xsd:element name="queuedAt" type="BrazilTime"/> 
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!-- 
+       The types of event that can be on the queue
+       -->
+  <xsd:simpleType name="BrazilEventTypes">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="start task"/>
+      <xsd:enumeration value="end task"/>
+      <xsd:enumeration value="start outcome"/>
+      <xsd:enumeration value="end outcome"/>
+      <xsd:enumeration value="effect"/>
+    </xsd:restriction>
+  </xsd:simpleType> 
+
+</xsd:schema>
+
+

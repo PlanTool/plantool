@@ -1,0 +1,36 @@
+#!/usr/bin/perl
+if ($#ARGV!= 1 && $#ARGV!=0) {
+    die "Usage: run_till_fix CNF_Filename [Num_Max_Iterations]";
+}
+$file = $ARGV[0];
+if ($#ARGV == 1) {
+    $max_iteration = $ARGV[1];
+}
+else {
+    $max_iteration = 1000000;
+}
+$last_cls_count = 0; 
+$filename = $file."_iteration_0";
+$filename=~s/.*\///;
+system("cp $file $filename");
+for ($i=0; $i<$max_iteration; ++$i) {
+    open in1, "<$filename" or die "Can't open input";
+    while (true) {
+	$line = <in1>;
+	($a, $b, $c, $cls) = split ' ', $line;
+	if ($a ne "p") { next; }
+	else {last;}
+    }
+    if ($cls == $last_cls_count) {
+	last;
+    }
+    else {
+	$last_cls_count = $cls; 
+    }
+    system("zchaff $filename");
+    system("zverify_df $filename resolve_trace -core");
+    $j = $i + 1;
+    $filename = $file."_iteration_".$j;
+    $filename=~s/.*\///;
+    system("mv unsat_core.cnf $filename");
+}

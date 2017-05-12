@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+if [[ "a" == "a$TRANSLATOR_HOME" ]]; then
+    a="."
+else
+    a=$TRANSLATOR_HOME
+fi
+
+$a/translator -z -l result_translator-sat-serial -s 'sat:inf' $*
+

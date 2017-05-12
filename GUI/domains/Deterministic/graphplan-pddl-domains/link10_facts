@@ -1,0 +1,3 @@
+(preconds (g*))
+
+(effects (g*) (g10))

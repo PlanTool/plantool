@@ -1,0 +1,97 @@
+<domain name="test">
+  <predicates>
+    <predicate name="one"/>
+    <predicate name="two"/>
+	    <predicate name="predicate-1"/>
+	    <predicate name="predicate-2"/>
+	    <predicate name="predicate-3"/>
+	    <predicate name="predicate-4"/>
+	    <predicate name="predicate-5"/>
+  </predicates>
+  <actions>
+
+    <action name="test">
+    <precondition/>
+
+    <over-all/>
+<!--<condition type="and"><predicate name="predicate-4"/><predicate name="predicate-1"/></condition></precondition>
+    
+-->    
+    
+    <effect>
+      <delay type="normal" standardDeviation="3600" mean="18000"/>
+      
+	<predicate name="predicate-1" negated="false"/>
+	<predicate name="predicate-2" negated="false"/>
+
+      
+    </effect>
+    
+    <probabilistic>
+      
+	<outcome probability="0.1" backgroundColour="#E6FFBF" label="Outcome 1">
+	  <effect>
+	    <delay type="normal" standardDeviation="3600" mean="18000"/>
+	    
+	    
+	      <increase>
+		<function name="altitude"/>
+		<number>10</number>
+	      </increase>
+	      
+		<predicate name="predicate-5" negated="true"/>
+	      
+	   
+	  </effect>
+	</outcome>
+	<outcome probability="0.7" backgroundColour="#FFBFEF" label="Outcome 2">
+	  <effect>
+	  <delay type="normal" standardDeviation="3600" mean="18000"/>
+	   
+	      <increase>
+		<function name="altitude"/>
+		<number>10</number>
+	      </increase>
+	    <predicate name="predicate-5" negated="true"/>
+	   
+	  </effect>
+	</outcome>
+	<outcome probability="0.1" backgroundColour="#FFDEBF" label="Outcome 3">
+	  <effect>
+	 <delay type="normal" standardDeviation="3600" mean="18000"/>
+	   
+	      <increase>
+		<function name="altitude"/>
+		<number>10</number>
+	      </increase>
+	      
+		<predicate name="predicate-5" negated="false"/>
+	      
+	   
+	  </effect>
+	</outcome>
+	<outcome probability="0.1" backgroundColour="#BFE9FF" label="Outcome 4">
+	  <effect>
+	 <delay type="normal" standardDeviation="3600" mean="18000"/>
+	    
+	      <increase>
+		<function name="altitude"/>
+		<number>10</number>
+	      </increase>
+	      <not>
+		<predicate name="predicate-5"/>
+	      </not>
+	    
+	  </effect>
+	</outcome>
+	
+    </probabilistic>
+    </action>
+  </actions>
+  <problem>
+    <init>
+      <predicate name="predicate-1"/>
+    </init>
+    <goal/>
+  </problem>
+</domain>

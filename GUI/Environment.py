@@ -1,5 +1,6 @@
 #coding:utf-8
 import re
+import nltk
 import gensim
 import logging
 import numpy as np
@@ -21,7 +22,7 @@ class Environment:
         self.non_action_label = args.non_action_label
         self.reward_assign = [float(r) for r in args.reward_assign.split()]
         assert len(self.reward_assign) == 4
-        self.db = mysql.connector.connect(user='fengwf',password='123',database='test')
+        self.db = mysql.connector.connect(user=args.user,password=args.passwd,database=args.db)
         self.cur = self.db.cursor()
         self.actionDB = args.actionDB.split()
         self.max_text_num = [int(i) for i in args.max_text_num.split()] 
@@ -58,7 +59,20 @@ class Environment:
         word_vec = []
         text_vec = np.zeros((self.words_num,self.wordvec))
         raw_text = open(text_dir).read()
-        words = re.findall(r'[\w\-\_]+', raw_text)
+        words = []
+        w_of_s = []
+        #words = re.findall(r'[\w\-\_]+', raw_text)
+        a = re.sub(r'\. ', '.\n', raw_text)
+        b = re.sub(r'\? ', '?\n', a)
+        c = re.sub(r'\! ', '!\n', b)
+        d = re.split(r'\n', c)
+        for e in d:
+            #print '\n',e
+            tokens = nltk.tokenize.word_tokenize(e)
+            #print tokens
+            w_of_s.append(tokens)
+            words.extend(tokens)
+        #assert 1==0
         self.text_length = len(words)
         self.saved_text_length.append(self.text_length)
         for j in range(self.words_num):
@@ -80,7 +94,7 @@ class Environment:
             text_vec[j] = word_vec
             word_vec = []
         
-        return words, text_vec
+        return words, d, w_of_s, text_vec
 
 
     def _getTaggedtexts(self):
@@ -158,7 +172,7 @@ class Environment:
 
     def test_one_init(self, text_dir):
         print '\ntest_one_init.....\n'
-        self.words, self.text_vec = self.create_text_matrix(text_dir)
+        self.words, self.sents, self.w_of_s, self.text_vec = self.create_text_matrix(text_dir)
         self.state = self.text_vec.copy()#!!!!!NB!!!NB!!!!NB!!!!
         self.state[:,self.vec_length:] = 0
 
@@ -306,7 +320,9 @@ if __name__ == '__main__':
     parser.add_argument("--non_action_label", type=int, default=1, help="An integer refer to the label of non-actions.")
     parser.add_argument("--test_text_num", type=int, default=8, help="How many testing steps after each epoch.")
     parser.add_argument("--penal_radix", type=float, default=5.0, help="Penalty radix according to action rate.")
-
+    parser.add_argument("--user", default='fengwf', help="Mysql account, user name.")
+    parser.add_argument("--passwd", default='123', help="Mysql password.")
+    parser.add_argument("--db", default='test', help="Mysql database name.")
 
     args = parser.parse_args()
     env = Environment(args)

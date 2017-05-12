@@ -1,0 +1,48 @@
+
+[Linux] Opening MOST problem files triggers a crash (I can only demo
+CPUFab). More precisely, the second assert in
+"DOMProblem::createInit()" is not satisfied:
+Brazil: model/impl/DOMProblem.cpp:50: void DOMProblem::createInit():
+Assertion `initFunctionsElement != __null && initPredicatesElement !=
+__null' failed.  Aborted
+
+[daa] Addendum to above, 17.1.07...
+It seems that Brazil is generally not tolerant of missing tags. All tags should be considered optional unless there's a good reason otherwise.
+
+
+[daa] 17.1.07..
+Manipulating gantt chart is generally unstable. Seems to be double delete of some data structure somewhere.
+
+[daa] 17.1.07
+Manipulating Gantt chart actions backwards seems to occasionally create negative invalidTimes.
+
+Trying to plan with actions that do not have probabilities cause the application to crash with a seg fault in BrazilStateUpdater::processEvent
+
+[daa] 17.1.07
+XML negated flag seems to be an ugly mix of "0" "1" and "true" "false".. also, is negated flag used for effects?
+
+[daa] (Intel Mac Only) 18.1.07 
+When assigning "by" values for function effects, text is going in, but can't see the value updated in the box. Second attempt at bringing up effect box shows plain white box instead of effect editor.
+
+[daa] 
+18.1.07 Effects set editor shows the entire set of set/remove/assign/increase/decrease/scaleup/scaledown for both function and predicate effects. Drop down list should only show valid options for predicates, or valid options for functions.
+
+[daa] 18.1.07
+Adding new predicates from effects editor sometimes causes a crash when distributing new predicate name to all listeners.
+
+[daa] 18.1.07 
+For predicate effects, using "Set" versus "Remove" has no impact. If action is dsmissed, then reloaded, "Set" is always shown. Saved files always show that predicate effects have negated="true".
+
+[buffet/Linux] With CPUfab, probabilities don't seem to sum to one anymore
+(this bug had been fixed).
+Crash in DOMProbabilistic::sampleOutcome() with message:
+  terminate called after throwing an instance of 'std::invalid_argument'
+  what():  Probabilities sum to greater than 1 in sample()
+
+[buffet/Linux] Switching from one problem to another (or the same one) regularly results in a
+segmentation fault:
+- either in BrazilStateList::clear () (when loading the file);
+- or in BrazilStateList::addState () (when pausing).
+
+
+[daa] 16.3.07 Gantt chart ignores double clicks to change outcomes.

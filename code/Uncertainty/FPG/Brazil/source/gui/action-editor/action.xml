@@ -1,0 +1,80 @@
+
+	 <action name="An Action" backgroundColour="#ef4444">
+	   <precondition>
+	     <and>
+	       <predicate name="predicate-1"/>
+	       <predicate name="predicate-2"/>
+	     </and>
+	   </precondition>
+      <effect>
+	<delayedEffect>
+	  <delay type="normal" standardDeviation="2" mean="10"/>
+	  <and>
+	    <predicate name="predicate-1"/>
+	    <predicate name="predicate-2"/>
+	    <predicate name="predicate-3"/>
+	    <predicate name="predicate-4"/>
+	  </and>
+	</delayedEffect>
+      </effect>
+      <probabilistic>
+
+	<outcome probability="0.1" backgroundColour="#7799FF" label="Outcome 1">
+	  <delayedEffect>
+	    <delay type="normal" standardDeviation="2" mean="10"/>
+	    <and>
+	      <increase>
+		<function name="altitude"/>
+		<number>10</number>
+	      </increase>
+	      <not>
+		<predicate name="predicate-5"/>
+	      </not>
+	    </and>
+	  </delayedEffect>
+	</outcome>
+	<outcome probability="0.7" backgroundColour="#66FF7F" label="Outcome 2">
+	  <delayedEffect>
+	    <delay type="normal" standardDeviation="2" mean="10"/>
+	    <and>
+	      <increase>
+		<function name="altitude"/>
+		<number>10</number>
+	      </increase>
+	      <not>
+		<predicate name="predicate-5"/>
+	      </not>
+	    </and>
+	  </delayedEffect>
+	</outcome>
+	<outcome probability="0.1" backgroundColour="#abcdef" label="Outcome 3">
+	  <delayedEffect>
+	    <delay type="normal" standardDeviation="1" mean="13"/>
+	    <and>
+	      <increase>
+		<function name="altitude"/>
+		<number>10</number>
+	      </increase>
+	      <not>
+		<predicate name="predicate-5"/>
+	      </not>
+	    </and>
+	  </delayedEffect>
+	</outcome>
+	<outcome probability="0.1" backgroundColour="#fedcba" label="Outcome 4">
+	  <delayedEffect>
+	    <delay type="normal" standardDeviation="1" mean="13"/>
+	    <and>
+	      <increase>
+		<function name="altitude"/>
+		<number>10</number>
+	      </increase>
+	      <not>
+		<predicate name="predicate-5"/>
+	      </not>
+	    </and>
+	  </delayedEffect>
+	</outcome>
+
+      </probabilistic>
+</action>

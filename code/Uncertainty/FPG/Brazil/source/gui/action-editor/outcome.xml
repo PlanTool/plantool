@@ -1,0 +1,6 @@
+<outcome label="asdf" probability="0.65">
+	<delayedEffect>
+		<delay type="normal" mean="25" standardDeviation="2"/>
+		<predicate name="owen"/>
+	</delayedEffect>
+</outcome>

@@ -1,0 +1,8 @@
+(define (problem f)
+   (:domain delivery)
+   (:objects office1 office2 - loc
+             letter - object)
+
+(:init (sender letter office1) (in office1) (dest letter office2)) 
+
+(:goal (delivered letter)))

@@ -1,0 +1,48 @@
+(package1 OBJECT)
+(package2 OBJECT)
+(package3 OBJECT)
+(package4 OBJECT)
+(pgh-truck TRUCK)
+(bos-truck TRUCK)
+(la-truck TRUCK)
+(airplane1 AIRPLANE)
+(airplane2 AIRPLANE)
+(bos-po LOCATION)
+(la-po LOCATION)
+(pgh-po LOCATION)
+(bos-airport AIRPORT)
+(bos-airport LOCATION)
+(pgh-airport AIRPORT)
+(pgh-airport LOCATION)
+(la-airport AIRPORT)
+(la-airport LOCATION)
+(pgh CITY)
+(bos CITY)
+(la CITY)
+
+(preconds
+ (at package1 pgh-po)
+ (at package2 pgh-po)
+ (at package3 pgh-po)
+ (at package4 pgh-po)
+ (at airplane1 pgh-airport)
+ (at airplane2 pgh-airport)
+ (at bos-truck bos-po)
+ (at pgh-truck pgh-po)
+ (at la-truck la-po)
+ (loc-at pgh-po pgh)
+ (loc-at pgh-airport pgh)
+ (loc-at bos-po bos)
+ (loc-at bos-airport bos)
+ (loc-at la-po la)
+ (loc-at la-airport la))
+
+(effects
+ (at package1 bos-po)
+ (at package2 la-airport)
+ (at package3 bos-po)
+ (at package4 la-airport))
+
+
+
+	

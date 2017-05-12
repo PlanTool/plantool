@@ -1,0 +1,20 @@
+RANDWARD
+
+Version: January 2011
+Developer: Alan Olsen
+
+The base-code for this planner comes from the December 2010 version of
+LAMA, (c) 2008 by Silvia Richter and Matthias Westphal, which is derived
+from Fast Downward, (c) 2003-2004 by Malte Helmert and Silvia Richter.
+It was obtained and may be redistributed under the GNU General Public
+Liscence (see "LISCENCE" file).
+
+To build for Unix/Linux, run "./build"
+(If that doesn't work, simply compiling and linking together all of the
+C++ source files in each directory should do the trick)
+
+To execute the planner, run "./plan <domain> <problem> <results-file>"
+(Python 2.5 or later is required)
+
+If you have any questions, please feel free to e-mail:
+alan.olsen@aggiemail.usu.edu

@@ -1,0 +1,5 @@
+<outcome probability="0" backgroundColour="#7799FF" label="New Outcome">
+  <effect>
+    <delay type="normal" standardDeviation="3600" mean="20000"/>
+  </effect>
+</outcome>

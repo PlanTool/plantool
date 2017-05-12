@@ -1,0 +1,10 @@
+#! /bin/sh
+
+./build-python
+export PATH=$(dirname "$0")/py2.5/bin:$PATH
+cd lama/preprocess && \
+(make || exit 1)
+cd ../.. && \
+cd lama/search && \
+(make release || exit 1)
+cd ../..

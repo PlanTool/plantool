@@ -1,0 +1,33 @@
+<domain name="one-action">
+  <predicates>
+    <predicate name="a"/>
+    <predicate name="b"/>
+  </predicates>
+  <functions/>
+  <actions>
+    <action name="set-a">
+      <effect>
+	<predicate name="a"/>
+      </effect>
+    </action>
+    <action name="set-b">
+      <precondition>
+	<predicate name="a"/>
+      </precondition>
+      <effect>
+	<predicate name="b"/>
+      </effect>
+    </action>
+    <action name="set-b">
+      <precondition>
+	<predicate name="a"/>
+      </precondition>
+      <over-all>
+	<predicate name="c"/>
+      </over-all>
+      <effect>
+	<predicate name="b"/>
+      </effect>
+    </action>
+  </actions>
+</domain>

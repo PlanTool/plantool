@@ -1,0 +1,12 @@
+(define (problem brief13a)
+   (:domain briefcase)
+   (:objects l1 l2 l3 l4 l5 l6  - location
+             o1 o2 o3 o4 o5 o6  - portable)
+
+
+(:init (is-at l0) (at o1 l1) (at o2 l2) (at o3 l3) (at o4 l4) (at o5 l5) 
+                    (at o6 l6)) 
+           
+
+(:goal (and (is-at l0) (in o1) (in o2) (in o3) (in o4) (in o5) (in o6))))
+

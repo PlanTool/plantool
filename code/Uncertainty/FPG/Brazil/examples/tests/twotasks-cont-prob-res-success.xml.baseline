@@ -1,0 +1,16 @@
+Regression output:
+State @99
+	True predicates:
+	Resource levels:
+		money=1
+	Past event queue:
+		Event effect (1): 'DOMEffectSet' @ 0 queued at 0 pointing to 0x80a1278 (1)
+		Event start action (1): 'B' @ 0 queued at 0 pointing to 0x80a1198 (1)
+		Event end action (1): 'B' @ 99 queued at 0 pointing to 0x80a1198 (1)
+		Event start outcome (1): 'Failure' @ 99 queued at 99 pointing to 0x80a1668 (1)
+		Event end outcome (1): 'Failure' @ 99 queued at 99 pointing to 0x80a1668 (1)
+	Future event queue:
+		Event terminal state (0): 'Plan ends' @ 99 queued at 99 pointing to 0 (0)
+			Terminal state type  = 'Dead end
+'
+

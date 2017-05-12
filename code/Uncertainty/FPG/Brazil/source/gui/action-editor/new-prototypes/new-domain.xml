@@ -1,0 +1,13 @@
+<domain name="new">
+  <predicates/>
+  <functions/>
+  <actions/>
+  <problem>
+    <init> 
+        <predicates/>
+        <functions/>
+    </init>
+    <goal/>
+  </problem>
+  <properties/>
+</domain>

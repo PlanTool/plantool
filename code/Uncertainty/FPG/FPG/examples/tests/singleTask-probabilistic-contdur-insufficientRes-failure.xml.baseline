@@ -1,0 +1,11 @@
+Regression output:
+State @1
+	True predicates:
+	Resource levels:
+		money=2
+	Past event queue:
+	Future event queue:
+		Event terminal state (0): 'Plan ends' @ 1 queued at 1 pointing to 0 (0)
+			Terminal state type  = 'Dead end
+'
+

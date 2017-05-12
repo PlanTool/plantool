@@ -1,0 +1,34 @@
+#!/bin/bash
+
+
+KBS_STACK=1000
+MEGAS_MEM=2100
+#MEGAS_MEM=800
+
+########################
+# End of modifiable vars
+########################
+
+ulimit -S -s $((1024*$KBS_STACK))
+ulimit -S -v $((1024*$MEGAS_MEM))
+
+
+if [[ "a" == "a$TRANSLATOR_HOME" ]]; then
+    a="."
+else
+    a=$TRANSLATOR_HOME
+fi
+
+export TRANSLATOR_HOME=$a
+
+$TRANSLATOR_HOME/translator.py $*
+
+exit 0
+
+if [[ "a" == "a$TRANSLATOR_HOME" ||
+    !  -f $TRANSLATOR_HOME/translator.py  ]]; then
+    echo TRANSLATOR_HOME enviroment var should be set
+    echo to the location of translator.py and the other tools
+    exit 1
+fi
+

@@ -1,0 +1,67 @@
+#old-style
+
+(operator LOAD-TRUCK
+  (params
+   (<obj> OBJECT)
+   (<truck> TRUCK)
+   (<loc> LOCATION))
+  (preconds
+   (at <truck> <loc>) (at <obj> <loc>))
+  (effects
+   (in <obj> <truck>) (at <truck> <loc>)))
+
+(operator LOAD-AIRPLANE
+  (params
+   (<obj> OBJECT)
+   (<airplane> AIRPLANE)
+   (<loc> LOCATION))
+  (preconds
+   (at <obj> <loc>) (at <airplane> <loc>))
+  (effects
+   (in <obj> <airplane>) (at <airplane> <loc>)))
+
+(operator UNLOAD-TRUCK
+  (params
+   (<obj> OBJECT)
+   (<truck> TRUCK)
+   (<loc> LOCATION))
+  (preconds
+   (at <truck> <loc>) (in <obj> <truck>))
+  (effects
+   (at <obj> <loc>) (at <truck> <loc>)))
+
+(operator UNLOAD-AIRPLANE
+  (params
+   (<obj> OBJECT)
+   (<airplane> AIRPLANE)
+   (<loc> LOCATION))
+  (preconds
+   (in <obj> <airplane>) (at <airplane> <loc>))
+  (effects
+   (at <obj> <loc>) (at <airplane> <loc>)))
+
+(operator DRIVE-TRUCK
+  (params
+   (<truck> TRUCK)
+   (<loc-from> LOCATION)
+   (<loc-to> LOCATION)
+   (<city> CITY))
+  (preconds
+   (at <truck> <loc-from>)
+   (loc-at <loc-from> <city>)
+   (loc-at <loc-to> <city>))
+  (effects
+   (at <truck> <loc-to>)
+   (loc-at <loc-from> <city>)
+   (loc-at <loc-to> <city>)))
+
+(operator FLY-AIRPLANE
+  (params
+   (<airplane> AIRPLANE)
+   (<loc-from> AIRPORT)
+   (<loc-to> AIRPORT))
+  (preconds
+   (at <airplane> <loc-from>))
+  (effects
+   (at <airplane> <loc-to>)))
+

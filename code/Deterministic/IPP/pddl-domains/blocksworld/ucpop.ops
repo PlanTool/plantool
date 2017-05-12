@@ -1,0 +1,17 @@
+(define (domain ucpop-bw)
+(:predicates ( on ?x ?y)
+             (clear ?x)
+             (eq ?x ?y))
+     
+
+
+(:action puton
+:parameters (?X ?Y ?Z)
+:precondition (and (on ?X ?Z) (clear ?X) (clear ?Y)
+                               (not  (eq ?Y ?Z)) (not (eq ?X ?Z))
+                                 (not (eq ?X ?Y)) (not (eq ?X Table)))
+:effect 
+              (and (on ?X ?Y) (not (on ?X ?Z))
+                   (when (not (eq ?Z Table)) (clear ?Z))
+                   (when (not (eq ?Y Table)) (not (clear ?Y))))))
+

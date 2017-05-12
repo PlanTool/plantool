@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   revision="24"
+   repos="svn+ssh://jabbar@ls5-svn.cs.uni-dortmund.de/export/svn/shahid"
+   url="svn+ssh://jabbar@ls5-svn.cs.uni-dortmund.de/export/svn/shahid/ExternalAStar/bdd-solver/automata"
+   last-author="jabbar"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="dir"
+   name=""
+   committed-rev="22"/>
+<entry
+   checksum="592208e7d467c823339217c263f36a5a"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:01.000000Z"
+   text-time="2006-10-24T00:04:30.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="Makefile"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="b57ba5de37fd82a26a3e62f6d5d9f33f"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:00.000000Z"
+   text-time="2006-10-24T00:04:47.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="adapt"
+   committed-rev="22"/>
+<entry
+   checksum="0da4d2cdd34c2510fc1acfce77c772f3"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:00.000000Z"
+   text-time="2006-10-24T00:04:48.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="domain"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="4946b6cb3eadc4148b0721d87142070c"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:01.000000Z"
+   text-time="2006-10-24T00:04:47.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="grounded-problem.pddl"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="cac8fac05e308265de4972998e891a71"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:01.000000Z"
+   text-time="2006-10-24T00:04:47.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="grounded-problem.psas"
+   committed-rev="22"/>
+<entry
+   checksum="71186bda9e93ffd0d62fd97e4ee97e28"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:00.000000Z"
+   text-time="2006-10-24T00:04:47.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="log"
+   committed-rev="22"/>
+<entry
+   checksum="4ba12ec79575dd8ddf6f817ee3d911d0"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:01.000000Z"
+   text-time="2006-10-24T00:04:47.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="merge"
+   committed-rev="22"/>
+<entry
+   checksum="307e64916c039b324ae76567d997774d"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:01.000000Z"
+   text-time="2006-10-24T00:04:48.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="merge.cc"
+   committed-rev="22"/>
+<entry
+   checksum="b443cfb3a4223a48d48602ad0c39e307"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:01.000000Z"
+   text-time="2006-10-24T00:04:48.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="mips-solution"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="73536409439eb77186ca30545790b1eb"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:01.000000Z"
+   text-time="2006-10-24T00:04:30.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="problem"
+   committed-rev="22"/>
+<entry
+   checksum="b443cfb3a4223a48d48602ad0c39e307"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:01.000000Z"
+   text-time="2006-10-24T00:04:48.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="simple-solution"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="9186ba60478e3e2c2fc7e452ff9ba3c6"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:01.000000Z"
+   text-time="2006-10-24T00:04:48.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="simple-solution~"
+   committed-rev="22"/>
+<entry
+   checksum="7ffe2244dba77d1a497b7e542a170cfc"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:01.000000Z"
+   text-time="2006-10-24T00:04:48.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="solution"
+   kind="file"
+   committed-rev="22"/>
+</wc-entries>

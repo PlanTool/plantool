@@ -1,0 +1,6 @@
+(preconds (do-Q) (I1) (I2) (I3) (I4) (I5) (I6) (I7)
+     (not Q1) (not Q2) (not Q3) (not Q4) (not Q5) (not Q6) (not Q7)
+     (not R1) (not R2) (not R3) (not R4) (not R5) (not R6) (not R7)
+     (not S1) (not S2) (not S3) (not S4) (not S5) (not S6) (not S7))
+
+(effects (S5) (S7) (S2) (S6) (S3) (S4) (S1))

@@ -1,0 +1,47 @@
+<domain name="one-action">
+  <predicates>
+    <predicate name="a"/>
+    <predicate name="b"/>
+  </predicates>
+  <functions>
+    <function name="func-1"/>
+  </functions>
+  <actions>
+    <action name="a">
+      <probabilistic>
+	<outcome probability="0.99">
+	  <delayedEffect>
+	    <fixedDelay duration="10"/>
+	    <and>
+	      <predicate name="b"/>
+	      <predicate name="a"/>
+	    </and>
+	  </delayedEffect>
+	</outcome>
+	<outcome probability="0.01">
+	  <increase>
+	    <function name="func-1"/>
+	    <function name="func-2"/>
+	  </increase>
+	</outcome>
+      </probabilistic>
+      <probabilistic>
+	<outcome probability="0.99">
+	  <delayedEffect>
+	    <fixedDelay duration="10"/>
+	    <and>
+	      <predicate name="b"/>
+	      <predicate name="a"/>
+	    </and>
+	  </delayedEffect>
+	</outcome>
+	<outcome probability="0.01">
+	  <increase>
+	    <function name="func-1"/>
+	    <function name="func-2"/>
+	  </increase>
+	</outcome>
+      </probabilistic>
+    </action>
+  </actions>
+</domain>

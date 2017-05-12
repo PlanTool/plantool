@@ -1,0 +1,24 @@
+(define (problem grounded-ztravel-2-4)
+(:domain grounded-zeno-travel)
+
+  (:init 
+     (at-person1-city3)
+     (at-person2-city0)
+     (at-person3-city0)
+     (at-person4-city1)
+     (at-plane1-city1)
+     (at-plane2-city2)
+     (fuel-level-plane1-fl6)
+     (fuel-level-plane2-fl0)
+  )
+  (:goal 
+    (and 
+      (preference p1 (at-person1-city3))
+      (preference p2 (at-person2-city3))
+      (preference p3 (at-person3-city3))
+      (preference p4 (at-person4-city3))
+     (at-person1-city0)
+     )
+  )
+  (:metric minimize (+ (+ (+ (+ (+ (+ (+ (+ (+ (+ (* 100 (is-violated-p1)) (* 100 (is-violated-p10))) (* 100 (is-violated-p11))) (* 100 (is-violated-p2))) (* 100 (is-violated-p3))) (* 100 (is-violated-p4))) (* 100 (is-violated-p5))) (* 100 (is-violated-p6))) (* 100 (is-violated-p7))) (* 100 (is-violated-p8))) (* 100 (is-violated-p9)))
+))

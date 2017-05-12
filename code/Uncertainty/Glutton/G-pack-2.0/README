@@ -1,0 +1,297 @@
+***************
+G-PACK OVERVIEW 
+***************
+
+G-pack is a software package for planning under uncertainty that currently 
+implements three solvers for finite-horizon MDPs:
+
+* LR^2TDP (Reverse Iterative Deepening LRTDP),
+
+* Glutton, the runner-up at the 2011 International Probabilistic Planning 
+  Competition (IPPC-2011), essentially a beefed-up offline version of LR^2TDP
+
+* Gourmand, an online version of Glutton. Because planning offline isn't 
+  feasible for large MDPs, Gourmand tends to outperform Glutton on such 
+  problems.
+ 
+When referring to G-pack in a publication, please cite Andrey Kolobov, Peng Dai,
+ Mausam, and Daniel S. Weld, "Reverse Iterative Deepening for Finite-Horizon 
+MDPs with Large Branching Factors", ICAPS-2012 for the LR^2TDP or Glutton 
+implementations, and Andrey Kolobov, Mausam, and Daniel S. Weld, "LRTDP vs. UCT
+for Online Probabilistic Planning", AAAI'12 for the Gourmand implementation.
+
+G-pack is written in C++ and borrows some code from the miniGPT package by 
+B. Bonet and H. Geffner. It has been tested on Fedora Linux release 17 (32-bit 
+and 64-bit) and Amazon Linux AMI (64-bit).
+
+
+
+
+
+*************
+LEGAL MATTERS
+*************
+
+By downloading, using, or redistributing G-pack in source or in binary form, 
+you automatically agree to the license in the "LICENSE" file included with 
+G-pack's source code.  
+
+
+
+
+
+************************
+COMPILATION INSTRUCTIONS
+************************
+
+Depending on your system's configuration, before compiling G-pack you might need
+ to install the following additional software:
+
+* Flex (needed to generate G-pack's lexer). On many Linux flavors, to check 
+  whether you already have Flex you can type in
+
+  $ rpm -qa | grep flex
+
+  If you don't have it (the above command doesn't return anything), install it 
+  either using an automatic tool like yum or directly from 
+  http://flex.sourceforge.net/
+
+  Once you have installed it, find out where it is installed (typing in "whereis
+  flex" might help), open Makefile in G-pack's source code directory, and make
+  sure that the LEX variable in this file is set to the location of Flex on 
+  your system (probably something like /usr/bin/flex). 
+
+
+* Bison (needed to generate G-pack's parser). As with flex, check whether you 
+  have it and, if not, install it either using automatic tools or from 
+  http://www.gnu.org/software/bison/. Next, open G-pack's Makefile and make
+  sure that the YACC variable in it is set to the location of the Bison 
+  installation with the -d flag (i.e., something like /usr/bin/bison -d)
+
+
+To compile G-pack itself (either in the 32-bit or in the 64-bit mode), first
+decide whether you want to build a debug version or a release version. The debug
+version is slower, since the compiler doesn't use many of the optimizations,
+but is easier to debug in, say, gdb. The release version is highly optimized
+by the compiler, but you may see strange things when running it under a 
+debugger.
+
+To compile a debug version:
+
+* Open the Makefile file in G-pack's source directory, make sure that the line 
+  CFLAGS	=	-Wno-deprecated -O3 -s -Wall $(ODEFS) is commented out,
+  and that the line CFLAGS	=	-Wno-deprecated -g -Wall $(DEFS) is 
+  uncommented.
+
+To compile a release version:
+
+* Open the Makefile file in G-pack's source directory, make sure that the line 
+  CFLAGS	=	-Wno-deprecated -g -Wall $(DEFS) is commented out,
+  and that the line  CFLAGS	=	-Wno-deprecated -O3 -s -Wall $(ODEFS) is
+  uncommented. 
+
+
+Then, execute
+
+$ make
+
+in the directory with G-pack's source code. Doing to should produce a file 
+called "planner", the G-pack's executable.
+
+
+
+
+
+**************
+RUNNING G-PACK
+**************
+
+---------------------------
+SETTING G-PACK'S PARAMETERS
+---------------------------
+
+Before running G-pack, you might want to change the default values of several of
+its parameters that potentially affect its performance. At the moment, the 
+values of these parameters are hard-coded in G-pack's global.cc file, although 
+in future releases they may become specifiable from the command line.  
+
+To see the full list of these parameters, please refer to G-pack's global.h 
+file. It contains a list of variables with detailed explanations of what each
+of them stands for. Look for the variables whose comments contain the phrase
+"*** IS THIS PARAMETER SET MANUALLY? Yes" and set their values in global.cc.
+The comments in global.h give an idea of what to take into account when setting
+them.
+
+Most of these parameters' default values work across a wide range of
+scenarios and don't really need to be changed. However, one of them is 
+system-specific and should probably be modified:
+
+const unsigned long total_RAM;
+
+Its value is the approximate amount of memory in bytes that you are willing to 
+give G-pack. Note that this is not the total amount of RAM on your machine, but
+only its fraction that you are promising to make available to G-pack. If the 
+amount of space actually available to G-pack will be smaller than this value, 
+G-pack may crash. In fact, the actual amount of memory G-pack will use up can 
+be  slightly more than total_RAM. E.g., on a large Amazon EC2 instance, which 
+has 7.5GB RAM, with nothing but the planner running, a recommended setting of 
+total_RAM is 7000000000 or less.
+
+In addition, you may want to change the logic in main.cc file that determines
+how the planner communicates with the problem server. Right now, this logic is 
+somewhat ad-hoc, because it was created to use the planner efficiently during
+the competition (in fact, the version of this logic in the current 
+implementation is already greatly simplified). E.g., G-pack may rerun a planner
+several times if it notices that the policy produced by the planner isn't "good
+enough". To edit the code fragment that implements this, search for the line
+*** COMPETITION-SPECIFIC LOGIC STARTS HERE ************************** in main.cc
+and read at the comments after it. 
+
+*** FRIENDLY REMINDER ***: If you decide to change any of the parameters in 
+global.cc or the code in main.cc, remember to recompile by executing "make" in 
+G-pack's source directory!
+
+
+--------------------------
+RUNNING THE PROBLEM SERVER
+--------------------------
+
+Like the participants of IPPC-2011, G-pack operates by sending its policy for 
+a given problem to a problem simulator (server). Therefore, before running 
+G-pack on a problem, you first need to launch the problem server.
+
+One such server implementation is called "rddlsim" available at 
+http://code.google.com/p/rddlsim/. After downloading and compiling it, you can 
+launch it by executing
+
+$./run rddl.competition.Server <problem_dir>
+
+from the server's installation directory, where <problem_dir> should be replaced
+by the location of the directory containing the file(s) with RDDL description(s)
+ of the problem(s) you want the server to simulate. 
+
+The server can be run either on the same machine as G-pack or on a different 
+one. In the case of rddlsim, the server by default runs on port 2323.
+
+
+-------------------------
+RUNNING THE ALGORITHMS (FINALLY!)
+-------------------------
+
+To run G-pack, execute
+
+$ ./planner
+
+from G-pack's source directory (or from wherever you chose to place the 
+"planner" executable after it was compiled) and refer to the instructions that
+will appear on the screen. 
+
+For instance, suppose we want to make G-pack solve problem p1 in file ex.pddl 
+with the Glutton solver under a 300-second time limit with a convergence 
+threshold of 0.05. Assume the problem server is running on the local machine 
+(the same machine as G-pack) on port 2323. An appropriate command would be:
+ 
+$ ./planner -p glutton -t 300 -e 0.05 localhost:2323 ex.pddl p1
+
+Note that G-pack takes problem descriptions in the PPDDL language, while
+the rddlsim server takes problems formulated in the RDDL language. In fact, 
+G-pack recognizes only the subset of PPDDL into which RDDL problems are 
+translated. For instance, G-pack assumes that the problem it is given has a 
+"noop" action. Therefore, when designing new problems for G-pack, it is best to 
+write them in RDDL and then use the translator included in the rddlsim package 
+to convert the RDDL descriptions into PPDDL descriptions. The RDDL description
+should then be fed to the rddlsim problem server and the equivalent PPDDL 
+description -- to G-pack.   
+
+
+--------------------------
+RUNNING G-PACK UNDER NOHUP
+--------------------------
+
+For several reasons, it may be beneficial to run G-pack in background mode using
+the "nohup" utility:
+
+$ nohup ./planner -p glutton -t 300 -e 0.05 localhost:2323 ex.pddl p1
+
+There are at least two potential benefits to this:
+
+* If you run G-pack on a remote server via SSH, doing so using "nohup" G-pack 
+  will ensure that G-pack continues running even if you lose the connection. 
+  You will also be able to log out of the system voluntarily without 
+  interrupting the process.
+
+* While running, G-pack prints out a lot of diagnostic information about its 
+  progress. If G-pack is run using "nohup", this output will be automatically 
+  saved to a file (by default, nohup.out) for later inspection. 
+
+
+
+
+
+*******************
+CURRENT LIMITATIONS
+*******************
+
+At present, G-pack can only process (PPDDL translations of) problems that can be
+described in the subset of RDDL used at IPPC-2011.
+
+
+
+
+
+*************
+CODE OVERVIEW
+*************
+
+This section can be safely skipped by those who aren't planning to modify 
+G-pack's code. 
+
+Below is a description of contents of important G-pack source files:
+
+* client.h, client.cc, strxml.h, strxml.cc implement G-pack's side of the 
+  client-server interface. They contain the logic that communicates with the 
+  problem server using specially-formed XML messages in order to initiate a 
+  problem-solving session with the problem server, receive states from the
+  server, send actions in response, and get the reward information.
+
+* algorithms.h, algorithms.cc implement the actual planning algorithms -- 
+  LR^2TDP, Glutton, and Gourmand.
+
+* hash.h, hash.cc implement the various hash tables that lie at the heart of
+  the above planners. 
+
+* problems.h, problems.cc, actions.h, actions.cc implement data structures
+  that contain information about the problem at hand and let a planner use 
+  the prpblem's actions.
+
+* atom_states.h, atom_states.cc contain an implementation of problem states
+  and various methods that manipulate these data structures. WARNING: to make
+  sure that changes to these files take effect, it's not enough to simply
+  save them and execute $make. You need to first do $make clean, and then $make.
+
+* global.h, global.cc contain G-pack's global variables. Some of them can
+  be set by the user, while others serve to pass information across different
+  parts of G-pack 
+
+* lexer.l, parser.y implement a PPDDL lexer and a PPDDL parser, respectively.
+
+Almost all of these files are extensively commented to make modifying them 
+easier.
+
+
+
+
+
+********************
+QUESTIONS? COMMENTS?
+********************
+
+If you have any questions about G-pack, need help with getting it to run, have
+noticed a bug in it, or simply would like to provide feedback about it, please 
+email Andrey Kolobov at akolobov@cs.washington.edu.
+
+
+  
+
+
+

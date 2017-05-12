@@ -1,0 +1,11 @@
+(define (domain sortnet)
+  (:requirements :typing :equality)
+  (:types line)
+  (:predicates (less ?l1 ?l2 - line) (high ?l - line))
+  (:action cmpswap
+    :parameters (?l1 ?l2 - line)
+    :precondition (less ?l1 ?l2)
+    :effect (and (when (not (high ?l2)) (not (high ?l1)))
+                 (when (high ?l1) (high ?l2)))
+  )
+)

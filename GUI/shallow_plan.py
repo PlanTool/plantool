@@ -13,7 +13,7 @@ from numpy import exp, dot, log
 
 
 class ShallowPlan(object):
-    def __init__(self, args):
+    def __init__(self, args, print_out):
         self.k = args.k
         self.split_texts = args.split_texts
         self.mask = args.mask
@@ -30,6 +30,8 @@ class ShallowPlan(object):
         self.blank_percentage = args.blank_percentage
         self.prediction_set_size = args.prediction_set_size
         self.window_size = args.window_size
+
+        self.out = print_out
 
 
     def k_fold_generator(self, plans, domain_dir, k):
@@ -196,18 +198,18 @@ class ShallowPlan(object):
         The function trains a model on training data and then tests the models accuracy on the testing data.
         Since training is time consuming, we save the model and load it later for further testing
         '''
-        print "\n=== Set : %s ===\n" % str(set_number)
+        self.out.AppendText( "\n\n=== Set : %s ===\n\n" % str(set_number) ) 
         # Train a model based on training data
         if self.train_word2vec:
             sentences = models.word2vec.LineSentence(self.domain_dir+'train'+str(set_number)+'.txt')
             model = models.Word2Vec(sentences=sentences, min_count=self.min_count, sg=1, 
                 workers=self.workers, hs=1, window=self.window_size, iter=self.word2vec_iter)
             model.save(self.domain_dir+'wordvec_model'+str(set_number)+'.txt')
-            print "Training word vector: COMPLETE!"
+            self.out.AppendText( "Training word vector: COMPLETE!\n" )
         else:
             # OR load a mode
             model = models.Word2Vec.load(self.domain_dir+'wordvec_model'+str(set_number)+'.txt')
-            print "Loading saved model: COMPLETE!"
+            self.out.AppendText( "Loading saved model: COMPLETE!\n" )
         
 
         # Evaluate model on test data
@@ -218,7 +220,7 @@ class ShallowPlan(object):
         correct = 0
         total = 0
 
-        print "Testing : RUNNING . . ."
+        self.out.AppendText( "Testing : RUNNING . . .\n" )
         list_of_actions = [x for x in list_of_actions if len(x) != 0]
 
         # test compute gradient
@@ -228,9 +230,9 @@ class ShallowPlan(object):
             plan = list_of_actions[itr]
             self.test_a_plan(plan, total, correct, vocab_size, actions, model, itr, list_of_actions)
 
-        print "\r\rTesting : COMPLETE!\n"
-        print "\nUnknown actions: %s; Correct predictions: %s" % (str(total), str(correct))
-        print "Set Accuracy: %s\n" % str( float(correct*100)/total)
+        self.out.AppendText( "\r\rTesting : COMPLETE!\n\n" )
+        self.out.AppendText( "\nUnknown actions: %s; Correct predictions: %s\n" % (str(total), str(correct)) )
+        self.out.AppendText( "Set Accuracy: %s\n\n" % str( float(correct*100)/total) )
         return total, correct
 
 
@@ -240,11 +242,7 @@ class ShallowPlan(object):
         while True:
             blank_count, indices, incomplete_plan = self.remove_random_actions(plan)
             if self.min_uncertainty_distance_in_window_size(indices) > self.window_size:
-                # print "min_uncertainty > self.window_size"
                 break
-        #print "\nblank_count:\t%d"%blank_count
-        #print "\nincomplete_plan:\n%s"%str(incomplete_plan)
-        #print "\ncomplete_plan:\n%s"%str(plan)
         total += blank_count
         weights = np.ones(vocab_size * blank_count).reshape(vocab_size, blank_count) / vocab_size
         for i in range(self.iter_num):
@@ -281,25 +279,25 @@ class ShallowPlan(object):
         sorted_weights = np.sort(weights, axis=0)
 
         best_plan_args = np.argsort(weights, axis=0)[-1*self.prediction_set_size:][:]
-        print "\n----------best args----------"
-        print "%s"%str(best_plan_args)
+        self.out.AppendText( "\n----------best args----------\n" )
+        self.out.AppendText( "%s\n"%str(best_plan_args) )
         for i in range(blank_count):
             blank_index = indices[i]
             for j in range(self.prediction_set_size):
                 pass
-                #print "%s\t%f"%(actions[best_plan_args[j][i]], sorted_weights[j+vocab_size-10][i])
 
         for blank_order in range(blank_count):
             blank_index = indices[blank_order]
             for sample_index in best_plan_args[:][blank_order]:
                 if actions[sample_index] == plan[blank_index]:
                     correct += 1
-                    print 'Right prediction:\t%s  ---->  %s'%(actions[sample_index], plan[blank_index])
+                    self.out.AppendText( 'Right prediction:\t%s  ---->  %s\n'%\
+                        (actions[sample_index], plan[blank_index]) )
                     break
 
         # Print at certain time intervals
         if (itr*100)/len(list_of_actions) % 10 == 0:
-            print "\rProgress: %s %%" % str( (itr*100)/len(list_of_actions) ) 
+            self.out.AppendText( "\rProgress: %s %%\n" % str( (itr*100)/len(list_of_actions) )  )
 
 
     def complete_a_plan(self, incomplete_plan, vocab_size, actions, model, blank_count, indices):
@@ -341,23 +339,23 @@ class ShallowPlan(object):
 
         #best_plan_args = np.argsort(weights, axis=0)[-1*self.prediction_set_size:][:]
         best_plan_args = np.argsort(-weights, axis=0)[:self.prediction_set_size][:]
-        print "\n----------best args----------"
-        print "%s"%str(best_plan_args)
+        self.out.AppendText( "\n----------best args----------\n" )
+        self.out.AppendText( "%s\n"%str(best_plan_args) )
         for i in range(blank_count):
             blank_index = indices[i]
-            print '\nPredicted actions for index %d:'%blank_index
+            self.out.AppendText( '\nPredicted actions for index %d:\n'%blank_index )
             for j in range(self.prediction_set_size):
                 predict_act = str(actions[best_plan_args[j][i]])
                 weight = sorted_weights[j][i]
                 #print type(predict_act)
                 #if predict_act in self.mis_actions:
                 #    print '---Predict right!---'
-                print "%s\t%f"%(predict_act, weight)
+                self.out.AppendText( "%s\t%f\n"%(predict_act, weight) )
 
 
     def test(self, plan):
         model = models.Word2Vec.load(self.domain_dir+'wordvec_model'+str(1)+'.txt')
-        print "\nLoading saved model: COMPLETE!"
+        self.out.AppendText( "\nLoading saved model: COMPLETE!\n" )
         
         # Evaluate model on test data
         actions = model.vocab.keys()
@@ -383,7 +381,7 @@ class ShallowPlan(object):
             STACK-B7-B17 PICK-UP-B19 STACK-B19-B7 PICK-UP-B2 STACK-B2-B19 \
             PICK-UP-B12 STACK-B12-B2"""
 
-        print "Testing : RUNNING . . ."
+        self.out.AppendText( "\nTesting : RUNNING . . .\n" )
         #list_of_actions = [unicode(actn, "utf-8") for actn in plan.split()]
         indices = []
         blank_count = 0
@@ -393,8 +391,8 @@ class ShallowPlan(object):
             if a == self.mask:
                 blank_count += 1
                 indices.append(i)
-        print 'blank_count = %d'%blank_count
-        print 'blank indices:\t%s'%str(indices)
+        self.out.AppendText( '\nblank_count = %d\n'%blank_count )
+        self.out.AppendText( 'blank indices:\t%s\n'%str(indices) )
         self.complete_a_plan(list_of_actions, vocab_size, actions, model, blank_count, indices)
 
 
@@ -404,7 +402,7 @@ class ShallowPlan(object):
             plans = open(self.domain_dir+self.domain).read().split('\n')
             self.k_fold_generator(plans, self.domain_dir, self.k)
 
-        print "\n=== Domain : %s ===\n" % self.domain_dir
+        self.out.AppendText( "\n\n=== Domain : %s ===\n\n" % self.domain_dir )
         total_unknown_actions = 0
         total_correct_predictions = 0
         for i in range(self.k):
@@ -412,12 +410,13 @@ class ShallowPlan(object):
             total_unknown_actions += ua
             total_correct_predictions += cp
 
-        print "\n==== FINAL STATISTICS ===="
-        print "\nTotal unknown actions: %s; Total correct predictions: %s" % (str(total_unknown_actions), str(total_correct_predictions))
+        self.out.AppendText( "\n==== FINAL STATISTICS ====\n" )
+        self.out.AppendText( "\nTotal unknown actions: %s; Total correct predictions: %s\n" %\
+         (str(total_unknown_actions), str(total_correct_predictions)) )
         if total_unknown_actions > 0:
-            print "ACCURACY: %s\n" % str( float(total_correct_predictions*100)/total_unknown_actions )
+            self.out.AppendText( "ACCURACY: %s\n\n" % str( float(total_correct_predictions*100)/total_unknown_actions ) )
         else:
-            print "ACCURACY: %f\n" % float( 0 )
+            self.out.AppendText( "ACCURACY: %f\n\n" % float( 0 ) )
 
 
 

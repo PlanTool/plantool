@@ -1,0 +1,35 @@
+== General questions ==
+
+ * Name of planner: Randward
+ * Names of team members: Alan Olsen, Daniel Bryce
+ 
+== Tracks ==
+
+The planner is entered in the following '''tracks''':
+ * [The planner is entered in the sequential satisficing track.]
+
+== Features ==
+
+The planner supports '''object fluents''' in the following way:
+ * [The planner only supports predicate representations, no object fluent representations.]
+
+The planner supports '''PDDL types''' in the following way:
+ * [The planner supports both representations, and typed representations are preferred.]
+
+The planner supports '''grounded representations''' in the following way:
+ * [The planner supports both representations, and representations with schematic operators are preferred.]
+
+The planner supports the following '''optional features''':
+ * [The planner supports negative preconditions in STRIPS operators and in the goal specification.]
+ * [The planner supports general ADL conditions ({{{exists}}}, {{{forall}}}, {{{or}}}, ...) in operators and goals.]
+ * [The planner supports conditional effects ({{{when}}}) in operators.]
+ * [The planner supports universal effects ({{{forall}}}) in operators.]
+ * [The planner supports derived predicates.]
+
+The planner supports '''numeric state variables''' in the following way:
+ * [Numeric state variables are not supported.]
+
+The planner supports '''temporal planning''' in the following way:
+ * [Temporal planning is not supported.]
+
+

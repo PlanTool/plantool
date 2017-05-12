@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ "a" == "a$TRANSLATOR_HOME" ]]; then
+    a="."
+else
+    a=$TRANSLATOR_HOME
+fi
+
+$a/translator -l result_translator-t0 -s 't0:inf' $*

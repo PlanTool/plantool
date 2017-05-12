@@ -1,0 +1,6 @@
+4/10/06:
+[daa] Need implementation of at-start effects in DOM, GUI, and Simulator
+
+7/10/06:
+[daa] XML parsing correctness relies on attributes being there. E.g.,  negated="0" for effect predicates. User should be able to write valid XML code without worrying about attributes.
+Actually, I'd prefer all logical operators to have their own tags.

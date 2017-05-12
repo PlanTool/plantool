@@ -1,0 +1,13 @@
+
+  	  <delayedEffect>
+	    <delay type="normal" standardDeviation="2" mean="10"/>
+	    <and>
+	      <increase>
+		<function name="altitude"/>
+		<number>10</number>
+	      </increase>
+	      <not>
+		<predicate name="pitching"/>
+	      </not>
+	    </and>
+	  </delayedEffect>

@@ -1,0 +1,15 @@
+<domain name="one-action">
+  <predicates>
+    <predicate name="a"/>
+    
+  </predicates>
+  <functions/>
+  <actions>
+    <action name="set-a">
+      <effect>
+	<predicate name="a"/>
+      </effect>
+    </action>
+   
+  </actions>
+</domain>

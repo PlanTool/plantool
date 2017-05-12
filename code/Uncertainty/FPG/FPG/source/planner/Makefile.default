@@ -1,0 +1,54 @@
+# Brazil Planner, library Makefile 
+# Not for compilation of Brazil GUI
+# $Id$
+
+TARGET=libBrazilPlanner.a
+
+# Uncomment below to define what you have.
+PGPATH=$(HOME)/src/dpolp/planners/libpg/
+
+# If not in standard places, point to Boost, Atlas, and CLAPACK
+INCLUDES=-I../model/impl/ -I$(HOME)/src/dpolp/planners/libpg/
+
+# These optimisations make a HUGE difference, but leave them off
+# until your sure your code works
+#OPTIMS=-O3 -DNDEBUG
+DEBUG=-g -O0
+
+##################### DO NOT EDIT BELOW ############################
+# Unless you know what you're doing.
+
+
+PGDEFINES=
+CFLAGS=-Wall $(DEFINES) $(PGDEFINES) $(DEBUG) $(OPTIMS) $(INCLUDES)
+OBJS=$(patsubst %.cpp,%.o,$(wildcard *.cpp))
+RM =rm -f
+AR=ar -cr
+RANLIB=ranlib
+CCDEP=$(CXX) -MM
+
+# Generate a new rule for each element of list TESTS
+
+$(TARGET): $(OBJS)
+	   $(AR) $(TARGET) $(OBJS)
+	   $(RANLIB) $(TARGET)
+
+%.o : %.cpp
+	$(CXX) $(CFLAGS) -c $<
+
+.Phony: clean realclean
+clean:
+	$(RM) *.o *~ *.d tests/*.o tests/*~
+
+distclean: clean
+	$(RM) $(TARGET)
+
+# All this stuff looks after automatic header dependencies
+
+%.d: %.cpp 
+	@echo "Finding dependencies for $<"
+	@$(SHELL) -ec '$(CCDEP) $(CFLAGS) $(INCLUDES) $< \
+		| sed '\''s/\($*\)\.o[ :]*/\1.o  $@ : /g'\'' > $@; \
+		[ -s $@ ] || rm -f $@'
+
+-include $(OBJS:%.o=%.d)

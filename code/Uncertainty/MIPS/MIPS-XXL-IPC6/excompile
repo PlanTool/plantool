@@ -1,0 +1,124 @@
+#!/bin/bash
+rm -f a-* p-* automata/a-* automata/p-* automata/grounded-* automata/*.pddl automata/*.soln
+EXTERNAL="-X"
+BFS="-B"
+isdurative=`grep -c durative $2`
+
+ if(( $isdurative == 0 ))
+  then
+       echo "this is not durative problem"
+  else
+       echo "this is durative problem"
+ fi
+
+isadl=`grep -c when $2`
+
+ if(( $isadl == 0 ))
+  then
+       echo "this is not an adl problem"
+  else
+       echo "this is an adl problem"
+ fi
+
+sed ' /(:constraints/! s/constraints/constraint/g' $2 > dfile
+
+ if(($isadl == 0))
+     then
+     ./ff -f $1 -o dfile -G
+ else
+     ./ff -f $1 -o dfile -A
+ fi
+
+echo "...grounded domain, problem and ltl done."
+
+mv groundedproblem.pddl automata/grounded-problem.pddl
+
+mv groundeddomain.pddl automata/domain
+
+numAutomata=1
+
+echo "Checking automata files..."
+    for file in a-* 
+    do 
+      if [ -f "$file" ] 
+	  then
+	  let "numAutomata+=1"
+	  echo a-numAutomata
+	  echo $numAutomata
+          if(($isdurative == 0))
+            then
+	      ../ltl2ba/ltl2ba -F "$file" > automata/"$file" 
+            else
+              ../ltl2ba/ltl2ba -t -F "$file" > automata/"$file" 
+           fi
+       fi
+    done
+echo "...ltl2ba automata conversion done."
+
+echo "Checking preference automata files..."
+
+for file in p-* 
+  do 
+  if [ -f "$file" ] 
+    then  
+      let "numAutomata+=1"
+      echo p-numAutomata
+      echo $numAutomata
+      if(($isdurative == 0))
+        then
+           ../ltl2ba/ltl2ba -P -F "$file" > automata/"$file"
+        else
+          ../ltl2ba/ltl2ba -t -P -F  "$file" > automata/"$file" 
+       fi
+    fi 
+  done
+echo "...ltl2ba preference conversion done."
+
+echo "linking automata ..."
+
+cd automata
+
+./adapt
+
+PARAMETERS="grounded-problem.pddl grounded-domain.pddl" 
+
+
+echo "Checking automata files..."
+for file in a-* 
+do 
+if [ -f "$file" ]
+  then  
+PARAMETERS=$PARAMETERS" grounded-"$file".pddl"
+fi
+done
+echo "...pddl automata read."
+
+echo "Checking preference files..."
+for file in p-* 
+do 
+if [ -f "$file" ]
+  then  
+PARAMETERS=$PARAMETERS" grounded-"$file".pddl"
+fi
+done
+
+echo "...pddl preference automata red."
+
+
+echo "merging automata ..."
+echo $PARAMETERS
+
+
+./merge $PARAMETERS
+
+echo "merging automata done..."
+
+
+echo "...ran ff with domain-merge.pddl and problem-merge.pddl"
+
+let "numAutomata *= 5"
+
+echo "../ff -f problem-merge.pddl -o domain-merge.pddl -h"$numAutomata" -O"
+
+../ff $EXTERNAL $BFS -f problem-merge.pddl -o domain-merge.pddl -h $numAutomata -O
+

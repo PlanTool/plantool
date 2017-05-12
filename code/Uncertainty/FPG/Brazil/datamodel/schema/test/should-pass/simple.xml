@@ -1,0 +1,13 @@
+
+<domain name="simple">
+  <predicates>
+    <predicate name="owen"/>
+  </predicates>
+  <functions/>
+  <actions>
+    <action name="simple">
+      <condition><predicate name="owen"/></condition>
+      <effect><predicate name="owen"/></effect>
+    </action>
+  </actions>
+</domain>

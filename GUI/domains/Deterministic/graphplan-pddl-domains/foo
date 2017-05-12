@@ -1,0 +1,102 @@
+PICK-UP
+PUT-DOWN
+STACK
+UNSTACK
+facts loaded.
+time: 1, 11 facts and 6 exclusive pairs.
+time: 2, 12 facts and 6 exclusive pairs.
+time: 3, 14 facts and 16 exclusive pairs.
+time: 4, 16 facts and 24 exclusive pairs.
+time: 5, 18 facts and 36 exclusive pairs.
+time: 6, 22 facts and 68 exclusive pairs.
+time: 7, 24 facts and 79 exclusive pairs.
+time: 8, 30 facts and 149 exclusive pairs.
+time: 9, 32 facts and 150 exclusive pairs.
+time: 10, 40 facts and 272 exclusive pairs.
+time: 11, 42 facts and 255 exclusive pairs.
+time: 12, 52 facts and 443 exclusive pairs.
+time: 13, 53 facts and 381 exclusive pairs.
+time: 14, 64 facts and 621 exclusive pairs.
+time: 15, 64 facts and 521 exclusive pairs.
+time: 16, 64 facts and 441 exclusive pairs.
+Goals first reachable in 16 steps.
+1753 nodes created.
+goals at time 17:
+  on_blockB_blockA on_blockC_blockB on_blockD_blockC on_blockE_blockD on_blockF_blockE on_blockA_blockG 
+
+Can't solve in 16 steps
+time: 17, 64 facts and 441 exclusive pairs.
+226 new nodes added.
+goals at time 18:
+  on_blockB_blockA on_blockC_blockB on_blockD_blockC on_blockE_blockD on_blockF_blockE on_blockA_blockG 
+
+Can't solve in 17 steps
+time: 18, 64 facts and 441 exclusive pairs.
+226 new nodes added.
+goals at time 19:
+  on_blockB_blockA on_blockC_blockB on_blockD_blockC on_blockE_blockD on_blockF_blockE on_blockA_blockG 
+
+Can't solve in 18 steps
+time: 19, 64 facts and 441 exclusive pairs.
+226 new nodes added.
+goals at time 20:
+  on_blockB_blockA on_blockC_blockB on_blockD_blockC on_blockE_blockD on_blockF_blockE on_blockA_blockG 
+
+Can't solve in 19 steps
+time: 20, 64 facts and 441 exclusive pairs.
+226 new nodes added.
+goals at time 21:
+  on_blockB_blockA on_blockC_blockB on_blockD_blockC on_blockE_blockD on_blockF_blockE on_blockA_blockG 
+
+Can't solve in 20 steps
+time: 21, 64 facts and 441 exclusive pairs.
+226 new nodes added.
+goals at time 22:
+  on_blockB_blockA on_blockC_blockB on_blockD_blockC on_blockE_blockD on_blockF_blockE on_blockA_blockG 
+
+Can't solve in 21 steps
+time: 22, 64 facts and 441 exclusive pairs.
+226 new nodes added.
+goals at time 23:
+  on_blockB_blockA on_blockC_blockB on_blockD_blockC on_blockE_blockD on_blockF_blockE on_blockA_blockG 
+
+Can't solve in 22 steps
+time: 23, 64 facts and 441 exclusive pairs.
+226 new nodes added.
+goals at time 24:
+  on_blockB_blockA on_blockC_blockB on_blockD_blockC on_blockE_blockD on_blockF_blockE on_blockA_blockG 
+
+Can't solve in 23 steps
+time: 24, 64 facts and 441 exclusive pairs.
+226 new nodes added.
+goals at time 25:
+  on_blockB_blockA on_blockC_blockB on_blockD_blockC on_blockE_blockD on_blockF_blockE on_blockA_blockG 
+
+1 UNSTACK_blockG_blockF
+2 PUT-DOWN_blockG
+3 UNSTACK_blockF_blockE
+4 PUT-DOWN_blockF
+5 UNSTACK_blockE_blockD
+6 STACK_blockE_blockF
+7 UNSTACK_blockD_blockC
+8 STACK_blockD_blockE
+9 UNSTACK_blockC_blockB
+10 STACK_blockC_blockD
+11 UNSTACK_blockB_blockA
+12 STACK_blockB_blockC
+13 PICK-UP_blockA
+14 STACK_blockA_blockG
+15 UNSTACK_blockB_blockC
+16 STACK_blockB_blockA
+17 UNSTACK_blockC_blockD
+18 STACK_blockC_blockB
+19 UNSTACK_blockD_blockE
+20 STACK_blockD_blockC
+21 UNSTACK_blockE_blockF
+22 STACK_blockE_blockD
+23 PICK-UP_blockF
+24 STACK_blockF_blockE
+74 entries in hash table, 88 hash hits, avg set size 8.
+185 total set-creation steps (entries + hits + plan length - 1).
+124 actions tried
+  1.30 secs

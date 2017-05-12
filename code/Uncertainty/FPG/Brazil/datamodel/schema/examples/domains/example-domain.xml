@@ -1,0 +1,101 @@
+<domain name="Plane Flying">
+  <predicates>
+    <predicate name="auto-pilot"/>
+    <predicate name="pitching"/>
+    <predicate name="seat-belt-sign"/>
+  </predicates>
+  <functions>
+    <function name="altitude"/>
+  </functions>
+
+  <actions>
+    <!--
+	Engage the auto-pilot
+	The plane must not pitch whilst the auto pilot
+	is launching.
+	Single deterministic effect that the auto pilot
+	is set.
+      -->
+    <action name="engage-autopilot">
+      <precondition>
+	<and>
+	  <ge>
+	    <function name="altitude"/>
+	    <number>10000</number>
+	  </ge>
+	  <not><predicate name="auto-pilot"/></not>
+	</and>
+      </precondition>
+      <over-all>
+	<not><predicate name="pitching"/></not>
+      </over-all>
+      <effect>
+	<delayedEffect>
+	  <fixedDelay duration="10"/>
+	  <predicate name="auto-pilot"/>
+	</delayedEffect>
+      </effect>
+    </action>
+
+    <!--
+	Pull the aircraft up; increase altitude
+      -->
+    <action name="pitch-up">
+      <effect>
+	<and>
+	  <not><predicate name="auto-pilot"/></not>
+	  <predicate name="pitching"/>
+	</and>
+      </effect>
+      <probabilistic>
+
+	<!--
+	    The aircrafts are not very good, there
+	    is only a 50% probability that the
+	    altitude will actually increase.
+	  -->
+	<outcome probability="0.5">
+	  <delayedEffect>
+	    <normalDelay standardDeviation="5" mean="200"/>
+	    <and>
+	      <increase>
+		<function name="altitude"/>
+		<number>10</number>
+	      </increase>
+	      <not>
+		<predicate name="pitching"/>
+	      </not>
+	    </and>
+	  </delayedEffect>
+	</outcome>
+
+	<!--
+	    If the aircraft fails to pull up, it takes the pilot
+	    some time to release the aircraft is not working
+	    properly.
+	  -->
+	<outcome probability="0.5">
+	  <delayedEffect>
+	    <normalDelay standardDeviation="5" mean="10"/>
+	    <not>
+	      <predicate name="pitching"/>
+	    </not>
+	  </delayedEffect>
+	</outcome>
+      </probabilistic>
+
+      <!--
+	  There's a 5% chance the aircraft will shake
+	  and cause the seat belt sign to be activitaed.
+
+	  This is irrespective of the altitude actually
+	  increasing.
+	-->
+      <probabilistic>
+	<outcome probability="0.05">
+	  <predicate name="seat-belt-sign"/>
+	</outcome>
+      </probabilistic>
+    </action>
+  </actions>
+</domain>

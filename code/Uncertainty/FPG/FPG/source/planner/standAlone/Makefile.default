@@ -1,0 +1,86 @@
+# $Id$ 
+# Create stand alone brazilplan
+
+##
+## Only if Boost headers are in a non-standard place
+##
+BOOSTINCLUDES=
+
+PG=$(HOME)/src/dpolp/planners/libpg
+PGINCLUDES=-I$(PG)
+PGLIB=$(PG)/libpg.a
+
+BRAZIL=../
+BRAZILINCLUDES=-I../../model/impl/ -I../
+BRAZILLIB=$(BRAZIL)/libBrazilPlanner.a
+
+XERCESINCLUDES=-I/include
+XERCESLIBS=-lxerces-c
+
+##
+## ATLAS is optional, depending on how you compiled libpg
+##
+#ATLASCFLAGS=-DHAVE_ATLAS 
+#ATLASLIBSPATH=-L$(HOME)/src/ATLAS/lib/OSX_PPCG4AltiVec
+#ATLASLIBS=-lcblas -latlas
+
+##
+## CLAPACK is optional, depending on how you compiled libpg
+##
+#CLAPACKLIBS=-lclapack -lF77 -lI77 -lcblaswr 
+#DEFINES=-DHAVE_CLAPACK
+
+
+#OPTIMS=-O3 -DNDEBUG
+
+
+######################## DO NOT EDIT BELOW #############################
+# Unless you know what you're doing.
+
+TARGET=fpg
+
+LIBS=-lBrazilPlanner -lpg  $(CLAPACKLIBS) $(ATLASLIBS) $(XERCESLIBS)
+DEBUG=-g
+CFLAGS=-Wall $(DEFINES) $(DEBUG) $(OPTIMS) $(BRAZILINCLUDES) $(BOOSTINCLUDES) $(PGINCLUDES) $(XERCESINCLUDES) $(ATLASCFLAGS) 
+LFLAGS=$(OPTIMS) -L$(PG) -L$(BRAZIL) $(ATLASLIBSPATH)
+CCDEP=$(CXX) -MM
+LOCALOBJS=$(patsubst %.cpp,%.o,$(wildcard *.cpp))
+EXTRACPP=$(wildcard ../../model/impl/*.cpp)
+EXTRAOBJS=$(patsubst %.cpp,%.o,$(EXTRACPP))
+OBJS=$(LOCALOBJS) $(EXTRAOBJS)
+
+# Editing below this line not advised unless you know what's going on.
+
+CXX=g++
+
+.PHONY: clean distclean $(PGLIB) $(BRAZILLIB)
+
+
+$(TARGET) : $(OBJS) $(PGLIB) $(BRAZILLIB)
+	$(CXX) $(LFLAGS) -o $@ $(OBJS) $(LIBS)
+
+$(PGLIB) :
+	make -C $(PG)
+
+$(BRAZILLIB) :
+	make -C $(BRAZIL)
+
+%.o : %.cpp
+	$(CXX) $(CFLAGS) -c $< -o $@
+
+
+clean:
+	rm -fr *.o *~ *.bak $(EXTRAOBJS)
+
+distclean: clean
+	rm -fr $(TARGET)
+
+# All this stuff looks after automatic header dependencies
+
+%.d: %.cc 
+	@echo "Finding dependencies for $<"
+	@$(SHELL) -ec '$(CCDEP) $(CFLAGS) $(INCLUDES) $< \
+		| sed '\''s/\($*\)\.o[ :]*/\1.o  $@ : /g'\'' > $@; \
+		[ -s $@ ] || rm -f $@'
+
+-include $(OBJS:%.o=%.d)

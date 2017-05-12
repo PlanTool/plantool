@@ -1,0 +1,12 @@
+12 11 0.95
+OOOOOOOOOOOR
+S         RD
+S          D
+S         RD
+SS         D
+SSS       RD
+SS         D
+S         RD
+S          D
+S         RD
+OOOOOOOOOOOR

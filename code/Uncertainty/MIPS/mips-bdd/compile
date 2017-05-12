@@ -1,0 +1,100 @@
+#!/bin/bash
+rm -f found domain.pddl problem.pddl problem.sas automata/problem-merge.* automata/domain-merge.* a-* p-* automata/*.psas automata/a-* automata/p-* automata/grounded-* automata/*.pddl
+
+
+echo "...grounding input"
+
+sed s/"\_"/"-"/g $1 > dom.pddl
+sed s/"\_"/"-"/g $2 > pro.pddl
+./ground dom.pddl pro.pddl
+
+
+echo "...transforming input translate STC into LTL"
+
+echo "Checking automata files..."
+    for file in a-* 
+    do 
+      if [ -f "$file" ] 
+	  then
+	      touch "found"
+	      ltl2ba/ltl2ba -F "$file" > automata/"$file" 
+       fi
+    done
+echo "...ltl2ba automata conversion done."
+
+echo "Checking preference automata files..."
+
+for file in p-* 
+  do 
+  if [ -f "$file" ] 
+    then   touch "found"
+           ltl2ba/ltl2ba -P -F "$file" > automata/"$file"
+    fi 
+  done
+echo "...ltl2ba preference conversion done."
+
+echo "...copying problem to automata."
+
+mv problem.pddl automata/grounded-problem.pddl
+
+echo "...copying domain to automata."
+
+mv domain.pddl automata/domain
+
+mv problem.psas automata/grounded-problem.psas
+
+echo "linking automata ..."
+
+
+if [ -f "found" ]
+then
+  cd automata
+  ./adapt
+else
+  cd automata
+  ../bdd-solver domain grounded-problem.pddl $3 $4 $5 $6 $7 $8 $9 ${10} ${11} 
+#  cp mips-solution mips/$2-plan-ext
+#  cp simple-solution mips/$2-plan-short
+  exit
+fi
+
+PARAMETERS="grounded-problem.pddl grounded-domain.pddl grounded-problem.psas" 
+
+echo "Checking automata files..."
+for file in a-* 
+do 
+if [ -f "$file" ]
+  then  
+PARAMETERS=$PARAMETERS" grounded-"$file".pddl"
+fi
+done
+echo "...pddl automata read."
+
+echo "Checking preference files..."
+for file in p-* 
+do 
+if [ -f "$file" ]
+  then  
+PARAMETERS=$PARAMETERS" grounded-"$file".pddl"
+fi
+done
+
+echo "...pddl preference automata read."
+
+
+echo "merging automata ..."
+echo $PARAMETERS
+
+./merge $PARAMETERS
+
+echo "merging automata done..."
+
+echo "...run bdd-solver with domain-merge.pddl and problem-merge.pddl"
+
+../bdd-solver domain-merge.pddl problem-merge.pddl $3 $4 $5 $6 $7 $8 $9 ${10} ${11} 
+#  cp mips-solution mips/$2-plan-ext
+#  cp simple-solution mips/$2-plan-short 
+
+
+
+

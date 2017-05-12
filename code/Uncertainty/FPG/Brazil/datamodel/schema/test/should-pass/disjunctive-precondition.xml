@@ -1,0 +1,19 @@
+<domain name="one-action">
+  <predicates>
+    <predicate name="a"/>
+    <predicate name="b"/>
+  </predicates>
+  <functions>
+    <function name="func-1"/>
+  </functions>
+  <actions>
+    <action name="a">
+      <precondition>
+	<or>
+	  <predicate name="a"/>
+	  <predicate name="b"/>
+	</or>
+      </precondition>
+    </action>
+  </actions>
+</domain>

@@ -1,0 +1,22 @@
+<domain name="one-action">
+  <predicates>
+    <predicate name="a"/>
+    <predicate name="b"/>
+  </predicates>
+  <functions>
+    <function name="func-1"/>
+  </functions>
+  <actions>
+    <action name="a">
+      <over-all>
+	<or>
+	  <predicate name="a"/>
+	  <and>
+	    <predicate name="b"/>
+	    <predicate name="c"/>
+	  </and>
+	</or>
+      </over-all>
+    </action>
+  </actions>
+</domain>

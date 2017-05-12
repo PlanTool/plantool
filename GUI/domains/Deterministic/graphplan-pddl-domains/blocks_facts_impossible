@@ -1,0 +1,17 @@
+(blockA OBJECT)
+(blockB OBJECT)
+(blockC OBJECT)
+
+(preconds
+	(on-table blockA)
+	(on blockB blockA)
+	(on blockC blockB)
+	(clear blockC)
+	(arm-empty))
+
+(effects
+	(on blockC blockB)
+	(on blockB blockA)
+	(on blockA blockC))
+
+

@@ -1,0 +1,33 @@
+#!/bin/bash
+echo "Starting MIPS-XXL .."
+PathString=$1
+Problem=$2
+Domain=$3
+ResultsPath=$4
+rm automata/mipsSolution.soln
+rm automata/mipsPSolution.soln
+rm $ResultsPath/$Problem.soln
+rm $ResultsPath/$Problem.psoln
+/usr/bin/time --format=%U ./compile $PathString/$Problem.pddl $PathString/$Domain.pddl 2>&1 | tee automata/log 
+cd automata
+timeVal=`tail -1 log`
+
+echo "Total Time Taken = " $timeVal
+TimeString="; Time "$timeVal
+#echo $1
+#echo $TimeString
+
+echo  $TimeString > $ResultsPath/$Problem.soln
+
+if [ -f mipsSolution.soln ]
+then
+    cat mipsSolution.soln >> $ResultsPath/$Problem.soln 
+fi
+
+if [ -f mipsPSolution.soln ]
+then
+#    echo  $TimeString > $ResultsPath/$Problem.psoln
+    cat mipsPSolution.soln >> $ResultsPath/$Problem.psoln 
+fi
+exit 0
+

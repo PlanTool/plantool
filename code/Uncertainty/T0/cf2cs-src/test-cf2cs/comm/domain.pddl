@@ -1,0 +1,36 @@
+(define (domain comm)
+  (:requirements :negative-preconditions :typing :equality)
+  (:types packet stage)
+  (:constants s0 - stage)
+  (:predicates (next-stage ?s ?t - stage) (current-stage ?s - stage)
+               (in-channel ?p - packet) (seq-number ?p - packet ?s - stage) (read ?p - packet)
+               (noisy ?p - packet) (bad ?p - packet) (ok ?p - packet)
+  )
+  (:action reset
+    :parameters (?s - stage)
+    :precondition (current-stage ?s)
+    :effect (and (not (current-stage ?s)) (current-stage s0))
+  )
+  (:action advance
+    :parameters (?s ?t - stage)
+    :precondition (and (next-stage ?s ?t) (current-stage ?s))
+    :effect (and (current-stage ?t) (not (current-stage ?s)))
+  )
+  (:action obtain
+    :parameters (?p - packet ?s - stage)
+    :precondition (and (seq-number ?p ?s) (current-stage ?s))
+    :effect (when (in-channel ?p)(and (not (in-channel ?p)) (read ?p)))
+  )
+  (:action certify
+    :parameters (?p - packet)
+    :precondition (read ?p)
+    :effect (and (when (noisy ?p) (bad ?p)) (when (not (noisy ?p)) (ok ?p)))
+  )
+  (:action request-copy
+    :parameters (?p - packet ?s - stage)
+    :precondition (current-stage ?s)
+    :effect (when (and (bad ?p) (seq-number ?p ?s))
+              (and (in-channel ?p) (not (read ?p)) (not (noisy ?p)) (not (bad ?p))))
+  )
+)
+

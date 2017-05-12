@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   revision="24"
+   repos="svn+ssh://jabbar@ls5-svn.cs.uni-dortmund.de/export/svn/shahid"
+   url="svn+ssh://jabbar@ls5-svn.cs.uni-dortmund.de/export/svn/shahid/ExternalAStar/bdd-solver/lib/galib246"
+   last-author="jabbar"
+   uuid="4b960505-2b20-0410-8d21-dbd74494e704"
+   committed-date="2006-10-23T16:26:32.112500Z"
+   kind="dir"
+   name=""
+   committed-rev="24"/>
+<entry
+   checksum="b33cce88174b1e6251b603cf54488be6"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:07.000000Z"
+   text-time="2006-10-24T00:04:28.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="COPYRIGHT"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="ecdb710f128d9fd454345dbebb476780"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:07.000000Z"
+   text-time="2006-10-24T00:04:28.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="ChangeLog"
+   committed-rev="22"/>
+<entry
+   checksum="a8e710e4c3d0f345e122eef5f7d79f8b"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:07.000000Z"
+   text-time="2006-10-24T00:04:20.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="LICENSE"
+   committed-rev="22"/>
+<entry
+   checksum="0df649d4b1d1b388079f8519ee4bd172"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:07.000000Z"
+   text-time="2006-10-24T00:04:20.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="README"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="bd17d86abacea4d45be316e8386b2f19"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:08.000000Z"
+   text-time="2006-10-24T00:04:20.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="RELEASE-NOTES"
+   committed-rev="22"/>
+<entry
+   checksum="7074358661b85a10eb2aa4ac9b3d3f66"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:08.000000Z"
+   text-time="2006-10-24T00:04:20.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="TODO"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="a677a14f9e7fe07e7841d312f3f682a1"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:08.000000Z"
+   text-time="2006-10-24T00:04:20.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="VERSION"
+   committed-rev="22"/>
+<entry
+   name="doc"
+   kind="dir"/>
+<entry
+   kind="dir"
+   name="ga"/>
+<entry
+   checksum="4de491292e6b1fea58cdd09210c41984"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:07.000000Z"
+   text-time="2006-10-24T00:04:20.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="makefile"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="806ed678cbf5f9cfcc724fd78ac30fb2"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:08.000000Z"
+   text-time="2006-10-24T00:04:20.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="makefile.bcc"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="1ed5e65d9127e31e31a88496819bc005"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:08.000000Z"
+   text-time="2006-10-24T00:04:28.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   name="makefile.vcpp"
+   kind="file"
+   committed-rev="22"/>
+<entry
+   checksum="9ae5d97eb6106e3cd0abdca927ccc9ef"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:07.000000Z"
+   text-time="2006-10-24T00:04:20.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="makevars"
+   committed-rev="22"/>
+<entry
+   checksum="6eb442acc384c0a1b97f42cfd3b00e03"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:08.000000Z"
+   text-time="2006-10-24T00:04:20.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="makevars.bcc"
+   committed-rev="22"/>
+<entry
+   checksum="ebbfed77c7bd8258f06ca590e02729b9"
+   last-author="jabbar"
+   prop-time="2006-10-24T00:11:08.000000Z"
+   text-time="2006-10-24T00:04:20.000000Z"
+   committed-date="2006-10-23T15:18:49.475000Z"
+   kind="file"
+   name="makevars.vcpp"
+   committed-rev="22"/>
+</wc-entries>

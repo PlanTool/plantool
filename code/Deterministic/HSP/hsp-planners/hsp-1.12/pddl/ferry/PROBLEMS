@@ -1,0 +1,4 @@
+prob01.pddl domain01.pddl
+prob02.pddl domain01.pddl
+prob03.pddl domain02.pddl
+prob04.pddl domain02.pddl

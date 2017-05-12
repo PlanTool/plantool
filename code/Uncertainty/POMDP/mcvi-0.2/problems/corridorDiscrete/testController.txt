@@ -1,0 +1,6 @@
+After make, compile with:
+
+g++ -I../../src/ -Wall -g -O0 -fopenmp    -o Controller
+testController.cc Action.o Obs.o ObsEdge.o ActNode.o ParticlesBelief.o
+ParticlesBeliefSet.o BeliefTree.o BeliefForest.o Bounds.o Controller.o
+PolicyGraph.o Simulator.o ValueIteration.o Solver.o CorridorModel.o

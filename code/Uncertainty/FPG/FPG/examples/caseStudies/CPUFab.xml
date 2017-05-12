@@ -1,0 +1,209 @@
+
+<domain name="new">
+  <predicates>
+    <predicate name="Motherboard ok"/>
+    <predicate name="New CPU ok"/>
+    <predicate name="Old CPU ok"/>
+    <predicate name="Computer made"/>
+    <predicate name="Oldstarted"/>
+    <predicate name="NewStarted"/>
+    <predicate name="Consruct"/>
+    <predicate name="FabricatedStart"/>
+  </predicates>
+  <functions>
+    <function name="money"/>
+  </functions>
+  <actions>
+    <action backgroundColour="#ce00fb" name="Make CPU at old factory">
+      <precondition>
+        <predicate name="Oldstarted" negated="true"/>
+        <functionCondition type="gt">
+          <function name="money"/>
+          <number>10</number>
+        </functionCondition>
+      </precondition>
+      <over-all/>
+      <effect>
+        <delay mean="45072" standardDeviation="5952" type="normal"/>
+      </effect>
+      <probabilistic>
+        <outcome backgroundColour="#0fc600" label="CPU tests success" probability="0.5">
+          <effect>
+            <delay duration="28944" type="fixed"/>
+              <predicate name="Old CPU ok" negated="0"/>
+          </effect>
+          <at-start>
+            <predicate name="Oldstarted" negated="false"/>
+            <functionEffect type="decrease">
+              <function name="money"/>
+              <number>10</number>
+            </functionEffect>
+          </at-start>
+        </outcome>        
+        <outcome backgroundColour="#ff0027" label="CPU tests failure" probability="0.5">
+          <effect>
+            <delay max="28944" min="288" type="uniform"/>
+          </effect>
+          <at-start/>
+	</outcome>  
+      </probabilistic>
+      <at-start>
+        <predicate name="Oldstarted" negated="false"/>
+      </at-start>
+    </action>
+    <action backgroundColour="#fbe000" name="Make CPU at new factory">
+      <precondition>
+        <predicate name="NewStarted" negated="true"/>
+        <functionCondition type="gt">
+          <function name="money"/>
+          <number>20</number>
+        </functionCondition>
+      </precondition>
+      <over-all/>
+      <effect>
+        <delay mean="29232" standardDeviation="1584" type="normal"/>
+      </effect>
+      <probabilistic>
+        <outcome backgroundColour="#00c14a" label="CPU Test Succees" probability="0.2">
+          <effect>
+            <delay duration="33984" type="fixed"/>        
+            <predicate name="New CPU ok" negated="false"/>
+	  </effect>
+          <at-start>
+            <predicate name="NewStarted" negated="false"/>
+            <functionEffect type="decrease">
+              <function name="money"/>
+              <number>20</number>
+            </functionEffect>
+          </at-start>
+        </outcome>        
+        <outcome backgroundColour="#ff0600" label="CPU Test Fails" probability="0.8">
+          <effect>
+            <delay max="30240" min="144" type="uniform"/></effect>
+          <at-start/>
+      </outcome>      
+      </probabilistic>
+      <at-start>
+        <predicate name="NewStarted" negated="false"/>
+      </at-start>
+    </action>
+    <action backgroundColour="#0034fb" name="Fabricate motherboard">
+      <precondition>
+        <predicate name="FabricatedStart" negated="true"/>
+        <functionCondition type="gt">
+          <function name="money"/>
+          <number>5</number>
+        </functionCondition>
+      </precondition>
+      <over-all/>
+      <effect>
+        <delay max="41760" min="23760" type="uniform"/>
+      </effect>
+      <probabilistic>
+        <outcome backgroundColour="#00c612" label="OK" probability="0.9">
+          <effect>
+            <delay duration="17856" type="fixed"/>
+              
+            
+            <predicate name="Motherboard ok" negated="false"/>
+          </effect>
+          <at-start>
+            <predicate name="FabricatedStart" negated="false"/>
+            <functionEffect type="decrease">
+              <function name="money"/>
+              <number>5</number>
+            </functionEffect>
+          </at-start>
+        </outcome>        
+	      <outcome backgroundColour="#ff0017" label="Fail" probability="0.1">
+          <effect>
+    
+            <delay lambda="0.000134371" type="exponential"/></effect>
+          <at-start/>
+	  </outcome>      
+      </probabilistic>
+      <at-start>
+        <predicate name="FabricatedStart" negated="false"/>
+      </at-start>
+    </action>
+    <action backgroundColour="#98FB98" name="Construct computer">
+      <precondition negated="false" type="and">
+        <condition type="and">
+          <predicate name="Motherboard ok"/>
+          <condition negated="false" type="or">
+             <predicate name="New CPU ok" negated="0"/>
+             <predicate name="Old CPU ok" negated="0"/>
+          </condition>
+          <predicate name="Consruct" negated="true"/>
+          <functionCondition type="ge">
+            <function name="money"/>
+            <number>7</number>
+          </functionCondition>
+        </condition>
+      </precondition>
+      <over-all/>
+      <effect>
+        <delay duration="26208" type="fixed"/>
+      </effect>
+      <probabilistic>
+        <outcome backgroundColour="#ffcc33" label="Comp OK" probability="0.2">
+          <effect>
+            <delay duration="42624" type="fixed"/>
+            <predicate name="Computer made" negated="0"/>
+            <functionEffect type="increase">
+              <function name="money"/>
+              <number>100</number>
+            </functionEffect>
+          </effect>
+          <at-start>
+            <predicate name="Consruct" negated="false"/>
+            <functionEffect type="decrease">
+              <function name="money"/>
+              <number>7</number>
+            </functionEffect>
+          </at-start>
+        </outcome>        
+        <outcome backgroundColour="#ff3366" label="Comp Fail" probability="0.8">
+          <effect>
+            <delay lambda="7.23537e-05" type="exponential"/>
+        </effect>
+          <at-start/></outcome>      
+      </probabilistic>
+      <at-start>
+        <predicate name="Consruct" negated="false"/>
+      </at-start>
+    </action>
+  </actions>
+  <problem>
+    <init> 
+        <predicates/>
+        <functions>
+        <assign>
+          <function name="money"/>
+          <number value="100"/>
+        </assign>
+      </functions>
+    </init>
+    <goal negated="false" type="and">
+      <predicate name="Computer made"/>
+      <functionCondition type="gt">
+        <function name="money"/>
+        <number>100</number>
+      </functionCondition>
+    </goal>
+  </problem>
+  <properties>
+    <property>
+      <name> test </name>
+      <value> hi </value>
+    </property>
+</properties>
+
+
+
+
+
+
+
+
+</domain>

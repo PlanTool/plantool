@@ -1,0 +1,399 @@
+<!--
+    XML Schema for Brazil Domain Definition language.
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  
+
+  <!--
+      Defines a named Brazil Planning Domain.
+
+      This consists of:
+      - A set of predicates
+      - A set of functions
+      - A set of actions
+
+      All of which can possibly be empty (i.e. have no element children).
+      
+      Note: In future we will require the client identification
+      to be included so as to provide unique naming of domains
+      across all clients.
+      -->
+  <xsd:complexType name="BrazilDomain">
+    
+    <xsd:sequence>
+      
+      <!-- A List of possibly empty predicates. -->
+      <xsd:element name="predicates" type="BrazilPredicates" 
+		   minOccurs="1" maxOccurs="1"/>
+
+      <!-- A List of possibly empty functions. -->
+      <xsd:element name="functions" type="BrazilFunctions" 
+		   minOccurs="1" maxOccurs="1"/>
+
+      <!-- A List of possibly empty actions. -->
+      <xsd:element name="actions" type="BrazilActions" 
+		   minOccurs="1" maxOccurs="1"/>
+
+      <!-- The Problem definition. -->
+      <xsd:element name="problem" type="BrazilProblem"
+		   minOccurs="1" maxOccurs="1"/>
+	
+      
+		   
+    </xsd:sequence>
+
+    <xsd:attribute name="name" type="xsd:string" use="required"/>    
+
+  </xsd:complexType>
+
+<!-- The Brazil Problem definition provides a possibly empty list
+     of initially true predicates. Any predicates not defined as
+     initially true are regarded as false. 
+     BrazilProblem defines a list of initial function values. 
+     Every function defined in the domain MUST have a corresponding
+     initial value - there is no default value.
+     The Brazil Problem also defines a goal condition. Every problem
+     must have a goal condition defined.
+     -->
+<xsd:complexType name="BrazilProblem">
+    <xsd:sequence>
+    
+    <!-- the init element contains the possibly empty list of intially true
+    predicates and initial function values. -->
+    <xsd:element name="init" minOccurs="1" maxOccurs="1">
+      <xsd:complexType>
+	<xsd:sequence>
+	  <xsd:element name="predicates" minOccurs="1" maxOccurs="1">
+	    <xsd:complexType>
+	      <xsd:sequence>
+	           <xsd:element name="predicate" type="BrazilPredicateDefinition"  minOccurs="0" maxOccurs="unbounded"/>
+	      </xsd:sequence>
+	    </xsd:complexType>
+	  </xsd:element>
+	  <xsd:element name="functions" minOccurs="1" maxOccurs="1">
+	    <xsd:complexType>
+	      <xsd:sequence>
+		<xsd:element name="assign" minOccurs="0" maxOccurs="unbounded">
+		  <xsd:complexType>
+		    <xsd:sequence>
+		      <xsd:element name="function" type="BrazilFunctionDefinition" 
+				   minOccurs="1" maxOccurs="1"/>
+		      <xsd:element name="number" type="xsd:positiveInteger"
+				   minOccurs="1" maxOccurs="1"/>
+		    </xsd:sequence>
+		  </xsd:complexType>
+		</xsd:element>
+	      </xsd:sequence>
+	    </xsd:complexType>
+	  </xsd:element>
+	</xsd:sequence>
+      </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="goal">
+      <xsd:complexType>
+	<xsd:sequence>
+	  <xsd:group ref="BrazilGD" minOccurs="1" maxOccurs="1"/>
+	</xsd:sequence>
+      </xsd:complexType>
+    </xsd:element>
+    
+    
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <!--
+      Note: We will require that xsd:unique elements are added
+      to each of predicates, functions and actions.-->
+  
+  <!--
+      Defines a set of Brazil predicates.
+      -->
+  <xsd:complexType name="BrazilPredicates">
+    <xsd:sequence>
+      <xsd:element name="predicate" type="BrazilPredicateDefinition"
+		   minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+      Defines a set of Brazil functions.
+      -->
+  <xsd:complexType name="BrazilFunctions">
+    <xsd:sequence>
+      <xsd:element name="function" type="BrazilFunctionDefinition"
+		   minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+      Defines a set of Brazil actions.
+    -->
+  <xsd:complexType name="BrazilActions">
+    <xsd:sequence>
+      <xsd:element name="action" type="BrazilActionDefinition"
+		   minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="BrazilPredicateDefinition">
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+  </xsd:complexType>
+
+  <xsd:complexType name="BrazilFunctionDefinition">
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+  </xsd:complexType>
+
+  <!--
+      Defines a Brazil Action.
+
+      Each Brazil action potentially contains:
+
+      - A condition element, defining the initial condition that must be satisified for
+      the action to be eligible for evaluation.
+
+      - An overallCondition element, defining the condition that must be satisified continuously
+      throughout the entire action evaluation. An action is finished evaluation when all probabilisitic
+      elements have been sampled and all effects processed.
+
+      - An effect element, defining a determinisitc effect.
+
+      - probabilistic elements, each definining a stochastic set of effects.
+      -->
+  <xsd:complexType name="BrazilActionDefinition">
+    
+    <xsd:sequence>
+
+      <xsd:element name="precondition" minOccurs="1" maxOccurs="1">
+	<xsd:complexType>
+	  <xsd:sequence>
+	    <xsd:group ref="BrazilGD" minOccurs="0" maxOccurs="1"/>
+	  </xsd:sequence>
+	</xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="over-all" minOccurs="1" maxOccurs="1">
+	<xsd:complexType>
+	  <xsd:sequence>
+	    <xsd:group ref="BrazilGD" minOccurs="0" maxOccurs="1"/>
+	  </xsd:sequence>
+	</xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="effect" type="BrazilEffectSet"  minOccurs="1" maxOccurs="1"/>
+      
+      <xsd:element name="probabilistic" type="BrazilStochasticEffectSet" 
+		   minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>  
+  </xsd:complexType>
+
+
+  <xsd:complexType name="BrazilEffectSet">
+    <xsd:choice>
+      <xsd:element name="and" type="BrazilEffectConjunction"/>
+      <xsd:element name="delayedEffect" type="BrazilDelayedEffectSet"/>
+      <xsd:group ref="BrazilAtomicEffect"/>
+    </xsd:choice>
+  </xsd:complexType>
+
+  <xsd:complexType name="BrazilStochasticEffectSet">
+    <xsd:sequence>
+      <xsd:element name="outcome" minOccurs="0" maxOccurs="unbounded">
+	<xsd:complexType>
+	  <xsd:choice>
+	    <xsd:element name="and" type="BrazilEffectConjunction"/>
+	    <xsd:element name="delayedEffect" type="BrazilDelayedEffectSet"/>
+	    <xsd:group ref="BrazilAtomicEffect"/>
+	  </xsd:choice>
+	  <xsd:attribute name="probability" type="xsd:double"/>
+	</xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="BrazilEffectConjunction">
+    <xsd:sequence>
+      <xsd:group ref="BrazilAtomicEffect" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="delayedEffect" 
+		   type="BrazilDelayedEffectSet" 
+		   minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="BrazilDelayedEffectSet">
+    <xsd:sequence>
+      <xsd:choice>
+	<xsd:element name="delay">
+	  <xsd:complexType>
+	    <xsd:attribute name="duration" type="BrazilTime"/>
+	    <xsd:attribute name="type" type="xsd:string">
+	      <xsd:restriction base="xsd:string">
+		<xsd:enumeration value="fixed"/>
+	      </xsd:restriction>
+	    </xsd:attribute>
+	  </xsd:complexType>
+	</xsd:element>
+	<xsd:element name="delay">
+	  <xsd:complexType>
+	    <xsd:attribute name="min" type="BrazilTime"/>
+	    <xsd:attribute name="max" type="BrazilTime"/>
+	    <xsd:attribute name="type" type="xsd:string">
+	      <xsd:restriction base="xsd:string">
+		<xsd:enumeration value="uniform"/>
+	      </xsd:restriction>
+	    </xsd:attribute>
+
+	  </xsd:complexType>
+	</xsd:element>
+	<xsd:element name="delay">
+	  <xsd:complexType>
+	    <xsd:attribute name="lambda" type="double"/>
+	    <xsd:attribute name="type" type="xsd:string">
+	      <xsd:restriction base="xsd:string">
+		<xsd:enumeration value="exponential"/>
+	      </xsd:restriction>
+	    </xsd:attribute>
+	  </xsd:complexType>
+	</xsd:element>
+	<xsd:element name="delay">
+	  <xsd:complexType>
+	    <xsd:attribute name="mean" type="BrazilTime"/>
+	    <xsd:attribute name="standardDeviation" type="BrazilTime"/>
+	    <xsd:attribute name="type" type="xsd:string">
+	      <xsd:restriction base="xsd:string">
+		<xsd:enumeration value="normal"/>
+	      </xsd:restriction>
+	    </xsd:attribute>
+	  </xsd:complexType>
+	</xsd:element>
+      </xsd:choice>
+      <xsd:sequence>
+	<xsd:complexType>
+	  <xsd:group ref="BrazilAtomicEffect" 
+		     minOccurs="0" maxOccurs="unbounded"/>
+	</xsd:complexType>
+      </xsd:sequence>
+	
+      
+    </xsd:sequence>
+  </xsd:complexType>
+
+  
+  <!--
+      An atomic effect, that is an effect element that
+      manipulates a single predicate or function.
+
+      - Predicate negation.
+      - Function manipulation.
+      - Predicat assertion.
+    -->
+  <xsd:group name="BrazilAtomicEffect">
+    <xsd:choice>
+      <xsd:element name="functionEffect" type="BrazilFunctionModification"/>
+      <xsd:element name="predicate" type="xsd:string">
+	<xsd:attribute name="negated" type="boolean"/>
+      </xsd:element>
+    </xsd:choice>
+  </xsd:group>
+
+
+  <xsd:complexType name="BrazilFunctionModification">
+    <xsd:attribute name="type">
+      <xsd:simpleType>
+	<xsd:restriction base="xsd:string">
+	  <xsd:enumeration value="increase"/>
+	  <xsd:enumeration value="decrease"/>
+	  <xsd:enumeration value="scale-up"/>
+	  <xsd:enumeration value="scale-down"/>
+	  <xsd:enumeration value="assign"/>
+	</xsd:restriction>
+      </xsd:simpleType>
+    </xsd:attribute>
+    <xsd:sequence>
+      <xsd:element name="function" type="BrazilFunctionDefinition" minOccurs="1" maxOccurs="1"/>
+      <xsd:group ref="BrazilFunctionExpression"/>
+    </xsd:sequence>
+  </xsd:complexType>
+ 
+  <xsd:complexType name="BrazilFunctionCondition">
+     <xsd:attribute name="type">
+      <xsd:simpleType>
+	<xsd:restriction base="xsd:string">
+	  <xsd:enumeration value="lt"/>
+	  <xsd:enumeration value="gt"/>
+	  <xsd:enumeration value="equals"/>
+	  <xsd:enumeration value="le"/>
+	  <xsd:enumeration value="ge"/>
+	</xsd:restriction>
+      </xsd:simpleType>
+    </xsd:attribute>
+    <xsd:sequence>
+      <xsd:element name="function" type="BrazilFunctionDefinition" minOccurs="1" maxOccurs="1"/>
+      <xsd:group ref="BrazilFunctionExpression"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name="BrazilFunctionOperation">
+    <xsd:attribute name="type">
+      <xsd:simpleType>
+	<xsd:restriction base="xsd:string">
+	  <xsd:enumeration value="add"/>
+	  <xsd:enumeration value="multiply"/>
+	  <xsd:enumeration value="divide"/>
+	  <xsd:enumeration value="subtract"/>
+	</xsd:restriction>
+      </xsd:simpleType>
+    </xsd:attribute>
+    <xsd:sequence>
+      <xsd:group ref="BrazilFunctionExpression" minOccurs="2" maxOccurs="2"/>
+    </xsd:sequence>
+  </xsd:complexType>
+ <!--
+      Brazil standard numeric expression.
+      -->
+  <xsd:group name="BrazilFunctionExpression">
+    <xsd:choice>
+      <xsd:element name="number" type="xsd:double"/>
+      <xsd:element name="function" type="BrazilFunctionDefinition"/>
+      <xsd:element name="functionExpression" type="BrazilFunctionOperation"/>
+    </xsd:choice>
+  </xsd:group>
+
+
+  <xsd:complexType name="BrazilInternalCondition">
+    <xsd:attribute name="negated" type="xsd:boolean"/>
+    <xsd:attribute name="type">
+      <xsd:simpleType>
+      	<xsd:restriction base="xsd:string">
+	  <xsd:enumeration value="and"/>
+	  <xsd:enumeration value="or"/>
+	</xsd:restriction>
+      </xsd:simpleType>
+    </xsd:attribute>
+    <xsd:sequence>
+      <xsd:group ref="BrazilGD" minOccurs="2" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:group name="BrazilGD">
+    <xsd:choice>
+      <xsd:element name="functionCondition" type="BrazilFunctionCondition"/>
+      <xsd:element name="condition" type="BrazilInternalCondition"/>
+      <xsd:element name="predicate">
+	<xsd:attribute name="name" type="xsd:string"/>
+	<xsd:attribute name="negated" type="xsd:boolean"/>
+      </xsd:element>
+    </xsd:choice>
+  </xsd:group>
+
+  <!--
+      A time type to express Brazil's idea of durations, delays, and start times
+    -->
+  <xsd:simpleType name="BrazilTime">
+    <xsd:restriction base="xsd:nonNegativeInteger"/>
+  </xsd:simpleType>
+
+</xsd:schema>

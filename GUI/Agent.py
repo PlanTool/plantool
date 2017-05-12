@@ -1,9 +1,13 @@
 #coding:utf-8
+import re
 import time
+import nltk
 import random
 import logging
 import numpy as np
 from StateBuffer import state_buffer
+from nltk.parse.stanford import StanfordDependencyParser, StanfordParser
+from nltk.tag import StanfordPOSTagger
 
 class Agent:
     def __init__(self, environment, replay_memory, deep_q_network, args):
@@ -137,8 +141,106 @@ class Agent:
             self.tag_word_num += 1
             self.total_train_steps += 1
 
+
+
+    def RegexpParser_init(self):
+        grammar=r"""VP:{<NN|NNS|PRP|NNP|NNPS><RB>?<MD><RB>?<VB><RB>?<VBD|VBG|VBN>}
+        VP:{<NN|NNS|PRP|NNP|NNPS><RB>?<VBP><RB>?<VBN><RB>?<VBD|VBN>}
+        VP:{<NN|NNS|PRP|NNP|NNPS><RB>?<VBZ><RB>?<VBD|VBG|VBN>}
+        VP:{<VB|VBD|VBG|VBN|VBP><RB>?<PRP\$|DT>?<VBN|VBD|JJ>?<NN|NNS|NNP|NNPS>+}
+        VP:{<VB|VBD|VBG|VBN|VBP><RB>?<PRP\$|DT>?<VBN|VBD|JJ>?<PRP>}
+        VP:{<VB|VBD|VBG|VBN|VBP><IN><DT>?<NN|NNS>+}
+        VP:{<VB|VBD|VBG|VBN|VBP><IN>?<DT>?<CD>?<VBN|VBD|JJ>?<NN|NNS|NNP|NNPS>+}
+        VP:{<VB|VBD|VBG|VBN|VBP><IN>?<DT>?<CD>?<VBN|VBD|JJ>?<PRP>}
+        VP:{<VB|VBD|VBG|VBN|VBP><IN><VBN|VBD><NN|NNS>+}
+        """#被动句中去掉了WDT(Wh-determiner)
+        #主动句中只考虑了动词原形的//VP:{<VB><DT>?<VBN|VBD|JJ>?<NN|NNS|NNP|NNPS>+}只有一个代词的时候不重复
+        #something can be done
+        #something has been done
+        #something is/was done
+        #do/did something, Set your oven, put the mixture in the oven.
+        #Ensure the twists have extended above the plate by
+        #Get a ten inch pie plate, add in the hash browns
+        #add in something
+        #
+        self.cp = nltk.RegexpParser(grammar)  #生成语法块
+        self.pron_tag = ["it", "they", "them", "this", "that", "these", "those"]
+        self.noun_tag = ['NN','NNS','NNP','NNPS','PRP']
+        self.verb_tag = ['VB','VBD','VBG','VBN','VBP']
+
+
+    def regexp_find_vp(self, sent):
+        temp_myvp = {}
+        obj = []
+        result = self.cp.parse(sent)  
+        b = re.findall(r'\(VP.+\)',str(result)) 
+        for c in b:
+            #d = re.findall(r'[\w|\-]+\$?',c)#所有的字母以及符号$
+            d = re.findall(r'[A-Za-z-\']+\$?|\d+/\d+',c)#所有的字母以及符号$，don't，20/20这些类型的
+            if len(d) % 2 == 0:#去除分错的
+                continue
+            #if i ==1454:  print d
+            #print d[1],d[len(d)-2]
+            if d[2] in self.verb_tag and d[3] in ['if']:
+                continue
+            if d[2] in self.verb_tag:#主动句，第一个单词是动词
+                if d[4] == 'NN' and d[3] == 't':#排除don't等缩写的影响
+                    pass
+                else:
+                    j = 4
+                    obj.append(d[1])
+                    while j < len(d):
+                        if d[j] in self.noun_tag:
+                            #print 'd[j]: ',d[j]
+                            obj.append(d[j-1])
+                        j += 2
+                    #print 'dobj:',obj
+                    temp_myvp[obj[0]] = obj[1]
+                    obj = []
+            elif d[2] in self.pron_tag:#被动句，第一个单词是名词性主语
+                obj = [d[len(d)-2],d[1]]
+                #print 'idobj:',obj
+                temp_myvp[obj[0]] = obj[1]
+                obj = []
+        return temp_myvp
+
+
+    def StanfordParser_init(self):
+        pos_tagger_jar = '/home/fengwf/stanford/postagger/stanford-postagger.jar'
+        pos_tagger_models = '/home/fengwf/stanford/postagger/models/english-bidirectional-distsim.tagger'
+        path_to_jar = '/home/fengwf/stanford/stanford-corenlp-3.7.0.jar'
+        path_to_models_jar = '/home/fengwf/stanford/english-models.jar'
+        self.dep_parser = StanfordDependencyParser(
+            path_to_jar=path_to_jar, path_to_models_jar=path_to_models_jar)
+        #self.std_parser = StanfordParser(
+        #    path_to_jar=path_to_jar, path_to_models_jar=path_to_models_jar)
+        self.pos_tagger = StanfordPOSTagger(
+            pos_tagger_models, pos_tagger_jar)
+
+
+    def stanford_find_vp(self, sent):
+        stf_vp = {}
+        if len(sent.split()) <= 1:
+            return stf_vp
+        result = self.dep_parser.raw_parse(sent)
+        #pos_sents = self.pos_tagger.tag_sents(sents)
+        dep = result.next()
+        for t in list(dep.triples()):
+            assert  len(t) == 3
+            relation = str(t[1])
+            if relation in ['dobj', 'nsubjpass']:
+                word1 = str(t[0][0])
+                tag1 = str(t[0][1])
+                word2 = str(t[2][0])
+                tag2 = str(t[2][1])
+                #f.write('\n%s:  %s ( %s )'%(relation, word1, word2))
+                stf_vp[word1] = word2
+        return stf_vp
+
          
     def test_one(self, text_dir):
+        #self.RegexpParser_init()
+        self.StanfordParser_init()
         logging.debug( '\nTesting text: %s\n' % text_dir )
         #print '\nTesting text: %s\n' % text_dir
         self.env.test_one_init(text_dir)
@@ -151,11 +253,29 @@ class Agent:
             self.tag_word_num += 1
         state_tags = self.env.state[:,-1]
         
-        for j, tag in enumerate(state_tags):
+        j = 0
+        for l,s in enumerate(self.env.sents):
+            svp = self.stanford_find_vp(s)
+            #tagged_sent = self.pos_tagger.tag(s)
+            #rvp = self.regexp_find_vp(tagged_sent)
+            #print svp
+            for k in range(len(self.env.w_of_s[l])):
+                #print 'j=',j
+                if j >= len(self.env.words):
+                    break
+                if int(state_tags[j]) == int(self.action_label):
+                    acn = self.env.words[j]
+                    if acn in svp.keys():
+                        tmp = acn+' ( '+svp[acn]+' ) '
+                    #elif acn in rvp.keys():
+                    #    tmp = acn+' ( '+rvp[acn]+' ) '
+                    else:
+                        tmp = acn+' ( ) '
+                    action_sequence.append(tmp)
+                j += 1
+
             if j >= len(self.env.words):
                 break
-            if int(tag) == int(self.action_label):
-                action_sequence.append(self.env.words[j])
 
         return self.env.words, action_sequence, state_tags
 

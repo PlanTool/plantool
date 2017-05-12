@@ -1,0 +1,12 @@
+Regression output:
+State @100
+	* Goal reached *
+	True predicates:
+		AEnds
+	Resource levels:
+	Past event queue:
+		Event start action (1): 'A' @ 1 queued at 1 pointing to 0x80a07f0 (1)
+		Event effect (1): 'DOMEffectSet' @ 100 queued at 100 pointing to 0x80a0890 (1)
+		Event end action (1): 'A' @ 100 queued at 1 pointing to 0x80a07f0 (1)
+	Future event queue:
+

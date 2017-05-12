@@ -1,0 +1,13 @@
+(define (problem brief4d)
+   (:domain briefcase)
+   (:objects home office bank station shop - location
+             dic pay ticket mail - portable)
+
+
+(:init (is-at home) (at pay bank) (at dic office) (at mail post) 
+         (at ticket station))
+   
+(:goal (and (is-at home) (at dic home) (at pay home) (at ticket home) 
+       (at mail home))))
+
+

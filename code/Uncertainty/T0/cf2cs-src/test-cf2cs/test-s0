@@ -1,0 +1,6 @@
+f=/home/hlp/work/simple-conformant/test-cf2cs
+$f/src/test-one-s0 $f/"coins   " p04.pddl
+$f/src/test-one-s0 $f/"comm    " p01.pddl
+$f/src/test-one-s0 $f/"uts     " k03.pddl
+$f/src/test-one-s0 $f/"sort-num2" s02.pddl
+#$f/src/test-one-s0 $f/"sort-num3" s03.pddl

@@ -1,0 +1,41 @@
+
+<domain name="new">
+  <predicates>
+    <predicate name="AEnds"/>
+  </predicates>
+  <functions/>
+  <actions>
+    <action backgroundColour="#98FB98" name="A">
+      <precondition/>
+      <over-all/>
+      <effect>
+        <delay duration="100" type="fixed"/>
+      </effect>
+      <probabilistic>
+	<outcome label="Failure" probability="0.49"/>
+        <outcome label="Success" probability="0.51">
+          <effect>
+            <predicate name="AEnds" negated="false"/>
+          </effect>
+	</outcome>
+
+      </probabilistic>
+    </action>
+  </actions>
+  <problem>
+    <init> 
+        <predicates/>
+        <functions/>
+    </init>
+    <goal>
+      <predicate name="AEnds"/>
+    </goal>
+  </problem>
+
+  <properties>
+	<property>
+		<name> planner regression test </name>
+		<value/>
+	</property>
+  </properties>
+</domain>

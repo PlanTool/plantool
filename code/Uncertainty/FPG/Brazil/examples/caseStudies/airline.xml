@@ -1,0 +1,145 @@
+<domain name="new">
+  <predicates/>
+  <functions/>
+  <actions><action backgroundColour="#f4b531" name="MEL to CBR"><precondition/><over-all/><effect><delay duration="46656" type="fixed"/></effect><probabilistic><outcome backgroundColour="#33ff66" label="Fog on Landing" probability="0.1">
+  <effect>
+    <delay mean="21584" standardDeviation="3072" type="normal"/>
+  </effect>
+</outcome><outcome backgroundColour="#ffcc33" label="Fine Weather" probability="0.9">
+  <effect>
+    
+  <delay duration="7344" type="fixed"/></effect>
+</outcome></probabilistic></action>
+
+<action backgroundColour="#f4b531" name="MEL to BNE"><precondition/><over-all/><effect><delay duration="92100" type="fixed"/></effect><probabilistic><outcome backgroundColour="#33ff66" label="Thunderstorm" probability="0.2">
+  <effect>
+    <delay mean="21584" standardDeviation="3072" type="normal"/>
+  </effect>
+</outcome><outcome backgroundColour="#ffcc33" label="Fine Weather" probability="0.8">
+  <effect>
+    
+  <delay duration="7344" type="fixed"/></effect>
+</outcome></probabilistic></action>
+
+<action backgroundColour="#f4b531" name="MEL to SYD"><precondition/><over-all/><effect><delay duration="60000" type="fixed"/></effect><probabilistic><outcome backgroundColour="#33ff66" label="Thunderstorm" probability="0.1">
+  <effect>
+    <delay mean="21584" standardDeviation="3072" type="normal"/>
+  </effect>
+</outcome>
+<outcome backgroundColour="53d3aa" label="Airport Delay" probability="0.1">
+ <effect>
+    <delay max="30000" min="20000" type="uniform"/>
+  </effect>
+</outcome>
+<outcome backgroundColour="#ffcc33" label="Fine Weather" probability="0.8">
+  <effect>
+    
+  <delay duration="7344" type="fixed"/></effect>
+</outcome></probabilistic></action>
+
+
+<action backgroundColour="#f4b531" name="CBR to MEL"><precondition/><over-all/><effect><delay duration="46650" type="fixed"/></effect><probabilistic><outcome backgroundColour="#33ff66" label="Fog" probability="0.1">
+  <effect>
+    <delay mean="21584" standardDeviation="3072" type="normal"/>
+  </effect>
+</outcome>
+<outcome backgroundColour="53d3aa" label="Airport Delay" probability="0.1">
+ <effect>
+    <delay mean="21584" standardDeviation="3072" type="normal"/>
+  </effect>
+</outcome>
+<outcome backgroundColour="#ffcc33" label="Fine Weather" probability="0.8">
+  <effect>
+    
+  <delay duration="7344" type="fixed"/></effect>
+</outcome></probabilistic></action>
+
+
+<action backgroundColour="#f4b531" name="CBR to SYD"><precondition/><over-all/><effect><delay duration="30650" type="fixed"/></effect><probabilistic><outcome backgroundColour="#33ff66" label="Thunderstorm" probability="0.1">
+  <effect>
+    <delay mean="21584" standardDeviation="3072" type="normal"/>
+  </effect>
+</outcome>
+<outcome backgroundColour="53d3aa" label="Airport Delay" probability="0.1">
+ <effect>
+    <delay mean="21584" standardDeviation="3072" type="normal"/>
+  </effect>
+</outcome>
+<outcome backgroundColour="#ffcc33" label="Fine Weather" probability="0.8">
+  <effect>
+    
+  <delay duration="7344" type="fixed"/></effect>
+</outcome></probabilistic></action>
+
+
+
+
+<action backgroundColour="#f4b531" name="SYD to CBR"><precondition/><over-all/><effect><delay duration="30650" type="fixed"/></effect><probabilistic><outcome backgroundColour="#33ff66" label="Thunderstorm" probability="0.1">
+  <effect>
+    <delay mean="21584" standardDeviation="3072" type="normal"/>
+  </effect>
+</outcome>
+
+<outcome backgroundColour="#53d3aa" label="Fog" probability="0.1">
+ <effect>
+    <delay mean="21584" standardDeviation="3072" type="normal"/>
+  </effect>
+</outcome>
+
+<outcome backgroundColour="#ffcc33" label="Fine Weather" probability="0.8">
+  <effect>
+    
+  <delay duration="7344" type="fixed"/></effect>
+</outcome></probabilistic></action>
+
+<action backgroundColour="#f4b531" name="SYD to BNE"><precondition/><over-all/><effect><delay duration="30650" type="fixed"/></effect><probabilistic><outcome backgroundColour="#33ff66" label="Thunderstorm" probability="0.1">
+  <effect>
+    <delay mean="21584" standardDeviation="3072" type="normal"/>
+  </effect>
+</outcome>
+
+
+<outcome backgroundColour="#53d3aa" label="Airport Delay" probability="0.1">
+ <effect>
+    <delay mean="21584" standardDeviation="3072" type="normal"/>
+  </effect>
+</outcome>
+
+<outcome backgroundColour="#ffcc33" label="Fine Weather" probability="0.8">
+  <effect>
+    
+  <delay duration="7344" type="fixed"/></effect>
+</outcome></probabilistic></action>
+
+
+<action backgroundColour="#f4b531" name="CBR to BNE"><precondition/><over-all/><effect><delay duration="60650" type="fixed"/></effect><probabilistic><outcome backgroundColour="#33ff66" label="Thunderstorm" probability="0.1">
+  <effect>
+    <delay mean="21584" standardDeviation="3072" type="normal"/>
+  </effect>
+</outcome>
+
+<outcome backgroundColour="53d3aa" label="Fog on Departure" probability="0.1">
+ <effect>
+    <delay mean="21584" standardDeviation="3072" type="normal"/>
+  </effect>
+</outcome>
+
+<outcome backgroundColour="53d3aa" label="Airport Delay" probability="0.1">
+ <effect>
+    <delay mean="21584" standardDeviation="3072" type="normal"/>
+  </effect>
+</outcome>
+<outcome backgroundColour="#ffcc33" label="Fine Weather" probability="0.7">
+  <effect>
+    
+  <delay duration="7344" type="fixed"/></effect>
+</outcome></probabilistic></action>
+</actions>
+  <problem>
+    <init>
+      <predicates/>
+      <functions/>
+</init>
+    <goal/>
+  </problem>
+</domain>

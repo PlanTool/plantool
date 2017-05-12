@@ -20,6 +20,8 @@ SGplan:
 gcc -o sgplan.so -shared -fPIC main.c ActionSubgraph.c inst_easy.c ComputeReachInf.c inst_final.c memory.c H_max.c inst_hard.c mutex.c search.c H_relaxed.c  inst_pre.c   numeric.c    time.c    LocalSearch.c  inst_utils.c   output.c  utilities.c LpgOutput.c parse.c check.c  relax.c orderings.c scan-fct_pddl.tab.c scan-ops_pddl.tab.c 
 
 
+SAT2006:
+gcc -o satplan.so -shared -fPIC main.c memory.c output.c parse.c instantiateI.c instantiateII.c graph.c cnfout.c scan-fct_pddl.tab.c scan-ops_pddl.tab.c 
 
 
 

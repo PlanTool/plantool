@@ -1,0 +1,36 @@
+;;ai-office world
+;;The office of the AI-Group at Freiburg University
+
+(define (domain ai-office)
+(:predicates (full ?bin - bin)
+             (at ?bin - object ?room - room)
+             (at-room ?room - room)
+             (carry ?obj - object)
+             (red ?obj - object)
+             (green ?obj - object)
+             (blue ?obj - object))
+
+(:action empty-bin
+  :parameters (?room - room ?bin - bin)
+  :precondition  (and (full ?bin) (at ?bin ?room) (at-room ?room))
+  :effect (not (full ?bin)))
+
+(:action move
+  :parameters (?obj - object ?from ?to - room)
+  :precondition  (and (carry ?obj) (at ?obj ?from))
+  :effect (and (at ?obj ?to) (not (at ?obj ?from))))
+
+(:action go
+  :parameters (?from ?to - room)
+  :precondition  (at-room ?from)
+  :effect (and (at-room ?to) (not (at-room ?from))))
+
+(:action pick
+  :parameters (?obj - object ?room -  room)
+  :precondition  (and (at ?obj ?room) (at-room ?room))
+  :effect (and (carry ?obj) (not (at ?obj ?room))))
+
+(:action drop
+  :parameters (?obj - object ?room - room)
+  :precondition  (and (carry ?obj) (at-room ?room))
+  :effect (and (at ?obj ?room) (not (carry ?obj)))))

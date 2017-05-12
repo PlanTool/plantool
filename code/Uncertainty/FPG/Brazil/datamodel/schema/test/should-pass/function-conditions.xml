@@ -1,0 +1,46 @@
+<domain name="one-action">
+  <predicates>
+    <predicate name="a"/>
+    <predicate name="b"/>
+  </predicates>
+  <functions>
+    <function name="func-1"/>
+  </functions>
+  <actions>
+    <action name="a">
+      <over-all>
+	<or>
+	  <lt>
+	    <number>2</number>
+	    <function name="func-1"/>
+	  </lt>
+	  <equals>
+	    <number>2</number>
+	    <number>3</number>
+	  </equals>
+	  <gt>
+	    <add>
+	      <number>3</number>
+	      <function name="func-1"/>
+	    </add>
+	    <number>20</number>
+	  </gt>
+	  <le>
+	    <number>55</number>
+	    <function name="func-1"/>
+	  </le>
+	  <ge>
+	    <minus>
+	      <number>10</number>
+	      <add>
+		<function name="func-1"/>
+		<function name="func-1"/>
+	      </add>
+	    </minus>
+	    <number>10</number>
+	  </ge>
+	</or>
+      </over-all>
+    </action>
+  </actions>
+</domain>

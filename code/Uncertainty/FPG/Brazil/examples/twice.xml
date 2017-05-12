@@ -1,0 +1,64 @@
+
+<domain name="new">
+  <predicates>
+    <predicate name="insideTwice"/>
+  </predicates>
+  <functions>
+    <function name="twice"/>
+  </functions>
+  <actions>
+    <action backgroundColour="#98FB98" name="Twice">
+      <precondition>
+        <predicate name="insideTwice" negated="true"/>
+        <functionCondition type="lt">
+          <function name="twice"/>
+          <number>2</number>
+        </functionCondition>
+      </precondition>
+      <over-all/>
+      <at-start>
+        <predicate name="insideTwice" negated="false"/>
+      </at-start>
+      <effect>
+        <delay duration="12384" type="fixed"/>
+      </effect>
+      <probabilistic>
+        <outcome backgroundColour="#3366ff" label="New Outcome 1" probability="0.1">
+          <effect>
+            <delay mean="20000" standardDeviation="3600" type="normal"/>
+  </effect>
+          <at-start/></outcome>
+        <outcome backgroundColour="#33ff66" label="New Outcome 2" probability="0.9">
+          <effect>
+            <delay mean="6608" standardDeviation="864" type="normal"/>
+            <predicate name="insideTwice" negated="true"/>
+            <functionEffect type="increase">
+              <function name="twice"/>
+              <number>1</number>
+            </functionEffect>
+          </effect>
+          <at-start/>
+        </outcome>
+      </probabilistic>
+    </action>
+  </actions>
+  <problem>
+    <init> 
+        <predicates/>
+        <functions>
+        <assign>
+          <function name="twice"/>
+          <number value="0"/>
+        </assign>
+      </functions>
+    </init>
+    <goal>
+      <functionCondition type="equals">
+        <function name="twice"/>
+        <number>2</number>
+      </functionCondition>
+    </goal>
+  </problem>
+  <properties/>
+
+</domain>

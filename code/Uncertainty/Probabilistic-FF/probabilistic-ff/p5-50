@@ -1,0 +1,25 @@
+
+
+
+(define (problem twodgrid-5)
+(:domain twodgrid)
+(:objects p1 p2 p3 p4 p5 )
+
+(:init
+(above p2 p1)
+(above p3 p2)
+(above p4 p3)
+(above p5 p4)
+
+(pos p1 p1)
+)
+
+(:goal 0.50
+(and
+(pos p5 p5)
+)
+)
+)
+
+
+

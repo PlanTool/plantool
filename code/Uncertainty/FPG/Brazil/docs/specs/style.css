@@ -1,0 +1,71 @@
+body
+{
+	font: 11pt/16pt georgia;
+	text-align: justify;
+	color: #555753;
+	margin: 0px;
+	padding: 20px
+}
+
+p, h1, h2, h3, h4, h5
+{
+	width: 410px;
+}
+
+ul
+{
+	width: 370px;
+}
+
+#header h2
+{
+	font-style: italic;
+	font-size: 13pt;
+	color: #d2b48c;
+}
+
+#keyterm
+{
+	font-style: italic;
+	font-weight: bold;
+	color: 92544c
+}
+#main h2
+{
+	font-size: 14pt
+}
+#main h3
+{
+	font-style: italic;
+	font-size: 13pt;
+	color: #d2b48c;
+}
+
+#header
+{
+	text-align: left;
+	width: 410px;
+	border-bottom: 1px #000 dashed;
+	border-top: 1px #000 dashed
+}
+
+#technical-note
+{
+	margin-left: 30px;
+	padding: 3px;
+	font: 11pt arial;
+	font-style: italic;
+	border: 1px #92847c dashed;
+	width: 370px;
+	background: #f2e4dc;
+}
+
+#technical-note p
+{
+	margin-top: 0px;
+	margin-bottom: 8px;
+	padding: 0px;
+	width: 370px;
+}
+
+	

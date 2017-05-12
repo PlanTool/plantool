@@ -1,0 +1,16 @@
+(define (problem f5)
+   (:domain xy-world)
+   (:objects 
+x y start                       - location
+o1 o2 o3 o4 o5 o6 o7 o8 o9 o10  - cargo
+v1 v2 v3 v4 v5 v6 v7 v8 v9 v10  - vehicle
+v2 v4 v6 v8 v10                 - multiuse)
+
+(:init
+ (at o1 start) (at o2 start) (at o3 start) (at o4 start) (at o5 start)
+(at o6 start) (at o7 start) (at o8 start) (at o9 start) (at o10 start)
+(usable v1) (usable v2) (usable v3) (usable v4) (usable v5) (usable v6)
+(usable v7) (usable v8) (usable v9) (usable v10))
+
+(:goal (and (at o1 y) (at o2 x) (at o3 y) (at o4 x) (at o5 y) 
+            (at o6 x) (at o7 y) (at o8 x) (at o9 y) (at o10 x))))

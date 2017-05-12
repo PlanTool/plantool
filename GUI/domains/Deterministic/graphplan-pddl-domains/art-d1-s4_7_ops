@@ -1,0 +1,159 @@
+#
+(operator A1-1
+    (params)
+    (preconds (I1))
+    (effects (P1) (del I2)))
+(operator A1-2
+    (params)
+    (preconds (I2))
+    (effects (P2) (del I3)))
+(operator A1-3
+    (params)
+    (preconds (I3))
+    (effects (P3) (del I4)))
+(operator A1-4
+    (params)
+    (preconds (I4))
+    (effects (P4) (del I5)))
+(operator A1-5
+    (params)
+    (preconds (I5))
+    (effects (P5) (del I6)))
+(operator A1-6
+    (params)
+    (preconds (I6))
+    (effects (P6) (del I7)))
+(operator A1-7
+    (params)
+    (preconds (I7))
+    (effects (P7) (del I8)))
+
+(operator A2-1
+    (params)
+    (preconds (P1) (do-Q) (not Q1))
+    (effects (P1) (Q1) (del I1) (del I2) (del I3) (del I4) (del I5) (del I6) (del I7)))
+(operator A2-2
+    (params)
+    (preconds (P2) (do-Q) (not Q2))
+    (effects (P2) (Q2) (del I1) (del I2) (del I3) (del I4) (del I5) (del I6) (del I7)))
+(operator A2-3
+    (params)
+    (preconds (P3) (do-Q) (not Q3))
+    (effects (P3) (Q3) (del I1) (del I2) (del I3) (del I4) (del I5) (del I6) (del I7)))
+(operator A2-4
+    (params)
+    (preconds (P4) (do-Q) (not Q4))
+    (effects (P4) (Q4) (del I1) (del I2) (del I3) (del I4) (del I5) (del I6) (del I7)))
+(operator A2-5
+    (params)
+    (preconds (P5) (do-Q) (not Q5))
+    (effects (P5) (Q5) (del I1) (del I2) (del I3) (del I4) (del I5) (del I6) (del I7)))
+(operator A2-6
+    (params)
+    (preconds (P6) (do-Q) (not Q6))
+    (effects (P6) (Q6) (del I1) (del I2) (del I3) (del I4) (del I5) (del I6) (del I7)))
+(operator A2-7
+    (params)
+    (preconds (P7) (do-Q) (not Q7))
+    (effects (P7) (Q7) (del I1) (del I2) (del I3) (del I4) (del I5) (del I6) (del I7)))
+
+(operator A3-1
+    (params)
+    (preconds (Q1) (not R1))
+    (effects (R1) (del S2) (not S2)
+        (del Q2) (del Q3) (del Q4) (del Q5) (del Q6) (del Q7)
+        (not Q1) (not Q2) (not Q3) (not Q4) (not Q5) (not Q6) (not Q7)))
+(operator A3-2
+    (params)
+    (preconds (Q2) (not R2))
+    (effects (R2) (del S3) (not S3)
+        (del Q1) (del Q3) (del Q4) (del Q5) (del Q6) (del Q7)
+        (not Q1) (not Q2) (not Q3) (not Q4) (not Q5) (not Q6) (not Q7)))
+(operator A3-3
+    (params)
+    (preconds (Q3) (not R3))
+    (effects (R3) (del S4) (not S4)
+        (del Q1) (del Q2) (del Q4) (del Q5) (del Q6) (del Q7)
+        (not Q1) (not Q2) (not Q3) (not Q4) (not Q5) (not Q6) (not Q7)))
+(operator A3-4
+    (params)
+    (preconds (Q4) (not R4))
+    (effects (R4) (del S5) (not S5)
+        (del Q1) (del Q2) (del Q3) (del Q5) (del Q6) (del Q7)
+        (not Q1) (not Q2) (not Q3) (not Q4) (not Q5) (not Q6) (not Q7)))
+(operator A3-5
+    (params)
+    (preconds (Q5) (not R5))
+    (effects (R5) (del S6) (not S6)
+        (del Q1) (del Q2) (del Q3) (del Q4) (del Q6) (del Q7)
+        (not Q1) (not Q2) (not Q3) (not Q4) (not Q5) (not Q6) (not Q7)))
+(operator A3-6
+    (params)
+    (preconds (Q6) (not R6))
+    (effects (R6) (del S7) (not S7)
+        (del Q1) (del Q2) (del Q3) (del Q4) (del Q5) (del Q7)
+        (not Q1) (not Q2) (not Q3) (not Q4) (not Q5) (not Q6) (not Q7)))
+(operator A3-7
+    (params)
+    (preconds (Q7) (not R7))
+    (effects (R7) (del S8) (not S8)
+        (del Q1) (del Q2) (del Q3) (del Q4) (del Q5) (del Q6)
+        (not Q1) (not Q2) (not Q3) (not Q4) (not Q5) (not Q6) (not Q7)))
+
+(operator A4-1
+    (params)
+    (preconds (not Q1) (R1) (not S1))
+    (effects (S1) (do-Q) (del P1)
+        (not Q1) (not Q2) (not Q3) (not Q4) (not Q5) (not Q6) (not Q7)
+        (del Q1) (del Q2) (del Q3) (del Q4) (del Q5) (del Q6) (del Q7)
+        (del R2) (del R3) (del R4) (del R5) (del R6) (del R7)
+        (not R1) (not R2) (not R3) (not R4) (not R5) (not R6) (not R7)))
+(operator A4-2
+    (params)
+    (preconds (not Q2) (R2) (not S2))
+    (effects (S2) (do-Q) (del P2)
+        (not Q1) (not Q2) (not Q3) (not Q4) (not Q5) (not Q6) (not Q7)
+        (del Q1) (del Q2) (del Q3) (del Q4) (del Q5) (del Q6) (del Q7)
+        (del R1) (del R3) (del R4) (del R5) (del R6) (del R7)
+        (not R1) (not R2) (not R3) (not R4) (not R5) (not R6) (not R7)))
+(operator A4-3
+    (params)
+    (preconds (not Q3) (R3) (not S3))
+    (effects (S3) (do-Q) (del P3)
+        (not Q1) (not Q2) (not Q3) (not Q4) (not Q5) (not Q6) (not Q7)
+        (del Q1) (del Q2) (del Q3) (del Q4) (del Q5) (del Q6) (del Q7)
+        (del R1) (del R2) (del R4) (del R5) (del R6) (del R7)
+        (not R1) (not R2) (not R3) (not R4) (not R5) (not R6) (not R7)))
+(operator A4-4
+    (params)
+    (preconds (not Q4) (R4) (not S4))
+    (effects (S4) (do-Q) (del P4)
+        (not Q1) (not Q2) (not Q3) (not Q4) (not Q5) (not Q6) (not Q7)
+        (del Q1) (del Q2) (del Q3) (del Q4) (del Q5) (del Q6) (del Q7)
+        (del R1) (del R2) (del R3) (del R5) (del R6) (del R7)
+        (not R1) (not R2) (not R3) (not R4) (not R5) (not R6) (not R7)))
+(operator A4-5
+    (params)
+    (preconds (not Q5) (R5) (not S5))
+    (effects (S5) (do-Q) (del P5)
+        (not Q1) (not Q2) (not Q3) (not Q4) (not Q5) (not Q6) (not Q7)
+        (del Q1) (del Q2) (del Q3) (del Q4) (del Q5) (del Q6) (del Q7)
+        (del R1) (del R2) (del R3) (del R4) (del R6) (del R7)
+        (not R1) (not R2) (not R3) (not R4) (not R5) (not R6) (not R7)))
+(operator A4-6
+    (params)
+    (preconds (not Q6) (R6) (not S6))
+    (effects (S6) (do-Q) (del P6)
+        (not Q1) (not Q2) (not Q3) (not Q4) (not Q5) (not Q6) (not Q7)
+        (del Q1) (del Q2) (del Q3) (del Q4) (del Q5) (del Q6) (del Q7)
+        (del R1) (del R2) (del R3) (del R4) (del R5) (del R7)
+        (not R1) (not R2) (not R3) (not R4) (not R5) (not R6) (not R7)))
+(operator A4-7
+    (params)
+    (preconds (not Q7) (R7) (not S7))
+    (effects (S7) (do-Q) (del P7)
+        (not Q1) (not Q2) (not Q3) (not Q4) (not Q5) (not Q6) (not Q7)
+        (del Q1) (del Q2) (del Q3) (del Q4) (del Q5) (del Q6) (del Q7)
+        (del R1) (del R2) (del R3) (del R4) (del R5) (del R6)
+        (not R1) (not R2) (not R3) (not R4) (not R5) (not R6) (not R7)))
+

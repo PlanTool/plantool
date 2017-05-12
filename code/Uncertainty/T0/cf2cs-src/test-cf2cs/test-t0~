@@ -1,0 +1,14 @@
+f=/home/hlp/work/simple-conformant/test-cf2cs
+f=test-cf2cs
+$f/src/test-one-t0 $f/"blocksworld " p02.pddl
+$f/src/test-one-t0 $f/"coins       " p03.pddl
+$f/src/test-one-t0 $f/"coins       " p10.pddl
+$f/src/test-one-t0 $f/"coins       " p07.pddl
+$f/src/test-one-t0 $f/"comm        " p05.pddl
+$f/src/test-one-t0 $f/"uts         " k03.pddl
+$f/src/test-one-t0 $f/"sort-num    " s04.pddl
+$f/src/test-one-t0 $f/"sortnet     " p02.pddl
+$f/src/test-one-t0 $f/"sortnet     " p03.pddl
+$f/src/test-one-t0 $f/"bmtuc       " p10.pddl
+$f/src/test-one-t0 $f/"uts_cycle3  " pc3.pddl
+

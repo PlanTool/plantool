@@ -1,0 +1,62 @@
+This is the fridge domain from UCPOP.  The only change is added a term 
+"unscrewed" to handle the need for "not screwed" as a precondition,
+"fridge-off" to handle "not fridge-on", "detached" for "not attached" and 
+"not-in-place" for "not in-place".
+Remember also that our parser is CASE-SENSITIVE....
+
+(operator 
+ unscrew
+ (params (screw <x>) (backplane <y>))
+ (preconds (screwed <x>) (holds <x> <y>))
+ (effects (unscrewed <x>) (del screwed <x>)))
+
+(operator 
+ screw
+ (params (screw <x>) (backplane <y>))
+ (preconds (unscrewed <x>) (holds <x> <y>))
+ (effects (del unscrewed <x>) (screwed <x>)))
+
+(operator 
+ remove-backplane
+ (params (backplane <x>) (<f>) (<a>) (<b>) (<c>) (<d>))
+ (preconds (in-place <x>) (part-of <x> <f>) (fridge-off <f>)
+			  (holds <a> <x>)  (holds <b> <x>)  
+			  (holds <c> <x>)  (holds <d> <x>)
+			  (unscrewed <a>) (unscrewed <b>) 
+			  (unscrewed <c>) (unscrewed <d>))
+ (effects (not-in-place <x>) (del in-place <x>)))
+
+(operator 
+ attach-backplane
+ (params (backplane <x>) (<f>) (<a>) (<b>) (<c>) (<d>))
+ (preconds  (not-in-place <x>) (part-of <x> <f>) (fridge-off <f>)
+	    (holds <a> <x>)  (holds <b> <x>) 
+	    (holds <c> <x>)  (holds <d> <x>)
+	    (unscrewed <a>) (unscrewed <b>)
+	    (unscrewed <c>) (unscrewed <d>))
+ (effects (del not-in-place <x>) (in-place <x>)))
+
+(operator 
+ start-fridge
+ (params (<f>) (<a>) (<b>) (<c>) (<d>) (backplane <x>))
+ (preconds  (in-place <x>) (part-of <x> <f>)
+	    (holds <a> <x>)(holds <b> <x>)(holds <c> <x>)(holds <d> <x>)
+	    (screwed <a>) (screwed <b>) (screwed <c>) (screwed <d>)
+			  (fridge-off <f>))
+ (effects (del fridge-off <f>) (fridge-on <f>)))
+
+(operator 
+ stop-fridge
+ (params (<f>))
+ (preconds (fridge-on <f>))
+ (effects (fridge-off <f>) (del fridge-on <f>)))
+
+(operator 
+ change-compressor
+ (params  (compressor <x>) (compressor <y>) (backplane <a>))
+ (preconds (not-in-place <a>)
+	   (covers <a> <x>) 
+	   (attached <x>) (detached <y>))
+ (effects (detached <x>) (del attached <x>) (attached <y>) (del detached <y>)
+		    (del covers <a> <x>) (covers <a> <y>)))
+

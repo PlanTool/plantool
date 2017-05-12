@@ -1,0 +1,8 @@
+#! /bin/bash
+
+rm -f M-*
+rm -f prob[0-9]*
+rm -f dom[0-9]*
+rm -f groundedproblem.pddl
+rm -f groundeddomain.pddl
+rm -f mipsPSolution.soln
