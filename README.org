@@ -1,0 +1,197 @@
+#+AUTHOR: 326623
+#+DATE: <2017-05-05 五>
+
+* Schedule
+1. First discussion <2017-05-12 五>
+|--------------+------------------|
+| Member       | Task             |
+| Wenfeng Feng | SAT2006, HSP     |
+| Enle Liu     | LAMA             |
+| Ruipeng Li   | HTN(C++ version) |
+| Xin Luo      | JSHOP2           |
+| Erhu Rong    | FF               |
+| Yuncong Li   | CSP              |
+| Min Tang     | TLplan           |
+|--------------+------------------|
+
+
+* Steps of wrapping a planner
+** Environment requirement
+   1. Linux 16.04 LTS
+
+      Easy to use and configure environment, assuming *apt* as package manager
+
+   2. bison flex
+
+      Required by makefile
+      #+BEGIN_SRC sh
+      sudo apt-get install bison flex
+      #+END_SRC
+
+   3. swig
+
+      Required by wrapping
+      #+BEGIN_SRC sh
+      sudo apt-get install swig
+      #+END_SRC
+
+   4. make gcc python
+
+      #+BEGIN_SRC sh
+      sudo apt install make gcc python-dev
+      #+END_SRC
+
+** After installing the necessary tools(Here is a general method)
+   Since errors are unavoidable, please add problems to the problems section below. Welcome to edit this document, add your thoughts on how we build and your vision on *plantool* (future section).
+
+   - Some reference
+
+     [[http://www.swig.org/Doc1.3/Python.html][SWIG and Python]] the solution provided here is simple, but problems could occur when files grow bigger
+     [[http://www.swig.org/Doc1.3/SWIG.html][SWIG basis]] A general idea of swig
+
+   - Adding planner swig interface file
+
+     #+BEGIN_SRC sh
+     touch PLANNER.i
+     #+END_SRC
+     Here PLANER.i is an interface file for swig to parse. Write what you want to wrap in this file. An example for wrapping main() is given below
+
+     Adding functions for wrapping
+
+     At present, only *main()* wrapped
+     #+BEGIN_SRC
+      // PLANNER.i
+      %module PLANNER
+
+      %include <argcargv.i>
+
+      %{
+      #include "PLANNER.h" // The header where functions are declared
+      %}
+
+      %apply (int ARGC, char **ARGV) { (int argc, char *argv[]) }
+
+      int oldmain( int argc, char *argv[] ); // The function we want to wrap
+     #+END_SRC
+
+   - Editing PLANNER.h(where swig interface wrap) and PLANNER.c(where the main() are defined)
+     - Adding oldmain() declaration in PLANNER.h
+       #+BEGIN_SRC c
+       // Somewhere in PLANNER.h
+       /**********************************************************/
+       /* SWIG Wrapping*/
+       int oldmain( int argc, char * argv[] );
+       #+END_SRC
+
+     - Adding oldmain() in main.c and modified it to have the same source code as main()
+       #+BEGIN_SRC c
+       // PLANNER.c (Generally where main is located)
+       int oldmain( int argc, char * argv[] ) {
+          //  Source code of main() copied here
+          //  ...
+       }
+       int main(int argc, char *argv[]) {
+          return oldmain(argc, argv);
+       }
+       #+END_SRC
+
+   - Modifying makefile(other solutions are provided by the reference links above, if there are successful usage or other solution, please add to this file)
+
+     First edit makefile(slightly complicated)
+     - Adding gcc -fPIC flag
+     #+BEGIN_SRC makefile
+     -fPIC
+     #+END_SRC
+
+     - Adding INC_PYTHON to compile PLANNER_wrap.c (PLANNER_wrap.c would include headers from this path)
+     #+BEGIN_SRC makefile
+     INC_PYTHON = -I/usr/include/python2.7
+     #+END_SRC
+     this directory may vary bewteen machines, so find yours and add -I/the/path/to/python2.x
+
+     - Adding dynamic shared objects
+     #+BEGIN_SRC makefile
+     _PLANNER.so: $(OBJECTS) $(PDDL_PARSER_OBJ) PLANNER_wrap.o
+     gcc -shared -o $@ $^
+
+     PLANNER_wrap.o: PLANNER_wrap.c
+     $(CC) -c $(INC_PYTHON) -fPIC $^
+
+     PLANNER.py PLANNER_wrap.c: PLANNER.i
+     swig -python PLANNER.i
+     #+END_SRC
+
+     - Notes that:
+       1. so(shared object) gernerally needs all object files compiled from source(.c)
+       2. Should use "tab"
+       3. $@ and $^ are special symbols [[http://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean][what do the makefile symbols mean]]
+       4. *-fPIC* would be required to be added as *gcc flag* to compile c in order to be used as shared objects
+       5. This is usually a generally method, in practice it might vary. For example makefile using implict rules. In this case the classic error would be suggesting to recompile with *-fPIC*
+
+   - Use python import
+
+     This is rather easy part
+     #+BEGIN_SRC python
+     import PLANNER
+     # Using planner functions
+     #+END_SRC
+
+   - If there were any problems during wrapping, please do the honor to add to the below section
+
+* Example on wrapping ff-v2.3
+  Note: this may be an easy one, you can try to call most of the functions defined in *ff.h* , if you want to call more functions in *main.c* , the easy one is by adding its declaration to *ff.h*, add function to ff.i(swig interface file), recompile with makefile
+  just change replace string: PLANNER => ff
+
+* Problems section
+  *Note*:(It is better to include a screenshot of bug reporting in directory called /BUG_PIC/ in the same directory)
+  1. CSP: DIR = Neoclassical-Planning/CSP/gp_csp_ver1.1.2/
+     Successfully compile, but on importing in python errors occur *undefined symbol: yywrap*
+
+* Future section
+  Please spill out your ideas
+  1. To be added ...
+
+* Reference
+
+   STAPLAN:  http://www.cs.rochester.edu/users/faculty/kautz/satplan/index.htm
+
+   Blackbox:  https://www.cs.rochester.edu/u/kautz/satplan/blackbox/
+
+   IPP:  https://user.enterpriselab.ch/~takoehle/publications/ipp/ipp.html
+
+   HSP: http://planet.hud.ac.uk/repository/heuristic.html
+
+   FF:  http://fai.cs.uni-saarland.de/hoffmann/ff.html
+
+   MIPS-XXL:  http://sjabbar.com/mips-xxl-planner
+
+   MIPS-BDD:  http://www.tzi.de/~edelkamp/mips/mips-bdd.html
+
+   AltAlt:  http://rakaposhi.eas.asu.edu/altweb/altalt.html
+
+   SHOP:  https://www.cs.umd.edu/projects/shop/
+
+   PYHOP:  https://bitbucket.org/dananau/pyhop
+
+   LPG:  http://lpg.unibs.it/lpg/
+
+   TLPLAN:  http://www.cs.toronto.edu/tlplan/
+           http://planiart.usherbrooke.ca/tlplan/
+
+   CPT:  http://www.cril.univ-artois.fr/~vidal/cpt.html
+
+   LAMA:  https://github.com/rock-planning/planning-lama
+
+   SGPLAN:  http://wah.cse.cuhk.edu.hk/wah/programs/SGPlan/
+
+   Graphplan:  https://www.cs.cmu.edu/~avrim/graphplan.html
+
+   UCPOP:  http://aiweb.cs.washington.edu/ai/ucpop.html
+
+   GP-CSP:  http://rakaposhi.eas.asu.edu/gp-csp.html
+
+   NOLIN:  http://www.aiai.ed.ac.uk/project/nonlin/
+
+   O-PLAN:  http://www.aiai.ed.ac.uk/project/oplan/
+
+   UMCP:  http://www.cs.umd.edu/projects/plus/umcp/
