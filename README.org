@@ -4,7 +4,8 @@
 * Schedule
 1. First discussion <2017-05-12 五>
 |--------------+------------------|
-| Member       | Task             |
+| Member       | Task             | 
+|--------------+------------------|
 | Wenfeng Feng | SAT2006, HSP     |
 | Enle Liu     | LAMA             |
 | Ruipeng Li   | HTN(C++ version) |
