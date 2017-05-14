@@ -156,7 +156,7 @@
   Please spill out your ideas
   1. To be added ...
 
-* Reference
+* References
 
    STAPLAN:  http://www.cs.rochester.edu/users/faculty/kautz/satplan/index.htm
 
