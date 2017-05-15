@@ -88,11 +88,11 @@
        int oldmain( int argc, char * argv[] );
        #+END_SRC
 
-     - Adding oldmain() in main.c and modified it to have the same source code as main()
+     - Rename main() in PLANNER.c to oldmain() and add a main()
        #+BEGIN_SRC c
        // PLANNER.c (Generally where main is located)
        int oldmain( int argc, char * argv[] ) {
-          //  Source code of main() copied here
+          //  original main()
           //  ...
        }
        int main(int argc, char *argv[]) {

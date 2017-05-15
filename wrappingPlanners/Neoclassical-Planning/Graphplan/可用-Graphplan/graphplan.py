@@ -91,9 +91,9 @@ except AttributeError:
 
 
 
-def oldmain(argc):
-    return _graphplan.oldmain(argc)
-oldmain = _graphplan.oldmain
+def main(argc):
+    return _graphplan.main(argc)
+main = _graphplan.main
 # This file is compatible with both classic and new-style classes.
 
 

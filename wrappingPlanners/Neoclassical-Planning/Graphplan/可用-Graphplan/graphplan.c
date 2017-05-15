@@ -120,7 +120,7 @@ int instrs(void)
 }
 
 
-int oldmain(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
   op_list ops;
   int i,max_time=0, auto_stop = 0, old_num_created, givedef=0;
@@ -284,9 +284,11 @@ int oldmain(int argc, char *argv[])
   return 0;
 }
 
+/*
 int main( int argc, char * argv[]) {
   return oldmain(argc, argv);
 }
+*/
 
 
 /* For printing, removes vertices that could never be reached by planner */
