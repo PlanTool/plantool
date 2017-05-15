@@ -8,4 +8,4 @@
 
 %apply (int ARGC, char **ARGV) { (int argc, char *argv[]) }
 
-int main( int argc, char *argv[] );
+int oldmain( int argc, char *argv[] );
