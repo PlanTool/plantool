@@ -21,7 +21,7 @@
    - Ting Zhang and Qiping continue to wrap the functions of IPP and Graphplan.
 
 2. Second discussion <2017-05-19 Fri>
-   - Write Documentaion for wrapper planners
+   - Write Documentation for wrapper planners
 
    - Consider new interface for input file
 
@@ -163,6 +163,7 @@
   Please spill out your ideas
   1. To be added ...
 
+* Documentation
 * References
 
    STAPLAN:  http://www.cs.rochester.edu/users/faculty/kautz/satplan/index.htm
