@@ -1,0 +1,15 @@
+Domain: fridge
+Version: fridge-domain-typed
+
+The same as the domain "fridge-domain-typed" in the
+PDDL 1.3 distribution
+
+	strict-domains/fridge/domain01.pddl
+
+but with the following changes to the problem files:
+	"fridge" was used as a type in the domain file, but
+		as a unary predicate in the prob* files.
+		This is changed so that fridge is used
+		as a type in the problem files as well.
+
+12 June 1998, Henry Kautz
