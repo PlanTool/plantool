@@ -1,9 +1,0 @@
-#!/bin/csh -x
-
-set Dom = *domain*.pddl
-foreach f (*.pddl)
-    if ( $f !~ *domain*) then
-	blackbox -o $Dom -f $f -printcnf -printexit | extract cnf > $f.cnf
-    endif
-
-end

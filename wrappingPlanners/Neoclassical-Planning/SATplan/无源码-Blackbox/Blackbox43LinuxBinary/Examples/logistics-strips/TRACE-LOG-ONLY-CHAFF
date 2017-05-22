@@ -1,4902 +1,0 @@
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob001-log-easy.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob001-log-easy.pddl
-Problem name: log001
-Facts loaded.
-time: 1, 53 facts and 24 exclusive pairs.
-time: 2, 53 facts and 18 exclusive pairs.
-time: 3, 59 facts and 51 exclusive pairs.
-time: 4, 65 facts and 90 exclusive pairs.
-time: 5, 65 facts and 60 exclusive pairs.
-time: 6, 71 facts and 99 exclusive pairs.
-time: 7, 77 facts and 162 exclusive pairs.
-time: 8, 77 facts and 150 exclusive pairs.
-time: 9, 89 facts and 324 exclusive pairs.
-Goals first reachable in 9 steps.
-1810 nodes created.
-
-####################################################
-goals at time 10:
-  at_package1_bos-po at_package2_la-po at_package3_bos-po 
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 551
-number of fluent variables = 388
-total number variables = 939
-number clauses = 3785
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   0 actions were pruned in 0.00 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (load-truck package2 pgh-truck pgh-po)
-1 (drive-truck bos-truck bos-po bos-airport bos)
-1 (load-truck package3 pgh-truck pgh-po)
-1 (drive-truck la-truck la-po la-airport la)
-1 (load-truck package1 pgh-truck pgh-po)
-2 (drive-truck pgh-truck pgh-po pgh-airport pgh)
-3 (unload-truck package3 pgh-truck pgh-airport)
-3 (unload-truck package2 pgh-truck pgh-airport)
-3 (unload-truck package1 pgh-truck pgh-airport)
-4 (load-airplane package1 airplane1 pgh-airport)
-4 (load-airplane package2 airplane2 pgh-airport)
-4 (load-airplane package3 airplane1 pgh-airport)
-5 (fly-airplane airplane2 pgh-airport la-airport)
-5 (fly-airplane airplane1 pgh-airport bos-airport)
-6 (unload-airplane package1 airplane1 bos-airport)
-6 (unload-airplane package2 airplane2 la-airport)
-6 (unload-airplane package3 airplane1 bos-airport)
-7 (load-truck package2 la-truck la-airport)
-7 (load-truck package1 bos-truck bos-airport)
-7 (load-truck package3 bos-truck bos-airport)
-8 (drive-truck bos-truck bos-airport bos-po bos)
-8 (drive-truck la-truck la-airport la-po la)
-9 (unload-truck package3 bos-truck bos-po)
-9 (unload-truck package2 la-truck la-po)
-9 (unload-truck package1 bos-truck bos-po)
-End plan
-----------------------------------------------------
-
-25 total actions in plan
-0 entries in hash table, 
-8 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   0.16 seconds
-Time in milliseconds: 161
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob002-rocket-a.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob002-rocket-a.pddl
-Problem name: log002
-Facts loaded.
-time: 1, 47 facts and 16 exclusive pairs.
-time: 2, 66 facts and 153 exclusive pairs.
-time: 3, 69 facts and 126 exclusive pairs.
-time: 4, 96 facts and 162 exclusive pairs.
-Goals first reachable in 4 steps.
-849 nodes created.
-
-####################################################
-goals at time 5:
-  at_mxf_bos-airport at_avrim_jfk-airport at_pencil_bos-airport at_alex_jfk-airport at_april_bos-airport 
-at_lisa_par-airport at_michelle_jfk-airport at_jason_bos-airport at_paper_par-airport at_betty_jfk-airport 
-
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 224
-number of fluent variables = 181
-total number variables = 405
-number clauses = 2438
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 5, 96 facts and 162 exclusive pairs.
-376 new nodes added.
-
-####################################################
-goals at time 6:
-  at_mxf_bos-airport at_avrim_jfk-airport at_pencil_bos-airport at_alex_jfk-airport at_april_bos-airport 
-at_lisa_par-airport at_michelle_jfk-airport at_jason_bos-airport at_paper_par-airport at_betty_jfk-airport 
-
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 384
-number of fluent variables = 251
-total number variables = 635
-number clauses = 5589
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 5 steps
-time: 6, 96 facts and 162 exclusive pairs.
-376 new nodes added.
-
-####################################################
-goals at time 7:
-  at_mxf_bos-airport at_avrim_jfk-airport at_pencil_bos-airport at_alex_jfk-airport at_april_bos-airport 
-at_lisa_par-airport at_michelle_jfk-airport at_jason_bos-airport at_paper_par-airport at_betty_jfk-airport 
-
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 638
-number of fluent variables = 339
-total number variables = 977
-number clauses = 14435
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 6 steps
-time: 7, 96 facts and 162 exclusive pairs.
-376 new nodes added.
-
-####################################################
-goals at time 8:
-  at_mxf_bos-airport at_avrim_jfk-airport at_pencil_bos-airport at_alex_jfk-airport at_april_bos-airport 
-at_lisa_par-airport at_michelle_jfk-airport at_jason_bos-airport at_paper_par-airport at_betty_jfk-airport 
-
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 910
-number of fluent variables = 427
-total number variables = 1337
-number clauses = 24777
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   2 actions were pruned in 0.00 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (fly-airplane airplane2 bos-airport lon-airport)
-1 (load-airplane jason airplane1 jfk-airport)
-2 (load-airplane paper airplane2 lon-airport)
-2 (fly-airplane airplane1 jfk-airport lon-airport)
-2 (load-airplane michelle airplane2 lon-airport)
-2 (load-airplane betty airplane2 lon-airport)
-2 (load-airplane lisa airplane2 lon-airport)
-3 (fly-airplane airplane2 lon-airport par-airport)
-3 (load-airplane pencil airplane1 lon-airport)
-3 (load-airplane april airplane1 lon-airport)
-4 (load-airplane alex airplane2 par-airport)
-4 (fly-airplane airplane1 lon-airport par-airport)
-4 (unload-airplane lisa airplane2 par-airport)
-4 (unload-airplane paper airplane2 par-airport)
-4 (load-airplane avrim airplane2 par-airport)
-5 (load-airplane mxf airplane1 par-airport)
-6 (fly-airplane airplane2 par-airport jfk-airport)
-6 (fly-airplane airplane1 par-airport bos-airport)
-7 (unload-airplane michelle airplane2 jfk-airport)
-7 (unload-airplane alex airplane2 jfk-airport)
-7 (unload-airplane april airplane1 bos-airport)
-7 (unload-airplane jason airplane1 bos-airport)
-7 (unload-airplane avrim airplane2 jfk-airport)
-7 (unload-airplane mxf airplane1 bos-airport)
-7 (unload-airplane pencil airplane1 bos-airport)
-7 (unload-airplane betty airplane2 jfk-airport)
-End plan
-----------------------------------------------------
-
-26 total actions in plan
-0 entries in hash table, 
-6 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   0.41 seconds
-Time in milliseconds: 410
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob003-rocket-b.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob003-rocket-b.pddl
-Problem name: log003
-Facts loaded.
-time: 1, 51 facts and 32 exclusive pairs.
-time: 2, 66 facts and 161 exclusive pairs.
-time: 3, 81 facts and 282 exclusive pairs.
-time: 4, 96 facts and 162 exclusive pairs.
-Goals first reachable in 4 steps.
-925 nodes created.
-
-####################################################
-goals at time 5:
-  at_mxf_bos-airport at_avrim_jfk-airport at_pencil_bos-airport at_alex_jfk-airport at_april_bos-airport 
-at_lisa_par-airport at_michelle_jfk-airport at_jason_bos-airport at_paper_par-airport at_betty_jfk-airport 
-
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 244
-number of fluent variables = 189
-total number variables = 433
-number clauses = 2902
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 5, 96 facts and 162 exclusive pairs.
-376 new nodes added.
-
-####################################################
-goals at time 6:
-  at_mxf_bos-airport at_avrim_jfk-airport at_pencil_bos-airport at_alex_jfk-airport at_april_bos-airport 
-at_lisa_par-airport at_michelle_jfk-airport at_jason_bos-airport at_paper_par-airport at_betty_jfk-airport 
-
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 436
-number of fluent variables = 267
-total number variables = 703
-number clauses = 8355
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 5 steps
-time: 6, 96 facts and 162 exclusive pairs.
-376 new nodes added.
-
-####################################################
-goals at time 7:
-  at_mxf_bos-airport at_avrim_jfk-airport at_pencil_bos-airport at_alex_jfk-airport at_april_bos-airport 
-at_lisa_par-airport at_michelle_jfk-airport at_jason_bos-airport at_paper_par-airport at_betty_jfk-airport 
-
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 698
-number of fluent variables = 355
-total number variables = 1053
-number clauses = 19145
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 6 steps
-time: 7, 96 facts and 162 exclusive pairs.
-376 new nodes added.
-
-####################################################
-goals at time 8:
-  at_mxf_bos-airport at_avrim_jfk-airport at_pencil_bos-airport at_alex_jfk-airport at_april_bos-airport 
-at_lisa_par-airport at_michelle_jfk-airport at_jason_bos-airport at_paper_par-airport at_betty_jfk-airport 
-
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 970
-number of fluent variables = 443
-total number variables = 1413
-number clauses = 29487
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   2 actions were pruned in 0.00 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (fly-airplane airplane1 jfk-airport lon-airport)
-1 (load-airplane pencil airplane2 par-airport)
-1 (load-airplane april airplane2 par-airport)
-2 (load-airplane betty airplane1 lon-airport)
-2 (fly-airplane airplane2 par-airport jfk-airport)
-2 (load-airplane paper airplane1 lon-airport)
-2 (load-airplane lisa airplane1 lon-airport)
-3 (load-airplane mxf airplane2 jfk-airport)
-3 (fly-airplane airplane1 lon-airport par-airport)
-3 (load-airplane jason airplane2 jfk-airport)
-4 (fly-airplane airplane2 jfk-airport bos-airport)
-5 (unload-airplane lisa airplane1 par-airport)
-5 (unload-airplane april airplane2 bos-airport)
-5 (unload-airplane jason airplane2 bos-airport)
-5 (unload-airplane paper airplane1 par-airport)
-5 (load-airplane alex airplane2 bos-airport)
-5 (load-airplane avrim airplane1 par-airport)
-5 (unload-airplane mxf airplane2 bos-airport)
-5 (unload-airplane pencil airplane2 bos-airport)
-5 (load-airplane michelle airplane2 bos-airport)
-6 (fly-airplane airplane1 par-airport jfk-airport)
-6 (fly-airplane airplane2 bos-airport jfk-airport)
-7 (unload-airplane avrim airplane1 jfk-airport)
-7 (unload-airplane michelle airplane2 jfk-airport)
-7 (unload-airplane betty airplane1 jfk-airport)
-7 (unload-airplane alex airplane2 jfk-airport)
-End plan
-----------------------------------------------------
-
-26 total actions in plan
-0 entries in hash table, 
-6 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   0.48 seconds
-Time in milliseconds: 481
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob004-log-a.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob004-log-a.pddl
-Problem name: log004
-Facts loaded.
-time: 1, 59 facts and 25 exclusive pairs.
-time: 2, 59 facts and 17 exclusive pairs.
-time: 3, 67 facts and 41 exclusive pairs.
-time: 4, 83 facts and 159 exclusive pairs.
-time: 5, 83 facts and 127 exclusive pairs.
-time: 6, 99 facts and 177 exclusive pairs.
-time: 7, 115 facts and 313 exclusive pairs.
-time: 8, 115 facts and 297 exclusive pairs.
-time: 9, 131 facts and 465 exclusive pairs.
-Goals first reachable in 9 steps.
-2522 nodes created.
-
-####################################################
-goals at time 10:
-  at_package1_bos-po at_package2_bos-airport at_package3_la-po at_package4_la-airport at_package5_pgh-po 
-at_package6_pgh-airport at_package7_pgh-po at_package8_pgh-po 
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 908
-number of fluent variables = 583
-total number variables = 1491
-number clauses = 9040
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 10, 131 facts and 449 exclusive pairs.
-472 new nodes added.
-
-####################################################
-goals at time 11:
-  at_package1_bos-po at_package2_bos-airport at_package3_la-po at_package4_la-airport at_package5_pgh-po 
-at_package6_pgh-airport at_package7_pgh-po at_package8_pgh-po 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 1188
-number of fluent variables = 698
-total number variables = 1886
-number clauses = 14529
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 10 steps
-time: 11, 131 facts and 449 exclusive pairs.
-472 new nodes added.
-
-####################################################
-goals at time 12:
-  at_package1_bos-po at_package2_bos-airport at_package3_la-po at_package4_la-airport at_package5_pgh-po 
-at_package6_pgh-airport at_package7_pgh-po at_package8_pgh-po 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 1487
-number of fluent variables = 816
-total number variables = 2303
-number clauses = 20963
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   9 actions were pruned in 0.00 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (load-truck package2 pgh-truck pgh-po)
-1 (load-truck package8 la-truck la-po)
-1 (load-truck package3 pgh-truck pgh-po)
-1 (load-truck package4 pgh-truck pgh-po)
-1 (load-truck package1 pgh-truck pgh-po)
-1 (load-truck package6 bos-truck bos-po)
-2 (drive-truck pgh-truck pgh-po pgh-airport pgh)
-2 (drive-truck la-truck la-po la-airport la)
-3 (load-truck package7 bos-truck bos-po)
-3 (fly-airplane airplane2 pgh-airport la-airport)
-3 (unload-truck package3 pgh-truck pgh-airport)
-3 (unload-truck package2 pgh-truck pgh-airport)
-3 (unload-truck package1 pgh-truck pgh-airport)
-3 (load-truck package5 bos-truck bos-po)
-3 (unload-truck package8 la-truck la-airport)
-4 (load-airplane package2 airplane1 pgh-airport)
-4 (load-airplane package8 airplane2 la-airport)
-4 (load-airplane package1 airplane1 pgh-airport)
-4 (drive-truck bos-truck bos-po bos-airport bos)
-4 (load-airplane package3 airplane1 pgh-airport)
-5 (unload-truck package7 bos-truck bos-airport)
-5 (unload-truck package6 bos-truck bos-airport)
-5 (fly-airplane airplane2 la-airport bos-airport)
-5 (fly-airplane airplane1 pgh-airport bos-airport)
-5 (unload-truck package5 bos-truck bos-airport)
-6 (unload-truck package4 pgh-truck pgh-airport)
-6 (load-airplane package7 airplane2 bos-airport)
-6 (load-airplane package6 airplane2 bos-airport)
-6 (load-airplane package5 airplane2 bos-airport)
-6 (unload-airplane package1 airplane1 bos-airport)
-6 (unload-airplane package2 airplane1 bos-airport)
-7 (load-truck package1 bos-truck bos-airport)
-7 (fly-airplane airplane2 bos-airport pgh-airport)
-7 (fly-airplane airplane1 bos-airport la-airport)
-8 (unload-airplane package7 airplane2 pgh-airport)
-8 (unload-airplane package5 airplane2 pgh-airport)
-8 (drive-truck bos-truck bos-airport bos-po bos)
-8 (unload-airplane package3 airplane1 la-airport)
-8 (unload-airplane package8 airplane2 pgh-airport)
-9 (unload-airplane package6 airplane2 pgh-airport)
-9 (load-airplane package4 airplane2 pgh-airport)
-9 (load-truck package8 pgh-truck pgh-airport)
-9 (unload-truck package1 bos-truck bos-po)
-9 (load-truck package3 la-truck la-airport)
-9 (load-truck package7 pgh-truck pgh-airport)
-9 (load-truck package5 pgh-truck pgh-airport)
-10 (fly-airplane airplane2 pgh-airport la-airport)
-10 (drive-truck la-truck la-airport la-po la)
-10 (drive-truck pgh-truck pgh-airport pgh-po pgh)
-11 (unload-truck package8 pgh-truck pgh-po)
-11 (unload-truck package7 pgh-truck pgh-po)
-11 (unload-truck package5 pgh-truck pgh-po)
-11 (unload-truck package3 la-truck la-po)
-11 (unload-airplane package4 airplane2 la-airport)
-End plan
-----------------------------------------------------
-
-54 total actions in plan
-0 entries in hash table, 
-10 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   0.39 seconds
-Time in milliseconds: 391
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob005-log-b.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob005-log-b.pddl
-Problem name: log005
-Facts loaded.
-time: 1, 61 facts and 26 exclusive pairs.
-time: 2, 61 facts and 21 exclusive pairs.
-time: 3, 66 facts and 36 exclusive pairs.
-time: 4, 76 facts and 110 exclusive pairs.
-time: 5, 76 facts and 80 exclusive pairs.
-time: 6, 91 facts and 156 exclusive pairs.
-time: 7, 106 facts and 306 exclusive pairs.
-time: 8, 106 facts and 291 exclusive pairs.
-time: 9, 121 facts and 486 exclusive pairs.
-Goals first reachable in 9 steps.
-2375 nodes created.
-
-####################################################
-goals at time 10:
-  at_package1_bos-po at_package2_ny-po at_package3_la-po at_package5_pgh-po at_package7_pgh-po 
-
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 723
-number of fluent variables = 507
-total number variables = 1230
-number clauses = 5633
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 10, 121 facts and 471 exclusive pairs.
-434 new nodes added.
-
-####################################################
-goals at time 11:
-  at_package1_bos-po at_package2_ny-po at_package3_la-po at_package5_pgh-po at_package7_pgh-po 
-
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 961
-number of fluent variables = 608
-total number variables = 1569
-number clauses = 10099
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 10 steps
-time: 11, 121 facts and 471 exclusive pairs.
-434 new nodes added.
-
-####################################################
-goals at time 12:
-  at_package1_bos-po at_package2_ny-po at_package3_la-po at_package5_pgh-po at_package7_pgh-po 
-
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 1214
-number of fluent variables = 709
-total number variables = 1923
-number clauses = 15554
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 11 steps
-time: 12, 121 facts and 471 exclusive pairs.
-434 new nodes added.
-
-####################################################
-goals at time 13:
-  at_package1_bos-po at_package2_ny-po at_package3_la-po at_package5_pgh-po at_package7_pgh-po 
-
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 1487
-number of fluent variables = 820
-total number variables = 2307
-number clauses = 22145
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 12 steps
-time: 13, 121 facts and 471 exclusive pairs.
-434 new nodes added.
-
-####################################################
-goals at time 14:
-  at_package1_bos-po at_package2_ny-po at_package3_la-po at_package5_pgh-po at_package7_pgh-po 
-
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 1770
-number of fluent variables = 931
-total number variables = 2701
-number clauses = 29534
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   18 actions were pruned in 0.00 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (load-truck package2 pgh-truck pgh-po)
-1 (load-truck package7 ny-truck ny-po)
-1 (load-truck package3 pgh-truck pgh-po)
-1 (load-truck package1 pgh-truck pgh-po)
-2 (drive-truck pgh-truck pgh-po pgh-airport pgh)
-2 (drive-truck ny-truck ny-po ny-airport ny)
-3 (fly-airplane airplane1 pgh-airport ny-airport)
-3 (unload-truck package2 pgh-truck pgh-airport)
-3 (load-truck package5 bos-truck bos-po)
-3 (unload-truck package7 ny-truck ny-airport)
-4 (load-airplane package7 airplane1 ny-airport)
-4 (unload-truck package3 pgh-truck pgh-airport)
-4 (drive-truck bos-truck bos-po bos-airport bos)
-5 (fly-airplane airplane1 ny-airport bos-airport)
-5 (load-airplane package3 airplane2 pgh-airport)
-5 (unload-truck package5 bos-truck bos-airport)
-5 (load-airplane package2 airplane2 pgh-airport)
-6 (unload-truck package1 pgh-truck pgh-airport)
-6 (fly-airplane airplane2 pgh-airport ny-airport)
-6 (load-airplane package5 airplane1 bos-airport)
-7 (unload-airplane package2 airplane2 ny-airport)
-7 (fly-airplane airplane1 bos-airport pgh-airport)
-8 (fly-airplane airplane2 ny-airport la-airport)
-8 (load-airplane package1 airplane1 pgh-airport)
-8 (load-truck package2 ny-truck ny-airport)
-8 (unload-airplane package7 airplane1 pgh-airport)
-8 (unload-airplane package5 airplane1 pgh-airport)
-9 (drive-truck ny-truck ny-airport ny-po ny)
-9 (fly-airplane airplane1 pgh-airport bos-airport)
-9 (unload-airplane package3 airplane2 la-airport)
-9 (drive-truck la-truck la-po la-airport la)
-10 (unload-airplane package1 airplane1 bos-airport)
-10 (unload-truck package2 ny-truck ny-po)
-10 (load-truck package5 pgh-truck pgh-airport)
-11 (load-truck package1 bos-truck bos-airport)
-11 (load-truck package3 la-truck la-airport)
-11 (load-truck package7 pgh-truck pgh-airport)
-12 (drive-truck bos-truck bos-airport bos-po bos)
-12 (drive-truck la-truck la-airport la-po la)
-12 (drive-truck pgh-truck pgh-airport pgh-po pgh)
-13 (unload-truck package1 bos-truck bos-po)
-13 (unload-truck package7 pgh-truck pgh-po)
-13 (unload-truck package5 pgh-truck pgh-po)
-13 (unload-truck package3 la-truck la-po)
-End plan
-----------------------------------------------------
-
-44 total actions in plan
-0 entries in hash table, 
-12 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   0.71 seconds
-Time in milliseconds: 711
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob006-log-c.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob006-log-c.pddl
-Problem name: log006
-Facts loaded.
-time: 1, 67 facts and 30 exclusive pairs.
-time: 2, 67 facts and 23 exclusive pairs.
-time: 3, 74 facts and 44 exclusive pairs.
-time: 4, 88 facts and 160 exclusive pairs.
-time: 5, 88 facts and 118 exclusive pairs.
-time: 6, 109 facts and 212 exclusive pairs.
-time: 7, 130 facts and 422 exclusive pairs.
-time: 8, 130 facts and 401 exclusive pairs.
-time: 9, 151 facts and 674 exclusive pairs.
-Goals first reachable in 9 steps.
-2877 nodes created.
-
-####################################################
-goals at time 10:
-  at_package1_bos-po at_package2_ny-po at_package3_la-po at_package4_la-airport at_package5_pgh-po 
-at_package6_ny-airport at_package7_pgh-po 
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 993
-number of fluent variables = 627
-total number variables = 1620
-number clauses = 10577
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 10, 151 facts and 653 exclusive pairs.
-558 new nodes added.
-
-####################################################
-goals at time 11:
-  at_package1_bos-po at_package2_ny-po at_package3_la-po at_package4_la-airport at_package5_pgh-po 
-at_package6_ny-airport at_package7_pgh-po 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 1303
-number of fluent variables = 752
-total number variables = 2055
-number clauses = 18023
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 10 steps
-time: 11, 151 facts and 653 exclusive pairs.
-558 new nodes added.
-
-####################################################
-goals at time 12:
-  at_package1_bos-po at_package2_ny-po at_package3_la-po at_package4_la-airport at_package5_pgh-po 
-at_package6_ny-airport at_package7_pgh-po 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 1636
-number of fluent variables = 879
-total number variables = 2515
-number clauses = 26884
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 11 steps
-time: 12, 151 facts and 653 exclusive pairs.
-558 new nodes added.
-
-####################################################
-goals at time 13:
-  at_package1_bos-po at_package2_ny-po at_package3_la-po at_package4_la-airport at_package5_pgh-po 
-at_package6_ny-airport at_package7_pgh-po 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 1991
-number of fluent variables = 1016
-total number variables = 3007
-number clauses = 37065
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 12 steps
-time: 13, 151 facts and 653 exclusive pairs.
-558 new nodes added.
-
-####################################################
-goals at time 14:
-  at_package1_bos-po at_package2_ny-po at_package3_la-po at_package4_la-airport at_package5_pgh-po 
-at_package6_ny-airport at_package7_pgh-po 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 2364
-number of fluent variables = 1157
-total number variables = 3521
-number clauses = 48550
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   16 actions were pruned in 0.00 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (load-truck package4 ny-truck ny-po)
-1 (load-truck package7 ny-truck ny-po)
-1 (fly-airplane airplane2 pgh-airport ny-airport)
-1 (load-truck package3 pgh-truck pgh-po)
-1 (load-truck package6 bos-truck bos-po)
-2 (load-truck package5 bos-truck bos-po)
-2 (drive-truck ny-truck ny-po ny-airport ny)
-3 (load-truck package2 pgh-truck pgh-po)
-3 (fly-airplane airplane2 ny-airport la-airport)
-3 (fly-airplane airplane1 pgh-airport ny-airport)
-3 (drive-truck bos-truck bos-po bos-airport bos)
-3 (unload-truck package7 ny-truck ny-airport)
-3 (load-truck package1 pgh-truck pgh-po)
-4 (load-airplane package7 airplane1 ny-airport)
-4 (unload-truck package6 bos-truck bos-airport)
-4 (fly-airplane airplane2 la-airport bos-airport)
-4 (unload-truck package5 bos-truck bos-airport)
-4 (drive-truck pgh-truck pgh-po pgh-airport pgh)
-5 (unload-truck package3 pgh-truck pgh-airport)
-5 (unload-truck package2 pgh-truck pgh-airport)
-5 (unload-truck package1 pgh-truck pgh-airport)
-5 (load-airplane package6 airplane2 bos-airport)
-5 (load-airplane package5 airplane2 bos-airport)
-5 (fly-airplane airplane1 ny-airport pgh-airport)
-6 (load-airplane package1 airplane1 pgh-airport)
-6 (fly-airplane airplane2 bos-airport pgh-airport)
-6 (unload-airplane package7 airplane1 pgh-airport)
-6 (load-airplane package3 airplane1 pgh-airport)
-7 (unload-airplane package5 airplane2 pgh-airport)
-7 (fly-airplane airplane1 pgh-airport bos-airport)
-7 (load-airplane package2 airplane2 pgh-airport)
-8 (unload-airplane package1 airplane1 bos-airport)
-8 (load-truck package5 pgh-truck pgh-airport)
-9 (fly-airplane airplane2 pgh-airport ny-airport)
-9 (fly-airplane airplane1 bos-airport la-airport)
-9 (load-truck package7 pgh-truck pgh-airport)
-9 (drive-truck la-truck la-po la-airport la)
-10 (unload-airplane package2 airplane2 ny-airport)
-10 (unload-truck package4 ny-truck ny-airport)
-10 (unload-airplane package6 airplane2 ny-airport)
-10 (unload-airplane package3 airplane1 la-airport)
-10 (drive-truck pgh-truck pgh-airport pgh-po pgh)
-11 (load-truck package1 bos-truck bos-airport)
-11 (unload-truck package7 pgh-truck pgh-po)
-11 (load-truck package2 ny-truck ny-airport)
-11 (load-airplane package4 airplane2 ny-airport)
-11 (load-truck package3 la-truck la-airport)
-11 (unload-truck package5 pgh-truck pgh-po)
-12 (drive-truck ny-truck ny-airport ny-po ny)
-12 (fly-airplane airplane2 ny-airport la-airport)
-12 (drive-truck bos-truck bos-airport bos-po bos)
-12 (drive-truck la-truck la-airport la-po la)
-13 (unload-truck package1 bos-truck bos-po)
-13 (unload-truck package2 ny-truck ny-po)
-13 (unload-truck package3 la-truck la-po)
-13 (unload-airplane package4 airplane2 la-airport)
-End plan
-----------------------------------------------------
-
-56 total actions in plan
-0 entries in hash table, 
-12 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   1.10 seconds
-Time in milliseconds: 1101
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob007-log-d.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob007-log-d.pddl
-Problem name: log007
-Facts loaded.
-time: 1, 93 facts and 44 exclusive pairs.
-time: 2, 101 facts and 72 exclusive pairs.
-time: 3, 107 facts and 85 exclusive pairs.
-time: 4, 127 facts and 211 exclusive pairs.
-time: 5, 143 facts and 407 exclusive pairs.
-time: 6, 151 facts and 328 exclusive pairs.
-time: 7, 191 facts and 762 exclusive pairs.
-time: 8, 215 facts and 1092 exclusive pairs.
-time: 9, 231 facts and 1398 exclusive pairs.
-time: 10, 279 facts and 2388 exclusive pairs.
-Goals reachable at 10 steps but mutually exclusive.
-time: 11, 279 facts and 2212 exclusive pairs.
-Goals first reachable in 11 steps.
-6608 nodes created.
-
-####################################################
-goals at time 12:
-  at_package1_bos-po at_package2_ny-po at_package3_la-central at_package4_la-airport at_package5_pgh-po 
-at_package6_ny-central at_package7_pgh-po at_package8_ny-central at_package9_sf-po 
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 2383
-number of fluent variables = 1238
-total number variables = 3621
-number clauses = 46568
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 12, 279 facts and 2114 exclusive pairs.
-1078 new nodes added.
-
-####################################################
-goals at time 13:
-  at_package1_bos-po at_package2_ny-po at_package3_la-central at_package4_la-airport at_package5_pgh-po 
-at_package6_ny-central at_package7_pgh-po at_package8_ny-central at_package9_sf-po 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 2954
-number of fluent variables = 1445
-total number variables = 4399
-number clauses = 68790
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 12 steps
-time: 13, 279 facts and 2114 exclusive pairs.
-1078 new nodes added.
-
-####################################################
-goals at time 14:
-  at_package1_bos-po at_package2_ny-po at_package3_la-central at_package4_la-airport at_package5_pgh-po 
-at_package6_ny-central at_package7_pgh-po at_package8_ny-central at_package9_sf-po 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 3581
-number of fluent variables = 1674
-total number variables = 5255
-number clauses = 95193
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 13 steps
-time: 14, 279 facts and 2114 exclusive pairs.
-1078 new nodes added.
-
-####################################################
-goals at time 15:
-  at_package1_bos-po at_package2_ny-po at_package3_la-central at_package4_la-airport at_package5_pgh-po 
-at_package6_ny-central at_package7_pgh-po at_package8_ny-central at_package9_sf-po 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 4242
-number of fluent variables = 1909
-total number variables = 6151
-number clauses = 125327
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   26 actions were pruned in 0.01 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (drive-truck ny-truck ny-central ny-po ny)
-1 (load-truck package5 bos-truck bos-po)
-1 (drive-truck pgh-truck pgh-airport pgh-central pgh)
-1 (fly-airplane airplane1 pgh-airport sf-airport)
-1 (drive-truck la-truck la-po la-airport la)
-1 (load-truck package6 bos-truck bos-po)
-2 (load-airplane package8 airplane1 sf-airport)
-2 (drive-truck sf-truck sf-airport sf-central sf)
-2 (load-truck package2 pgh-truck pgh-central)
-2 (load-truck package7 ny-truck ny-po)
-2 (load-truck package3 pgh-truck pgh-central)
-2 (drive-truck bos-truck bos-po bos-airport bos)
-3 (unload-truck package6 bos-truck bos-airport)
-3 (drive-truck pgh-truck pgh-central pgh-airport pgh)
-3 (load-truck package4 ny-truck ny-po)
-3 (fly-airplane airplane1 sf-airport bos-airport)
-3 (unload-truck package5 bos-truck bos-airport)
-4 (unload-truck package3 pgh-truck pgh-airport)
-4 (unload-truck package2 pgh-truck pgh-airport)
-4 (drive-truck ny-truck ny-po ny-airport ny)
-4 (load-airplane package6 airplane1 bos-airport)
-4 (load-airplane package5 airplane1 bos-airport)
-5 (unload-truck package4 ny-truck ny-airport)
-5 (load-airplane package3 airplane2 pgh-airport)
-5 (fly-airplane airplane1 bos-airport ny-airport)
-5 (drive-truck pgh-truck pgh-airport pgh-po pgh)
-5 (unload-truck package7 ny-truck ny-airport)
-5 (load-airplane package2 airplane2 pgh-airport)
-6 (load-airplane package7 airplane1 ny-airport)
-6 (unload-airplane package8 airplane1 ny-airport)
-6 (fly-airplane airplane2 pgh-airport la-airport)
-6 (load-truck package1 pgh-truck pgh-po)
-7 (unload-airplane package3 airplane2 la-airport)
-7 (unload-airplane package6 airplane1 ny-airport)
-7 (drive-truck pgh-truck pgh-po pgh-airport pgh)
-8 (fly-airplane airplane2 la-airport ny-airport)
-8 (unload-truck package1 pgh-truck pgh-airport)
-8 (fly-airplane airplane1 ny-airport pgh-airport)
-8 (load-truck package3 la-truck la-airport)
-9 (unload-airplane package2 airplane2 ny-airport)
-9 (load-airplane package1 airplane1 pgh-airport)
-9 (load-truck package9 sf-truck sf-central)
-9 (load-airplane package4 airplane2 ny-airport)
-9 (unload-airplane package7 airplane1 pgh-airport)
-9 (unload-airplane package5 airplane1 pgh-airport)
-9 (drive-truck la-truck la-airport la-central la)
-10 (drive-truck sf-truck sf-central sf-po sf)
-10 (fly-airplane airplane2 ny-airport la-airport)
-10 (fly-airplane airplane1 pgh-airport bos-airport)
-10 (load-truck package2 ny-truck ny-airport)
-10 (load-truck package6 ny-truck ny-airport)
-10 (load-truck package8 ny-truck ny-airport)
-10 (unload-truck package3 la-truck la-central)
-11 (unload-airplane package1 airplane1 bos-airport)
-11 (unload-truck package9 sf-truck sf-po)
-11 (drive-truck ny-truck ny-airport ny-central ny)
-12 (load-truck package1 bos-truck bos-airport)
-12 (unload-truck package8 ny-truck ny-central)
-12 (unload-truck package6 ny-truck ny-central)
-12 (load-truck package7 pgh-truck pgh-airport)
-12 (load-truck package5 pgh-truck pgh-airport)
-13 (drive-truck ny-truck ny-central ny-po ny)
-13 (drive-truck bos-truck bos-airport bos-po bos)
-13 (drive-truck pgh-truck pgh-airport pgh-po pgh)
-14 (unload-truck package1 bos-truck bos-po)
-14 (unload-truck package7 pgh-truck pgh-po)
-14 (unload-truck package5 pgh-truck pgh-po)
-14 (unload-truck package2 ny-truck ny-po)
-End plan
-----------------------------------------------------
-
-68 total actions in plan
-0 entries in hash table, 
-13 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   3.74 seconds
-Time in milliseconds: 3736
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob008-log-d3.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob008-log-d3.pddl
-Problem name: log008
-Facts loaded.
-time: 1, 99 facts and 54 exclusive pairs.
-time: 2, 108 facts and 90 exclusive pairs.
-time: 3, 114 facts and 101 exclusive pairs.
-time: 4, 136 facts and 253 exclusive pairs.
-time: 5, 158 facts and 554 exclusive pairs.
-time: 6, 166 facts and 419 exclusive pairs.
-time: 7, 206 facts and 882 exclusive pairs.
-time: 8, 230 facts and 1236 exclusive pairs.
-time: 9, 246 facts and 1558 exclusive pairs.
-time: 10, 294 facts and 2596 exclusive pairs.
-Goals reachable at 10 steps but mutually exclusive.
-time: 11, 294 facts and 2420 exclusive pairs.
-Goals first reachable in 11 steps.
-7596 nodes created.
-
-####################################################
-goals at time 12:
-  at_package1_bos-po at_package2_ny-po at_package3_la-central at_package4_la-airport at_package5_pgh-po 
-at_package6_ny-central at_package7_pgh-po at_package8_ny-central at_package9_sf-po 
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 2851
-number of fluent variables = 1339
-total number variables = 4190
-number clauses = 66571
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 12, 294 facts and 2322 exclusive pairs.
-1218 new nodes added.
-
-####################################################
-goals at time 13:
-  at_package1_bos-po at_package2_ny-po at_package3_la-central at_package4_la-airport at_package5_pgh-po 
-at_package6_ny-central at_package7_pgh-po at_package8_ny-central at_package9_sf-po 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 3547
-number of fluent variables = 1561
-total number variables = 5108
-number clauses = 99277
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 12 steps
-time: 13, 294 facts and 2322 exclusive pairs.
-1218 new nodes added.
-
-####################################################
-goals at time 14:
-  at_package1_bos-po at_package2_ny-po at_package3_la-central at_package4_la-airport at_package5_pgh-po 
-at_package6_ny-central at_package7_pgh-po at_package8_ny-central at_package9_sf-po 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 4299
-number of fluent variables = 1805
-total number variables = 6104
-number clauses = 137023
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   32 actions were pruned in 0.00 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (drive-truck sf-truck sf-airport sf-central sf)
-1 (load-truck package5 bos-truck bos-po)
-1 (fly-airplane airplane3 pgh-airport sf-airport)
-1 (drive-truck pgh-truck pgh-airport pgh-po pgh)
-1 (load-truck package6 bos-truck bos-po)
-2 (drive-truck ny-truck ny-central ny-po ny)
-2 (load-airplane package8 airplane3 sf-airport)
-2 (load-truck package9 sf-truck sf-central)
-2 (drive-truck bos-truck bos-po bos-airport bos)
-2 (load-truck package1 pgh-truck pgh-po)
-3 (drive-truck sf-truck sf-central sf-airport sf)
-3 (unload-truck package6 bos-truck bos-airport)
-3 (fly-airplane airplane3 sf-airport bos-airport)
-3 (load-truck package4 ny-truck ny-po)
-3 (load-truck package7 ny-truck ny-po)
-3 (fly-airplane airplane1 pgh-airport bos-airport)
-3 (unload-truck package5 bos-truck bos-airport)
-3 (drive-truck pgh-truck pgh-po pgh-central pgh)
-4 (load-truck package2 pgh-truck pgh-central)
-4 (load-truck package3 pgh-truck pgh-central)
-4 (load-airplane package6 airplane3 bos-airport)
-4 (drive-truck ny-truck ny-po ny-airport ny)
-4 (load-airplane package5 airplane1 bos-airport)
-5 (fly-airplane airplane3 bos-airport ny-airport)
-5 (fly-airplane airplane1 bos-airport pgh-airport)
-5 (drive-truck pgh-truck pgh-central pgh-airport pgh)
-5 (unload-truck package7 ny-truck ny-airport)
-6 (unload-truck package3 pgh-truck pgh-airport)
-6 (unload-truck package2 pgh-truck pgh-airport)
-6 (unload-truck package1 pgh-truck pgh-airport)
-6 (unload-airplane package8 airplane3 ny-airport)
-6 (unload-airplane package6 airplane3 ny-airport)
-6 (unload-airplane package5 airplane1 pgh-airport)
-6 (drive-truck la-truck la-po la-airport la)
-6 (load-airplane package7 airplane3 ny-airport)
-7 (unload-truck package4 ny-truck ny-airport)
-7 (load-airplane package3 airplane2 pgh-airport)
-7 (load-airplane package1 airplane1 pgh-airport)
-7 (load-truck package6 ny-truck ny-airport)
-7 (load-truck package8 ny-truck ny-airport)
-7 (fly-airplane airplane3 ny-airport pgh-airport)
-8 (fly-airplane airplane2 pgh-airport la-airport)
-8 (load-airplane package2 airplane3 pgh-airport)
-8 (drive-truck ny-truck ny-airport ny-central ny)
-8 (fly-airplane airplane1 pgh-airport bos-airport)
-8 (unload-airplane package7 airplane3 pgh-airport)
-9 (unload-truck package8 ny-truck ny-central)
-9 (unload-airplane package1 airplane1 bos-airport)
-9 (unload-truck package6 ny-truck ny-central)
-9 (unload-airplane package3 airplane2 la-airport)
-9 (fly-airplane airplane3 pgh-airport ny-airport)
-10 (drive-truck ny-truck ny-central ny-airport ny)
-10 (unload-airplane package2 airplane3 ny-airport)
-10 (load-truck package5 pgh-truck pgh-airport)
-11 (load-truck package1 bos-truck bos-airport)
-11 (load-airplane package4 airplane3 ny-airport)
-11 (load-truck package2 ny-truck ny-airport)
-11 (load-truck package3 la-truck la-airport)
-11 (load-truck package7 pgh-truck pgh-airport)
-12 (fly-airplane airplane3 ny-airport la-airport)
-12 (drive-truck ny-truck ny-airport ny-po ny)
-12 (drive-truck sf-truck sf-airport sf-po sf)
-12 (drive-truck bos-truck bos-airport bos-po bos)
-12 (drive-truck pgh-truck pgh-airport pgh-po pgh)
-12 (drive-truck la-truck la-airport la-central la)
-13 (unload-truck package9 sf-truck sf-po)
-13 (unload-truck package1 bos-truck bos-po)
-13 (unload-truck package7 pgh-truck pgh-po)
-13 (unload-airplane package4 airplane3 la-airport)
-13 (unload-truck package5 pgh-truck pgh-po)
-13 (unload-truck package2 ny-truck ny-po)
-13 (unload-truck package3 la-truck la-central)
-End plan
-----------------------------------------------------
-
-72 total actions in plan
-0 entries in hash table, 
-12 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   3.19 seconds
-Time in milliseconds: 3194
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob009-log-d1.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob009-log-d1.pddl
-Problem name: log009
-Facts loaded.
-time: 1, 87 facts and 34 exclusive pairs.
-time: 2, 94 facts and 55 exclusive pairs.
-time: 3, 100 facts and 70 exclusive pairs.
-time: 4, 118 facts and 194 exclusive pairs.
-time: 5, 128 facts and 323 exclusive pairs.
-time: 6, 136 facts and 368 exclusive pairs.
-time: 7, 176 facts and 1541 exclusive pairs.
-time: 8, 200 facts and 2210 exclusive pairs.
-time: 9, 216 facts and 1486 exclusive pairs.
-time: 10, 264 facts and 2953 exclusive pairs.
-Goals reachable at 10 steps but mutually exclusive.
-time: 11, 264 facts and 2013 exclusive pairs.
-Goals first reachable in 11 steps.
-5620 nodes created.
-
-####################################################
-goals at time 12:
-  at_package1_bos-po at_package2_ny-po at_package3_la-central at_package4_la-airport at_package5_pgh-po 
-at_package6_ny-central at_package7_pgh-po at_package8_ny-central at_package9_sf-po 
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 1915
-number of fluent variables = 1137
-total number variables = 3052
-number clauses = 32150
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 12, 264 facts and 1915 exclusive pairs.
-938 new nodes added.
-
-####################################################
-goals at time 13:
-  at_package1_bos-po at_package2_ny-po at_package3_la-central at_package4_la-airport at_package5_pgh-po 
-at_package6_ny-central at_package7_pgh-po at_package8_ny-central at_package9_sf-po 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 2361
-number of fluent variables = 1329
-total number variables = 3690
-number clauses = 49958
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 12 steps
-time: 13, 264 facts and 1915 exclusive pairs.
-938 new nodes added.
-
-####################################################
-goals at time 14:
-  at_package1_bos-po at_package2_ny-po at_package3_la-central at_package4_la-airport at_package5_pgh-po 
-at_package6_ny-central at_package7_pgh-po at_package8_ny-central at_package9_sf-po 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 2863
-number of fluent variables = 1543
-total number variables = 4406
-number clauses = 72632
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 13 steps
-time: 14, 264 facts and 1915 exclusive pairs.
-938 new nodes added.
-
-####################################################
-goals at time 15:
-  at_package1_bos-po at_package2_ny-po at_package3_la-central at_package4_la-airport at_package5_pgh-po 
-at_package6_ny-central at_package7_pgh-po at_package8_ny-central at_package9_sf-po 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 3399
-number of fluent variables = 1763
-total number variables = 5162
-number clauses = 96295
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 14 steps
-time: 15, 264 facts and 1915 exclusive pairs.
-938 new nodes added.
-
-####################################################
-goals at time 16:
-  at_package1_bos-po at_package2_ny-po at_package3_la-central at_package4_la-airport at_package5_pgh-po 
-at_package6_ny-central at_package7_pgh-po at_package8_ny-central at_package9_sf-po 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 3965
-number of fluent variables = 1995
-total number variables = 5960
-number clauses = 120164
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 15 steps
-time: 16, 264 facts and 1915 exclusive pairs.
-938 new nodes added.
-
-####################################################
-goals at time 17:
-  at_package1_bos-po at_package2_ny-po at_package3_la-central at_package4_la-airport at_package5_pgh-po 
-at_package6_ny-central at_package7_pgh-po at_package8_ny-central at_package9_sf-po 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 4607
-number of fluent variables = 2259
-total number variables = 6866
-number clauses = 152356
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 16 steps
-time: 17, 264 facts and 1915 exclusive pairs.
-938 new nodes added.
-
-####################################################
-goals at time 18:
-  at_package1_bos-po at_package2_ny-po at_package3_la-central at_package4_la-airport at_package5_pgh-po 
-at_package6_ny-central at_package7_pgh-po at_package8_ny-central at_package9_sf-po 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 5281
-number of fluent variables = 2523
-total number variables = 7804
-number clauses = 186750
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   43 actions were pruned in 0.00 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (load-truck package5 bos-truck bos-po)
-1 (drive-truck pgh-truck pgh-airport pgh-central pgh)
-1 (fly-airplane airplane1 pgh-airport sf-airport)
-1 (load-truck package6 bos-truck bos-po)
-2 (drive-truck ny-truck ny-central ny-po ny)
-2 (load-airplane package8 airplane1 sf-airport)
-2 (drive-truck sf-truck sf-airport sf-central sf)
-2 (load-truck package2 pgh-truck pgh-central)
-2 (load-truck package3 pgh-truck pgh-central)
-2 (drive-truck bos-truck bos-po bos-airport bos)
-3 (drive-truck pgh-truck pgh-central pgh-po pgh)
-3 (unload-truck package6 bos-truck bos-airport)
-3 (load-truck package4 ny-truck ny-po)
-3 (fly-airplane airplane1 sf-airport bos-airport)
-3 (load-truck package7 ny-truck ny-po)
-3 (load-truck package9 sf-truck sf-central)
-3 (unload-truck package5 bos-truck bos-airport)
-4 (drive-truck sf-truck sf-central sf-po sf)
-4 (drive-truck ny-truck ny-po ny-airport ny)
-4 (load-airplane package6 airplane1 bos-airport)
-4 (load-airplane package5 airplane1 bos-airport)
-4 (load-truck package1 pgh-truck pgh-po)
-5 (fly-airplane airplane1 bos-airport ny-airport)
-5 (unload-truck package7 ny-truck ny-airport)
-5 (drive-truck la-truck la-po la-airport la)
-6 (load-airplane package7 airplane1 ny-airport)
-6 (unload-airplane package8 airplane1 ny-airport)
-6 (unload-truck package4 ny-truck ny-airport)
-6 (unload-airplane package6 airplane1 ny-airport)
-6 (drive-truck pgh-truck pgh-po pgh-airport pgh)
-7 (unload-truck package3 pgh-truck pgh-airport)
-7 (unload-truck package2 pgh-truck pgh-airport)
-7 (unload-truck package1 pgh-truck pgh-airport)
-7 (fly-airplane airplane1 ny-airport pgh-airport)
-7 (load-truck package6 ny-truck ny-airport)
-7 (load-truck package8 ny-truck ny-airport)
-8 (load-airplane package2 airplane1 pgh-airport)
-8 (load-airplane package1 airplane1 pgh-airport)
-8 (drive-truck ny-truck ny-airport ny-central ny)
-8 (unload-airplane package7 airplane1 pgh-airport)
-8 (unload-airplane package5 airplane1 pgh-airport)
-8 (load-airplane package3 airplane1 pgh-airport)
-9 (fly-airplane airplane1 pgh-airport ny-airport)
-9 (unload-truck package8 ny-truck ny-central)
-9 (unload-truck package6 ny-truck ny-central)
-10 (drive-truck ny-truck ny-central ny-airport ny)
-10 (load-airplane package4 airplane1 ny-airport)
-10 (unload-airplane package2 airplane1 ny-airport)
-10 (load-truck package5 pgh-truck pgh-airport)
-11 (fly-airplane airplane1 ny-airport bos-airport)
-12 (unload-airplane package1 airplane1 bos-airport)
-12 (load-truck package2 ny-truck ny-airport)
-13 (drive-truck ny-truck ny-airport ny-po ny)
-13 (fly-airplane airplane1 bos-airport la-airport)
-14 (unload-airplane package3 airplane1 la-airport)
-14 (unload-airplane package4 airplane1 la-airport)
-14 (unload-truck package2 ny-truck ny-po)
-15 (load-truck package1 bos-truck bos-airport)
-15 (load-truck package3 la-truck la-airport)
-15 (load-truck package7 pgh-truck pgh-airport)
-16 (drive-truck bos-truck bos-airport bos-po bos)
-16 (drive-truck pgh-truck pgh-airport pgh-po pgh)
-16 (drive-truck la-truck la-airport la-central la)
-17 (unload-truck package9 sf-truck sf-po)
-17 (unload-truck package1 bos-truck bos-po)
-17 (unload-truck package7 pgh-truck pgh-po)
-17 (unload-truck package5 pgh-truck pgh-po)
-17 (unload-truck package3 la-truck la-central)
-End plan
-----------------------------------------------------
-
-68 total actions in plan
-0 entries in hash table, 
-16 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   5.26 seconds
-Time in milliseconds: 5258
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob010.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob010.pddl
-Problem name: log010
-Facts loaded.
-time: 1, 98 facts and 83 exclusive pairs.
-time: 2, 110 facts and 141 exclusive pairs.
-time: 3, 129 facts and 188 exclusive pairs.
-time: 4, 169 facts and 575 exclusive pairs.
-time: 5, 188 facts and 771 exclusive pairs.
-time: 6, 213 facts and 1084 exclusive pairs.
-time: 7, 248 facts and 1552 exclusive pairs.
-time: 8, 258 facts and 1656 exclusive pairs.
-time: 9, 268 facts and 1792 exclusive pairs.
-time: 10, 278 facts and 1946 exclusive pairs.
-Goals first reachable in 10 steps.
-7156 nodes created.
-
-####################################################
-goals at time 11:
-  at_package1_loc2-1 at_package2_loc5-1 at_package3_loc4-1 at_package4_loc2-1 at_package5_loc4-2 
-at_package6_loc3-2 at_package7_loc4-1 at_package8_loc5-2 at_package9_loc6-2 at_package10_loc6-1 
-
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 3110
-number of fluent variables = 1356
-total number variables = 4466
-number clauses = 116213
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   8 actions were pruned in 0.00 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (load-airplane package8 plane2 loc4-1)
-1 (fly-airplane plane1 loc4-1 loc3-1)
-1 (load-airplane package2 plane2 loc4-1)
-1 (drive-truck truck3-1 loc3-1 loc3-2 city3)
-1 (load-airplane package4 plane2 loc4-1)
-2 (load-truck package9 truck3-1 loc3-2)
-2 (fly-airplane plane2 loc4-1 loc5-1)
-3 (drive-truck truck5-1 loc5-2 loc5-1 city5)
-3 (drive-truck truck3-1 loc3-2 loc3-1 city3)
-3 (unload-airplane package2 plane2 loc5-1)
-3 (unload-airplane package8 plane2 loc5-1)
-3 (load-airplane package1 plane2 loc5-1)
-4 (load-truck package8 truck5-1 loc5-1)
-4 (load-truck package7 truck2-1 loc2-2)
-4 (drive-truck truck6-1 loc6-1 loc6-2 city6)
-4 (fly-airplane plane2 loc5-1 loc1-1)
-4 (unload-truck package9 truck3-1 loc3-1)
-5 (drive-truck truck5-1 loc5-1 loc5-2 city5)
-5 (drive-truck truck2-1 loc2-2 loc2-1 city2)
-5 (load-truck package3 truck6-1 loc6-2)
-5 (load-airplane package9 plane1 loc3-1)
-6 (fly-airplane plane1 loc3-1 loc6-1)
-6 (load-truck package6 truck3-1 loc3-1)
-6 (drive-truck truck6-1 loc6-2 loc6-1 city6)
-6 (unload-truck package7 truck2-1 loc2-1)
-7 (fly-airplane plane2 loc1-1 loc2-1)
-7 (unload-truck package3 truck6-1 loc6-1)
-7 (unload-airplane package9 plane1 loc6-1)
-7 (drive-truck truck3-1 loc3-1 loc3-2 city3)
-7 (unload-truck package8 truck5-1 loc5-2)
-8 (unload-airplane package4 plane2 loc2-1)
-8 (load-truck package9 truck6-1 loc6-1)
-8 (unload-truck package6 truck3-1 loc3-2)
-8 (load-airplane package3 plane1 loc6-1)
-8 (unload-airplane package1 plane2 loc2-1)
-8 (load-airplane package7 plane2 loc2-1)
-9 (drive-truck truck6-1 loc6-1 loc6-2 city6)
-9 (fly-airplane plane1 loc6-1 loc4-1)
-9 (fly-airplane plane2 loc2-1 loc4-1)
-10 (unload-airplane package7 plane2 loc4-1)
-10 (unload-truck package9 truck6-1 loc6-2)
-10 (unload-airplane package3 plane1 loc4-1)
-End plan
-----------------------------------------------------
-
-42 total actions in plan
-0 entries in hash table, 
-9 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   1.45 seconds
-Time in milliseconds: 1452
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob011.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob011.pddl
-Problem name: log011
-Facts loaded.
-time: 1, 81 facts and 41 exclusive pairs.
-time: 2, 90 facts and 85 exclusive pairs.
-time: 3, 99 facts and 118 exclusive pairs.
-time: 4, 123 facts and 301 exclusive pairs.
-time: 5, 135 facts and 373 exclusive pairs.
-time: 6, 155 facts and 491 exclusive pairs.
-time: 7, 187 facts and 881 exclusive pairs.
-time: 8, 195 facts and 949 exclusive pairs.
-time: 9, 211 facts and 1173 exclusive pairs.
-time: 10, 219 facts and 1257 exclusive pairs.
-Goals first reachable in 10 steps.
-5181 nodes created.
-
-####################################################
-goals at time 11:
-  at_package1_loc1-2 at_package2_loc5-1 at_package3_loc1-1 at_package4_loc5-2 at_package5_loc2-1 
-at_package6_loc2-2 at_package7_loc3-1 at_package8_loc3-1 at_package9_loc3-2 
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 2165
-number of fluent variables = 1055
-total number variables = 3220
-number clauses = 54580
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 11, 219 facts and 1249 exclusive pairs.
-848 new nodes added.
-
-####################################################
-goals at time 12:
-  at_package1_loc1-2 at_package2_loc5-1 at_package3_loc1-1 at_package4_loc5-2 at_package5_loc2-1 
-at_package6_loc2-2 at_package7_loc3-1 at_package8_loc3-1 at_package9_loc3-2 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 2683
-number of fluent variables = 1241
-total number variables = 3924
-number clauses = 76230
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   13 actions were pruned in 0.00 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (fly-airplane plane1 loc4-1 loc5-1)
-1 (load-truck package5 truck1-1 loc1-2)
-1 (fly-airplane plane2 loc5-1 loc3-1)
-1 (load-truck package2 truck1-1 loc1-2)
-1 (load-truck package4 truck3-1 loc3-2)
-2 (drive-truck truck3-1 loc3-2 loc3-1 city3)
-2 (load-airplane package7 plane1 loc5-1)
-2 (drive-truck truck5-1 loc5-1 loc5-2 city5)
-2 (drive-truck truck1-1 loc1-2 loc1-1 city1)
-2 (load-airplane package6 plane2 loc3-1)
-3 (unload-truck package4 truck3-1 loc3-1)
-3 (fly-airplane plane2 loc3-1 loc1-1)
-3 (load-truck package9 truck5-1 loc5-2)
-3 (unload-truck package5 truck1-1 loc1-1)
-3 (load-truck package3 truck5-1 loc5-2)
-3 (fly-airplane plane1 loc5-1 loc3-1)
-3 (unload-truck package2 truck1-1 loc1-1)
-4 (drive-truck truck5-1 loc5-2 loc5-1 city5)
-4 (load-airplane package4 plane1 loc3-1)
-4 (load-airplane package8 plane2 loc1-1)
-4 (unload-airplane package7 plane1 loc3-1)
-4 (load-airplane package2 plane2 loc1-1)
-4 (load-airplane package5 plane2 loc1-1)
-5 (fly-airplane plane1 loc3-1 loc5-1)
-5 (unload-truck package3 truck5-1 loc5-1)
-5 (fly-airplane plane2 loc1-1 loc5-1)
-5 (unload-truck package9 truck5-1 loc5-1)
-6 (unload-airplane package2 plane2 loc5-1)
-6 (load-airplane package9 plane1 loc5-1)
-6 (unload-airplane package4 plane1 loc5-1)
-6 (load-airplane package3 plane1 loc5-1)
-7 (load-truck package4 truck5-1 loc5-1)
-7 (fly-airplane plane1 loc5-1 loc3-1)
-7 (fly-airplane plane2 loc5-1 loc2-1)
-8 (drive-truck truck5-1 loc5-1 loc5-2 city5)
-8 (unload-airplane package6 plane2 loc2-1)
-8 (unload-airplane package9 plane1 loc3-1)
-9 (load-truck package9 truck3-1 loc3-1)
-9 (unload-airplane package5 plane2 loc2-1)
-9 (unload-truck package4 truck5-1 loc5-2)
-9 (load-truck package6 truck2-1 loc2-1)
-10 (fly-airplane plane1 loc3-1 loc1-1)
-10 (drive-truck truck3-1 loc3-1 loc3-2 city3)
-10 (drive-truck truck2-1 loc2-1 loc2-2 city2)
-10 (fly-airplane plane2 loc2-1 loc3-1)
-11 (unload-airplane package8 plane2 loc3-1)
-11 (unload-airplane package3 plane1 loc1-1)
-11 (unload-truck package9 truck3-1 loc3-2)
-11 (unload-truck package6 truck2-1 loc2-2)
-End plan
-----------------------------------------------------
-
-49 total actions in plan
-0 entries in hash table, 
-10 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   1.15 seconds
-Time in milliseconds: 1152
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob012.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob012.pddl
-Problem name: log012
-Facts loaded.
-time: 1, 74 facts and 32 exclusive pairs.
-time: 2, 96 facts and 182 exclusive pairs.
-time: 3, 101 facts and 142 exclusive pairs.
-time: 4, 129 facts and 317 exclusive pairs.
-time: 5, 150 facts and 505 exclusive pairs.
-time: 6, 156 facts and 505 exclusive pairs.
-time: 7, 183 facts and 874 exclusive pairs.
-Goals first reachable in 7 steps.
-3084 nodes created.
-
-####################################################
-goals at time 8:
-  at_package1_loc2-1 at_package2_loc1-1 at_package3_loc2-2 at_package4_loc1-2 at_package5_loc1-2 
-at_package6_loc4-1 at_package7_loc2-1 at_package8_loc3-1 at_package9_loc1-1 
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 1102
-number of fluent variables = 607
-total number variables = 1709
-number clauses = 18124
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 8, 186 facts and 895 exclusive pairs.
-758 new nodes added.
-
-####################################################
-goals at time 9:
-  at_package1_loc2-1 at_package2_loc1-1 at_package3_loc2-2 at_package4_loc1-2 at_package5_loc1-2 
-at_package6_loc4-1 at_package7_loc2-1 at_package8_loc3-1 at_package9_loc1-1 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 1552
-number of fluent variables = 772
-total number variables = 2324
-number clauses = 31857
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   10 actions were pruned in 0.00 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (fly-airplane plane1 loc1-1 loc2-1)
-1 (load-truck package7 truck2-1 loc2-2)
-1 (load-truck package6 truck2-1 loc2-2)
-1 (fly-airplane plane2 loc1-1 loc4-1)
-1 (fly-airplane plane3 loc1-1 loc3-1)
-2 (load-airplane package3 plane3 loc3-1)
-2 (drive-truck truck2-1 loc2-2 loc2-1 city2)
-2 (load-airplane package5 plane1 loc2-1)
-2 (fly-airplane plane2 loc4-1 loc3-1)
-3 (load-airplane package4 plane2 loc3-1)
-3 (fly-airplane plane1 loc2-1 loc1-1)
-3 (fly-airplane plane3 loc3-1 loc2-1)
-3 (unload-truck package6 truck2-1 loc2-1)
-3 (drive-truck truck1-1 loc1-1 loc1-2 city1)
-3 (unload-truck package7 truck2-1 loc2-1)
-4 (unload-airplane package3 plane3 loc2-1)
-4 (fly-airplane plane2 loc3-1 loc1-1)
-4 (load-truck package9 truck1-1 loc1-2)
-4 (load-airplane package6 plane3 loc2-1)
-4 (unload-airplane package5 plane1 loc1-1)
-4 (load-airplane package8 plane3 loc2-1)
-5 (fly-airplane plane3 loc2-1 loc3-1)
-5 (unload-airplane package4 plane2 loc1-1)
-5 (fly-airplane plane1 loc1-1 loc4-1)
-5 (drive-truck truck1-1 loc1-2 loc1-1 city1)
-6 (unload-truck package9 truck1-1 loc1-1)
-6 (load-truck package3 truck2-1 loc2-1)
-6 (load-truck package4 truck1-1 loc1-1)
-6 (load-truck package5 truck1-1 loc1-1)
-6 (load-airplane package2 plane1 loc4-1)
-7 (fly-airplane plane1 loc4-1 loc1-1)
-7 (fly-airplane plane3 loc3-1 loc4-1)
-7 (drive-truck truck2-1 loc2-1 loc2-2 city2)
-7 (drive-truck truck1-1 loc1-1 loc1-2 city1)
-8 (unload-truck package4 truck1-1 loc1-2)
-8 (unload-truck package5 truck1-1 loc1-2)
-8 (unload-airplane package2 plane1 loc1-1)
-8 (unload-airplane package6 plane3 loc4-1)
-8 (unload-truck package3 truck2-1 loc2-2)
-End plan
-----------------------------------------------------
-
-39 total actions in plan
-0 entries in hash table, 
-7 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   0.56 seconds
-Time in milliseconds: 561
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob013.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob013.pddl
-Problem name: log013
-Facts loaded.
-time: 1, 98 facts and 61 exclusive pairs.
-time: 2, 108 facts and 116 exclusive pairs.
-time: 3, 113 facts and 99 exclusive pairs.
-time: 4, 139 facts and 307 exclusive pairs.
-time: 5, 158 facts and 509 exclusive pairs.
-time: 6, 178 facts and 562 exclusive pairs.
-time: 7, 223 facts and 1178 exclusive pairs.
-time: 8, 238 facts and 1383 exclusive pairs.
-time: 9, 258 facts and 1739 exclusive pairs.
-time: 10, 273 facts and 1956 exclusive pairs.
-Goals first reachable in 10 steps.
-6933 nodes created.
-
-####################################################
-goals at time 11:
-  at_package1_loc5-2 at_package2_loc1-1 at_package3_loc5-2 at_package4_loc1-2 at_package5_loc3-2 
-at_package6_loc6-1 at_package7_loc6-2 at_package8_loc3-1 at_package9_loc6-2 
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 2727
-number of fluent variables = 1175
-total number variables = 3902
-number clauses = 83928
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 11, 273 facts and 1941 exclusive pairs.
-1188 new nodes added.
-
-####################################################
-goals at time 12:
-  at_package1_loc5-2 at_package2_loc1-1 at_package3_loc5-2 at_package4_loc1-2 at_package5_loc3-2 
-at_package6_loc6-1 at_package7_loc6-2 at_package8_loc3-1 at_package9_loc6-2 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 3464
-number of fluent variables = 1395
-total number variables = 4859
-number clauses = 127097
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   12 actions were pruned in 0.00 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (fly-airplane plane1 loc6-1 loc1-1)
-1 (load-truck package1 truck3-1 loc3-2)
-1 (fly-airplane plane2 loc6-1 loc2-1)
-1 (drive-truck truck5-1 loc5-1 loc5-2 city5)
-1 (load-truck package7 truck4-1 loc4-2)
-1 (fly-airplane plane3 loc3-1 loc4-1)
-1 (load-truck package2 truck3-1 loc3-2)
-1 (load-truck package3 truck4-1 loc4-2)
-1 (drive-truck truck2-1 loc2-1 loc2-2 city2)
-2 (drive-truck truck4-1 loc4-2 loc4-1 city4)
-2 (drive-truck truck3-1 loc3-2 loc3-1 city3)
-2 (load-truck package9 truck2-1 loc2-2)
-2 (load-truck package4 truck5-1 loc5-2)
-2 (load-truck package6 truck5-1 loc5-2)
-2 (load-airplane package8 plane1 loc1-1)
-2 (load-airplane package5 plane2 loc2-1)
-3 (fly-airplane plane1 loc1-1 loc6-1)
-3 (drive-truck truck5-1 loc5-2 loc5-1 city5)
-3 (unload-truck package1 truck3-1 loc3-1)
-3 (unload-truck package2 truck3-1 loc3-1)
-3 (drive-truck truck2-1 loc2-2 loc2-1 city2)
-3 (unload-truck package7 truck4-1 loc4-1)
-3 (fly-airplane plane2 loc2-1 loc3-1)
-3 (unload-truck package3 truck4-1 loc4-1)
-4 (load-airplane package2 plane2 loc3-1)
-4 (load-airplane package7 plane3 loc4-1)
-4 (unload-airplane package5 plane2 loc3-1)
-4 (load-airplane package1 plane2 loc3-1)
-4 (unload-truck package9 truck2-1 loc2-1)
-4 (unload-truck package4 truck5-1 loc5-1)
-4 (unload-truck package6 truck5-1 loc5-1)
-4 (load-airplane package3 plane3 loc4-1)
-4 (fly-airplane plane1 loc6-1 loc2-1)
-5 (fly-airplane plane2 loc3-1 loc5-1)
-5 (load-airplane package9 plane1 loc2-1)
-5 (fly-airplane plane3 loc4-1 loc5-1)
-5 (load-truck package5 truck3-1 loc3-1)
-6 (load-airplane package6 plane3 loc5-1)
-6 (unload-airplane package3 plane3 loc5-1)
-6 (load-airplane package4 plane2 loc5-1)
-6 (fly-airplane plane1 loc2-1 loc6-1)
-6 (drive-truck truck3-1 loc3-1 loc3-2 city3)
-6 (unload-airplane package1 plane2 loc5-1)
-7 (load-truck package1 truck5-1 loc5-1)
-7 (fly-airplane plane3 loc5-1 loc6-1)
-7 (unload-truck package5 truck3-1 loc3-2)
-7 (fly-airplane plane2 loc5-1 loc1-1)
-7 (load-truck package3 truck5-1 loc5-1)
-7 (unload-airplane package8 plane1 loc6-1)
-7 (drive-truck truck1-1 loc1-2 loc1-1 city1)
-7 (unload-airplane package9 plane1 loc6-1)
-8 (drive-truck truck5-1 loc5-1 loc5-2 city5)
-8 (unload-airplane package7 plane3 loc6-1)
-8 (unload-airplane package4 plane2 loc1-1)
-8 (load-airplane package8 plane3 loc6-1)
-8 (unload-airplane package6 plane3 loc6-1)
-9 (load-truck package7 truck6-1 loc6-1)
-9 (load-truck package9 truck6-1 loc6-1)
-9 (load-truck package4 truck1-1 loc1-1)
-9 (unload-truck package3 truck5-1 loc5-2)
-9 (fly-airplane plane3 loc6-1 loc3-1)
-9 (unload-truck package1 truck5-1 loc5-2)
-10 (drive-truck truck6-1 loc6-1 loc6-2 city6)
-10 (unload-airplane package2 plane2 loc1-1)
-10 (unload-airplane package8 plane3 loc3-1)
-10 (drive-truck truck1-1 loc1-1 loc1-2 city1)
-11 (unload-truck package4 truck1-1 loc1-2)
-11 (unload-truck package7 truck6-1 loc6-2)
-11 (unload-truck package9 truck6-1 loc6-2)
-End plan
-----------------------------------------------------
-
-69 total actions in plan
-0 entries in hash table, 
-10 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   2.22 seconds
-Time in milliseconds: 2223
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob014.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob014.pddl
-Problem name: log014
-Facts loaded.
-time: 1, 101 facts and 59 exclusive pairs.
-time: 2, 117 facts and 153 exclusive pairs.
-time: 3, 121 facts and 113 exclusive pairs.
-time: 4, 152 facts and 340 exclusive pairs.
-time: 5, 182 facts and 688 exclusive pairs.
-time: 6, 197 facts and 669 exclusive pairs.
-time: 7, 252 facts and 1385 exclusive pairs.
-time: 8, 277 facts and 1765 exclusive pairs.
-time: 9, 292 facts and 1986 exclusive pairs.
-time: 10, 317 facts and 2386 exclusive pairs.
-Goals first reachable in 10 steps.
-7887 nodes created.
-
-####################################################
-goals at time 11:
-  at_package1_loc3-2 at_package2_loc3-2 at_package3_loc3-2 at_package4_loc6-1 at_package5_loc4-2 
-at_package6_loc1-1 at_package7_loc4-2 at_package8_loc2-2 at_package9_loc3-2 at_package10_loc3-1 
-at_package11_loc1-2 
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 2967
-number of fluent variables = 1285
-total number variables = 4252
-number clauses = 96476
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   14 actions were pruned in 0.01 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (drive-truck truck5-1 loc5-1 loc5-2 city5)
-1 (drive-truck truck1-1 loc1-2 loc1-1 city1)
-1 (load-truck package10 truck3-1 loc3-2)
-1 (drive-truck truck2-1 loc2-1 loc2-2 city2)
-1 (load-truck package4 truck3-1 loc3-2)
-2 (fly-airplane plane2 loc2-1 loc6-1)
-2 (drive-truck truck3-1 loc3-2 loc3-1 city3)
-2 (load-truck package1 truck5-1 loc5-2)
-2 (load-truck package7 truck2-1 loc2-2)
-2 (load-truck package2 truck5-1 loc5-2)
-2 (load-truck package9 truck2-1 loc2-2)
-2 (load-truck package3 truck2-1 loc2-2)
-2 (load-truck package11 truck1-1 loc1-1)
-2 (fly-airplane plane1 loc4-1 loc3-1)
-3 (load-airplane package8 plane1 loc3-1)
-3 (drive-truck truck5-1 loc5-2 loc5-1 city5)
-3 (unload-truck package4 truck3-1 loc3-1)
-3 (unload-truck package10 truck3-1 loc3-1)
-3 (load-airplane package5 plane2 loc6-1)
-3 (drive-truck truck2-1 loc2-2 loc2-1 city2)
-3 (drive-truck truck1-1 loc1-1 loc1-2 city1)
-4 (fly-airplane plane1 loc3-1 loc2-1)
-4 (unload-truck package11 truck1-1 loc1-2)
-4 (fly-airplane plane2 loc6-1 loc2-1)
-4 (unload-truck package2 truck5-1 loc5-1)
-4 (unload-truck package9 truck2-1 loc2-1)
-4 (unload-truck package3 truck2-1 loc2-1)
-4 (drive-truck truck3-1 loc3-1 loc3-2 city3)
-4 (unload-truck package1 truck5-1 loc5-1)
-4 (unload-truck package7 truck2-1 loc2-1)
-5 (load-truck package6 truck3-1 loc3-2)
-5 (load-airplane package9 plane1 loc2-1)
-5 (load-airplane package2 plane3 loc5-1)
-5 (load-airplane package1 plane3 loc5-1)
-5 (unload-airplane package8 plane1 loc2-1)
-5 (load-airplane package3 plane1 loc2-1)
-5 (load-airplane package7 plane2 loc2-1)
-6 (drive-truck truck3-1 loc3-2 loc3-1 city3)
-6 (fly-airplane plane1 loc2-1 loc3-1)
-6 (fly-airplane plane2 loc2-1 loc4-1)
-6 (fly-airplane plane3 loc5-1 loc3-1)
-7 (unload-airplane package7 plane2 loc4-1)
-7 (drive-truck truck4-1 loc4-2 loc4-1 city4)
-7 (unload-truck package6 truck3-1 loc3-1)
-7 (unload-airplane package1 plane3 loc3-1)
-7 (load-airplane package4 plane1 loc3-1)
-7 (unload-airplane package9 plane1 loc3-1)
-7 (unload-airplane package2 plane3 loc3-1)
-7 (unload-airplane package3 plane1 loc3-1)
-7 (unload-airplane package5 plane2 loc4-1)
-8 (fly-airplane plane1 loc3-1 loc6-1)
-8 (load-truck package1 truck3-1 loc3-1)
-8 (load-truck package8 truck2-1 loc2-1)
-8 (load-truck package9 truck3-1 loc3-1)
-8 (load-truck package5 truck4-1 loc4-1)
-8 (load-airplane package6 plane3 loc3-1)
-8 (load-truck package7 truck4-1 loc4-1)
-8 (load-truck package2 truck3-1 loc3-1)
-8 (load-truck package3 truck3-1 loc3-1)
-9 (unload-airplane package4 plane1 loc6-1)
-9 (fly-airplane plane3 loc3-1 loc1-1)
-9 (drive-truck truck4-1 loc4-1 loc4-2 city4)
-9 (drive-truck truck3-1 loc3-1 loc3-2 city3)
-9 (drive-truck truck2-1 loc2-1 loc2-2 city2)
-10 (unload-truck package5 truck4-1 loc4-2)
-10 (unload-airplane package6 plane3 loc1-1)
-10 (unload-truck package1 truck3-1 loc3-2)
-10 (unload-truck package2 truck3-1 loc3-2)
-10 (unload-truck package9 truck3-1 loc3-2)
-10 (unload-truck package3 truck3-1 loc3-2)
-10 (unload-truck package7 truck4-1 loc4-2)
-10 (unload-truck package8 truck2-1 loc2-2)
-End plan
-----------------------------------------------------
-
-72 total actions in plan
-0 entries in hash table, 
-9 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   1.46 seconds
-Time in milliseconds: 1462
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob015.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob015.pddl
-Problem name: log015
-Facts loaded.
-time: 1, 99 facts and 64 exclusive pairs.
-time: 2, 109 facts and 117 exclusive pairs.
-time: 3, 126 facts and 244 exclusive pairs.
-time: 4, 158 facts and 509 exclusive pairs.
-time: 5, 174 facts and 613 exclusive pairs.
-time: 6, 204 facts and 866 exclusive pairs.
-time: 7, 249 facts and 1446 exclusive pairs.
-time: 8, 264 facts and 1603 exclusive pairs.
-time: 9, 284 facts and 1939 exclusive pairs.
-time: 10, 299 facts and 2141 exclusive pairs.
-Goals first reachable in 10 steps.
-7099 nodes created.
-
-####################################################
-goals at time 11:
-  at_package1_loc6-2 at_package2_loc4-1 at_package3_loc5-1 at_package4_loc5-1 at_package5_loc5-2 
-at_package6_loc6-2 at_package7_loc4-1 at_package8_loc3-2 at_package9_loc3-1 at_package10_loc1-1 
-at_package11_loc2-1 
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 3001
-number of fluent variables = 1357
-total number variables = 4358
-number clauses = 108371
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 11, 299 facts and 2126 exclusive pairs.
-1198 new nodes added.
-
-####################################################
-goals at time 12:
-  at_package1_loc6-2 at_package2_loc4-1 at_package3_loc5-1 at_package4_loc5-1 at_package5_loc5-2 
-at_package6_loc6-2 at_package7_loc4-1 at_package8_loc3-2 at_package9_loc3-1 at_package10_loc1-1 
-at_package11_loc2-1 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 3743
-number of fluent variables = 1609
-total number variables = 5352
-number clauses = 150849
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 11 steps
-time: 12, 299 facts and 2126 exclusive pairs.
-1198 new nodes added.
-
-####################################################
-goals at time 13:
-  at_package1_loc6-2 at_package2_loc4-1 at_package3_loc5-1 at_package4_loc5-1 at_package5_loc5-2 
-at_package6_loc6-2 at_package7_loc4-1 at_package8_loc3-2 at_package9_loc3-1 at_package10_loc1-1 
-at_package11_loc2-1 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 4513
-number of fluent variables = 1867
-total number variables = 6380
-number clauses = 195905
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   8 actions were pruned in 0.01 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (drive-truck truck5-1 loc5-2 loc5-1 city5)
-1 (fly-airplane plane2 loc4-1 loc6-1)
-1 (fly-airplane plane1 loc3-1 loc4-1)
-1 (load-truck package6 truck2-1 loc2-2)
-1 (load-truck package7 truck1-1 loc1-2)
-1 (drive-truck truck4-1 loc4-1 loc4-2 city4)
-1 (drive-truck truck3-1 loc3-1 loc3-2 city3)
-1 (load-truck package2 truck1-1 loc1-2)
-2 (load-airplane package8 plane2 loc6-1)
-2 (load-airplane package11 plane1 loc4-1)
-2 (load-truck package5 truck5-1 loc5-1)
-2 (drive-truck truck2-1 loc2-2 loc2-1 city2)
-2 (drive-truck truck1-1 loc1-2 loc1-1 city1)
-2 (load-truck package10 truck3-1 loc3-2)
-2 (load-truck package3 truck3-1 loc3-2)
-3 (drive-truck truck3-1 loc3-2 loc3-1 city3)
-3 (drive-truck truck5-1 loc5-1 loc5-2 city5)
-3 (load-truck package1 truck4-1 loc4-2)
-3 (unload-truck package6 truck2-1 loc2-1)
-3 (unload-truck package7 truck1-1 loc1-1)
-3 (fly-airplane plane1 loc4-1 loc2-1)
-3 (fly-airplane plane2 loc6-1 loc3-1)
-4 (drive-truck truck4-1 loc4-2 loc4-1 city4)
-4 (unload-airplane package8 plane2 loc3-1)
-4 (unload-airplane package11 plane1 loc2-1)
-4 (load-airplane package6 plane1 loc2-1)
-4 (load-truck package9 truck5-1 loc5-2)
-4 (unload-truck package10 truck3-1 loc3-1)
-4 (unload-truck package3 truck3-1 loc3-1)
-4 (unload-truck package5 truck5-1 loc5-2)
-5 (drive-truck truck5-1 loc5-2 loc5-1 city5)
-5 (load-airplane package4 plane2 loc3-1)
-5 (fly-airplane plane1 loc2-1 loc4-1)
-5 (load-airplane package3 plane2 loc3-1)
-5 (load-airplane package10 plane2 loc3-1)
-5 (unload-truck package1 truck4-1 loc4-1)
-6 (fly-airplane plane2 loc3-1 loc1-1)
-6 (load-airplane package1 plane1 loc4-1)
-6 (unload-truck package2 truck1-1 loc1-1)
-7 (load-airplane package2 plane2 loc1-1)
-7 (fly-airplane plane1 loc4-1 loc6-1)
-7 (unload-airplane package10 plane2 loc1-1)
-8 (load-airplane package7 plane2 loc1-1)
-8 (unload-airplane package6 plane1 loc6-1)
-8 (unload-airplane package1 plane1 loc6-1)
-8 (unload-truck package9 truck5-1 loc5-1)
-9 (fly-airplane plane1 loc6-1 loc5-1)
-9 (fly-airplane plane2 loc1-1 loc4-1)
-10 (unload-airplane package7 plane2 loc4-1)
-10 (load-truck package1 truck6-1 loc6-1)
-10 (load-truck package8 truck3-1 loc3-1)
-10 (load-airplane package9 plane1 loc5-1)
-10 (unload-airplane package2 plane2 loc4-1)
-10 (load-truck package6 truck6-1 loc6-1)
-11 (drive-truck truck6-1 loc6-1 loc6-2 city6)
-11 (fly-airplane plane2 loc4-1 loc5-1)
-11 (drive-truck truck3-1 loc3-1 loc3-2 city3)
-11 (fly-airplane plane1 loc5-1 loc3-1)
-12 (unload-truck package6 truck6-1 loc6-2)
-12 (unload-airplane package4 plane2 loc5-1)
-12 (unload-truck package1 truck6-1 loc6-2)
-12 (unload-truck package8 truck3-1 loc3-2)
-12 (unload-airplane package9 plane1 loc3-1)
-12 (unload-airplane package3 plane2 loc5-1)
-End plan
-----------------------------------------------------
-
-64 total actions in plan
-0 entries in hash table, 
-11 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   4.85 seconds
-Time in milliseconds: 4847
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob016.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob016.pddl
-Problem name: log016
-Facts loaded.
-time: 1, 76 facts and 27 exclusive pairs.
-time: 2, 80 facts and 38 exclusive pairs.
-time: 3, 83 facts and 38 exclusive pairs.
-time: 4, 94 facts and 142 exclusive pairs.
-time: 5, 101 facts and 209 exclusive pairs.
-time: 6, 116 facts and 548 exclusive pairs.
-time: 7, 146 facts and 1421 exclusive pairs.
-time: 8, 156 facts and 1097 exclusive pairs.
-time: 9, 171 facts and 1010 exclusive pairs.
-Goals reachable at 9 steps but mutually exclusive.
-time: 10, 181 facts and 1078 exclusive pairs.
-Goals first reachable in 10 steps.
-3646 nodes created.
-
-####################################################
-goals at time 11:
-  at_package1_loc1-1 at_package2_loc4-1 at_package3_loc5-2 at_package4_loc4-2 at_package5_loc6-1 
-at_package6_loc6-1 
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 1416
-number of fluent variables = 850
-total number variables = 2266
-number clauses = 28982
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 11, 181 facts and 1047 exclusive pairs.
-620 new nodes added.
-
-####################################################
-goals at time 12:
-  at_package1_loc1-1 at_package2_loc4-1 at_package3_loc5-2 at_package4_loc4-2 at_package5_loc6-1 
-at_package6_loc6-1 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 1751
-number of fluent variables = 1001
-total number variables = 2752
-number clauses = 42653
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 11 steps
-time: 12, 181 facts and 1047 exclusive pairs.
-620 new nodes added.
-
-####################################################
-goals at time 13:
-  at_package1_loc1-1 at_package2_loc4-1 at_package3_loc5-2 at_package4_loc4-2 at_package5_loc6-1 
-at_package6_loc6-1 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 2118
-number of fluent variables = 1161
-total number variables = 3279
-number clauses = 58377
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 12 steps
-time: 13, 181 facts and 1047 exclusive pairs.
-620 new nodes added.
-
-####################################################
-goals at time 14:
-  at_package1_loc1-1 at_package2_loc4-1 at_package3_loc5-2 at_package4_loc4-2 at_package5_loc6-1 
-at_package6_loc6-1 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 2502
-number of fluent variables = 1325
-total number variables = 3827
-number clauses = 73741
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 13 steps
-time: 14, 181 facts and 1047 exclusive pairs.
-620 new nodes added.
-
-####################################################
-goals at time 15:
-  at_package1_loc1-1 at_package2_loc4-1 at_package3_loc5-2 at_package4_loc4-2 at_package5_loc6-1 
-at_package6_loc6-1 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 2908
-number of fluent variables = 1498
-total number variables = 4406
-number clauses = 88974
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 14 steps
-time: 15, 181 facts and 1047 exclusive pairs.
-620 new nodes added.
-
-####################################################
-goals at time 16:
-  at_package1_loc1-1 at_package2_loc4-1 at_package3_loc5-2 at_package4_loc4-2 at_package5_loc6-1 
-at_package6_loc6-1 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 3339
-number of fluent variables = 1679
-total number variables = 5018
-number clauses = 105789
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 15 steps
-time: 16, 181 facts and 1047 exclusive pairs.
-620 new nodes added.
-
-####################################################
-goals at time 17:
-  at_package1_loc1-1 at_package2_loc4-1 at_package3_loc5-2 at_package4_loc4-2 at_package5_loc6-1 
-at_package6_loc6-1 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 3778
-number of fluent variables = 1860
-total number variables = 5638
-number clauses = 122739
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   28 actions were pruned in 0.00 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (load-truck package1 truck2-1 loc2-2)
-1 (load-truck package4 truck5-1 loc5-2)
-2 (drive-truck truck5-1 loc5-2 loc5-1 city5)
-2 (drive-truck truck6-1 loc6-1 loc6-2 city6)
-2 (drive-truck truck2-1 loc2-2 loc2-1 city2)
-3 (unload-truck package1 truck2-1 loc2-1)
-3 (unload-truck package4 truck5-1 loc5-1)
-3 (load-truck package3 truck4-1 loc4-2)
-3 (load-truck package5 truck6-1 loc6-2)
-4 (drive-truck truck4-1 loc4-2 loc4-1 city4)
-4 (load-airplane package1 plane1 loc2-1)
-4 (drive-truck truck6-1 loc6-2 loc6-1 city6)
-4 (drive-truck truck3-1 loc3-1 loc3-2 city3)
-5 (unload-truck package5 truck6-1 loc6-1)
-5 (fly-airplane plane1 loc2-1 loc4-1)
-5 (load-truck package2 truck3-1 loc3-2)
-5 (unload-truck package3 truck4-1 loc4-1)
-6 (drive-truck truck3-1 loc3-2 loc3-1 city3)
-6 (load-airplane package3 plane1 loc4-1)
-7 (unload-truck package2 truck3-1 loc3-1)
-7 (fly-airplane plane1 loc4-1 loc3-1)
-8 (load-airplane package2 plane1 loc3-1)
-9 (fly-airplane plane1 loc3-1 loc5-1)
-10 (unload-airplane package3 plane1 loc5-1)
-10 (load-airplane package6 plane1 loc5-1)
-10 (load-airplane package4 plane1 loc5-1)
-11 (fly-airplane plane1 loc5-1 loc4-1)
-12 (unload-airplane package2 plane1 loc4-1)
-12 (unload-airplane package4 plane1 loc4-1)
-13 (fly-airplane plane1 loc4-1 loc1-1)
-14 (unload-airplane package1 plane1 loc1-1)
-14 (load-truck package3 truck5-1 loc5-1)
-14 (load-truck package4 truck4-1 loc4-1)
-15 (fly-airplane plane1 loc1-1 loc6-1)
-15 (drive-truck truck5-1 loc5-1 loc5-2 city5)
-15 (drive-truck truck4-1 loc4-1 loc4-2 city4)
-16 (unload-truck package4 truck4-1 loc4-2)
-16 (unload-airplane package6 plane1 loc6-1)
-16 (unload-truck package3 truck5-1 loc5-2)
-End plan
-----------------------------------------------------
-
-39 total actions in plan
-0 entries in hash table, 
-15 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   4.62 seconds
-Time in milliseconds: 4617
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob017.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob017.pddl
-Problem name: log017
-Facts loaded.
-time: 1, 76 facts and 27 exclusive pairs.
-time: 2, 79 facts and 30 exclusive pairs.
-time: 3, 82 facts and 36 exclusive pairs.
-time: 4, 88 facts and 69 exclusive pairs.
-time: 5, 91 facts and 87 exclusive pairs.
-time: 6, 106 facts and 360 exclusive pairs.
-time: 7, 136 facts and 1353 exclusive pairs.
-time: 8, 151 facts and 1335 exclusive pairs.
-time: 9, 166 facts and 984 exclusive pairs.
-time: 10, 181 facts and 1125 exclusive pairs.
-Goals first reachable in 10 steps.
-3454 nodes created.
-
-####################################################
-goals at time 11:
-  at_package1_loc6-2 at_package2_loc6-2 at_package3_loc6-2 at_package4_loc6-2 at_package5_loc6-2 
-at_package6_loc6-2 
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 876
-number of fluent variables = 594
-total number variables = 1470
-number clauses = 10270
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 11, 181 facts and 1047 exclusive pairs.
-620 new nodes added.
-
-####################################################
-goals at time 12:
-  at_package1_loc6-2 at_package2_loc6-2 at_package3_loc6-2 at_package4_loc6-2 at_package5_loc6-2 
-at_package6_loc6-2 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 1150
-number of fluent variables = 725
-total number variables = 1875
-number clauses = 18957
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 11 steps
-time: 12, 181 facts and 1047 exclusive pairs.
-620 new nodes added.
-
-####################################################
-goals at time 13:
-  at_package1_loc6-2 at_package2_loc6-2 at_package3_loc6-2 at_package4_loc6-2 at_package5_loc6-2 
-at_package6_loc6-2 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 1463
-number of fluent variables = 868
-total number variables = 2331
-number clauses = 32593
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 12 steps
-time: 13, 181 facts and 1047 exclusive pairs.
-620 new nodes added.
-
-####################################################
-goals at time 14:
-  at_package1_loc6-2 at_package2_loc6-2 at_package3_loc6-2 at_package4_loc6-2 at_package5_loc6-2 
-at_package6_loc6-2 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 1814
-number of fluent variables = 1024
-total number variables = 2838
-number clauses = 49089
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 13 steps
-time: 14, 181 facts and 1047 exclusive pairs.
-620 new nodes added.
-
-####################################################
-goals at time 15:
-  at_package1_loc6-2 at_package2_loc6-2 at_package3_loc6-2 at_package4_loc6-2 at_package5_loc6-2 
-at_package6_loc6-2 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 2178
-number of fluent variables = 1180
-total number variables = 3358
-number clauses = 63642
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 14 steps
-time: 15, 181 facts and 1047 exclusive pairs.
-620 new nodes added.
-
-####################################################
-goals at time 16:
-  at_package1_loc6-2 at_package2_loc6-2 at_package3_loc6-2 at_package4_loc6-2 at_package5_loc6-2 
-at_package6_loc6-2 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 2566
-number of fluent variables = 1348
-total number variables = 3914
-number clauses = 78084
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 15 steps
-time: 16, 181 facts and 1047 exclusive pairs.
-620 new nodes added.
-
-####################################################
-goals at time 17:
-  at_package1_loc6-2 at_package2_loc6-2 at_package3_loc6-2 at_package4_loc6-2 at_package5_loc6-2 
-at_package6_loc6-2 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 2992
-number of fluent variables = 1529
-total number variables = 4521
-number clauses = 94734
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 16 steps
-time: 17, 181 facts and 1047 exclusive pairs.
-620 new nodes added.
-
-####################################################
-goals at time 18:
-  at_package1_loc6-2 at_package2_loc6-2 at_package3_loc6-2 at_package4_loc6-2 at_package5_loc6-2 
-at_package6_loc6-2 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 3431
-number of fluent variables = 1710
-total number variables = 5141
-number clauses = 111755
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   9 actions were pruned in 0.00 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (load-truck package2 truck2-1 loc2-2)
-1 (load-truck package5 truck5-1 loc5-2)
-1 (drive-truck truck3-1 loc3-1 loc3-2 city3)
-1 (drive-truck truck1-1 loc1-1 loc1-2 city1)
-1 (load-truck package4 truck4-1 loc4-2)
-2 (drive-truck truck4-1 loc4-2 loc4-1 city4)
-2 (drive-truck truck2-1 loc2-2 loc2-1 city2)
-2 (load-truck package3 truck3-1 loc3-2)
-3 (unload-truck package4 truck4-1 loc4-1)
-3 (drive-truck truck3-1 loc3-2 loc3-1 city3)
-3 (unload-truck package2 truck2-1 loc2-1)
-4 (load-airplane package2 plane1 loc2-1)
-4 (unload-truck package3 truck3-1 loc3-1)
-4 (load-truck package1 truck1-1 loc1-2)
-5 (fly-airplane plane1 loc2-1 loc4-1)
-5 (drive-truck truck1-1 loc1-2 loc1-1 city1)
-6 (load-airplane package4 plane1 loc4-1)
-6 (drive-truck truck5-1 loc5-2 loc5-1 city5)
-6 (unload-truck package1 truck1-1 loc1-1)
-7 (fly-airplane plane1 loc4-1 loc1-1)
-7 (unload-truck package5 truck5-1 loc5-1)
-8 (load-airplane package1 plane1 loc1-1)
-9 (fly-airplane plane1 loc1-1 loc3-1)
-10 (load-airplane package3 plane1 loc3-1)
-11 (fly-airplane plane1 loc3-1 loc5-1)
-12 (load-airplane package5 plane1 loc5-1)
-13 (fly-airplane plane1 loc5-1 loc6-1)
-14 (unload-airplane package2 plane1 loc6-1)
-14 (unload-airplane package4 plane1 loc6-1)
-14 (unload-airplane package1 plane1 loc6-1)
-14 (unload-airplane package3 plane1 loc6-1)
-14 (unload-airplane package5 plane1 loc6-1)
-15 (load-truck package1 truck6-1 loc6-1)
-15 (load-truck package2 truck6-1 loc6-1)
-15 (load-truck package3 truck6-1 loc6-1)
-15 (load-truck package4 truck6-1 loc6-1)
-15 (load-truck package5 truck6-1 loc6-1)
-16 (drive-truck truck6-1 loc6-1 loc6-2 city6)
-17 (unload-truck package5 truck6-1 loc6-2)
-17 (unload-truck package1 truck6-1 loc6-2)
-17 (unload-truck package2 truck6-1 loc6-2)
-17 (unload-truck package3 truck6-1 loc6-2)
-17 (unload-truck package4 truck6-1 loc6-2)
-End plan
-----------------------------------------------------
-
-43 total actions in plan
-0 entries in hash table, 
-16 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   6.48 seconds
-Time in milliseconds: 6479
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob018.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob018.pddl
-Problem name: log018
-Facts loaded.
-time: 1, 132 facts and 90 exclusive pairs.
-time: 2, 146 facts and 147 exclusive pairs.
-time: 3, 159 facts and 231 exclusive pairs.
-time: 4, 186 facts and 509 exclusive pairs.
-time: 5, 204 facts and 740 exclusive pairs.
-time: 6, 224 facts and 1019 exclusive pairs.
-time: 7, 274 facts and 1824 exclusive pairs.
-time: 8, 314 facts and 2524 exclusive pairs.
-time: 9, 334 facts and 2974 exclusive pairs.
-time: 10, 374 facts and 4034 exclusive pairs.
-Goals first reachable in 10 steps.
-8767 nodes created.
-
-####################################################
-goals at time 11:
-  at_package1_loc5-3 at_package2_loc4-3 at_package3_loc5-3 at_package4_loc4-1 at_package5_loc1-2 
-at_package6_loc1-3 at_package7_loc2-3 at_package8_loc2-3 
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 2924
-number of fluent variables = 1381
-total number variables = 4305
-number clauses = 62369
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 11, 374 facts and 4034 exclusive pairs.
-1648 new nodes added.
-
-####################################################
-goals at time 12:
-  at_package1_loc5-3 at_package2_loc4-3 at_package3_loc5-3 at_package4_loc4-1 at_package5_loc1-2 
-at_package6_loc1-3 at_package7_loc2-3 at_package8_loc2-3 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 3774
-number of fluent variables = 1693
-total number variables = 5467
-number clauses = 95103
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   45 actions were pruned in 0.00 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (fly-airplane plane2 loc3-1 loc5-1)
-1 (drive-truck truck1-2 loc1-1 loc1-2 city1)
-1 (load-truck package6 truck4-1 loc4-2)
-1 (drive-truck truck4-2 loc4-3 loc4-2 city4)
-1 (drive-truck truck2-1 loc2-1 loc2-3 city2)
-2 (drive-truck truck4-1 loc4-2 loc4-1 city4)
-2 (load-truck package1 truck2-1 loc2-3)
-2 (load-truck package2 truck4-2 loc4-2)
-2 (load-truck package8 truck1-2 loc1-2)
-2 (load-truck package4 truck1-2 loc1-2)
-2 (load-airplane package5 plane2 loc5-1)
-3 (drive-truck truck2-1 loc2-3 loc2-1 city2)
-3 (drive-truck truck1-2 loc1-2 loc1-1 city1)
-3 (unload-truck package6 truck4-1 loc4-1)
-3 (fly-airplane plane2 loc5-1 loc4-1)
-3 (drive-truck truck4-2 loc4-2 loc4-3 city4)
-4 (unload-truck package1 truck2-1 loc2-1)
-4 (load-airplane package6 plane2 loc4-1)
-4 (unload-truck package8 truck1-2 loc1-1)
-4 (unload-truck package2 truck4-2 loc4-3)
-5 (load-airplane package1 plane1 loc2-1)
-5 (fly-airplane plane2 loc4-1 loc1-1)
-6 (fly-airplane plane1 loc2-1 loc5-1)
-6 (load-airplane package8 plane2 loc1-1)
-6 (unload-airplane package6 plane2 loc1-1)
-6 (unload-airplane package5 plane2 loc1-1)
-6 (unload-truck package4 truck1-2 loc1-1)
-7 (unload-airplane package1 plane1 loc5-1)
-7 (load-truck package5 truck1-2 loc1-1)
-7 (load-truck package6 truck1-2 loc1-1)
-7 (fly-airplane plane2 loc1-1 loc2-1)
-8 (fly-airplane plane1 loc5-1 loc1-1)
-8 (drive-truck truck1-2 loc1-1 loc1-3 city1)
-8 (unload-airplane package8 plane2 loc2-1)
-8 (load-truck package1 truck5-2 loc5-1)
-9 (load-truck package7 truck2-1 loc2-1)
-9 (unload-truck package6 truck1-2 loc1-3)
-9 (load-truck package8 truck2-1 loc2-1)
-9 (load-airplane package4 plane1 loc1-1)
-9 (drive-truck truck5-2 loc5-1 loc5-3 city5)
-10 (drive-truck truck1-2 loc1-3 loc1-2 city1)
-10 (fly-airplane plane1 loc1-1 loc4-1)
-10 (unload-truck package1 truck5-2 loc5-3)
-10 (drive-truck truck2-1 loc2-1 loc2-3 city2)
-11 (unload-truck package5 truck1-2 loc1-2)
-11 (unload-airplane package4 plane1 loc4-1)
-11 (unload-truck package7 truck2-1 loc2-3)
-11 (unload-truck package8 truck2-1 loc2-3)
-End plan
-----------------------------------------------------
-
-48 total actions in plan
-0 entries in hash table, 
-10 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   2.76 seconds
-Time in milliseconds: 2764
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob019.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob019.pddl
-Problem name: log019
-Facts loaded.
-time: 1, 92 facts and 53 exclusive pairs.
-time: 2, 101 facts and 97 exclusive pairs.
-time: 3, 111 facts and 151 exclusive pairs.
-time: 4, 136 facts and 339 exclusive pairs.
-time: 5, 152 facts and 481 exclusive pairs.
-time: 6, 172 facts and 618 exclusive pairs.
-time: 7, 212 facts and 1118 exclusive pairs.
-time: 8, 227 facts and 1301 exclusive pairs.
-time: 9, 242 facts and 1542 exclusive pairs.
-time: 10, 257 facts and 1761 exclusive pairs.
-Goals first reachable in 10 steps.
-6048 nodes created.
-
-####################################################
-goals at time 11:
-  at_package1_loc5-2 at_package2_loc4-1 at_package3_loc6-2 at_package4_loc2-1 at_package5_loc1-1 
-at_package6_loc5-1 at_package7_loc1-2 at_package8_loc2-2 at_package9_loc6-1 
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 2530
-number of fluent variables = 1178
-total number variables = 3708
-number clauses = 77354
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 11, 257 facts and 1746 exclusive pairs.
-1018 new nodes added.
-
-####################################################
-goals at time 12:
-  at_package1_loc5-2 at_package2_loc4-1 at_package3_loc6-2 at_package4_loc2-1 at_package5_loc1-1 
-at_package6_loc5-1 at_package7_loc1-2 at_package8_loc2-2 at_package9_loc6-1 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 3137
-number of fluent variables = 1392
-total number variables = 4529
-number clauses = 108461
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   10 actions were pruned in 0.00 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (load-truck package9 truck5-1 loc5-2)
-1 (load-airplane package8 plane2 loc4-1)
-1 (drive-truck truck3-1 loc3-1 loc3-2 city3)
-1 (fly-airplane plane1 loc5-1 loc3-1)
-2 (drive-truck truck5-1 loc5-2 loc5-1 city5)
-2 (fly-airplane plane2 loc4-1 loc2-1)
-2 (drive-truck truck6-1 loc6-1 loc6-2 city6)
-2 (load-airplane package4 plane1 loc3-1)
-2 (load-truck package3 truck3-1 loc3-2)
-3 (drive-truck truck3-1 loc3-2 loc3-1 city3)
-3 (load-truck package1 truck6-1 loc6-2)
-3 (fly-airplane plane1 loc3-1 loc5-1)
-3 (unload-airplane package8 plane2 loc2-1)
-3 (unload-truck package9 truck5-1 loc5-1)
-3 (load-truck package6 truck6-1 loc6-2)
-4 (drive-truck truck5-1 loc5-1 loc5-2 city5)
-4 (load-airplane package9 plane1 loc5-1)
-4 (drive-truck truck6-1 loc6-2 loc6-1 city6)
-4 (unload-truck package3 truck3-1 loc3-1)
-4 (fly-airplane plane2 loc2-1 loc3-1)
-5 (fly-airplane plane1 loc5-1 loc6-1)
-5 (unload-truck package6 truck6-1 loc6-1)
-5 (load-truck package2 truck5-1 loc5-2)
-5 (unload-truck package1 truck6-1 loc6-1)
-5 (load-airplane package3 plane2 loc3-1)
-6 (load-airplane package1 plane1 loc6-1)
-6 (drive-truck truck5-1 loc5-2 loc5-1 city5)
-6 (load-airplane package6 plane1 loc6-1)
-6 (unload-airplane package4 plane1 loc6-1)
-6 (unload-airplane package9 plane1 loc6-1)
-6 (fly-airplane plane2 loc3-1 loc6-1)
-7 (fly-airplane plane1 loc6-1 loc5-1)
-7 (load-airplane package4 plane2 loc6-1)
-7 (unload-truck package2 truck5-1 loc5-1)
-7 (drive-truck truck2-1 loc2-2 loc2-1 city2)
-7 (unload-airplane package3 plane2 loc6-1)
-8 (unload-airplane package1 plane1 loc5-1)
-8 (unload-airplane package6 plane1 loc5-1)
-8 (load-airplane package2 plane1 loc5-1)
-9 (fly-airplane plane1 loc5-1 loc6-1)
-9 (load-truck package1 truck5-1 loc5-1)
-9 (load-truck package8 truck2-1 loc2-1)
-9 (load-truck package3 truck6-1 loc6-1)
-10 (drive-truck truck6-1 loc6-1 loc6-2 city6)
-10 (fly-airplane plane2 loc6-1 loc2-1)
-10 (drive-truck truck5-1 loc5-1 loc5-2 city5)
-10 (fly-airplane plane1 loc6-1 loc4-1)
-10 (drive-truck truck2-1 loc2-1 loc2-2 city2)
-11 (unload-airplane package4 plane2 loc2-1)
-11 (unload-truck package3 truck6-1 loc6-2)
-11 (unload-airplane package2 plane1 loc4-1)
-11 (unload-truck package1 truck5-1 loc5-2)
-11 (unload-truck package8 truck2-1 loc2-2)
-End plan
-----------------------------------------------------
-
-53 total actions in plan
-0 entries in hash table, 
-10 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   1.83 seconds
-Time in milliseconds: 1833
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob020.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob020.pddl
-Problem name: log020
-Facts loaded.
-time: 1, 102 facts and 55 exclusive pairs.
-time: 2, 109 facts and 66 exclusive pairs.
-time: 3, 112 facts and 68 exclusive pairs.
-time: 4, 125 facts and 147 exclusive pairs.
-time: 5, 139 facts and 317 exclusive pairs.
-time: 6, 157 facts and 322 exclusive pairs.
-time: 7, 217 facts and 860 exclusive pairs.
-time: 8, 259 facts and 1451 exclusive pairs.
-time: 9, 277 facts and 1883 exclusive pairs.
-time: 10, 319 facts and 2621 exclusive pairs.
-Goals first reachable in 10 steps.
-6452 nodes created.
-
-####################################################
-goals at time 11:
-  at_package1_loc3-2 at_package2_loc4-2 at_package3_loc5-2 at_package4_loc6-2 at_package5_loc6-2 
-at_package6_loc5-2 at_package7_loc4-2 at_package8_loc5-2 at_package9_loc6-2 at_package10_loc7-2 
-
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 1742
-number of fluent variables = 983
-total number variables = 2725
-number clauses = 34004
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 11, 319 facts and 2579 exclusive pairs.
-1296 new nodes added.
-
-####################################################
-goals at time 12:
-  at_package1_loc3-2 at_package2_loc4-2 at_package3_loc5-2 at_package4_loc6-2 at_package5_loc6-2 
-at_package6_loc5-2 at_package7_loc4-2 at_package8_loc5-2 at_package9_loc6-2 at_package10_loc7-2 
-
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 2377
-number of fluent variables = 1202
-total number variables = 3579
-number clauses = 69089
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 11 steps
-time: 12, 319 facts and 2579 exclusive pairs.
-1296 new nodes added.
-
-####################################################
-goals at time 13:
-  at_package1_loc3-2 at_package2_loc4-2 at_package3_loc5-2 at_package4_loc6-2 at_package5_loc6-2 
-at_package6_loc5-2 at_package7_loc4-2 at_package8_loc5-2 at_package9_loc6-2 at_package10_loc7-2 
-
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 3084
-number of fluent variables = 1436
-total number variables = 4520
-number clauses = 113829
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 12 steps
-time: 13, 319 facts and 2579 exclusive pairs.
-1296 new nodes added.
-
-####################################################
-goals at time 14:
-  at_package1_loc3-2 at_package2_loc4-2 at_package3_loc5-2 at_package4_loc6-2 at_package5_loc6-2 
-at_package6_loc5-2 at_package7_loc4-2 at_package8_loc5-2 at_package9_loc6-2 at_package10_loc7-2 
-
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 3876
-number of fluent variables = 1705
-total number variables = 5581
-number clauses = 164711
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 13 steps
-time: 14, 319 facts and 2579 exclusive pairs.
-1296 new nodes added.
-
-####################################################
-goals at time 15:
-  at_package1_loc3-2 at_package2_loc4-2 at_package3_loc5-2 at_package4_loc6-2 at_package5_loc6-2 
-at_package6_loc5-2 at_package7_loc4-2 at_package8_loc5-2 at_package9_loc6-2 at_package10_loc7-2 
-
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 4703
-number of fluent variables = 1974
-total number variables = 6677
-number clauses = 219370
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 14 steps
-time: 15, 319 facts and 2579 exclusive pairs.
-1296 new nodes added.
-
-####################################################
-goals at time 16:
-  at_package1_loc3-2 at_package2_loc4-2 at_package3_loc5-2 at_package4_loc6-2 at_package5_loc6-2 
-at_package6_loc5-2 at_package7_loc4-2 at_package8_loc5-2 at_package9_loc6-2 at_package10_loc7-2 
-
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 5560
-number of fluent variables = 2258
-total number variables = 7818
-number clauses = 277801
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   16 actions were pruned in 0.01 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (load-truck package10 truck3-1 loc3-2)
-1 (load-truck package3 truck3-1 loc3-2)
-1 (drive-truck truck2-1 loc2-1 loc2-2 city2)
-1 (fly-airplane plane1 loc1-1 loc3-1)
-1 (drive-truck truck1-1 loc1-1 loc1-2 city1)
-1 (fly-airplane plane2 loc1-1 loc4-1)
-1 (load-truck package6 truck6-1 loc6-2)
-2 (drive-truck truck3-1 loc3-2 loc3-1 city3)
-2 (drive-truck truck7-1 loc7-1 loc7-2 city7)
-2 (load-truck package2 truck2-1 loc2-2)
-2 (drive-truck truck6-1 loc6-2 loc6-1 city6)
-2 (load-truck package1 truck1-1 loc1-2)
-2 (fly-airplane plane2 loc4-1 loc3-1)
-3 (unload-truck package6 truck6-1 loc6-1)
-3 (load-truck package7 truck7-1 loc7-2)
-3 (unload-truck package10 truck3-1 loc3-1)
-3 (load-truck package8 truck1-1 loc1-2)
-3 (fly-airplane plane2 loc3-1 loc6-1)
-4 (drive-truck truck7-1 loc7-2 loc7-1 city7)
-4 (drive-truck truck1-1 loc1-2 loc1-1 city1)
-4 (load-airplane package10 plane1 loc3-1)
-4 (load-airplane package6 plane2 loc6-1)
-5 (unload-truck package7 truck7-1 loc7-1)
-5 (load-truck package9 truck2-1 loc2-2)
-5 (fly-airplane plane2 loc6-1 loc1-1)
-5 (fly-airplane plane1 loc3-1 loc7-1)
-5 (drive-truck truck4-1 loc4-1 loc4-2 city4)
-5 (unload-truck package1 truck1-1 loc1-1)
-5 (unload-truck package8 truck1-1 loc1-1)
-6 (drive-truck truck5-1 loc5-1 loc5-2 city5)
-6 (unload-airplane package10 plane1 loc7-1)
-6 (load-airplane package8 plane2 loc1-1)
-6 (load-airplane package7 plane1 loc7-1)
-6 (drive-truck truck2-1 loc2-2 loc2-1 city2)
-6 (load-airplane package1 plane2 loc1-1)
-6 (load-truck package4 truck4-1 loc4-2)
-7 (drive-truck truck4-1 loc4-2 loc4-1 city4)
-7 (fly-airplane plane2 loc1-1 loc3-1)
-7 (load-truck package5 truck5-1 loc5-2)
-7 (unload-truck package2 truck2-1 loc2-1)
-7 (unload-truck package9 truck2-1 loc2-1)
-7 (unload-truck package3 truck3-1 loc3-1)
-7 (fly-airplane plane1 loc7-1 loc2-1)
-8 (drive-truck truck5-1 loc5-2 loc5-1 city5)
-8 (load-airplane package9 plane1 loc2-1)
-8 (load-truck package10 truck7-1 loc7-1)
-8 (load-airplane package3 plane2 loc3-1)
-8 (unload-airplane package1 plane2 loc3-1)
-8 (load-airplane package2 plane1 loc2-1)
-9 (unload-truck package4 truck4-1 loc4-1)
-9 (fly-airplane plane2 loc3-1 loc5-1)
-9 (drive-truck truck7-1 loc7-1 loc7-2 city7)
-9 (fly-airplane plane1 loc2-1 loc4-1)
-9 (unload-truck package5 truck5-1 loc5-1)
-10 (load-airplane package4 plane1 loc4-1)
-10 (unload-airplane package7 plane1 loc4-1)
-10 (unload-airplane package6 plane2 loc5-1)
-10 (unload-airplane package8 plane2 loc5-1)
-10 (unload-airplane package2 plane1 loc4-1)
-10 (load-airplane package5 plane2 loc5-1)
-10 (unload-truck package10 truck7-1 loc7-2)
-10 (unload-airplane package3 plane2 loc5-1)
-11 (fly-airplane plane1 loc4-1 loc6-1)
-11 (fly-airplane plane2 loc5-1 loc6-1)
-12 (unload-airplane package4 plane1 loc6-1)
-12 (unload-airplane package5 plane2 loc6-1)
-12 (load-truck package6 truck5-1 loc5-1)
-12 (load-truck package7 truck4-1 loc4-1)
-12 (load-truck package2 truck4-1 loc4-1)
-12 (unload-airplane package9 plane1 loc6-1)
-13 (load-truck package8 truck5-1 loc5-1)
-13 (load-truck package1 truck3-1 loc3-1)
-13 (load-truck package9 truck6-1 loc6-1)
-13 (load-truck package3 truck5-1 loc5-1)
-13 (load-truck package4 truck6-1 loc6-1)
-13 (drive-truck truck4-1 loc4-1 loc4-2 city4)
-13 (load-truck package5 truck6-1 loc6-1)
-14 (drive-truck truck6-1 loc6-1 loc6-2 city6)
-14 (drive-truck truck5-1 loc5-1 loc5-2 city5)
-14 (unload-truck package7 truck4-1 loc4-2)
-14 (drive-truck truck3-1 loc3-1 loc3-2 city3)
-14 (unload-truck package2 truck4-1 loc4-2)
-15 (unload-truck package5 truck6-1 loc6-2)
-15 (unload-truck package1 truck3-1 loc3-2)
-15 (unload-truck package9 truck6-1 loc6-2)
-15 (unload-truck package3 truck5-1 loc5-2)
-15 (unload-truck package4 truck6-1 loc6-2)
-15 (unload-truck package6 truck5-1 loc5-2)
-15 (unload-truck package8 truck5-1 loc5-2)
-End plan
-----------------------------------------------------
-
-89 total actions in plan
-0 entries in hash table, 
-14 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   38.18 seconds
-Time in milliseconds: 38185
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob021.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob021.pddl
-Problem name: log021
-Facts loaded.
-time: 1, 102 facts and 74 exclusive pairs.
-time: 2, 117 facts and 174 exclusive pairs.
-time: 3, 132 facts and 279 exclusive pairs.
-time: 4, 166 facts and 575 exclusive pairs.
-time: 5, 185 facts and 730 exclusive pairs.
-time: 6, 210 facts and 953 exclusive pairs.
-time: 7, 250 facts and 1490 exclusive pairs.
-time: 8, 265 facts and 1676 exclusive pairs.
-time: 9, 280 facts and 1932 exclusive pairs.
-time: 10, 295 facts and 2166 exclusive pairs.
-Goals first reachable in 10 steps.
-7930 nodes created.
-
-####################################################
-goals at time 11:
-  at_package1_loc6-1 at_package2_loc4-2 at_package3_loc3-1 at_package4_loc2-2 at_package5_loc3-1 
-at_package6_loc1-1 at_package7_loc4-2 at_package8_loc4-2 at_package9_loc3-2 at_package10_loc4-1 
-
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 3435
-number of fluent variables = 1373
-total number variables = 4808
-number clauses = 137779
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 11, 295 facts and 2151 exclusive pairs.
-1292 new nodes added.
-
-####################################################
-goals at time 12:
-  at_package1_loc6-1 at_package2_loc4-2 at_package3_loc3-1 at_package4_loc2-2 at_package5_loc3-1 
-at_package6_loc1-1 at_package7_loc4-2 at_package8_loc4-2 at_package9_loc3-2 at_package10_loc4-1 
-
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 4278
-number of fluent variables = 1623
-total number variables = 5901
-number clauses = 191930
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   8 actions were pruned in 0.01 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (fly-airplane plane1 loc6-1 loc5-1)
-1 (load-truck package2 truck6-1 loc6-2)
-1 (fly-airplane plane3 loc4-1 loc1-1)
-1 (load-truck package3 truck5-1 loc5-2)
-1 (drive-truck truck4-1 loc4-1 loc4-2 city4)
-1 (load-truck package4 truck6-1 loc6-2)
-1 (drive-truck truck1-1 loc1-1 loc1-2 city1)
-1 (fly-airplane plane2 loc5-1 loc2-1)
-2 (drive-truck truck5-1 loc5-2 loc5-1 city5)
-2 (load-airplane package6 plane1 loc5-1)
-2 (drive-truck truck6-1 loc6-2 loc6-1 city6)
-2 (load-truck package1 truck1-1 loc1-2)
-2 (load-truck package8 truck1-1 loc1-2)
-2 (load-airplane package5 plane3 loc1-1)
-2 (load-airplane package7 plane2 loc2-1)
-3 (fly-airplane plane1 loc5-1 loc6-1)
-3 (fly-airplane plane3 loc1-1 loc6-1)
-3 (unload-truck package2 truck6-1 loc6-1)
-3 (unload-truck package3 truck5-1 loc5-1)
-3 (fly-airplane plane2 loc2-1 loc1-1)
-3 (unload-truck package4 truck6-1 loc6-1)
-3 (drive-truck truck1-1 loc1-2 loc1-1 city1)
-3 (load-truck package9 truck4-1 loc4-2)
-4 (drive-truck truck4-1 loc4-2 loc4-1 city4)
-4 (load-airplane package2 plane1 loc6-1)
-4 (load-airplane package4 plane3 loc6-1)
-4 (unload-truck package1 truck1-1 loc1-1)
-4 (unload-truck package8 truck1-1 loc1-1)
-5 (fly-airplane plane1 loc6-1 loc4-1)
-5 (load-airplane package8 plane2 loc1-1)
-5 (load-airplane package1 plane2 loc1-1)
-5 (unload-truck package9 truck4-1 loc4-1)
-6 (fly-airplane plane3 loc6-1 loc2-1)
-6 (fly-airplane plane2 loc1-1 loc3-1)
-6 (load-airplane package9 plane1 loc4-1)
-6 (unload-airplane package2 plane1 loc4-1)
-7 (fly-airplane plane2 loc3-1 loc4-1)
-7 (fly-airplane plane1 loc4-1 loc3-1)
-7 (drive-truck truck2-1 loc2-2 loc2-1 city2)
-7 (load-truck package2 truck4-1 loc4-1)
-7 (unload-airplane package4 plane3 loc2-1)
-8 (unload-airplane package7 plane2 loc4-1)
-8 (drive-truck truck3-1 loc3-2 loc3-1 city3)
-8 (load-truck package4 truck2-1 loc2-1)
-8 (unload-airplane package9 plane1 loc3-1)
-8 (fly-airplane plane3 loc2-1 loc5-1)
-8 (unload-airplane package8 plane2 loc4-1)
-9 (load-truck package9 truck3-1 loc3-1)
-9 (fly-airplane plane1 loc3-1 loc1-1)
-9 (load-truck package7 truck4-1 loc4-1)
-9 (load-airplane package3 plane3 loc5-1)
-9 (load-truck package8 truck4-1 loc4-1)
-9 (drive-truck truck2-1 loc2-1 loc2-2 city2)
-9 (fly-airplane plane2 loc4-1 loc3-1)
-10 (unload-truck package4 truck2-1 loc2-2)
-10 (unload-airplane package6 plane1 loc1-1)
-10 (drive-truck truck4-1 loc4-1 loc4-2 city4)
-10 (fly-airplane plane2 loc3-1 loc6-1)
-10 (drive-truck truck3-1 loc3-1 loc3-2 city3)
-10 (fly-airplane plane3 loc5-1 loc3-1)
-11 (unload-airplane package5 plane3 loc3-1)
-11 (unload-truck package9 truck3-1 loc3-2)
-11 (unload-airplane package1 plane2 loc6-1)
-11 (unload-truck package7 truck4-1 loc4-2)
-11 (unload-truck package8 truck4-1 loc4-2)
-11 (unload-airplane package3 plane3 loc3-1)
-11 (unload-truck package2 truck4-1 loc4-2)
-End plan
-----------------------------------------------------
-
-67 total actions in plan
-0 entries in hash table, 
-10 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   2.96 seconds
-Time in milliseconds: 2964
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob022.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob022.pddl
-Problem name: log022
-Facts loaded.
-time: 1, 93 facts and 44 exclusive pairs.
-time: 2, 105 facts and 103 exclusive pairs.
-time: 3, 111 facts and 98 exclusive pairs.
-time: 4, 139 facts and 292 exclusive pairs.
-time: 5, 159 facts and 517 exclusive pairs.
-time: 6, 167 facts and 470 exclusive pairs.
-time: 7, 215 facts and 1210 exclusive pairs.
-time: 8, 231 facts and 1440 exclusive pairs.
-time: 9, 247 facts and 1678 exclusive pairs.
-time: 10, 279 facts and 2270 exclusive pairs.
-Goals reachable at 10 steps but mutually exclusive.
-time: 11, 279 facts and 2150 exclusive pairs.
-Goals first reachable in 11 steps.
-7088 nodes created.
-
-####################################################
-goals at time 12:
-  at_package1_loc4-3 at_package2_loc4-2 at_package3_loc2-3 at_package4_loc5-2 at_package5_loc1-2 
-at_package6_loc5-3 at_package7_loc3-3 at_package8_loc2-2 at_package9_loc1-1 
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 2623
-number of fluent variables = 1308
-total number variables = 3931
-number clauses = 60139
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 12, 279 facts and 2114 exclusive pairs.
-1078 new nodes added.
-
-####################################################
-goals at time 13:
-  at_package1_loc4-3 at_package2_loc4-2 at_package3_loc2-3 at_package4_loc5-2 at_package5_loc1-2 
-at_package6_loc5-3 at_package7_loc3-3 at_package8_loc2-2 at_package9_loc1-1 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 3232
-number of fluent variables = 1527
-total number variables = 4759
-number clauses = 85088
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 12 steps
-time: 13, 279 facts and 2114 exclusive pairs.
-1078 new nodes added.
-
-####################################################
-goals at time 14:
-  at_package1_loc4-3 at_package2_loc4-2 at_package3_loc2-3 at_package4_loc5-2 at_package5_loc1-2 
-at_package6_loc5-3 at_package7_loc3-3 at_package8_loc2-2 at_package9_loc1-1 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 3899
-number of fluent variables = 1770
-total number variables = 5669
-number clauses = 114949
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 13 steps
-time: 14, 279 facts and 2114 exclusive pairs.
-1078 new nodes added.
-
-####################################################
-goals at time 15:
-  at_package1_loc4-3 at_package2_loc4-2 at_package3_loc2-3 at_package4_loc5-2 at_package5_loc1-2 
-at_package6_loc5-3 at_package7_loc3-3 at_package8_loc2-2 at_package9_loc1-1 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 4590
-number of fluent variables = 2013
-total number variables = 6603
-number clauses = 148131
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 14 steps
-time: 15, 279 facts and 2114 exclusive pairs.
-1078 new nodes added.
-
-####################################################
-goals at time 16:
-  at_package1_loc4-3 at_package2_loc4-2 at_package3_loc2-3 at_package4_loc5-2 at_package5_loc1-2 
-at_package6_loc5-3 at_package7_loc3-3 at_package8_loc2-2 at_package9_loc1-1 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 5305
-number of fluent variables = 2268
-total number variables = 7573
-number clauses = 184073
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   29 actions were pruned in 0.00 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (fly-airplane plane1 loc1-1 loc5-1)
-1 (load-truck package2 truck2-1 loc2-3)
-1 (drive-truck truck1-1 loc1-3 loc1-2 city1)
-1 (fly-airplane plane2 loc1-1 loc4-1)
-1 (load-truck package4 truck3-1 loc3-3)
-2 (load-airplane package8 plane1 loc5-1)
-2 (drive-truck truck2-1 loc2-3 loc2-2 city2)
-2 (load-truck package7 truck1-1 loc1-2)
-2 (drive-truck truck3-1 loc3-3 loc3-1 city3)
-3 (load-airplane package3 plane2 loc4-1)
-3 (unload-truck package4 truck3-1 loc3-1)
-3 (load-truck package6 truck2-1 loc2-2)
-3 (drive-truck truck1-1 loc1-2 loc1-1 city1)
-3 (fly-airplane plane1 loc5-1 loc3-1)
-4 (drive-truck truck5-1 loc5-2 loc5-3 city5)
-4 (load-airplane package4 plane1 loc3-1)
-4 (fly-airplane plane2 loc4-1 loc1-1)
-4 (drive-truck truck2-1 loc2-2 loc2-1 city2)
-4 (unload-truck package7 truck1-1 loc1-1)
-5 (load-airplane package7 plane2 loc1-1)
-5 (load-truck package1 truck5-1 loc5-3)
-5 (fly-airplane plane1 loc3-1 loc2-1)
-5 (unload-truck package2 truck2-1 loc2-1)
-5 (drive-truck truck4-1 loc4-1 loc4-3 city4)
-6 (fly-airplane plane2 loc1-1 loc2-1)
-6 (load-airplane package2 plane1 loc2-1)
-6 (unload-airplane package8 plane1 loc2-1)
-6 (unload-truck package6 truck2-1 loc2-1)
-6 (drive-truck truck5-1 loc5-3 loc5-1 city5)
-7 (fly-airplane plane1 loc2-1 loc5-1)
-7 (load-airplane package6 plane2 loc2-1)
-7 (load-truck package5 truck4-1 loc4-3)
-7 (unload-airplane package3 plane2 loc2-1)
-7 (unload-truck package1 truck5-1 loc5-1)
-8 (load-airplane package1 plane1 loc5-1)
-8 (unload-airplane package4 plane1 loc5-1)
-8 (fly-airplane plane2 loc2-1 loc3-1)
-8 (drive-truck truck4-1 loc4-3 loc4-1 city4)
-9 (unload-truck package5 truck4-1 loc4-1)
-9 (unload-airplane package7 plane2 loc3-1)
-9 (load-truck package4 truck5-1 loc5-1)
-9 (fly-airplane plane1 loc5-1 loc4-1)
-10 (load-truck package7 truck3-1 loc3-1)
-10 (load-truck package8 truck2-1 loc2-1)
-10 (drive-truck truck5-1 loc5-1 loc5-2 city5)
-10 (load-airplane package5 plane1 loc4-1)
-10 (load-truck package3 truck2-1 loc2-1)
-10 (unload-airplane package1 plane1 loc4-1)
-10 (unload-airplane package2 plane1 loc4-1)
-11 (fly-airplane plane2 loc3-1 loc5-1)
-11 (fly-airplane plane1 loc4-1 loc1-1)
-11 (unload-truck package4 truck5-1 loc5-2)
-11 (load-truck package1 truck4-1 loc4-1)
-11 (load-truck package2 truck4-1 loc4-1)
-11 (drive-truck truck2-1 loc2-1 loc2-2 city2)
-11 (drive-truck truck3-1 loc3-1 loc3-3 city3)
-12 (drive-truck truck5-1 loc5-2 loc5-1 city5)
-12 (unload-truck package7 truck3-1 loc3-3)
-12 (unload-airplane package6 plane2 loc5-1)
-12 (load-airplane package9 plane2 loc5-1)
-12 (drive-truck truck4-1 loc4-1 loc4-2 city4)
-12 (unload-airplane package5 plane1 loc1-1)
-12 (unload-truck package8 truck2-1 loc2-2)
-13 (load-truck package5 truck1-1 loc1-1)
-13 (load-truck package6 truck5-1 loc5-1)
-13 (fly-airplane plane2 loc5-1 loc3-1)
-13 (unload-truck package2 truck4-1 loc4-2)
-14 (fly-airplane plane2 loc3-1 loc1-1)
-14 (drive-truck truck5-1 loc5-1 loc5-3 city5)
-14 (drive-truck truck4-1 loc4-2 loc4-3 city4)
-14 (drive-truck truck2-1 loc2-2 loc2-3 city2)
-14 (drive-truck truck1-1 loc1-1 loc1-2 city1)
-15 (unload-truck package5 truck1-1 loc1-2)
-15 (unload-truck package3 truck2-1 loc2-3)
-15 (unload-truck package6 truck5-1 loc5-3)
-15 (unload-truck package1 truck4-1 loc4-3)
-15 (unload-airplane package9 plane2 loc1-1)
-End plan
-----------------------------------------------------
-
-77 total actions in plan
-0 entries in hash table, 
-14 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   7.28 seconds
-Time in milliseconds: 7280
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob023.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob023.pddl
-Problem name: log023
-Facts loaded.
-time: 1, 93 facts and 44 exclusive pairs.
-time: 2, 105 facts and 109 exclusive pairs.
-time: 3, 111 facts and 106 exclusive pairs.
-time: 4, 139 facts and 338 exclusive pairs.
-time: 5, 159 facts and 522 exclusive pairs.
-time: 6, 167 facts and 468 exclusive pairs.
-time: 7, 215 facts and 1218 exclusive pairs.
-time: 8, 231 facts and 1450 exclusive pairs.
-time: 9, 247 facts and 1690 exclusive pairs.
-time: 10, 279 facts and 2276 exclusive pairs.
-Goals reachable at 10 steps but mutually exclusive.
-time: 11, 279 facts and 2152 exclusive pairs.
-Goals first reachable in 11 steps.
-7088 nodes created.
-
-####################################################
-goals at time 12:
-  at_package1_loc5-1 at_package2_loc1-2 at_package3_loc2-1 at_package4_loc5-1 at_package5_loc4-3 
-at_package6_loc2-2 at_package7_loc1-3 at_package8_loc4-2 at_package9_loc3-2 
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 2795
-number of fluent variables = 1354
-total number variables = 4149
-number clauses = 68481
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 12, 279 facts and 2114 exclusive pairs.
-1078 new nodes added.
-
-####################################################
-goals at time 13:
-  at_package1_loc5-1 at_package2_loc1-2 at_package3_loc2-1 at_package4_loc5-1 at_package5_loc4-3 
-at_package6_loc2-2 at_package7_loc1-3 at_package8_loc4-2 at_package9_loc3-2 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 3416
-number of fluent variables = 1577
-total number variables = 4993
-number clauses = 95090
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 12 steps
-time: 13, 279 facts and 2114 exclusive pairs.
-1078 new nodes added.
-
-####################################################
-goals at time 14:
-  at_package1_loc5-1 at_package2_loc1-2 at_package3_loc2-1 at_package4_loc5-1 at_package5_loc4-3 
-at_package6_loc2-2 at_package7_loc1-3 at_package8_loc4-2 at_package9_loc3-2 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 4083
-number of fluent variables = 1818
-total number variables = 5901
-number clauses = 125701
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   16 actions were pruned in 0.00 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (load-truck package6 truck5-1 loc5-3)
-1 (fly-airplane plane1 loc3-1 loc4-1)
-1 (load-truck package7 truck5-1 loc5-3)
-1 (fly-airplane plane2 loc1-1 loc4-1)
-1 (drive-truck truck2-1 loc2-1 loc2-3 city2)
-1 (drive-truck truck4-1 loc4-3 loc4-1 city4)
-1 (drive-truck truck3-1 loc3-3 loc3-1 city3)
-2 (fly-airplane plane1 loc4-1 loc1-1)
-2 (load-truck package2 truck2-1 loc2-3)
-2 (load-truck package3 truck2-1 loc2-3)
-2 (drive-truck truck4-1 loc4-1 loc4-2 city4)
-2 (fly-airplane plane2 loc4-1 loc3-1)
-2 (drive-truck truck5-1 loc5-3 loc5-1 city5)
-3 (drive-truck truck2-1 loc2-3 loc2-1 city2)
-3 (fly-airplane plane2 loc3-1 loc5-1)
-3 (fly-airplane plane1 loc1-1 loc2-1)
-3 (unload-truck package6 truck5-1 loc5-1)
-3 (unload-truck package7 truck5-1 loc5-1)
-3 (load-truck package4 truck4-1 loc4-2)
-4 (load-airplane package6 plane2 loc5-1)
-4 (drive-truck truck5-1 loc5-1 loc5-2 city5)
-4 (load-airplane package8 plane1 loc2-1)
-4 (unload-truck package2 truck2-1 loc2-1)
-4 (load-airplane package9 plane2 loc5-1)
-4 (drive-truck truck4-1 loc4-2 loc4-3 city4)
-4 (load-airplane package7 plane2 loc5-1)
-5 (fly-airplane plane1 loc2-1 loc4-1)
-5 (load-truck package5 truck5-1 loc5-2)
-5 (fly-airplane plane2 loc5-1 loc2-1)
-5 (drive-truck truck4-1 loc4-3 loc4-1 city4)
-6 (drive-truck truck5-1 loc5-2 loc5-1 city5)
-6 (unload-airplane package6 plane2 loc2-1)
-6 (load-airplane package2 plane2 loc2-1)
-6 (unload-airplane package8 plane1 loc4-1)
-7 (fly-airplane plane1 loc4-1 loc5-1)
-7 (unload-truck package4 truck4-1 loc4-1)
-7 (fly-airplane plane2 loc2-1 loc1-1)
-7 (unload-truck package5 truck5-1 loc5-1)
-7 (load-truck package8 truck4-1 loc4-1)
-8 (load-airplane package5 plane1 loc5-1)
-8 (unload-airplane package2 plane2 loc1-1)
-8 (drive-truck truck4-1 loc4-1 loc4-2 city4)
-8 (unload-airplane package7 plane2 loc1-1)
-9 (fly-airplane plane2 loc1-1 loc3-1)
-9 (fly-airplane plane1 loc5-1 loc4-1)
-9 (load-truck package7 truck1-1 loc1-1)
-9 (load-truck package2 truck1-1 loc1-1)
-9 (unload-truck package8 truck4-1 loc4-2)
-10 (drive-truck truck4-1 loc4-2 loc4-1 city4)
-10 (unload-airplane package9 plane2 loc3-1)
-10 (unload-airplane package5 plane1 loc4-1)
-10 (drive-truck truck1-1 loc1-1 loc1-2 city1)
-11 (unload-truck package2 truck1-1 loc1-2)
-11 (load-airplane package4 plane1 loc4-1)
-11 (load-truck package9 truck3-1 loc3-1)
-11 (load-truck package5 truck4-1 loc4-1)
-11 (unload-truck package3 truck2-1 loc2-1)
-11 (load-truck package6 truck2-1 loc2-1)
-12 (fly-airplane plane1 loc4-1 loc5-1)
-12 (drive-truck truck1-1 loc1-2 loc1-3 city1)
-12 (drive-truck truck3-1 loc3-1 loc3-2 city3)
-12 (drive-truck truck2-1 loc2-1 loc2-2 city2)
-12 (drive-truck truck4-1 loc4-1 loc4-3 city4)
-13 (unload-truck package5 truck4-1 loc4-3)
-13 (unload-airplane package4 plane1 loc5-1)
-13 (unload-truck package9 truck3-1 loc3-2)
-13 (unload-truck package6 truck2-1 loc2-2)
-13 (unload-truck package7 truck1-1 loc1-3)
-End plan
-----------------------------------------------------
-
-68 total actions in plan
-0 entries in hash table, 
-12 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   3.25 seconds
-Time in milliseconds: 3254
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob024.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob024.pddl
-Problem name: log024
-Facts loaded.
-time: 1, 95 facts and 53 exclusive pairs.
-time: 2, 103 facts and 83 exclusive pairs.
-time: 3, 115 facts and 151 exclusive pairs.
-time: 4, 139 facts and 352 exclusive pairs.
-time: 5, 151 facts and 422 exclusive pairs.
-time: 6, 171 facts and 588 exclusive pairs.
-time: 7, 207 facts and 1036 exclusive pairs.
-time: 8, 223 facts and 1212 exclusive pairs.
-time: 9, 247 facts and 1718 exclusive pairs.
-time: 10, 279 facts and 2310 exclusive pairs.
-Goals reachable at 10 steps but mutually exclusive.
-time: 11, 279 facts and 2152 exclusive pairs.
-Goals first reachable in 11 steps.
-7012 nodes created.
-
-####################################################
-goals at time 12:
-  at_package1_loc3-2 at_package2_loc5-3 at_package3_loc5-2 at_package4_loc2-3 at_package5_loc4-1 
-at_package6_loc1-2 at_package7_loc4-2 at_package8_loc5-1 at_package9_loc1-2 
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 2681
-number of fluent variables = 1322
-total number variables = 4003
-number clauses = 61167
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 12, 279 facts and 2114 exclusive pairs.
-1078 new nodes added.
-
-####################################################
-goals at time 13:
-  at_package1_loc3-2 at_package2_loc5-3 at_package3_loc5-2 at_package4_loc2-3 at_package5_loc4-1 
-at_package6_loc1-2 at_package7_loc4-2 at_package8_loc5-1 at_package9_loc1-2 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 3284
-number of fluent variables = 1541
-total number variables = 4825
-number clauses = 86243
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   24 actions were pruned in 0.00 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (load-truck package7 truck3-1 loc3-2)
-1 (load-truck package8 truck2-1 loc2-3)
-1 (load-airplane package1 plane1 loc4-1)
-1 (load-truck package3 truck3-1 loc3-2)
-1 (drive-truck truck4-1 loc4-1 loc4-3 city4)
-1 (fly-airplane plane2 loc5-1 loc2-1)
-2 (drive-truck truck3-1 loc3-2 loc3-1 city3)
-2 (drive-truck truck5-1 loc5-2 loc5-3 city5)
-2 (load-truck package6 truck4-1 loc4-3)
-2 (fly-airplane plane1 loc4-1 loc3-1)
-2 (drive-truck truck2-1 loc2-3 loc2-2 city2)
-2 (load-truck package2 truck4-1 loc4-3)
-2 (fly-airplane plane2 loc2-1 loc3-1)
-3 (unload-truck package7 truck3-1 loc3-1)
-3 (load-truck package4 truck2-1 loc2-2)
-3 (load-truck package5 truck5-1 loc5-3)
-3 (unload-truck package3 truck3-1 loc3-1)
-3 (unload-airplane package1 plane1 loc3-1)
-3 (drive-truck truck4-1 loc4-3 loc4-1 city4)
-4 (load-airplane package9 plane2 loc3-1)
-4 (load-truck package1 truck3-1 loc3-1)
-4 (unload-truck package6 truck4-1 loc4-1)
-4 (load-airplane package3 plane2 loc3-1)
-4 (load-airplane package7 plane2 loc3-1)
-4 (fly-airplane plane1 loc3-1 loc4-1)
-4 (drive-truck truck2-1 loc2-2 loc2-1 city2)
-4 (unload-truck package2 truck4-1 loc4-1)
-4 (drive-truck truck5-1 loc5-3 loc5-1 city5)
-5 (fly-airplane plane2 loc3-1 loc5-1)
-5 (unload-truck package5 truck5-1 loc5-1)
-5 (load-airplane package6 plane1 loc4-1)
-5 (drive-truck truck3-1 loc3-1 loc3-2 city3)
-5 (load-airplane package2 plane1 loc4-1)
-6 (fly-airplane plane1 loc4-1 loc5-1)
-6 (unload-truck package1 truck3-1 loc3-2)
-6 (unload-airplane package9 plane2 loc5-1)
-6 (load-airplane package5 plane2 loc5-1)
-6 (unload-airplane package3 plane2 loc5-1)
-7 (load-airplane package9 plane1 loc5-1)
-7 (fly-airplane plane2 loc5-1 loc4-1)
-7 (unload-airplane package2 plane1 loc5-1)
-7 (unload-truck package8 truck2-1 loc2-1)
-8 (unload-airplane package7 plane2 loc4-1)
-8 (load-truck package2 truck5-1 loc5-1)
-8 (load-truck package3 truck5-1 loc5-1)
-8 (fly-airplane plane1 loc5-1 loc1-1)
-8 (unload-airplane package5 plane2 loc4-1)
-9 (unload-airplane package9 plane1 loc1-1)
-9 (fly-airplane plane2 loc4-1 loc2-1)
-9 (drive-truck truck5-1 loc5-1 loc5-3 city5)
-9 (load-truck package7 truck4-1 loc4-1)
-9 (unload-airplane package6 plane1 loc1-1)
-9 (drive-truck truck2-1 loc2-1 loc2-3 city2)
-10 (load-airplane package8 plane2 loc2-1)
-10 (unload-truck package2 truck5-1 loc5-3)
-10 (load-truck package6 truck1-1 loc1-1)
-10 (unload-truck package4 truck2-1 loc2-3)
-10 (drive-truck truck4-1 loc4-1 loc4-2 city4)
-10 (load-truck package9 truck1-1 loc1-1)
-11 (drive-truck truck5-1 loc5-3 loc5-2 city5)
-11 (fly-airplane plane2 loc2-1 loc5-1)
-11 (unload-truck package7 truck4-1 loc4-2)
-11 (drive-truck truck1-1 loc1-1 loc1-2 city1)
-12 (unload-truck package9 truck1-1 loc1-2)
-12 (unload-truck package3 truck5-1 loc5-2)
-12 (unload-airplane package8 plane2 loc5-1)
-12 (unload-truck package6 truck1-1 loc1-2)
-End plan
-----------------------------------------------------
-
-67 total actions in plan
-0 entries in hash table, 
-11 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   2.23 seconds
-Time in milliseconds: 2233
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob025.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob025.pddl
-Problem name: log025
-Facts loaded.
-time: 1, 94 facts and 49 exclusive pairs.
-time: 2, 103 facts and 92 exclusive pairs.
-time: 3, 113 facts and 141 exclusive pairs.
-time: 4, 137 facts and 395 exclusive pairs.
-time: 5, 151 facts and 455 exclusive pairs.
-time: 6, 167 facts and 560 exclusive pairs.
-time: 7, 203 facts and 970 exclusive pairs.
-time: 8, 223 facts and 1218 exclusive pairs.
-time: 9, 239 facts and 1538 exclusive pairs.
-time: 10, 279 facts and 2340 exclusive pairs.
-Goals reachable at 10 steps but mutually exclusive.
-time: 11, 279 facts and 2180 exclusive pairs.
-Goals reachable at 11 steps but mutually exclusive.
-time: 12, 279 facts and 2114 exclusive pairs.
-Goals first reachable in 12 steps.
-7998 nodes created.
-
-####################################################
-goals at time 13:
-  at_package1_loc2-3 at_package2_loc3-3 at_package3_loc3-1 at_package4_loc2-3 at_package5_loc2-1 
-at_package6_loc4-3 at_package7_loc5-1 at_package8_loc5-2 at_package9_loc4-2 
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 3295
-number of fluent variables = 1531
-total number variables = 4826
-number clauses = 89322
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   20 actions were pruned in 0.00 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (drive-truck truck5-1 loc5-2 loc5-3 city5)
-1 (drive-truck truck1-1 loc1-1 loc1-3 city1)
-1 (load-airplane package1 plane2 loc5-1)
-1 (drive-truck truck2-1 loc2-2 loc2-3 city2)
-2 (fly-airplane plane1 loc4-1 loc1-1)
-2 (load-truck package2 truck5-1 loc5-3)
-2 (load-truck package9 truck2-1 loc2-3)
-2 (load-truck package5 truck5-1 loc5-3)
-2 (load-truck package6 truck5-1 loc5-3)
-2 (load-truck package3 truck1-1 loc1-3)
-2 (fly-airplane plane2 loc5-1 loc2-1)
-3 (drive-truck truck2-1 loc2-3 loc2-1 city2)
-3 (drive-truck truck1-1 loc1-3 loc1-1 city1)
-3 (unload-airplane package1 plane2 loc2-1)
-3 (load-airplane package4 plane1 loc1-1)
-3 (drive-truck truck5-1 loc5-3 loc5-1 city5)
-4 (fly-airplane plane1 loc1-1 loc2-1)
-4 (fly-airplane plane2 loc2-1 loc5-1)
-4 (unload-truck package2 truck5-1 loc5-1)
-4 (unload-truck package9 truck2-1 loc2-1)
-4 (unload-truck package5 truck5-1 loc5-1)
-4 (unload-truck package6 truck5-1 loc5-1)
-5 (load-airplane package9 plane1 loc2-1)
-5 (load-truck package1 truck2-1 loc2-1)
-5 (load-airplane package6 plane2 loc5-1)
-5 (drive-truck truck5-1 loc5-1 loc5-3 city5)
-5 (unload-airplane package4 plane1 loc2-1)
-5 (load-airplane package2 plane2 loc5-1)
-5 (load-airplane package5 plane2 loc5-1)
-6 (drive-truck truck5-1 loc5-3 loc5-2 city5)
-6 (unload-truck package3 truck1-1 loc1-1)
-6 (fly-airplane plane1 loc2-1 loc4-1)
-6 (fly-airplane plane2 loc5-1 loc4-1)
-6 (load-truck package4 truck2-1 loc2-1)
-7 (unload-airplane package9 plane1 loc4-1)
-7 (load-truck package7 truck5-1 loc5-2)
-7 (unload-airplane package6 plane2 loc4-1)
-7 (drive-truck truck2-1 loc2-1 loc2-3 city2)
-8 (fly-airplane plane1 loc4-1 loc1-1)
-8 (drive-truck truck5-1 loc5-2 loc5-3 city5)
-8 (unload-truck package1 truck2-1 loc2-3)
-8 (load-truck package6 truck4-1 loc4-1)
-8 (load-truck package9 truck4-1 loc4-1)
-8 (fly-airplane plane2 loc4-1 loc3-1)
-9 (load-airplane package3 plane1 loc1-1)
-9 (unload-airplane package2 plane2 loc3-1)
-9 (drive-truck truck4-1 loc4-1 loc4-3 city4)
-10 (unload-truck package6 truck4-1 loc4-3)
-10 (fly-airplane plane1 loc1-1 loc5-1)
-10 (load-truck package2 truck3-1 loc3-1)
-10 (fly-airplane plane2 loc3-1 loc2-1)
-11 (drive-truck truck4-1 loc4-3 loc4-2 city4)
-11 (unload-airplane package5 plane2 loc2-1)
-11 (fly-airplane plane1 loc5-1 loc3-1)
-11 (drive-truck truck3-1 loc3-1 loc3-3 city3)
-11 (drive-truck truck5-1 loc5-3 loc5-1 city5)
-12 (unload-truck package2 truck3-1 loc3-3)
-12 (unload-truck package4 truck2-1 loc2-3)
-12 (unload-airplane package3 plane1 loc3-1)
-12 (unload-truck package7 truck5-1 loc5-1)
-12 (unload-truck package9 truck4-1 loc4-2)
-End plan
-----------------------------------------------------
-
-61 total actions in plan
-0 entries in hash table, 
-11 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   1.61 seconds
-Time in milliseconds: 1612
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob026.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob026.pddl
-Problem name: log026
-Facts loaded.
-time: 1, 92 facts and 44 exclusive pairs.
-time: 2, 105 facts and 99 exclusive pairs.
-time: 3, 111 facts and 126 exclusive pairs.
-time: 4, 139 facts and 322 exclusive pairs.
-time: 5, 159 facts and 540 exclusive pairs.
-time: 6, 167 facts and 594 exclusive pairs.
-time: 7, 207 facts and 1050 exclusive pairs.
-time: 8, 231 facts and 1402 exclusive pairs.
-time: 9, 231 facts and 1274 exclusive pairs.
-time: 10, 279 facts and 2312 exclusive pairs.
-Goals first reachable in 10 steps.
-5898 nodes created.
-
-####################################################
-goals at time 11:
-  at_package1_loc3-2 at_package2_loc5-2 at_package3_loc4-3 at_package4_loc3-2 at_package5_loc3-1 
-at_package6_loc3-3 at_package7_loc3-2 at_package8_loc2-3 at_package9_loc4-3 
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 2052
-number of fluent variables = 1085
-total number variables = 3137
-number clauses = 39054
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 11, 279 facts and 2216 exclusive pairs.
-1078 new nodes added.
-
-####################################################
-goals at time 12:
-  at_package1_loc3-2 at_package2_loc5-2 at_package3_loc4-3 at_package4_loc3-2 at_package5_loc3-1 
-at_package6_loc3-3 at_package7_loc3-2 at_package8_loc2-3 at_package9_loc4-3 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 2591
-number of fluent variables = 1288
-total number variables = 3879
-number clauses = 59667
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 11 steps
-time: 12, 279 facts and 2114 exclusive pairs.
-1078 new nodes added.
-
-####################################################
-goals at time 13:
-  at_package1_loc3-2 at_package2_loc5-2 at_package3_loc4-3 at_package4_loc3-2 at_package5_loc3-1 
-at_package6_loc3-3 at_package7_loc3-2 at_package8_loc2-3 at_package9_loc4-3 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 3182
-number of fluent variables = 1501
-total number variables = 4683
-number clauses = 84743
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   21 actions were pruned in 0.00 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (fly-airplane plane1 loc2-1 loc1-1)
-1 (drive-truck truck5-1 loc5-1 loc5-2 city5)
-1 (load-airplane package6 plane2 loc1-1)
-1 (drive-truck truck2-1 loc2-2 loc2-3 city2)
-1 (drive-truck truck4-1 loc4-1 loc4-3 city4)
-2 (load-truck package1 truck5-1 loc5-2)
-2 (fly-airplane plane2 loc1-1 loc3-1)
-2 (load-truck package4 truck2-1 loc2-3)
-2 (fly-airplane plane1 loc1-1 loc4-1)
-2 (load-truck package7 truck4-1 loc4-3)
-2 (load-truck package8 truck4-1 loc4-3)
-3 (drive-truck truck2-1 loc2-3 loc2-1 city2)
-3 (load-airplane package2 plane2 loc3-1)
-3 (drive-truck truck5-1 loc5-2 loc5-3 city5)
-3 (drive-truck truck4-1 loc4-3 loc4-1 city4)
-3 (unload-airplane package6 plane2 loc3-1)
-3 (drive-truck truck3-1 loc3-3 loc3-1 city3)
-4 (load-truck package6 truck3-1 loc3-1)
-4 (unload-truck package4 truck2-1 loc2-1)
-4 (unload-truck package7 truck4-1 loc4-1)
-4 (unload-truck package8 truck4-1 loc4-1)
-4 (fly-airplane plane2 loc3-1 loc2-1)
-4 (drive-truck truck5-1 loc5-3 loc5-1 city5)
-5 (load-airplane package4 plane2 loc2-1)
-5 (load-airplane package7 plane1 loc4-1)
-5 (load-airplane package8 plane1 loc4-1)
-5 (drive-truck truck3-1 loc3-1 loc3-3 city3)
-6 (fly-airplane plane2 loc2-1 loc5-1)
-6 (fly-airplane plane1 loc4-1 loc3-1)
-6 (unload-truck package1 truck5-1 loc5-1)
-7 (unload-airplane package2 plane2 loc5-1)
-7 (unload-airplane package7 plane1 loc3-1)
-7 (load-airplane package1 plane2 loc5-1)
-8 (fly-airplane plane1 loc3-1 loc2-1)
-8 (unload-truck package6 truck3-1 loc3-3)
-8 (fly-airplane plane2 loc5-1 loc3-1)
-9 (unload-airplane package1 plane2 loc3-1)
-9 (unload-airplane package8 plane1 loc2-1)
-9 (unload-airplane package4 plane2 loc3-1)
-9 (drive-truck truck3-1 loc3-3 loc3-1 city3)
-10 (load-truck package7 truck3-1 loc3-1)
-10 (load-truck package1 truck3-1 loc3-1)
-10 (load-truck package2 truck5-1 loc5-1)
-10 (load-truck package8 truck2-1 loc2-1)
-10 (load-truck package4 truck3-1 loc3-1)
-11 (drive-truck truck5-1 loc5-1 loc5-2 city5)
-11 (drive-truck truck3-1 loc3-1 loc3-2 city3)
-11 (drive-truck truck2-1 loc2-1 loc2-3 city2)
-12 (unload-truck package4 truck3-1 loc3-2)
-12 (unload-truck package7 truck3-1 loc3-2)
-12 (unload-truck package1 truck3-1 loc3-2)
-12 (unload-truck package2 truck5-1 loc5-2)
-12 (unload-truck package8 truck2-1 loc2-3)
-End plan
-----------------------------------------------------
-
-53 total actions in plan
-0 entries in hash table, 
-11 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   1.69 seconds
-Time in milliseconds: 1692
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob027.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob027.pddl
-Problem name: log027
-Facts loaded.
-time: 1, 96 facts and 58 exclusive pairs.
-time: 2, 105 facts and 95 exclusive pairs.
-time: 3, 117 facts and 127 exclusive pairs.
-time: 4, 145 facts and 374 exclusive pairs.
-time: 5, 159 facts and 488 exclusive pairs.
-time: 6, 179 facts and 667 exclusive pairs.
-time: 7, 219 facts and 1266 exclusive pairs.
-time: 8, 231 facts and 1378 exclusive pairs.
-time: 9, 255 facts and 1854 exclusive pairs.
-time: 10, 279 facts and 2256 exclusive pairs.
-Goals reachable at 10 steps but mutually exclusive.
-time: 11, 279 facts and 2132 exclusive pairs.
-Goals reachable at 11 steps but mutually exclusive.
-time: 12, 279 facts and 2114 exclusive pairs.
-Goals first reachable in 12 steps.
-8338 nodes created.
-
-####################################################
-goals at time 13:
-  at_package1_loc3-2 at_package2_loc5-3 at_package3_loc3-3 at_package4_loc2-2 at_package5_loc5-3 
-at_package6_loc2-3 at_package7_loc4-1 at_package8_loc3-2 at_package9_loc1-3 
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 3330
-number of fluent variables = 1556
-total number variables = 4886
-number clauses = 90797
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 13, 279 facts and 2114 exclusive pairs.
-1078 new nodes added.
-
-####################################################
-goals at time 14:
-  at_package1_loc3-2 at_package2_loc5-3 at_package3_loc3-3 at_package4_loc2-2 at_package5_loc5-3 
-at_package6_loc2-3 at_package7_loc4-1 at_package8_loc3-2 at_package9_loc1-3 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 4006
-number of fluent variables = 1799
-total number variables = 5805
-number clauses = 121839
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   5 actions were pruned in 0.00 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (load-truck package1 truck5-1 loc5-3)
-1 (fly-airplane plane1 loc2-1 loc4-1)
-1 (load-truck package9 truck2-1 loc2-3)
-1 (fly-airplane plane2 loc2-1 loc1-1)
-1 (drive-truck truck1-1 loc1-1 loc1-2 city1)
-1 (load-truck package4 truck3-1 loc3-3)
-2 (drive-truck truck2-1 loc2-3 loc2-1 city2)
-2 (drive-truck truck5-1 loc5-3 loc5-2 city5)
-2 (load-airplane package7 plane2 loc1-1)
-2 (load-airplane package6 plane1 loc4-1)
-2 (load-truck package3 truck1-1 loc1-2)
-2 (drive-truck truck3-1 loc3-3 loc3-1 city3)
-3 (unload-truck package4 truck3-1 loc3-1)
-3 (load-truck package8 truck5-1 loc5-2)
-3 (fly-airplane plane2 loc1-1 loc3-1)
-3 (unload-truck package9 truck2-1 loc2-1)
-3 (drive-truck truck1-1 loc1-2 loc1-1 city1)
-3 (fly-airplane plane1 loc4-1 loc2-1)
-4 (drive-truck truck5-1 loc5-2 loc5-1 city5)
-4 (load-airplane package9 plane1 loc2-1)
-4 (load-airplane package4 plane2 loc3-1)
-4 (unload-airplane package6 plane1 loc2-1)
-4 (load-airplane package2 plane1 loc2-1)
-4 (drive-truck truck3-1 loc3-1 loc3-2 city3)
-5 (unload-truck package3 truck1-1 loc1-1)
-5 (fly-airplane plane2 loc3-1 loc5-1)
-5 (fly-airplane plane1 loc2-1 loc1-1)
-5 (load-truck package6 truck2-1 loc2-1)
-5 (unload-truck package1 truck5-1 loc5-1)
-5 (unload-truck package8 truck5-1 loc5-1)
-5 (load-truck package5 truck3-1 loc3-2)
-6 (load-airplane package3 plane1 loc1-1)
-6 (drive-truck truck3-1 loc3-2 loc3-1 city3)
-6 (unload-airplane package9 plane1 loc1-1)
-6 (load-airplane package8 plane2 loc5-1)
-6 (load-airplane package1 plane2 loc5-1)
-6 (drive-truck truck2-1 loc2-1 loc2-3 city2)
-7 (unload-truck package5 truck3-1 loc3-1)
-7 (fly-airplane plane2 loc5-1 loc3-1)
-7 (unload-truck package6 truck2-1 loc2-3)
-7 (load-truck package9 truck1-1 loc1-1)
-7 (fly-airplane plane1 loc1-1 loc3-1)
-8 (unload-airplane package8 plane2 loc3-1)
-8 (unload-airplane package1 plane2 loc3-1)
-8 (load-airplane package5 plane1 loc3-1)
-8 (drive-truck truck2-1 loc2-3 loc2-2 city2)
-8 (unload-airplane package3 plane1 loc3-1)
-8 (drive-truck truck1-1 loc1-1 loc1-2 city1)
-9 (load-truck package1 truck3-1 loc3-1)
-9 (load-truck package8 truck3-1 loc3-1)
-9 (fly-airplane plane1 loc3-1 loc5-1)
-9 (drive-truck truck2-1 loc2-2 loc2-1 city2)
-9 (load-truck package3 truck3-1 loc3-1)
-9 (fly-airplane plane2 loc3-1 loc2-1)
-10 (unload-airplane package4 plane2 loc2-1)
-10 (unload-airplane package5 plane1 loc5-1)
-10 (unload-airplane package2 plane1 loc5-1)
-10 (drive-truck truck3-1 loc3-1 loc3-3 city3)
-11 (load-truck package2 truck5-1 loc5-1)
-11 (drive-truck truck1-1 loc1-2 loc1-3 city1)
-11 (load-truck package4 truck2-1 loc2-1)
-11 (load-truck package5 truck5-1 loc5-1)
-11 (unload-truck package3 truck3-1 loc3-3)
-11 (fly-airplane plane2 loc2-1 loc4-1)
-12 (unload-airplane package7 plane2 loc4-1)
-12 (drive-truck truck3-1 loc3-3 loc3-2 city3)
-12 (drive-truck truck5-1 loc5-1 loc5-3 city5)
-12 (drive-truck truck2-1 loc2-1 loc2-2 city2)
-13 (unload-truck package9 truck1-1 loc1-3)
-13 (unload-truck package1 truck3-1 loc3-2)
-13 (unload-truck package2 truck5-1 loc5-3)
-13 (unload-truck package8 truck3-1 loc3-2)
-13 (unload-truck package4 truck2-1 loc2-2)
-13 (unload-truck package5 truck5-1 loc5-3)
-End plan
-----------------------------------------------------
-
-74 total actions in plan
-0 entries in hash table, 
-12 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   2.33 seconds
-Time in milliseconds: 2334
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob028.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob028.pddl
-Problem name: log028
-Facts loaded.
-time: 1, 118 facts and 81 exclusive pairs.
-time: 2, 132 facts and 163 exclusive pairs.
-time: 3, 145 facts and 227 exclusive pairs.
-time: 4, 178 facts and 525 exclusive pairs.
-time: 5, 203 facts and 820 exclusive pairs.
-time: 6, 223 facts and 991 exclusive pairs.
-time: 7, 278 facts and 1852 exclusive pairs.
-time: 8, 303 facts and 2248 exclusive pairs.
-time: 9, 323 facts and 2660 exclusive pairs.
-time: 10, 373 facts and 3845 exclusive pairs.
-Goals reachable at 10 steps but mutually exclusive.
-time: 11, 373 facts and 3655 exclusive pairs.
-Goals reachable at 11 steps but mutually exclusive.
-time: 12, 373 facts and 3573 exclusive pairs.
-Goals first reachable in 12 steps.
-11928 nodes created.
-
-####################################################
-goals at time 13:
-  at_package1_loc2-2 at_package2_loc5-2 at_package3_loc3-1 at_package4_loc4-2 at_package5_loc2-1 
-at_package6_loc5-2 at_package7_loc3-3 at_package8_loc1-2 at_package9_loc3-2 at_package10_loc4-3 
-
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 5042
-number of fluent variables = 1980
-total number variables = 7022
-number clauses = 212453
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 13, 373 facts and 3573 exclusive pairs.
-1592 new nodes added.
-
-####################################################
-goals at time 14:
-  at_package1_loc2-2 at_package2_loc5-2 at_package3_loc3-1 at_package4_loc4-2 at_package5_loc2-1 
-at_package6_loc5-2 at_package7_loc3-3 at_package8_loc1-2 at_package9_loc3-2 at_package10_loc4-3 
-
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 6063
-number of fluent variables = 2297
-total number variables = 8360
-number clauses = 280772
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 13 steps
-time: 14, 373 facts and 3573 exclusive pairs.
-1592 new nodes added.
-
-####################################################
-goals at time 15:
-  at_package1_loc2-2 at_package2_loc5-2 at_package3_loc3-1 at_package4_loc4-2 at_package5_loc2-1 
-at_package6_loc5-2 at_package7_loc3-3 at_package8_loc1-2 at_package9_loc3-2 at_package10_loc4-3 
-
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 7114
-number of fluent variables = 2614
-total number variables = 9728
-number clauses = 353969
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   37 actions were pruned in 0.00 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (load-truck package8 truck5-1 loc5-3)
-1 (drive-truck truck6-1 loc6-3 loc6-2 city6)
-1 (fly-airplane plane3 loc3-1 loc4-1)
-1 (fly-airplane plane1 loc1-1 loc3-1)
-1 (drive-truck truck4-1 loc4-1 loc4-3 city4)
-1 (fly-airplane plane2 loc1-1 loc4-1)
-1 (drive-truck truck2-1 loc2-1 loc2-3 city2)
-2 (load-truck package9 truck6-1 loc6-2)
-2 (load-truck package6 truck4-1 loc4-3)
-2 (fly-airplane plane1 loc3-1 loc4-1)
-2 (load-truck package1 truck4-1 loc4-3)
-2 (drive-truck truck5-1 loc5-3 loc5-1 city5)
-3 (fly-airplane plane1 loc4-1 loc5-1)
-3 (load-truck package7 truck2-1 loc2-3)
-3 (drive-truck truck6-1 loc6-2 loc6-1 city6)
-3 (load-truck package2 truck1-1 loc1-2)
-3 (unload-truck package8 truck5-1 loc5-1)
-3 (drive-truck truck4-1 loc4-3 loc4-1 city4)
-4 (drive-truck truck2-1 loc2-3 loc2-1 city2)
-4 (unload-truck package6 truck4-1 loc4-1)
-4 (unload-truck package9 truck6-1 loc6-1)
-4 (load-airplane package8 plane1 loc5-1)
-4 (drive-truck truck1-1 loc1-2 loc1-1 city1)
-4 (unload-truck package1 truck4-1 loc4-1)
-4 (fly-airplane plane3 loc4-1 loc6-1)
-4 (load-truck package4 truck4-1 loc4-1)
-5 (load-airplane package5 plane2 loc4-1)
-5 (load-airplane package9 plane3 loc6-1)
-5 (drive-truck truck5-1 loc5-1 loc5-2 city5)
-5 (fly-airplane plane1 loc5-1 loc1-1)
-5 (load-airplane package6 plane2 loc4-1)
-5 (unload-truck package7 truck2-1 loc2-1)
-5 (load-airplane package1 plane2 loc4-1)
-5 (unload-truck package2 truck1-1 loc1-1)
-6 (fly-airplane plane2 loc4-1 loc2-1)
-6 (load-truck package10 truck5-1 loc5-2)
-6 (fly-airplane plane3 loc6-1 loc3-1)
-6 (load-airplane package2 plane1 loc1-1)
-6 (unload-airplane package8 plane1 loc1-1)
-7 (drive-truck truck5-1 loc5-2 loc5-1 city5)
-7 (fly-airplane plane1 loc1-1 loc2-1)
-7 (unload-airplane package9 plane3 loc3-1)
-7 (drive-truck truck3-1 loc3-3 loc3-1 city3)
-8 (unload-airplane package2 plane1 loc2-1)
-8 (load-truck package9 truck3-1 loc3-1)
-8 (fly-airplane plane3 loc3-1 loc5-1)
-8 (unload-truck package10 truck5-1 loc5-1)
-8 (unload-airplane package5 plane2 loc2-1)
-8 (load-airplane package7 plane1 loc2-1)
-9 (load-airplane package2 plane2 loc2-1)
-9 (unload-airplane package1 plane2 loc2-1)
-9 (drive-truck truck4-1 loc4-1 loc4-2 city4)
-9 (drive-truck truck3-1 loc3-1 loc3-2 city3)
-9 (load-airplane package10 plane3 loc5-1)
-10 (unload-truck package4 truck4-1 loc4-2)
-10 (fly-airplane plane2 loc2-1 loc5-1)
-10 (unload-truck package9 truck3-1 loc3-2)
-10 (fly-airplane plane1 loc2-1 loc3-1)
-10 (fly-airplane plane3 loc5-1 loc4-1)
-11 (drive-truck truck4-1 loc4-2 loc4-1 city4)
-11 (drive-truck truck3-1 loc3-2 loc3-1 city3)
-11 (unload-airplane package2 plane2 loc5-1)
-11 (unload-airplane package6 plane2 loc5-1)
-11 (unload-airplane package7 plane1 loc3-1)
-11 (unload-airplane package10 plane3 loc4-1)
-12 (load-truck package7 truck3-1 loc3-1)
-12 (load-truck package1 truck2-1 loc2-1)
-12 (load-truck package2 truck5-1 loc5-1)
-12 (load-truck package10 truck4-1 loc4-1)
-12 (load-truck package6 truck5-1 loc5-1)
-12 (load-truck package8 truck1-1 loc1-1)
-13 (drive-truck truck5-1 loc5-1 loc5-2 city5)
-13 (drive-truck truck2-1 loc2-1 loc2-2 city2)
-13 (drive-truck truck1-1 loc1-1 loc1-2 city1)
-13 (drive-truck truck4-1 loc4-1 loc4-3 city4)
-13 (drive-truck truck3-1 loc3-1 loc3-3 city3)
-14 (unload-truck package10 truck4-1 loc4-3)
-14 (unload-truck package7 truck3-1 loc3-3)
-14 (unload-truck package2 truck5-1 loc5-2)
-14 (unload-truck package1 truck2-1 loc2-2)
-14 (unload-truck package6 truck5-1 loc5-2)
-14 (unload-truck package8 truck1-1 loc1-2)
-End plan
-----------------------------------------------------
-
-82 total actions in plan
-0 entries in hash table, 
-13 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   35.08 seconds
-Time in milliseconds: 35080
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob029.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob029.pddl
-Problem name: log029
-Facts loaded.
-time: 1, 118 facts and 87 exclusive pairs.
-time: 2, 141 facts and 263 exclusive pairs.
-time: 3, 152 facts and 243 exclusive pairs.
-time: 4, 199 facts and 691 exclusive pairs.
-time: 5, 233 facts and 1154 exclusive pairs.
-time: 6, 248 facts and 1300 exclusive pairs.
-time: 7, 318 facts and 2789 exclusive pairs.
-time: 8, 333 facts and 2997 exclusive pairs.
-time: 9, 343 facts and 3018 exclusive pairs.
-time: 10, 373 facts and 3687 exclusive pairs.
-Goals first reachable in 10 steps.
-9637 nodes created.
-
-####################################################
-goals at time 11:
-  at_package1_loc3-3 at_package2_loc1-3 at_package3_loc5-2 at_package4_loc1-1 at_package5_loc6-2 
-at_package6_loc4-3 at_package7_loc5-2 at_package8_loc6-1 at_package9_loc2-3 at_package10_loc3-3 
-
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 3697
-number of fluent variables = 1541
-total number variables = 5238
-number clauses = 132059
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   16 actions were pruned in 0.01 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (drive-truck truck3-1 loc3-3 loc3-2 city3)
-1 (fly-airplane plane3 loc5-1 loc6-1)
-1 (fly-airplane plane2 loc4-1 loc1-1)
-1 (fly-airplane plane1 loc4-1 loc6-1)
-2 (load-truck package6 truck3-1 loc3-2)
-2 (load-airplane package8 plane2 loc1-1)
-2 (load-airplane package3 plane1 loc6-1)
-2 (load-airplane package7 plane1 loc6-1)
-2 (load-truck package4 truck3-1 loc3-2)
-3 (fly-airplane plane3 loc6-1 loc2-1)
-3 (drive-truck truck3-1 loc3-2 loc3-1 city3)
-3 (drive-truck truck6-1 loc6-3 loc6-1 city6)
-3 (fly-airplane plane2 loc1-1 loc4-1)
-4 (unload-truck package4 truck3-1 loc3-1)
-4 (fly-airplane plane3 loc2-1 loc3-1)
-4 (unload-truck package6 truck3-1 loc3-1)
-4 (fly-airplane plane1 loc6-1 loc3-1)
-4 (load-truck package10 truck3-1 loc3-1)
-4 (load-truck package5 truck6-1 loc6-1)
-5 (drive-truck truck6-1 loc6-1 loc6-2 city6)
-5 (fly-airplane plane1 loc3-1 loc5-1)
-5 (load-airplane package4 plane3 loc3-1)
-5 (load-airplane package6 plane3 loc3-1)
-5 (drive-truck truck3-1 loc3-1 loc3-2 city3)
-5 (load-airplane package9 plane2 loc4-1)
-6 (unload-truck package5 truck6-1 loc6-2)
-6 (unload-airplane package3 plane1 loc5-1)
-6 (fly-airplane plane2 loc4-1 loc2-1)
-6 (fly-airplane plane3 loc3-1 loc4-1)
-6 (drive-truck truck3-1 loc3-2 loc3-3 city3)
-6 (unload-airplane package7 plane1 loc5-1)
-7 (drive-truck truck2-1 loc2-3 loc2-1 city2)
-7 (unload-airplane package6 plane3 loc4-1)
-7 (unload-truck package10 truck3-1 loc3-3)
-7 (unload-airplane package9 plane2 loc2-1)
-8 (load-truck package3 truck5-1 loc5-1)
-8 (fly-airplane plane3 loc4-1 loc1-1)
-8 (load-truck package9 truck2-1 loc2-1)
-8 (load-truck package6 truck4-1 loc4-1)
-8 (load-truck package7 truck5-1 loc5-1)
-8 (fly-airplane plane2 loc2-1 loc3-1)
-9 (drive-truck truck5-1 loc5-1 loc5-2 city5)
-9 (unload-airplane package4 plane3 loc1-1)
-9 (fly-airplane plane2 loc3-1 loc6-1)
-9 (drive-truck truck4-1 loc4-1 loc4-3 city4)
-9 (drive-truck truck2-1 loc2-1 loc2-3 city2)
-10 (unload-airplane package8 plane2 loc6-1)
-10 (unload-truck package6 truck4-1 loc4-3)
-10 (unload-truck package3 truck5-1 loc5-2)
-10 (unload-truck package9 truck2-1 loc2-3)
-10 (unload-truck package7 truck5-1 loc5-2)
-End plan
-----------------------------------------------------
-
-51 total actions in plan
-0 entries in hash table, 
-9 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   2.32 seconds
-Time in milliseconds: 2324
-
-####################################################
-
-*******************************************
-blackbox version 4.0
-command line:  blackbox -o domain.pddl -f prob030.pddl -solver chaff
-
-Begin solver specification
-    -maxint        0   -maxsec 0.000000  chaff
-End solver specification
-Loading domain file: domain.pddl
-Loading fact file: prob030.pddl
-Problem name: log030
-Facts loaded.
-time: 1, 93 facts and 47 exclusive pairs.
-time: 2, 103 facts and 89 exclusive pairs.
-time: 3, 111 facts and 137 exclusive pairs.
-time: 4, 133 facts and 292 exclusive pairs.
-time: 5, 151 facts and 509 exclusive pairs.
-time: 6, 159 facts and 524 exclusive pairs.
-time: 7, 195 facts and 834 exclusive pairs.
-time: 8, 223 facts and 1238 exclusive pairs.
-time: 9, 223 facts and 1134 exclusive pairs.
-time: 10, 279 facts and 2360 exclusive pairs.
-Goals first reachable in 10 steps.
-5670 nodes created.
-
-####################################################
-goals at time 11:
-  at_package1_loc5-2 at_package2_loc2-2 at_package3_loc1-3 at_package4_loc1-2 at_package5_loc5-2 
-at_package6_loc4-1 at_package7_loc5-2 at_package8_loc2-3 at_package9_loc3-1 
-
-
-----------------------------------------------------
-** Turning off completeness check **
-Converting graph to wff
-number of action variables = 2094
-number of fluent variables = 1111
-total number variables = 3205
-number clauses = 38871
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-time: 11, 279 facts and 2248 exclusive pairs.
-1078 new nodes added.
-
-####################################################
-goals at time 12:
-  at_package1_loc5-2 at_package2_loc2-2 at_package3_loc1-3 at_package4_loc1-2 at_package5_loc5-2 
-at_package6_loc4-1 at_package7_loc5-2 at_package8_loc2-3 at_package9_loc3-1 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 2631
-number of fluent variables = 1312
-total number variables = 3943
-number clauses = 59864
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 11 steps
-time: 12, 279 facts and 2114 exclusive pairs.
-1078 new nodes added.
-
-####################################################
-goals at time 13:
-  at_package1_loc5-2 at_package2_loc2-2 at_package3_loc1-3 at_package4_loc1-2 at_package5_loc5-2 
-at_package6_loc4-1 at_package7_loc5-2 at_package8_loc2-3 at_package9_loc3-1 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 3204
-number of fluent variables = 1517
-total number variables = 4721
-number clauses = 83476
-Instance unsatisfiable
-Result is Unsat
-Iteration was 0
-
-----------------------------------------------------
-Can't solve in 12 steps
-time: 13, 279 facts and 2114 exclusive pairs.
-1078 new nodes added.
-
-####################################################
-goals at time 14:
-  at_package1_loc5-2 at_package2_loc2-2 at_package3_loc1-3 at_package4_loc1-2 at_package5_loc5-2 
-at_package6_loc4-1 at_package7_loc5-2 at_package8_loc2-3 at_package9_loc3-1 
-
-
-----------------------------------------------------
-Converting graph to wff
-number of action variables = 3833
-number of fluent variables = 1748
-total number variables = 5581
-number clauses = 111003
-Result is Sat
-Iteration was 0
-Performing plan justification:
-   13 actions were pruned in 0.01 seconds
-value of bb_prettyflag is 1
-
-----------------------------------------------------
-Begin plan
-1 (drive-truck truck5-1 loc5-1 loc5-2 city5)
-1 (fly-airplane plane1 loc1-1 loc5-1)
-1 (drive-truck truck4-1 loc4-1 loc4-2 city4)
-1 (drive-truck truck3-1 loc3-1 loc3-3 city3)
-2 (load-truck package7 truck3-1 loc3-3)
-2 (drive-truck truck5-1 loc5-2 loc5-3 city5)
-2 (load-truck package1 truck4-1 loc4-2)
-2 (load-airplane package3 plane1 loc5-1)
-3 (drive-truck truck4-1 loc4-2 loc4-1 city4)
-3 (drive-truck truck3-1 loc3-3 loc3-2 city3)
-3 (load-truck package2 truck5-1 loc5-3)
-3 (fly-airplane plane1 loc5-1 loc1-1)
-4 (drive-truck truck5-1 loc5-3 loc5-2 city5)
-4 (drive-truck truck3-1 loc3-2 loc3-1 city3)
-4 (unload-airplane package3 plane1 loc1-1)
-4 (unload-truck package1 truck4-1 loc4-1)
-5 (unload-truck package7 truck3-1 loc3-1)
-5 (load-truck package4 truck5-1 loc5-2)
-5 (fly-airplane plane1 loc1-1 loc4-1)
-5 (drive-truck truck4-1 loc4-1 loc4-3 city4)
-6 (drive-truck truck5-1 loc5-2 loc5-1 city5)
-6 (load-airplane package7 plane2 loc3-1)
-6 (load-truck package6 truck4-1 loc4-3)
-6 (load-airplane package1 plane1 loc4-1)
-7 (fly-airplane plane1 loc4-1 loc5-1)
-7 (fly-airplane plane2 loc3-1 loc5-1)
-7 (unload-truck package2 truck5-1 loc5-1)
-7 (unload-truck package4 truck5-1 loc5-1)
-7 (load-truck package3 truck1-1 loc1-1)
-7 (drive-truck truck4-1 loc4-3 loc4-1 city4)
-8 (unload-airplane package1 plane1 loc5-1)
-8 (unload-truck package6 truck4-1 loc4-1)
-8 (load-airplane package2 plane2 loc5-1)
-8 (drive-truck truck1-1 loc1-1 loc1-3 city1)
-8 (unload-airplane package7 plane2 loc5-1)
-8 (load-airplane package4 plane1 loc5-1)
-9 (load-truck package1 truck5-1 loc5-1)
-9 (unload-truck package3 truck1-1 loc1-3)
-9 (fly-airplane plane1 loc5-1 loc1-1)
-9 (load-truck package7 truck5-1 loc5-1)
-9 (fly-airplane plane2 loc5-1 loc2-1)
-10 (unload-airplane package2 plane2 loc2-1)
-10 (drive-truck truck1-1 loc1-3 loc1-1 city1)
-10 (unload-airplane package4 plane1 loc1-1)
-11 (load-truck package2 truck2-1 loc2-1)
-11 (load-truck package4 truck1-1 loc1-1)
-12 (drive-truck truck5-1 loc5-1 loc5-2 city5)
-12 (drive-truck truck2-1 loc2-1 loc2-2 city2)
-12 (drive-truck truck1-1 loc1-1 loc1-2 city1)
-13 (unload-truck package4 truck1-1 loc1-2)
-13 (unload-truck package2 truck2-1 loc2-2)
-13 (unload-truck package7 truck5-1 loc5-2)
-13 (unload-truck package1 truck5-1 loc5-2)
-End plan
-----------------------------------------------------
-
-53 total actions in plan
-0 entries in hash table, 
-12 total set-creation steps (entries + hits + plan length - 1)
-0 actions tried
-
-####################################################
-Total elapsed time:   2.51 seconds
-Time in milliseconds: 2513
-
-####################################################
