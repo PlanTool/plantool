@@ -8,7 +8,7 @@ Usage for SATplan:
 Instructions about arguments:  
 
 OPTIONS   DESCRIPTIONS  
-
+```bash
 -p  <str>    path for operator and fact file  
 -o  <str>    operator file name  
 -f  <str>    fact file name  
@@ -27,4 +27,4 @@ OPTIONS   DESCRIPTIONS
       2      gp-style action-based  
       3      gp-based  
       4      thin gp-based  
-
+```
