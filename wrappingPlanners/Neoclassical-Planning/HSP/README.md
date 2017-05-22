@@ -1,13 +1,14 @@
-Usage for HSP: 
+# Usage for HSP: 
+```python
 >>> import hsp
 >>> argv = ['hsp', '-o', 'domain.pddl', '-f', 'problem.pddl']
 >>> hsp.run(argv)
+```
 
+## Instructions about arguments:
 
-Instructions about arguments:
-
-OPTIONS   DESCRIPTIONS
-
+### OPTIONS   DESCRIPTIONS
+```bash
 -o  <str>    operator file name
 -f  <str>    fact file name
 
@@ -17,3 +18,4 @@ OPTIONS   DESCRIPTIONS
 
 -v  <num>    Verbose level >= 0 (default is 1).
 -w <float>   Float to weight the heuristic component of the cost 
+```

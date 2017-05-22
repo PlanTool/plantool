@@ -1,13 +1,13 @@
-Usage for SATplan:  
+# Usage for SATplan:  
 ```python
 >>> import satplan  
 >>> argv=['bb','-o','domain.pddl','-f','problem.pddl','-l','5','-G','0','-C','2']  
 >>> satplan.run(argv)  
 ```
 
-Instructions about arguments:  
+## Instructions about arguments:  
 
-OPTIONS   DESCRIPTIONS  
+### OPTIONS   DESCRIPTIONS  
 ```bash
 -p  <str>    path for operator and fact file  
 -o  <str>    operator file name  
