@@ -1,6 +1,6 @@
 # Usage for SGPlan: 
 ```python
->>> import hsp
+>>> import sgplan
 >>> argv = ['sgplan', '-o', 'domain.pddl', '-f', 'problem.pddl']
 >>> sgplan.oldmain(argv)
 ```
