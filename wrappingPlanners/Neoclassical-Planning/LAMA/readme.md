@@ -1,10 +1,11 @@
-#Usage for SGPlan:
- First,run:
- `p 
+# Usage for SGPlan:
+## First,run:
+```python
    >>> import translate
    >>> argv = ['translate','domain.pddl','problem.pddl']
    >>> translate.main(argv)
-
+```
+```bash
    The translator will will write its result to a file called
    "output.sas", which serves as an input to the next phase, knowledge
    compilation. The translator also writes a file called
@@ -13,22 +14,26 @@
    This second file is not needed by the planner, but might help you
    understand what the translated task looks like. It also writes a
    file called "all.groups" which is needed by the landmark heuristic.
+```
 
-Second, run:
+## Second, run:
+```python
    >>> import preprocess
    >>> argv = ['preprocess','< output.sas']
    >>> preprocess.oldmain(argv)
- 
-
+```
+```bash
    This will run the knowledge compilation component, writing its
    output to the file aptly named "output".
-
-Finally, run:
+```
+## Finally, run:
+```python
    >>> import search
    >>> argv = ['search','f','< output']
    >>> search.oldmain(argv)
-
-   note  
+```
+```bash
+   note 
    This runs the search component of the planner. On success, it will
    write a file called "sas_plan" containing the plan.
 
@@ -38,3 +43,4 @@ OPTIONS DESCRIPTIONS
    f:  Use the FF heuristic.
    F:  Use helpful actions ("preferred operators" of the FF
        heuristic).
+```
