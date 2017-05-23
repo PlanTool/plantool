@@ -9,12 +9,22 @@
 TYPE	= -fPIC
 ADDONS	= 
 
-CC      = gcc -c
+CC      = gcc
+INC_PYTHON = -I/usr/include/python2.7
 
 CFLAGS	= -O6 -Wall -g -ansi $(TYPE) $(ADDONS) 
 # -g -pg
-
-INC_PYTHON = -I/usr/include/python2.7
+ifeq ($(OS),Windows_NT)
+	$(error FF unsupported on Windows)
+else
+    UNAME_S := $(shell uname -s)
+    ifeq ($(UNAME_S),Linux)
+        CFLAGS += -O6
+    endif
+    ifeq ($(UNAME_S),Darwin)
+        CFLAGS += -O3 # -O6 not supported by Apple's compiler
+    endif
+endif
 
 LIBS    = -lm
 
@@ -54,18 +64,19 @@ OBJECTS 	= $(SOURCES:.c=.o)
 .c.o:; $(CC) -c $(CFLAGS) $<
 
 ####### Build rules
-
-_ff.so: $(OBJECTS) ff_wrap.o $(PDDL_PARSER_OBJ)
+Metric_FF: $(OBJECTS) $(PDDL_PARSER_OBJ)
+	$(CC) -o Metric_FF $(OBJECTS) $(PDDL_PARSER_OBJ) $(CFLAGS) $(LIBS)
+_Metric_FF.so: $(OBJECTS) Metric_FF_wrap.o $(PDDL_PARSER_OBJ)
 	gcc $(CFLAGS) -shared -o $@ $^
 
-ff_wrap.o: ff_wrap.c
+Metric_FF_wrap.o: Metric_FF_wrap.c
 	$(CC) -c $(CFLAGS) $(INC_PYTHON) $^
 
-ff.py ff_wrap.c: ff.i
-		swig -python ff.i
+Metric_FF.py Metric_FF_wrap.c: Metric_FF.i
+		swig -python Metric_FF.i
 
-ff: $(OBJECTS) $(PDDL_PARSER_OBJ)
-	$(CC) -o ff $(OBJECTS) $(PDDL_PARSER_OBJ) $(CFLAGS) $(LIBS)
+Metric_FF: $(OBJECTS) $(PDDL_PARSER_OBJ)
+	$(CC) -o Metric_FF $(OBJECTS) $(PDDL_PARSER_OBJ) $(CFLAGS) $(LIBS)
 
 # pddl syntax
 scan-fct_pddl.tab.c: scan-fct_pddl.y lex.fct_pddl.c

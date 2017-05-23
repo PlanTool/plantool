@@ -1503,7 +1503,9 @@ void ff_usage( void );
 Bool process_command_line( int argc, char *argv[] );
 
 
-
+/**********************************************************/
+/* SWIG Wrapping*/
+int Metric_FF( int argc, char * argv[] );
 
 
 

@@ -616,7 +616,7 @@ struct tms lstart, lend;
 Bool lfound_plan;
 
 
-int main( int argc, char *argv[] )
+int Metric_FF( int argc, char *argv[] )
 
 {
 
@@ -850,6 +850,10 @@ int main( int argc, char *argv[] )
 
 }
 
+int main( int argc, char *argv[] )
+{
+	return Metric_FF(argc,argv);
+	}
 
 
 
