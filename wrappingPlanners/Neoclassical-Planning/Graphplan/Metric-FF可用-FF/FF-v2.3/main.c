@@ -482,11 +482,11 @@ struct tms lstart, lend;
 
 int main( int argc, char * argv[] ) 
 {
-  return oldmain(argc, argv);
+  return FF_2_3(argc, argv);
 }
 
 
-int oldmain( int argc, char *argv[] )
+int FF_2_3( int argc, char *argv[] )
 
 {
 

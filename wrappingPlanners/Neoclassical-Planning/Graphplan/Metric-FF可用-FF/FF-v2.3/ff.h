@@ -1107,7 +1107,9 @@ void output_planner_info( void );
 void ff_usage( void );
 Bool process_command_line( int argc, char *argv[] );
 
-
+/**********************************************************/
+/* SWIG Wrapping*/
+int FF_2_3( int argc, char * argv []);
 
 
 
@@ -1470,7 +1472,7 @@ extern int gnum_plan_ops;
  */
 extern State gplan_states[MAX_PLAN_LENGTH + 1];
 
-int oldmain( int argc, char * argv []);
+
 
 
 
