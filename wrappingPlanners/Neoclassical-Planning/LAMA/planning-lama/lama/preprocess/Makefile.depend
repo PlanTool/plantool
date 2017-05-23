@@ -1,0 +1,42 @@
+planner.o: planner.cc helper_functions.h state.h variable.h \
+ successor_generator.h causal_graph.h domain_transition_graph.h \
+ operator.h axiom.h
+helper_functions.o: helper_functions.cc helper_functions.h state.h \
+ variable.h successor_generator.h causal_graph.h operator.h axiom.h \
+ domain_transition_graph.h
+operator.o: operator.cc helper_functions.h state.h variable.h \
+ successor_generator.h causal_graph.h operator.h
+state.o: state.cc state.h helper_functions.h variable.h \
+ successor_generator.h causal_graph.h
+successor_generator.o: successor_generator.cc operator.h \
+ successor_generator.h variable.h
+scc.o: scc.cc scc.h
+causal_graph.o: causal_graph.cc causal_graph.h max_dag.h operator.h \
+ axiom.h scc.h variable.h
+max_dag.o: max_dag.cc max_dag.h
+variable.o: variable.cc variable.h
+domain_transition_graph.o: domain_transition_graph.cc \
+ domain_transition_graph.h operator.h axiom.h variable.h scc.h
+axiom.o: axiom.cc helper_functions.h state.h variable.h \
+ successor_generator.h causal_graph.h axiom.h
+planner.profile.o: planner.cc helper_functions.h state.h variable.h \
+ successor_generator.h causal_graph.h domain_transition_graph.h \
+ operator.h axiom.h
+helper_functions.profile.o: helper_functions.cc helper_functions.h state.h \
+ variable.h successor_generator.h causal_graph.h operator.h axiom.h \
+ domain_transition_graph.h
+operator.profile.o: operator.cc helper_functions.h state.h variable.h \
+ successor_generator.h causal_graph.h operator.h
+state.profile.o: state.cc state.h helper_functions.h variable.h \
+ successor_generator.h causal_graph.h
+successor_generator.profile.o: successor_generator.cc operator.h \
+ successor_generator.h variable.h
+scc.profile.o: scc.cc scc.h
+causal_graph.profile.o: causal_graph.cc causal_graph.h max_dag.h operator.h \
+ axiom.h scc.h variable.h
+max_dag.profile.o: max_dag.cc max_dag.h
+variable.profile.o: variable.cc variable.h
+domain_transition_graph.profile.o: domain_transition_graph.cc \
+ domain_transition_graph.h operator.h axiom.h variable.h scc.h
+axiom.profile.o: axiom.cc helper_functions.h state.h variable.h \
+ successor_generator.h causal_graph.h axiom.h

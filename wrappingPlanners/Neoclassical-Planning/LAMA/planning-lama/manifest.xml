@@ -1,0 +1,11 @@
+<package>
+  <description brief="LAMA planner">
+      This in an integration package for the LAMA planner (see url) as used on the 2011 planning competition. 
+      No additional functionality is provided, adaptation to the original sources are made only to include the planner into the 
+      build infrastructure.
+  </description>
+  <maintainer>Thomas Roehr/thomas.roehr@dfki.de</maintainer>
+  <license>GPL</license>
+  <url>http://www.informatik.uni-freiburg.de/~srichter/software/seq-sat-lama-2011.tar.gz</url>
+  <depend package="base/types" />
+</package>

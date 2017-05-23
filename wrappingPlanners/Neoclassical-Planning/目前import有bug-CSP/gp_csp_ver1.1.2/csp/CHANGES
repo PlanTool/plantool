@@ -1,8 +1,0 @@
-1. In the meaning of each datastructure defined in gp_csp.h:
-+ VARA: - type: ACTIVE for goals; INACTIVE for not goals.
-        - state: Time step.
-        - number: Propostition number set by BB's routine.
-
-+ VALA: - type: NOTHING, NOOP, or ACTION.
-        - number: The proposition number of that action, set by BB 
-                  (0 for NOTHING type).
