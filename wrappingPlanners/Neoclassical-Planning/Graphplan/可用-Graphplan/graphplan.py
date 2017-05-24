@@ -91,9 +91,9 @@ except AttributeError:
 
 
 
-def main(argc):
-    return _graphplan.main(argc)
-main = _graphplan.main
+def run(argc):
+    return _graphplan.run(argc)
+run = _graphplan.run
 # This file is compatible with both classic and new-style classes.
 
 
