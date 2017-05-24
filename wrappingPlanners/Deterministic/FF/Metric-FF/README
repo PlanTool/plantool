@@ -19,7 +19,7 @@ Joerg Hoffmann
 
 //**************************************************//
 
-Metric_FF() is the function which wrapped the main() function of Metric_FF
+run() is the function which wrapped the main() function of Metric_FF
 
 //------------------------------------------------//
 1.
@@ -30,7 +30,7 @@ A example here:
 ./Metric_FF -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
 
 2.
-Usage of Metric_FF()  ---->wrapped func
+Usage of Metric_FF.run()  ---->wrapped func
 
 A example here:
 
@@ -39,6 +39,6 @@ A example here:
 
 >>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
 
->>Metric_FF.Metric_FF(argv)
+>>Metric_FF.run(argv)
 
 

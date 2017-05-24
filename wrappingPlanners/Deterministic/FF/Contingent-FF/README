@@ -19,7 +19,7 @@ Joerg Hoffmann
 
 //**************************************************//
 
-Cont_FF() is the function which wrapped the main() function of Cont_FF
+run() is the function which wrapped the main() function of Cont_FF
 
 //------------------------------------------------//
 1.
@@ -30,7 +30,7 @@ A example here:
 ./Cont_FF -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
 
 2.
-Usage of Cont_FF()  ---->wrapped func
+Usage of Cont_FF.run()  ---->wrapped func
 
 A example here:
 
@@ -39,6 +39,6 @@ A example here:
 
 >>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
 
->>Cont_FF.Cont_FF(argv)
+>>Cont_FF.run(argv)
 
 

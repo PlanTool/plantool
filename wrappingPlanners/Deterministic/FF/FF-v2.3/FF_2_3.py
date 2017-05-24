@@ -99,9 +99,9 @@ except __builtin__.Exception:
     _newclass = 0
 
 
-def FF_2_3(argc):
-    return _FF_2_3.FF_2_3(argc)
-FF_2_3 = _FF_2_3.FF_2_3
+def run(argc):
+    return _FF_2_3.run(argc)
+run = _FF_2_3.run
 # This file is compatible with both classic and new-style classes.
 
 

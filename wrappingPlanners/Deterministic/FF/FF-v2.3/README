@@ -20,7 +20,7 @@ Joerg Hoffmann
 
 //**************************************************//
 
-FF_2_3() is the function which wrapped the main() function of ff-v2.3
+run() is the function which wrapped the main() function of ff-v2.3
 
 //------------------------------------------------//
 1.
@@ -31,7 +31,7 @@ A example here:
 ./FF_2_3 -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
 
 2.
-Usage of FF_2_3()
+Usage of FF_2_3.run()
 
 A example here:
 
@@ -40,4 +40,4 @@ A example here:
 
 >>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
 
->>FF_2_3.FF_2_3(argv)
+>>FF_2_3.run(argv)

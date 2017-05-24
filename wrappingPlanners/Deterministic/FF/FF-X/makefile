@@ -66,8 +66,6 @@ OBJECTS 	= $(SOURCES:.c=.o)
 .c.o:; $(CC) -c $(CFLAGS) $<
 
 ####### Build rules
-FF_X: $(OBJECTS) $(PDDL_PARSER_OBJ)
-	$(CC) -o FF_X $(OBJECTS) $(PDDL_PARSER_OBJ) $(CFLAGS) $(LIBS)
 	
 _FF_X.so: $(OBJECTS) $(PDDL_PARSER_OBJ) FF_X_wrap.o
 	gcc -shared -o $@ $^
@@ -77,6 +75,8 @@ FF_X_wrap.o: FF_X_wrap.c
 
 FF_X.py FF_X_wrap.c: FF_X.i
 	swig -python FF_X.i
+FF_X: $(OBJECTS) $(PDDL_PARSER_OBJ)
+	$(CC) -o FF_X $(OBJECTS) $(PDDL_PARSER_OBJ) $(CFLAGS) $(LIBS)
 
 
 

@@ -27,7 +27,7 @@
 #define FLEX_SCANNER
 #define YY_FLEX_MAJOR_VERSION 2
 #define YY_FLEX_MINOR_VERSION 6
-#define YY_FLEX_SUBMINOR_VERSION 0
+#define YY_FLEX_SUBMINOR_VERSION 1
 #if YY_FLEX_SUBMINOR_VERSION > 0
 #define FLEX_BETA
 #endif
@@ -106,25 +106,13 @@ typedef unsigned int flex_uint32_t;
 
 #endif /* ! FLEXINT_H */
 
-#ifdef __cplusplus
-
-/* The "const" storage-class-modifier is valid. */
-#define YY_USE_CONST
-
-#else	/* ! __cplusplus */
-
-/* C99 requires __STDC__ to be defined as 1. */
-#if defined (__STDC__)
-
-#define YY_USE_CONST
-
-#endif	/* defined (__STDC__) */
-#endif	/* ! __cplusplus */
-
-#ifdef YY_USE_CONST
+/* TODO: this is always defined, so inline it */
 #define yyconst const
+
+#if defined(__GNUC__) && __GNUC__ >= 3
+#define yynoreturn __attribute__((__noreturn__))
 #else
-#define yyconst
+#define yynoreturn
 #endif
 
 /* Returned upon end-of-file. */
@@ -185,7 +173,7 @@ typedef struct yy_buffer_state *YY_BUFFER_STATE;
 typedef size_t yy_size_t;
 #endif
 
-extern yy_size_t ops_pddlleng;
+extern int ops_pddlleng;
 
 extern FILE *ops_pddlin, *ops_pddlout;
 
@@ -224,7 +212,7 @@ struct yy_buffer_state
 	/* Size of input buffer in bytes, not including room for EOB
 	 * characters.
 	 */
-	yy_size_t yy_buf_size;
+	int yy_buf_size;
 
 	/* Number of characters read into yy_ch_buf, not including EOB
 	 * characters.
@@ -252,7 +240,7 @@ struct yy_buffer_state
 
     int yy_bs_lineno; /**< The line count. */
     int yy_bs_column; /**< The column count. */
-    
+
 	/* Whether to try to fill the input buffer when we reach the
 	 * end of it.
 	 */
@@ -280,7 +268,7 @@ struct yy_buffer_state
 /* Stack of input buffers. */
 static size_t yy_buffer_stack_top = 0; /**< index of top of stack. */
 static size_t yy_buffer_stack_max = 0; /**< capacity of stack. */
-static YY_BUFFER_STATE * yy_buffer_stack = 0; /**< Stack as an array. */
+static YY_BUFFER_STATE * yy_buffer_stack = NULL; /**< Stack as an array. */
 
 /* We provide macros for accessing buffer states in case in the
  * future we want to put the buffer states in a more general
@@ -300,10 +288,10 @@ static YY_BUFFER_STATE * yy_buffer_stack = 0; /**< Stack as an array. */
 /* yy_hold_char holds the character lost when ops_pddltext is formed. */
 static char yy_hold_char;
 static int yy_n_chars;		/* number of characters read into yy_ch_buf */
-yy_size_t ops_pddlleng;
+int ops_pddlleng;
 
 /* Points to current character in buffer. */
-static char *yy_c_buf_p = (char *) 0;
+static char *yy_c_buf_p = NULL;
 static int yy_init = 0;		/* whether we need to initialize */
 static int yy_start = 0;	/* start state number */
 
@@ -328,7 +316,7 @@ static void ops_pddl_init_buffer (YY_BUFFER_STATE b,FILE *file  );
 
 YY_BUFFER_STATE ops_pddl_scan_buffer (char *base,yy_size_t size  );
 YY_BUFFER_STATE ops_pddl_scan_string (yyconst char *yy_str  );
-YY_BUFFER_STATE ops_pddl_scan_bytes (yyconst char *bytes,yy_size_t len  );
+YY_BUFFER_STATE ops_pddl_scan_bytes (yyconst char *bytes,int len  );
 
 void *ops_pddlalloc (yy_size_t  );
 void *ops_pddlrealloc (void *,yy_size_t  );
@@ -362,7 +350,7 @@ void ops_pddlfree (void *  );
 
 typedef unsigned char YY_CHAR;
 
-FILE *ops_pddlin = (FILE *) 0, *ops_pddlout = (FILE *) 0;
+FILE *ops_pddlin = NULL, *ops_pddlout = NULL;
 
 typedef int yy_state_type;
 
@@ -379,17 +367,14 @@ extern char *ops_pddltext;
 static yy_state_type yy_get_previous_state (void );
 static yy_state_type yy_try_NUL_trans (yy_state_type current_state  );
 static int yy_get_next_buffer (void );
-#if defined(__GNUC__) && __GNUC__ >= 3
-__attribute__((__noreturn__))
-#endif
-static void yy_fatal_error (yyconst char msg[]  );
+static void yynoreturn yy_fatal_error (yyconst char* msg  );
 
 /* Done after the current pattern has been matched and before the
  * corresponding action - sets up ops_pddltext.
  */
 #define YY_DO_BEFORE_ACTION \
 	(yytext_ptr) = yy_bp; \
-	ops_pddlleng = (size_t) (yy_cp - yy_bp); \
+	ops_pddlleng = (int) (yy_cp - yy_bp); \
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
@@ -653,7 +638,7 @@ char *ops_pddltext;
 int ops_pddlwrap() { return 1; }; 
 
 
-#line 657 "lex.ops_pddl.c"
+#line 642 "lex.ops_pddl.c"
 
 #define INITIAL 0
 #define COMMENT 1
@@ -694,7 +679,7 @@ FILE *ops_pddlget_out (void );
 
 void ops_pddlset_out  (FILE * _out_str  );
 
-yy_size_t ops_pddlget_leng (void );
+			int ops_pddlget_leng (void );
 
 char *ops_pddlget_text (void );
 
@@ -753,7 +738,7 @@ static int input (void );
 /* This used to be an fputs(), but since the string might contain NUL's,
  * we now use fwrite().
  */
-#define ECHO do { if (fwrite( ops_pddltext, ops_pddlleng, 1, ops_pddlout )) {} } while (0)
+#define ECHO do { if (fwrite( ops_pddltext, (size_t) ops_pddlleng, 1, ops_pddlout )) {} } while (0)
 #endif
 
 /* Gets input and stuffs it into "buf".  number of characters read, or YY_NULL,
@@ -777,7 +762,7 @@ static int input (void );
 	else \
 		{ \
 		errno=0; \
-		while ( (result = fread(buf, 1, max_size, ops_pddlin))==0 && ferror(ops_pddlin)) \
+		while ( (result = (int) fread(buf, 1, max_size, ops_pddlin))==0 && ferror(ops_pddlin)) \
 			{ \
 			if( errno != EINTR) \
 				{ \
@@ -876,7 +861,7 @@ YY_DECL
 #line 61 "lex-ops_pddl.l"
 
 
-#line 880 "lex.ops_pddl.c"
+#line 865 "lex.ops_pddl.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -906,7 +891,7 @@ yy_match:
 				if ( yy_current_state >= 224 )
 					yy_c = yy_meta[(unsigned int) yy_c];
 				}
-			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
+			yy_current_state = yy_nxt[yy_base[yy_current_state] + (flex_int16_t) yy_c];
 			++yy_cp;
 			}
 		while ( yy_base[yy_current_state] != 274 );
@@ -1207,7 +1192,7 @@ YY_RULE_SETUP
 #line 171 "lex-ops_pddl.l"
 ECHO;
 	YY_BREAK
-#line 1211 "lex.ops_pddl.c"
+#line 1196 "lex.ops_pddl.c"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(COMMENT):
 case YY_STATE_EOF(OVERREAD):
@@ -1354,7 +1339,7 @@ static int yy_get_next_buffer (void)
 {
     	char *dest = YY_CURRENT_BUFFER_LVALUE->yy_ch_buf;
 	char *source = (yytext_ptr);
-	yy_size_t number_to_move, i;
+	int number_to_move, i;
 	int ret_val;
 
 	if ( (yy_c_buf_p) > &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[(yy_n_chars) + 1] )
@@ -1383,7 +1368,7 @@ static int yy_get_next_buffer (void)
 	/* Try to read more data. */
 
 	/* First move last chars to start of buffer. */
-	number_to_move = (yy_size_t) ((yy_c_buf_p) - (yytext_ptr)) - 1;
+	number_to_move = (int) ((yy_c_buf_p) - (yytext_ptr) - 1);
 
 	for ( i = 0; i < number_to_move; ++i )
 		*(dest++) = *(source++);
@@ -1396,7 +1381,7 @@ static int yy_get_next_buffer (void)
 
 	else
 		{
-			yy_size_t num_to_read =
+			int num_to_read =
 			YY_CURRENT_BUFFER_LVALUE->yy_buf_size - number_to_move - 1;
 
 		while ( num_to_read <= 0 )
@@ -1410,7 +1395,7 @@ static int yy_get_next_buffer (void)
 
 			if ( b->yy_is_our_buffer )
 				{
-				yy_size_t new_size = b->yy_buf_size * 2;
+				int new_size = b->yy_buf_size * 2;
 
 				if ( new_size <= 0 )
 					b->yy_buf_size += b->yy_buf_size / 8;
@@ -1423,7 +1408,7 @@ static int yy_get_next_buffer (void)
 				}
 			else
 				/* Can't grow it, we don't own it. */
-				b->yy_ch_buf = 0;
+				b->yy_ch_buf = NULL;
 
 			if ( ! b->yy_ch_buf )
 				YY_FATAL_ERROR(
@@ -1465,7 +1450,7 @@ static int yy_get_next_buffer (void)
 	else
 		ret_val = EOB_ACT_CONTINUE_SCAN;
 
-	if ((int) ((yy_n_chars) + number_to_move) > YY_CURRENT_BUFFER_LVALUE->yy_buf_size) {
+	if (((yy_n_chars) + number_to_move) > YY_CURRENT_BUFFER_LVALUE->yy_buf_size) {
 		/* Extend the array by 50%, plus the number we really need. */
 		int new_size = (yy_n_chars) + number_to_move + ((yy_n_chars) >> 1);
 		YY_CURRENT_BUFFER_LVALUE->yy_ch_buf = (char *) ops_pddlrealloc((void *) YY_CURRENT_BUFFER_LVALUE->yy_ch_buf,new_size  );
@@ -1505,7 +1490,7 @@ static int yy_get_next_buffer (void)
 			if ( yy_current_state >= 224 )
 				yy_c = yy_meta[(unsigned int) yy_c];
 			}
-		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
+		yy_current_state = yy_nxt[yy_base[yy_current_state] + (flex_int16_t) yy_c];
 		}
 
 	return yy_current_state;
@@ -1533,7 +1518,7 @@ static int yy_get_next_buffer (void)
 		if ( yy_current_state >= 224 )
 			yy_c = yy_meta[(unsigned int) yy_c];
 		}
-	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
+	yy_current_state = yy_nxt[yy_base[yy_current_state] + (flex_int16_t) yy_c];
 	yy_is_jam = (yy_current_state == 223);
 
 		return yy_is_jam ? 0 : yy_current_state;
@@ -1553,7 +1538,7 @@ static int yy_get_next_buffer (void)
 	if ( yy_cp < YY_CURRENT_BUFFER_LVALUE->yy_ch_buf + 2 )
 		{ /* need to shift things up to make room */
 		/* +2 for EOB chars. */
-		yy_size_t number_to_move = (yy_n_chars) + 2;
+		int number_to_move = (yy_n_chars) + 2;
 		char *dest = &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[
 					YY_CURRENT_BUFFER_LVALUE->yy_buf_size + 2];
 		char *source =
@@ -1565,7 +1550,7 @@ static int yy_get_next_buffer (void)
 		yy_cp += (int) (dest - source);
 		yy_bp += (int) (dest - source);
 		YY_CURRENT_BUFFER_LVALUE->yy_n_chars =
-			(yy_n_chars) = YY_CURRENT_BUFFER_LVALUE->yy_buf_size;
+			(yy_n_chars) = (int) YY_CURRENT_BUFFER_LVALUE->yy_buf_size;
 
 		if ( yy_cp < YY_CURRENT_BUFFER_LVALUE->yy_ch_buf + 2 )
 			YY_FATAL_ERROR( "flex scanner push-back overflow" );
@@ -1604,7 +1589,7 @@ static int yy_get_next_buffer (void)
 
 		else
 			{ /* need more input */
-			yy_size_t offset = (yy_c_buf_p) - (yytext_ptr);
+			int offset = (yy_c_buf_p) - (yytext_ptr);
 			++(yy_c_buf_p);
 
 			switch ( yy_get_next_buffer(  ) )
@@ -1628,7 +1613,7 @@ static int yy_get_next_buffer (void)
 				case EOB_ACT_END_OF_FILE:
 					{
 					if ( ops_pddlwrap( ) )
-						return EOF;
+						return 0;
 
 					if ( ! (yy_did_buffer_switch_on_eof) )
 						YY_NEW_FILE;
@@ -1876,7 +1861,7 @@ void ops_pddlpop_buffer_state (void)
  */
 static void ops_pddlensure_buffer_stack (void)
 {
-	yy_size_t num_to_alloc;
+	int num_to_alloc;
     
 	if (!(yy_buffer_stack)) {
 
@@ -1884,15 +1869,15 @@ static void ops_pddlensure_buffer_stack (void)
 		 * scanner will even need a stack. We use 2 instead of 1 to avoid an
 		 * immediate realloc on the next call.
          */
-		num_to_alloc = 1; /* After all that talk, this was set to 1 anyways... */
+      num_to_alloc = 1; /* After all that talk, this was set to 1 anyways... */
 		(yy_buffer_stack) = (struct yy_buffer_state**)ops_pddlalloc
 								(num_to_alloc * sizeof(struct yy_buffer_state*)
 								);
 		if ( ! (yy_buffer_stack) )
 			YY_FATAL_ERROR( "out of dynamic memory in ops_pddlensure_buffer_stack()" );
-								  
+
 		memset((yy_buffer_stack), 0, num_to_alloc * sizeof(struct yy_buffer_state*));
-				
+
 		(yy_buffer_stack_max) = num_to_alloc;
 		(yy_buffer_stack_top) = 0;
 		return;
@@ -1921,7 +1906,7 @@ static void ops_pddlensure_buffer_stack (void)
  * @param base the character buffer
  * @param size the size in bytes of the character buffer
  * 
- * @return the newly allocated buffer state object. 
+ * @return the newly allocated buffer state object.
  */
 YY_BUFFER_STATE ops_pddl_scan_buffer  (char * base, yy_size_t  size )
 {
@@ -1931,7 +1916,7 @@ YY_BUFFER_STATE ops_pddl_scan_buffer  (char * base, yy_size_t  size )
 	     base[size-2] != YY_END_OF_BUFFER_CHAR ||
 	     base[size-1] != YY_END_OF_BUFFER_CHAR )
 		/* They forgot to leave room for the EOB's. */
-		return 0;
+		return NULL;
 
 	b = (YY_BUFFER_STATE) ops_pddlalloc(sizeof( struct yy_buffer_state )  );
 	if ( ! b )
@@ -1940,7 +1925,7 @@ YY_BUFFER_STATE ops_pddl_scan_buffer  (char * base, yy_size_t  size )
 	b->yy_buf_size = size - 2;	/* "- 2" to take care of EOB's */
 	b->yy_buf_pos = b->yy_ch_buf = base;
 	b->yy_is_our_buffer = 0;
-	b->yy_input_file = 0;
+	b->yy_input_file = NULL;
 	b->yy_n_chars = b->yy_buf_size;
 	b->yy_is_interactive = 0;
 	b->yy_at_bol = 1;
@@ -1963,7 +1948,7 @@ YY_BUFFER_STATE ops_pddl_scan_buffer  (char * base, yy_size_t  size )
 YY_BUFFER_STATE ops_pddl_scan_string (yyconst char * yystr )
 {
     
-	return ops_pddl_scan_bytes(yystr,strlen(yystr) );
+	return ops_pddl_scan_bytes(yystr,(int) strlen(yystr) );
 }
 
 /** Setup the input buffer state to scan the given bytes. The next call to ops_pddllex() will
@@ -1973,15 +1958,15 @@ YY_BUFFER_STATE ops_pddl_scan_string (yyconst char * yystr )
  * 
  * @return the newly allocated buffer state object.
  */
-YY_BUFFER_STATE ops_pddl_scan_bytes  (yyconst char * yybytes, yy_size_t  _yybytes_len )
+YY_BUFFER_STATE ops_pddl_scan_bytes  (yyconst char * yybytes, int  _yybytes_len )
 {
 	YY_BUFFER_STATE b;
 	char *buf;
 	yy_size_t n;
-	yy_size_t i;
+	int i;
     
 	/* Get memory for full buffer, including space for trailing EOB's. */
-	n = _yybytes_len + 2;
+	n = (yy_size_t) (_yybytes_len + 2);
 	buf = (char *) ops_pddlalloc(n  );
 	if ( ! buf )
 		YY_FATAL_ERROR( "out of dynamic memory in ops_pddl_scan_bytes()" );
@@ -2007,7 +1992,7 @@ YY_BUFFER_STATE ops_pddl_scan_bytes  (yyconst char * yybytes, yy_size_t  _yybyte
 #define YY_EXIT_FAILURE 2
 #endif
 
-static void yy_fatal_error (yyconst char* msg )
+static void yynoreturn yy_fatal_error (yyconst char* msg )
 {
 			(void) fprintf( stderr, "%s\n", msg );
 	exit( YY_EXIT_FAILURE );
@@ -2037,7 +2022,7 @@ static void yy_fatal_error (yyconst char* msg )
  */
 int ops_pddlget_lineno  (void)
 {
-        
+    
     return ops_pddllineno;
 }
 
@@ -2060,7 +2045,7 @@ FILE *ops_pddlget_out  (void)
 /** Get the length of the current token.
  * 
  */
-yy_size_t ops_pddlget_leng  (void)
+int ops_pddlget_leng  (void)
 {
         return ops_pddlleng;
 }
@@ -2116,10 +2101,10 @@ static int yy_init_globals (void)
      * This function is called from ops_pddllex_destroy(), so don't allocate here.
      */
 
-    (yy_buffer_stack) = 0;
+    (yy_buffer_stack) = NULL;
     (yy_buffer_stack_top) = 0;
     (yy_buffer_stack_max) = 0;
-    (yy_c_buf_p) = (char *) 0;
+    (yy_c_buf_p) = NULL;
     (yy_init) = 0;
     (yy_start) = 0;
 
@@ -2128,8 +2113,8 @@ static int yy_init_globals (void)
     ops_pddlin = stdin;
     ops_pddlout = stdout;
 #else
-    ops_pddlin = (FILE *) 0;
-    ops_pddlout = (FILE *) 0;
+    ops_pddlin = NULL;
+    ops_pddlout = NULL;
 #endif
 
     /* For future reference: Set errno on error, since we are called by
@@ -2187,7 +2172,7 @@ static int yy_flex_strlen (yyconst char * s )
 
 void *ops_pddlalloc (yy_size_t  size )
 {
-			return (void *) malloc( size );
+			return malloc(size);
 }
 
 void *ops_pddlrealloc  (void * ptr, yy_size_t  size )
@@ -2200,7 +2185,7 @@ void *ops_pddlrealloc  (void * ptr, yy_size_t  size )
 	 * any pointer type to void*, and deal with argument conversions
 	 * as though doing an assignment.
 	 */
-	return (void *) realloc( (char *) ptr, size );
+	return realloc(ptr, size);
 }
 
 void ops_pddlfree (void * ptr )

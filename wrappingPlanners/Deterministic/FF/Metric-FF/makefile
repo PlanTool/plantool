@@ -64,8 +64,6 @@ OBJECTS 	= $(SOURCES:.c=.o)
 .c.o:; $(CC) -c $(CFLAGS) $<
 
 ####### Build rules
-Metric_FF: $(OBJECTS) $(PDDL_PARSER_OBJ)
-	$(CC) -o Metric_FF $(OBJECTS) $(PDDL_PARSER_OBJ) $(CFLAGS) $(LIBS)
 _Metric_FF.so: $(OBJECTS) Metric_FF_wrap.o $(PDDL_PARSER_OBJ)
 	gcc $(CFLAGS) -shared -o $@ $^
 

@@ -63,15 +63,14 @@ OBJECTS 	= $(SOURCES:.c=.o)
 
 
 ####### Build rules
-Cont_FF: $(OBJECTS) $(PDDL_PARSER_OBJ)
-	$(CC) -o Cont_FF $(OBJECTS) $(PDDL_PARSER_OBJ) $(CFLAGS) $(LIBS)
 _Cont_FF.so: $(OBJECTS) $(PDDL_PARSER_OBJ) Cont_FF_wrap.o
 	gcc -shared -fPIC -o _Cont_FF.so $^
 Cont_FF_wrap.o: Cont_FF_wrap.c
 	$(CC) -c $(INC_PYTHON) -fPIC $^
 Cont_FF.py Cont_FF_wrap.c: Cont_FF.i
 	swig -python Cont_FF.i
-
+Cont_FF: $(OBJECTS) $(PDDL_PARSER_OBJ)
+	$(CC) -o Cont_FF $(OBJECTS) $(PDDL_PARSER_OBJ) $(CFLAGS) $(LIBS)
 
 
 
