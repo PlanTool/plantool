@@ -24,14 +24,14 @@ run() is the function which wrapped the main() function of FF_X
 1.
 Usage of FF_X(shell):
 
-A example here:
+An example here:
 
 ./FF_X -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
 
 2.
 Usage of FF_X.run()  ---->wrapped func
 
-A example here:
+An example here:
 
 
 >>import FF_X
