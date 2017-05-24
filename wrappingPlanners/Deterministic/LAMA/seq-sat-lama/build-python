@@ -1,0 +1,10 @@
+#! /bin/bash
+
+cd $(dirname 0)
+BASEDIR=$(pwd)
+tar xvjf Python-2.5.2.tar.bz2
+cd Python-2.5.2
+./configure --prefix $BASEDIR/py2.5
+make
+make install
+rm -rf Python-2.5.2

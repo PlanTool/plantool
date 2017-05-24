@@ -1,0 +1,29 @@
+LAMA (IPC-6 version)
+
+Written by Silvia Richter and Matthias Westphal.
+Copyright (C) 2008 NICTA and Matthias Westphal.
+Distributed under the GNU General Public License (GPL,
+see separate licence file).
+This program uses source code of the Fast Downward planner,
+(C) 2003-2004 by Malte Helmert and Silvia Richter. Permission
+to redistribute this code under the terms of the GPL has been
+granted.
+
+This directory contains the implementation of LAMA, as it was
+used in the 6th international planning competition (IPC-6).
+
+Build the planner by typing
+
+./build
+
+and use the run script "plan" with the following parameters
+
+./plan <domain_path> <problem_path>
+
+The run script contains the settings used for LAMA during IPC-6.
+For other possible parameters look into the source code (planner.cc)
+and modify the run script accordingly.
+
+Have fun,
+
+Silvia Richter & Matthias Westphal
