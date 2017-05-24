@@ -166,6 +166,138 @@
      Similar to Example4, but switch from *ldc* var-ordering to default
      var-ordering
 
+
+*** Graphplan
+    - Usage of Graphplan
+      #+BEGIN_SRC python
+      >>> import graphplan
+      >>> argv = ['graphplan', '-o', 'domain.pddl', '-f', 'problem.pddl']
+      >>> graphplan.run(argv)
+      #+END_SRC
+ 
+    - Instructions about arguments:
+
+      | OPTIONS          | DESCRIPTIONS                                                     |
+      |------------------+------------------------------------------------------------------|
+      | -h               | for this list                                                    |
+      | -o <op file>     | to specify operator file                                         |
+      | -f <fact file>   | to specify fact file                                             |
+      | -t <integer>     | to specify a fixed number of time steps                          |
+      | -i <info level>  | to specify info level 1 or 2 (default is 0)                      |
+      | -O <option list> | to specify options you want                                      |
+      | -M <integer>     | to specify alternative max nodes in a time step (default is 256) |
+      | -d               | give default values to everything not specified                  |
+    
+      Note: graphplan will prompt for '-t' and '-O' during execution
+          
+
+
+*** FF
+    
+**** Metric-FF
+     run() is the function which wrapped the main() function of Metric_FF
+     1. 
+     Usage of Metric_FF(shell):
+     
+     A example here:
+     
+     ./Metric_FF -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+     
+     2. 
+     Usage of Metric_FF.run()  ---->wrapped func
+
+     A example here:
+
+
+     >>import Metric_FF
+
+     >>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+
+     >>Metric_FF.run(argv)
+
+**** Seq_Sat_FF
+     1. 
+     Usage of Seq_Sat_FF(shell):
+
+     A example here:
+
+     ./Seq_Sat_FF -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+
+     2. 
+     Usage of Seq_Sat_FF.run()  ---->wrapped func
+
+     A example here:
+
+
+     >>import Seq_Sat_FF
+
+     >>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+
+     >>Seq_Sat_FF.run(argv)
+
+**** FF_X
+     1.
+     Usage of Seq_Sat_FF(shell):
+
+     A example here:
+
+     ./Seq_Sat_FF -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+
+     2.
+     Usage of Seq_Sat_FF.run()  ---->wrapped func
+
+     A example here:
+
+
+     >>import Seq_Sat_FF
+
+     >>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+
+     >>Seq_Sat_FF.run(argv)
+
+**** Cont_FF
+     1.
+     Usage of Cont_FF(shell):
+
+     A example here:
+
+     ./Cont_FF -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+
+     2.
+     Usage of Cont_FF.run()  ---->wrapped func
+
+     A example here:
+
+
+     >>import Cont_FF
+
+     >>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+
+     >>Cont_FF.run(argv)
+
+**** FF-v2.3
+     1.
+     Usage of FF_2_3(shell):
+
+     A example here:
+
+     ./FF_2_3 -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+
+     2.
+     Usage of FF_2_3.run()
+
+     A example here:
+
+
+     >>import FF_2_3
+
+     >>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+
+     >>FF_2_3.run(argv)
+
+
+
+
 ** Learning
 ** Uncertainty
   
