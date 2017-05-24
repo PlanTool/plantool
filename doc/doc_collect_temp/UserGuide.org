@@ -122,9 +122,6 @@
 
 *** GP-CSP
     
-    - 2017.05.24 更新
-     GP-CSP目前未找到可以解的问题以及领域pddl
-
     - Usage for GP-CSP
       #+BEGIN_SRC python
       >>> import gpcsp
@@ -193,107 +190,108 @@
 
 
 *** FF
-    
+    run() is the function which wrapped the main() function of Metric_FF
 **** Metric-FF
-     run() is the function which wrapped the main() function of Metric_FF
-     1. 
-     Usage of Metric_FF(shell):
+   
+     - Usage of Metric_FF(shell):
      
-     A example here:
-     
-     ./Metric_FF -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
-     
-     2. 
-     Usage of Metric_FF.run()  ---->wrapped func
+       A example here:
 
-     A example here:
+       #+BEGIN_SRC sh
+       ./Metric_FF -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+       #+END_SRC
 
+     - Usage of Metric_FF.run()  ---->wrapped func
 
-     >>import Metric_FF
+       A example here:
 
-     >>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
-
-     >>Metric_FF.run(argv)
+       #+BEGIN_SRC python
+       >>>import Metric_FF
+       >>>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+       >>>Metric_FF.run(argv)
+       #+END_SRC
 
 **** Seq_Sat_FF
-     1. 
-     Usage of Seq_Sat_FF(shell):
+
+     - Usage of Seq_Sat_FF(shell):
+
+       A example here:
+
+       #+BEGIN_SRC sh
+       ./Seq_Sat_FF -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'       
+       #+END_SRC
+
+     - Usage of Seq_Sat_FF.run()  ---->wrapped func
 
      A example here:
 
-     ./Seq_Sat_FF -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
-
-     2. 
-     Usage of Seq_Sat_FF.run()  ---->wrapped func
-
-     A example here:
-
-
-     >>import Seq_Sat_FF
-
-     >>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
-
-     >>Seq_Sat_FF.run(argv)
+     #+BEGIN_SRC python
+     >>>import Seq_Sat_FF
+     >>>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+     >>>Seq_Sat_FF.run(argv)
+     #+END_SRC
 
 **** FF_X
-     1.
-     Usage of Seq_Sat_FF(shell):
+
+     - Usage of Seq_Sat_FF(shell):
 
      A example here:
 
+     #+BEGIN_SRC sh
      ./Seq_Sat_FF -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+     #+END_SRC
 
-     2.
-     Usage of Seq_Sat_FF.run()  ---->wrapped func
+     - Usage of Seq_Sat_FF.run()  ---->wrapped func
 
      A example here:
 
-
-     >>import Seq_Sat_FF
-
-     >>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
-
-     >>Seq_Sat_FF.run(argv)
+     #+BEGIN_SRC python
+     >>>import Seq_Sat_FF
+     >>>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.paddle']
+     >>>Seq_Sat_FF.run(argv)
+     #+END_SRC
 
 **** Cont_FF
-     1.
-     Usage of Cont_FF(shell):
+
+     - Usage of Cont_FF(shell):
 
      A example here:
 
-     ./Cont_FF -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+     #+BEGIN_SRC sh
+     ./Cont_FF -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'     
+     #+END_SRC
 
-     2.
-     Usage of Cont_FF.run()  ---->wrapped func
+
+     - Usage of Cont_FF.run()  ---->wrapped func
 
      A example here:
 
-
-     >>import Cont_FF
-
-     >>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
-
-     >>Cont_FF.run(argv)
+     #+BEGIN_SRC python
+     >>>import Cont_FF
+     >>>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+     >>>Cont_FF.run(argv)
+     #+END_SRC
 
 **** FF-v2.3
-     1.
-     Usage of FF_2_3(shell):
+
+     - Usage of FF_2_3(shell):
 
      A example here:
 
-     ./FF_2_3 -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+     #+BEGIN_SRC sh
+     ./FF_2_3 -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'     
+     #+END_SRC
 
-     2.
-     Usage of FF_2_3.run()
+
+     - Usage of FF_2_3.run()
 
      A example here:
 
-
-     >>import FF_2_3
-
-     >>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
-
-     >>FF_2_3.run(argv)
+     #+BEGIN_SRC python
+     >>>import FF_2_3
+     >>>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+     >>>FF_2_3.run(argv)
+     #+END_SRC
 
 
 
