@@ -1,6 +1,3 @@
-# 2017.05.24 更新
-## GP-CSP目前未找到可以解的问题以及领域pddl
-
 # Usage for GP-CSP
 ```python
 >>> import gpcsp
