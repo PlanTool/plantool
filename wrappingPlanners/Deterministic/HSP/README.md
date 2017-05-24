@@ -11,6 +11,7 @@
 ```bash
 -o  <str>    operator file name
 -f  <str>    fact file name
+-r  <str>    output file name
 
 -a  <str>    Algorithm, either 'bfs' or 'gbfs'.
 -d  <str>    Search direction, either 'forward' or 'backward'.
