@@ -1,2 +1,0 @@
-#! /bin/bash
-./sgplan -o $1 -f $2 -out $3

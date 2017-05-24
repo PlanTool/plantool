@@ -1,7 +1,0 @@
-#!/bin/bash
-
-for f in prob*.pddl
-do
-	blackbox -o domain.pddl -f $f -printcnf -printexit | extract cnf > $f.cnf
-done
-

@@ -1,9 +1,0 @@
-(define (problem ex3a)
-   (:domain briefcase)
-   (:objects home office bank station - location
-             dic pay ticket - portable)
-
-(:init (is-at home) (at pay bank) (at dic office) (at ticket station))
-  
-
-(:goal (and (is-at home) (at dic home) (at pay home) (at ticket home))))

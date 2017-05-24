@@ -1,0 +1,121 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; LinearBlocksProblems.tlp
+;;; TLPlanner blocks world sample problem set.
+;;;
+;;; This problem set is suitable for use with:
+;;; 	LinearBlocksWorld.tlp -- the linear time blocks world.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(define (state0)
+	(clear a) (clear b) (clear c)
+	(ontable a) (ontable b) (ontable c)
+	(handempty))
+
+(define (goal0)
+	(on a b) (on b c) (ontable c))
+
+(define (state1)
+	(clear a) (clear c) (handempty)
+	(on a b) (ontable b) (on c d) (ontable d))
+
+(define (goal1)
+	(on b a) (on d b))
+
+(define (state2)
+	(clear b) (ontable g) (handempty)
+	(on b a) (on a c) (on c d) (on d e) (on e f) (on f g))
+
+(define (goal2)
+	(on f g) (on g a) (on a b) (on b c)
+	(on c d) (on d e) (ontable e))
+
+(define (state3)
+	(clear b) (ontable e) (handempty)
+	(on b a) (on a c) (on c d) (on d e))
+
+(define (goal3)
+	(on d e) (on e a) (on a b) (on b c) (ontable c))
+
+;; sussman anomaly
+
+(define (state4)
+	(on c a) (ontable a) (ontable b) (clear c) (clear b)
+	(handempty))
+
+(define (goal4)
+	(on a b) (on b c))
+
+(define (state5)
+	(clear c) (clear d) (ontable a) (ontable d) (on c b)
+	(on b e) (on e a) (handempty))
+
+(define (goal5)
+	(clear c) (clear d) (ontable e) (ontable b)
+	(on c a) (on a e) (on d b) (handempty))
+
+(define (state6)
+	(clear a) (ontable d) (on a b) (on b c) (on c e)
+	(on e f) (on f d) (handempty))
+
+(define (goal6)
+	(clear b) (ontable f) (on b d) (on d a)
+	(on a c) (on c e) (on e f) (handempty))
+
+(define (state7)
+	(clear g) (clear e) (clear c) (clear a) (ontable f)
+	(ontable e) (ontable b)
+	(ontable a) (on g d) (on d f) (on c b) (handempty))
+
+(define (goal7)
+	(clear g) (clear c) (ontable a) (ontable b)
+	(on g d) (on d a) (on c e) (on e f) (on f b) (handempty))
+
+(define (state8)
+	(clear h) (clear b) (clear d) (ontable e) (ontable g)
+	(ontable d) (on h f)
+	(on f a) (on a c) (on c e) (on b g) (handempty))
+
+(define (goal8)
+	(clear c) (clear d) (clear h) (ontable f)
+	(ontable d) (ontable b) (on c g) (on g e) (on e a)
+	(on a f) (on h b) (handempty))
+
+(define (state50)
+	(clear t1) (clear i) (clear r) (clear h1) (ontable t) (ontable g1)
+	(ontable p1) (ontable h1) (on t1 k) (on k u1)
+	(on u1 e) (on e l1) (on l1 a) (on a o1) (on o1 x1)
+	(on x1 z) (on z n1) (on n1 m) (on m s) (on s m1)
+	(on m1 e1) (on e1 q1) (on q1 b1) (on b1 v1) (on v1 t)
+	(on i v) (on v w) (on w b) (on b d1) (on d1 a1) (on a1 j)
+	(on j d) (on d r1) (on r1 g) (on g f1) (on f1 o)
+	(on o u) (on u h) (on h y) (on y f) (on f i1) (on i1 n)
+	(on n c1) (on c1 c) (on c g1) (on r l) (on l s1)
+	(on s1 q) (on q p) (on p w1) (on w1 x) (on x j1)
+	(on j1 k1) (on k1 p1) (handempty))
+
+(define (goal50)
+	(clear g) (clear e) (clear b) (clear f1) (ontable l)
+	(ontable n1) (ontable w) (ontable f) (on g s) (on s p)
+	(on p y) (on y i1) (on i1 p1) (on p1 j) (on j q) (on q a1)
+	(on a1 x1) (on x1 s1) (on s1 z) (on z m1) (on m1 o)
+	(on o h1) (on h1 v) (on v o1) (on o1 t1) (on t1 q1) (on q1 w1) (on w1 u)
+	(on u a) (on a c) (on c l) (on e r1) (on r1 l1) (on l1 e1) (on e1 b1)
+	(on b1 n1) (on b g1) (on g1 u1) (on u1 d1) (on d1 x) (on x n) (on n t)
+	(on t r) (on r d) (on d j1) (on j1 h) (on h v1) (on v1 m) (on m i) (on i k)
+	(on k c1) (on c1 k1) (on k1 w) (on f1 f) (handempty))
+
+;; Extended Goals --------------------------------------------------------------
+;; Be sure to execute (set-goal-type "extended") before trying these.
+
+(define (goal9)
+	(t-eventually :[3,3]: (holding d)))
+
+(define (goal10)
+	(and (t-always :[0,inf+): (on a b))
+		(t-eventually :[3,3]: (holding d))))
+
+(define (goal11)
+	(forall (?x) (clear ?x)
+		(t-eventually :[0,4]: (ontable ?x))))
+
+

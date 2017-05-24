@@ -1,7 +1,0 @@
-; NrActions 
-; MakeSpan 
-; MetricValue 156
-; PlanningTechnique symbolic breadth-first branch-and-bound search 
-
-0: (drive.truck2.depot1.market2) [1]
-1: (drive.truck2.market2.depot1) [1]

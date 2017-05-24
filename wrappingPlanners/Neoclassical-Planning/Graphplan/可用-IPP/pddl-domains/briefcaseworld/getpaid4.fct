@@ -1,6 +1,0 @@
-(define (problem get-paid4)
-    (:domain briefcase)
-    (:objects home bank office - location
-              d p - portable)
-    (:init (is-at home) (at p home) (at d home) (in p))
-    (:goal (and (is-at home) (at d office) (at p bank))))

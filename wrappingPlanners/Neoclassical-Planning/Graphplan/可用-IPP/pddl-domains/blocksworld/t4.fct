@@ -1,8 +1,0 @@
-(define (problem tower4)
-   (:domain blocksworld)
-   (:objects a b c d )
-   (:init (on-table a) (on-table b) (on-table c) (on-table d)  
-          (clear a)  (clear b) (clear c) (clear d) (arm-empty))
-   (:goal (and (on a b) (on b c) (on c d) )))
-
-

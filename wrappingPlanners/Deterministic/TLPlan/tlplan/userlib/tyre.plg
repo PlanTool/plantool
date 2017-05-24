@@ -1,0 +1,30 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: tyre - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Michael\LOCALS~1\Temp\RSP331.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /Fp"Release/tyre.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\old_d\fahiem\msc\temp\userlib\tyre.c"
+"C:\old_d\fahiem\msc\temp\userlib\userlib.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Michael\LOCALS~1\Temp\RSP331.tmp" 
+Creating command line "link.exe kernel32.lib user32.lib gdi32.lib /nologo /dll /incremental:no /pdb:"Release/tyre.pdb" /machine:I386 /out:"Release/tyre.dll" /implib:"Release/tyre.lib"  .\Release\tyre.obj .\Release\userlib.obj ..\Debug\tllib.lib "
+<h3>Output Window</h3>
+Compiling...
+tyre.c
+userlib.c
+Linking...
+   Creating library Release/tyre.lib and object Release/tyre.exp
+
+
+
+<h3>Results</h3>
+tyre.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

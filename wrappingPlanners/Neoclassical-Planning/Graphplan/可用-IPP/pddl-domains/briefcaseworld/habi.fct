@@ -1,7 +1,0 @@
-(define (problem habi)
-    (:domain briefcase)
-    (:objects l m - locaction
-              o - portable)
-    (:init (at-b l) (at o l) (in o))
-    (:goal (and (at-b m) (at o l))))
-

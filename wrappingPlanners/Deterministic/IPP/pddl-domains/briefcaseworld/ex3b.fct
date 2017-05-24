@@ -1,0 +1,11 @@
+(define (problem brief3b)
+   (:domain briefcase)
+   (:objects home office bank station - location
+             dic pay ticket - portable)
+
+
+(:init (is-at office) (at pay office) (at dic office) 
+       (at ticket office))
+
+
+(:goal (and is-(at home) (at dic home) (at pay home) (at ticket home))))

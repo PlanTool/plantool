@@ -1,0 +1,29 @@
+;; a variant with several briefcases
+
+(define (domain multi-briefcase)
+(:predicates (at ?y - portable ?x - location)
+             (in ?x - portable ?b - briefcase)
+             (is-at ?b - briefcase ?location - location ))
+
+
+(:action move
+  :parameters (?b - briefcase ?m ?l - location)
+  :precondition  (is-at ?b ?m)
+  :effect (and (is-at ?b ?l) (not (is-at ?b ?m))
+		    (forall (?x - portable) (when (in ?x ?b)
+		      (and (at ?x ?l) (not (at ?x ?m)))))))
+
+(:action take-out
+  :parameters (?x - portable ?l -  location ?b - briefcase)
+  :precondition (and  (in ?x ?b) (is-at ?b ?l))
+  :effect (not (in ?x ?b)))
+      
+  
+(:action put-in
+  :parameters (?x - portable ?l - location ?b - briefcase)
+  :precondition (and 
+                   (forall (?c - briefcase) (not (in ?x ?c)))
+                   (at ?x ?l) (is-at ?b ?l))
+  :effect (in ?x ?b)))
+
+

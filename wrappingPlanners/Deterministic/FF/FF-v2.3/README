@@ -1,0 +1,43 @@
+This directory contains the C implementation of FF-v2.3, as it was
+used in the 3rd international planning competition. Build the planner
+by typing
+
+make
+
+Which produces an executable named
+
+FF_2_3
+
+Usage should be self-explanatory. Running ff without any parameters
+prints out a brief help information about the parameters that are
+applicable, which basically come down to specifying the domain and
+problem files.
+
+Have fun,
+
+Joerg Hoffmann
+
+
+//**************************************************//
+
+FF_2_3() is the function which wrapped the main() function of ff-v2.3
+
+//------------------------------------------------//
+1.
+Usage of FF_2_3(shell):
+
+A example here:
+
+./FF_2_3 -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+
+2.
+Usage of FF_2_3()
+
+A example here:
+
+
+>>import FF_2_3
+
+>>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+
+>>FF_2_3.FF_2_3(argv)

@@ -1,0 +1,82 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; incremental-search.tlp -- Anytime best first search
+;;;
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(verbose-off)
+;(set-trace-level 3)
+(set-metric-fn (metric))
+(set-optimistic-metric-fn (optimistic-metric))
+(set-count-sat-prefs-fn (count-pref-goals))
+(set-total-prefs-fn (count-pref-total-goals))
+
+(load-file "preference-heuristics.tlp")
+
+(def-defined-predicate (write-metric)
+ (local-vars ?file)
+ (and
+  (:= ?file (open-file ?results-file write))
+  (print ?file "~A~T~A~%" ?first-plan-metric ?best-metric)
+  (close-file ?file)))
+
+(def-defined-predicate (goal-action)
+  (and
+   (implies
+    (< (metric) ?best-metric)
+    (and
+     (print-pddl3-plan (+ ?end-time ?extra-time) ?parse-time)
+     (:= ?best-length (plan-length))
+     (:= ?best-metric (metric))
+     (write-metric)
+     (print 0 "New Plan Length = ~A metric = ~A time = ~A world-counter = ~A~%" ?best-length ?best-metric (- (get-cpu-time) ?start-time) (world-counter))
+     (print 3 "New Plan Length = ~A metric = ~A time = ~A world-counter = ~A~%" ?best-length ?best-metric (- (get-cpu-time) ?start-time) (world-counter))     
+     (print-plan-list 3)
+;     (print-world 3)
+     (print 3 "~%")))
+   (> (- (get-cpu-time) ?start-time) ?time-bound)))
+
+(def-defined-predicate (isearch ?time-limit ?strategy)
+  (local-vars ?first-plan-metric ?best-length ?best-metric ?time-bound ?start-time ?end-time)
+  (and 
+;   (verbose-show-expanded-plans-on)
+;   (verbose-ff-show-relaxed-plans-on)
+;   (verbose-ff-show-relaxed-worlds-on)
+   (:= ?best-metric 10000000)
+   (:= ?start-time (get-cpu-time))
+   (:= ?time-bound (+ (get-cpu-time) ?time-limit))
+   (goal-oriented)
+   (set-heuristic-fn (gd))
+;   (set-search-strategy best-first-helpful-list)
+   (set-search-strategy best-first-prefer-longer)
+;   (set-search-strategy best-first)
+   (set-plan-timeout 1800)
+   (plan)
+   (:= ?end-time (- (get-cpu-time) ?start-time))
+   (print-pddl3-plan (+ ?end-time ?extra-time) ?parse-time)
+   (set-tl-control (always (and (temporal-control) (< (get-best-relaxed-metric) ?best-metric))))
+   (select-final-world)
+   (current
+    (and
+     (:= ?best-length (plan-length))
+     (:= ?best-metric (metric))
+     (:=  ?first-plan-metric ?best-metric)
+     (write-metric)
+     (print 0 "First Plan Length = ~A metric = ~A time = ~A world-counter = ~A~%" ?best-length ?best-metric (- (get-cpu-time) ?start-time) (world-counter))
+     (print 3 "First Plan Length = ~A metric = ~A time = ~A world-counter = ~A~%" ?best-length ?best-metric (- (get-cpu-time) ?start-time) (world-counter))
+     (print-plan-list 3)
+;     (print-world 3)
+     (print 3 "~%")))
+   (set-goal-addendum (goal-action))
+   (select-strategy ?strategy)
+   (set-plan-timeout (- 1800 ?end-time))
+   (plan)
+   (print 0 "Best plan Length = ~A metric = ~A~%" ?best-length ?best-metric)))
+
+
+(def-defined-predicate (inc-search ?time-limit ?strategy)
+   (local-vars ?extra-time ?parse-time)
+   (and (:= ?extra-time 0)
+        (:= ?parse-time 0)
+        (isearch ?time-limit ?strategy)))
+

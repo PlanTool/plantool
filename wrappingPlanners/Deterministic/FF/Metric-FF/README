@@ -1,0 +1,44 @@
+This directory contains the C implementation of Metric-FF, as it was
+used in the 3rd international planning competition. Build the planner
+by typing
+
+make
+
+Which produces an executable named
+
+Metric_FF
+
+Usage should be self-explanatory. Running ff without any parameters
+prints out a brief help information about the parameters that are
+applicable, which basically come down to specifying the domain and
+problem files.
+
+Have fun,
+
+Joerg Hoffmann
+
+//**************************************************//
+
+Metric_FF() is the function which wrapped the main() function of Metric_FF
+
+//------------------------------------------------//
+1.
+Usage of Metric_FF(shell):
+
+A example here:
+
+./Metric_FF -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+
+2.
+Usage of Metric_FF()  ---->wrapped func
+
+A example here:
+
+
+>>import Metric_FF
+
+>>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+
+>>Metric_FF.Metric_FF(argv)
+
+

@@ -1,0 +1,10 @@
+
+(define (problem tower-invert10)
+    (:domain ucpop-bw)
+    (:objects a b c d e f g h i j table)
+    (:init    (on a b) (on b c) (on c d) (on d e) (on  e f) (on f g)
+            (on g h) (on h i) (on i j) (on j table)
+            (clear a) (clear table))
+    (:goal (and (on j i) (on i h) (on h g) (on g f) (on f e) (on e d)
+                (on d c) (on c b) (on b a))))
+

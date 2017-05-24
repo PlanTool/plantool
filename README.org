@@ -3,22 +3,29 @@
 
 * Schedule
 1. First discussion <2017-05-12 五>
-- Read the source code, and wrap the main function.
-|--------------+------------------|
-| Member       | Task             |
-|--------------+------------------|
-| Wenfeng Feng | SAT2006, HSP     |
-| Enle Liu     | LAMA             |
-| Ruipeng Li   | HTN(C++ version) |
-| Xin Luo      | JSHOP2           |
-| Erhu Rong    | FF               |
-| Yuncong Li   | CSP              |
-| Min Tang     | TLplan           |
-| Hao Fu       | Randward         |
-| Han Tian     | SGPlan           |
-|--------------+------------------|
+   - Read the source code, and wrap the main function.
+   |--------------+------------------|
+   | Member       | Task             |
+   |--------------+------------------|
+   | Wenfeng Feng | SAT2006, HSP     |
+   | Enle Liu     | LAMA             |
+   | Ruipeng Li   | HTN(C++ version) |
+   | Xin Luo      | JSHOP2           |
+   | Erhu Rong    | FF               |
+   | Yuncong Li   | CSP              |
+   | Min Tang     | TLplan           |
+   | Hao Fu       | Randward         |
+   | Han Tian     | SGPlan           |
+   |--------------+------------------|
 
-- Ting Zhang and Qiping continue to wrap the functions of IPP and Graphplan.
+   - Ting Zhang and Qiping continue to wrap the functions of IPP and Graphplan.
+
+2. Second discussion <2017-05-19 Fri>
+   - Write Documentation for wrapper planners
+
+   - Consider new interface for input file
+
+   - Possible future usage of *plantool*
 
 * Steps of wrapping a planner
 ** Environment requirement
@@ -156,6 +163,7 @@
   Please spill out your ideas
   1. To be added ...
 
+* Documentation
 * References
 
    STAPLAN:  http://www.cs.rochester.edu/users/faculty/kautz/satplan/index.htm

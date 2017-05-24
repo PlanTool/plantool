@@ -1,7 +1,0 @@
-(define (problem sussman-anomaly)
-  (:domain blocksworld)
-  (:objects A B C Table)
-  (:init 
-          (on C A) (on-table A) (on-table B) (arm-empty)
-          (clear C) (clear B) )
-  (:goal (and (on B C) (on A B))))

@@ -1,6 +1,0 @@
-(define (problem bw-simple)
-    (:domain prodigy-bw)
-  (:length (:parallel 2) (:serial 2))
-  (:objects A B C)
-  (:init (clear a) (arm-empty) (on a b) (on-table b))
-  (:goal (and (on-table a) (clear b))))

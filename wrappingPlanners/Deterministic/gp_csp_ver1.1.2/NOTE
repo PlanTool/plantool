@@ -1,0 +1,11 @@
++ When reuse the nogood, the important thing to be taken care of is that the
+old goal nodes will have one more value. Therefore, all the nogoods that is
+constructed based on the checking out all of the value of those nodes will be
+useless, because it won't be able to check out all of new domain (all except
+the new NULL value). Currently, I handle it by not remember nogood of maximum size
+that involve goal nodes, and when I extend, I add one more item to those nogood.
+That item include if the goal in the next level that connect with the old goal
+by a NOOP.
++ Note that to follow the above way efficiently, I make use of the fact that
+the noop is the first in the list. If use the other implementation, then it
+won't work..

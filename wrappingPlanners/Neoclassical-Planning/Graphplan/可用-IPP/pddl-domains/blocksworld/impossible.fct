@@ -1,8 +1,0 @@
-(define (problem impossible)
-   (:domain blocksworld)
-   (:objects a b c)
-   (:init  (on-table a) (on b a) (on c b) (clear c)
-           (arm-empty))
-   (:goal (and (on c b) (on b a) (on a c))))
-
-

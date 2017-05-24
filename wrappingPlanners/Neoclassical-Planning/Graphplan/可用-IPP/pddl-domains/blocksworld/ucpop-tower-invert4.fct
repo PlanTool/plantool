@@ -1,9 +1,0 @@
-(define (problem tower-invert4)
-    (:domain ucpop-bw)
-    (:objects a b c d table)
-    (:init (on a b) (on b c) (on c d) (on d table)
-            (clear a) (clear table))
-    (:goal (and (on b c) (on c d) (on d a))))
-
-
-
