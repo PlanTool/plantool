@@ -72,7 +72,7 @@
  *********************************************************************/ 
 
 
-
+#include "main.h"
 #include <math.h>
 #include <sys/time.h>
 #include "lpg.h"
