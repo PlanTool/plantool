@@ -183,9 +183,9 @@
       | -i <info level>  | to specify info level 1 or 2 (default is 0)                      |
       | -O <option list> | to specify options you want                                      |
       | -M <integer>     | to specify alternative max nodes in a time step (default is 256) |
-      | -d               | give default values to everything not specified                  |
+      | ~-d~             | give default values to everything not specified                  |
     
-      Note: graphplan will prompt for '-t' and '-O' during execution
+      *Note*: graphplan will prompt for /'-t'/ and /'-O'/ during execution
           
 
 
