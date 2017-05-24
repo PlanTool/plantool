@@ -156,7 +156,7 @@
 
 * Problems section
   *Note*:(It is better to include a screenshot of bug reporting in directory called /BUG_PIC/ in the same directory)
-  1. CSP: DIR = Neoclassical-Planning/CSP/gp_csp_ver1.1.2/
+  1. CSP: DIR = code/Deterministic/CSP/gp_csp_ver1.1.2/
      Successfully compile, but on importing in python errors occur *undefined symbol: yywrap*
 
      - *Error cause*: 
