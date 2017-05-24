@@ -13,10 +13,10 @@
 -f  <str>    fact file name
 -r  <str>    output file name
 
--a  <str>    Algorithm, either 'bfs' or 'gbfs'.
--d  <str>    Search direction, either 'forward' or 'backward'.
--h  <str>    Heuristic function, one of 'h1plus', 'h1max', 'h2plus', 'h2max'.
+-a  <str>    Algorithm, either 'bfs' or 'gbfs' (default: 'gbfs')
+-d  <str>    Search direction, either 'forward' or 'backward' (default: 'backward')
+-h  <str>    Heuristic function, one of 'h1plus', 'h1max', 'h2plus', 'h2max' (default: 'h1plus')
 
--v  <num>    Verbose level >= 0 (default is 1).
--w <float>   Float to weight the heuristic component of the cost 
+-v  <num>    Verbose level >= 0 (default: 1)
+-w <float>   Float to weight the heuristic component of the cost (default: 5.0)
 ```
