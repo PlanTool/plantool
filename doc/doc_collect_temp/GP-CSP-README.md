@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 # 2017.05.24 更新
 ## GP-CSP目前未找到可以解的问题以及领域pddl
 
+=======
+>>>>>>> 1edf4de5f6f0b625219dd38c88fa6947ca017d50
 # Usage for GP-CSP
 ```python
 >>> import gpcsp
