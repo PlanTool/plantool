@@ -466,7 +466,7 @@ int run( int argc, char *argv[] )
 
 {
   FILE *stream;
-
+%
   stream = freopen("output.txt", "a+", stdout);
 
 
@@ -496,11 +496,11 @@ int run( int argc, char *argv[] )
    */
   if ( argc == 1 || ( argc == 2 && *++argv[0] == '?' ) ) {
     ipp_usage();
-    exit( USAGE_ERROR_CODE );
+    return 1;
   }
   if ( !process_command_line( argc, argv ) ) {
     ipp_usage();
-    exit( USAGE_ERROR_CODE );
+    return 1;
   }
 
 
@@ -512,11 +512,13 @@ int run( int argc, char *argv[] )
   if ( !gcmd_line.ops_file_name || 
        !gcmd_line.fct_file_name ) {
     fprintf(stdout, "\nipp: two input files needed\n\n");
-    ipp_usage();      
-    exit( USAGE_ERROR_CODE );
+    ipp_usage();
+    return 1;
+    /*    exit( USAGE_ERROR_CODE );
+     */
   }
   /* add path info, complete file names will be stored in
-   * ops_file and fct_file 
+   * ops_file and fct_file
    */
   sprintf(ops_file, "%s%s", gcmd_line.path, gcmd_line.ops_file_name);
   sprintf(fct_file, "%s%s", gcmd_line.path, gcmd_line.fct_file_name);
@@ -538,7 +540,7 @@ int run( int argc, char *argv[] )
    */
   load_ops_file( ops_file );
   /* problem file (facts)
-   */  
+   */
   if ( gcmd_line.display_info  ) {
     fprintf(OUT, " ... done.\nipp: parsing problem file"); 
   }
@@ -760,8 +762,11 @@ int run( int argc, char *argv[] )
       output_planner_info( inst_time, build_time - gexcl_time,
 			   gexcl_time, search_time, min_time );
     }
+    /*
     exit( 0 );
-  }
+    */
+    return 1;
+    }
 
   for ( ; min_time < MAX_PLAN; min_time++ ) {
     /* search and build one extra layer in alternating steps
@@ -793,7 +798,7 @@ int run( int argc, char *argv[] )
 	output_planner_info( inst_time, build_time - gexcl_time,
 			     gexcl_time, search_time, min_time );
       }
-      exit( 0 );
+      return 1;
     }
 
   }
@@ -808,7 +813,7 @@ int run( int argc, char *argv[] )
   }
 
   freopen("/data.out","w",stdout); 
-  exit( 0 );
+  return 1;
 
 }
 

@@ -3,7 +3,7 @@
 * run
   The main function with name changed
 ** do_error
-   Since the original do_error used exit(1), which is unacceptable for python calling. So I modify it to return to the main function, and add
+   change exit(1) to return 1;
    #+BEGIN_SRC c
    return 1;
    #+END_SRC
@@ -33,6 +33,6 @@
     |          | 7      1 + facts selected as relevant to the problem                    |
     |          | 8      1 + final domain representation                                  |
     |          | > 100      1 + various debugging information                            |
-    | -W       | write complete graph to text files after planning                       |                                                                                     |
+    | -W       | write complete graph to text files after planning                       |
     | -m <num> | build graph up to level <num> without search                            |
     |----------+-------------------------------------------------------------------------|
