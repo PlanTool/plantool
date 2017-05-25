@@ -2,7 +2,7 @@
 ```python
 >>> import sgplan
 >>> argv = ['sgplan', '-o', 'domain.pddl', '-f', 'problem.pddl']
->>> sgplan.oldmain(argv)
+>>> sgplan.run(argv)
 ```
 
 ## Instructions about arguments:

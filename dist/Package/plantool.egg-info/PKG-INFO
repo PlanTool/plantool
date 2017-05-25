@@ -1,0 +1,16 @@
+Metadata-Version: 1.1
+Name: plantool
+Version: 0.0.1
+Summary: A plantool integrating planners.
+Home-page: https://plan.sysu.edu.cn/
+Author: The Plan Lab
+Author-email: zhuohank@mail.sysu.edu.cn
+License: MIT
+Description: UNKNOWN
+Keywords: planning
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7

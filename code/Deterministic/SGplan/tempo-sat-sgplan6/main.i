@@ -9,4 +9,4 @@
 #include "main.h"
 %}
 
-extern int oldmain( int argc, char *argv[] );
+extern int run( int argc, char *argv[] );

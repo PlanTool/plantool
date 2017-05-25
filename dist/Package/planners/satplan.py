@@ -15,20 +15,20 @@ if version_info >= (2,6,0):
         import imp
         fp = None
         try:
-            fp, pathname, description = imp.find_module('_sgplan', [dirname(__file__)])
+            fp, pathname, description = imp.find_module('_satplan', [dirname(__file__)])
         except ImportError:
-            import _sgplan
-            return _sgplan
+            import _satplan
+            return _satplan
         if fp is not None:
             try:
-                _mod = imp.load_module('_sgplan', fp, pathname, description)
+                _mod = imp.load_module('_satplan', fp, pathname, description)
             finally:
                 fp.close()
             return _mod
-    _sgplan = swig_import_helper()
+    _satplan = swig_import_helper()
     del swig_import_helper
 else:
-    import _sgplan
+    import _satplan
 del version_info
 try:
     _swig_property = property
@@ -71,8 +71,8 @@ except AttributeError:
 
 
 def run(*args):
-  return _sgplan.run(*args)
-run = _sgplan.run
+  return _satplan.run(*args)
+run = _satplan.run
 # This file is compatible with both classic and new-style classes.
 
 

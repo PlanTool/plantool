@@ -75,7 +75,7 @@ HEADERS := $(foreach dir,./include,$(find_header))
 
 .SUFFIXES: .c .o
 
-.c.o:; $(CC) -Dmain=oldmain -I$(PATH_HEADERS) -c $(CFLAGS) $<
+.c.o:; $(CC) -Dmain=run -I$(PATH_HEADERS) -c $(CFLAGS) $<
 
 
 ####### Build rules

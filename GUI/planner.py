@@ -1,7 +1,7 @@
 #coding:utf-8
 import re
 import wx
-import paras
+from paras import PlannerWxParameters
 import os
 import sys
 import time
@@ -12,6 +12,7 @@ import argparse
 import threading
 import wx.html
 import wx.lib.buttons as buttons
+import planners.hsp
 #from ctypes import *
 
 
@@ -106,12 +107,13 @@ class PlannerGUI(wx.Frame):
     def planner_init(self):
         #print 'planner_init-----\n'
         self.planners = dict()
-        self.planners["HSP"] = PlannerWxParameters("HSP",
+        self.planners["HSP"] = PlannerWxParameters("hsp",
                 ["Algorithm","Direction","Heuristic"],
-                ["a","d","h"],
+                ["-a","-d","-h"],
                 ["choice","choice","choice"],
                 [["bfs", "gbfs"],["forward", "backward"],["h1max", "h2plus", "h1plus"]],
-                [None, None, None])
+                [["bfs", "gbfs"],["forward", "backward"],["h1max", "h2plus", "h1plus"]],
+                                                   ["gbfs", "backward", "h1plus"],'-r')
 #self.planners["IPP"] = PlannerWxParameters()
 #       self.planners["FF"] = PlannerWxParameters()
 #       self.planners["Graphplan"] = PlannerWxParameters()
@@ -164,7 +166,7 @@ class PlannerGUI(wx.Frame):
     def choice_init(self, event):
         p = self.planner_choice.GetSelection()
         if self.track_id == 'D' or self.track_id == 'U':
-            currentAlgorithm = self.PlannerList(p)
+            currentAlgorithm = self.PlannerList[p]
             self.currentPlanner = self.planners[currentAlgorithm]
             if self.lastAlgorithm == "GraphPlan":
                 self.__graphplan_destroy()
@@ -1032,41 +1034,7 @@ class PlannerGUI(wx.Frame):
         textctrl.SetInsertionPoint(0)
         return text, textctrl
 
-    def __show(planner):
-        y = 190
-        for name, typ, label, default in planner.names, \
-            planner.types, planner.labels, planner.defaults:
-            if typ == "choice":
-                self.controls[name+"T"],self.controls[name] = self.TF_choice(name+":",
-                            (15, y), (200, y-5), value)
-                if default is not None and default in value:
-                    self.controls[name].setLabel(default)
-                y += 40
-            elif typ == "text":
-                self.controls[name+"T"],self.controls[name] = \
-                    self.text_text_ctrl(name+":",
-                            (15, y), (200, y-5),
-                            size = (120, -1))
-                if default is not None:
-                    self.controls[name].setStringValue(default)
-                y += 40
-            elif typ == "checkbox":
-                self.controls[name+"T"], self.controls[name] = \
-                        self.checkBox(y, value)
-                if default is not None:
-                    controls[name].SetChecked(default)
-                y += 130
-        eval("__"+self.currentPlanner.algName+"_help()")
-        
-    def checkBox(self, y, options):
-        gp_options_text = wx.StaticText(self.panel, -1, 
-            "Options:", (15,y), style=wx.ALIGN_LEFT)
-        gp_options_text.SetFont(wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.BOLD))
-        gp_options_choices = wx.CheckListBox(self.panel, -1, (150,y-10),
-                (180,120),options, wx.LB_MULTIPLE)
-        return gp_options_text, gp_options_choices
-
-    def __ipp_help(self):
+    def ipp_help(self):
         self.pointer = self.OutputText.GetInsertionPoint()
         self.OutputText.AppendText("\n\nusage of ipp:\n\n");
         self.OutputText.AppendText("run-time information level( preset: 1 )\n");
@@ -1082,8 +1050,42 @@ class PlannerGUI(wx.Frame):
         self.pointer = self.OutputText.GetInsertionPoint()
         self.OutputText.SetStyle(tp_point, self.pointer, wx.TextAttr("sienna", wx.NullColour))
 
+    def __show(self, planner):
+        y = 190
+        for name, typ, label, default in zip(planner.names, \
+            planner.types, planner.labels, planner.defaults):
+            if typ == "choice":
+                self.controls[name+"T"],self.controls[name] = self.TF_choice(name+":",
+                            (15, y), (200, y-5), label)
+                if default is not None and default in label:
+                    self.controls[name].SetSelection(label.index(default))
+                y += 40
+            elif typ == "text":
+                self.controls[name+"T"],self.controls[name] = \
+                    self.text_text_ctrl(name+":",
+                            (15, y), (200, y-5),
+                            size = (120, -1))
+                if default is not None:
+                    self.controls[name].setStringValue(default)
+                y += 40
+            elif typ == "checkbox":
+                self.controls[name+"T"], self.controls[name] = \
+                        self.checkBox(y, label)
+                if default is not None:
+                    self.controls[name].SetChecked(default)
+                y += 130
+        eval("self."+self.currentPlanner.algName+"_help()")
+        
+    def checkBox(self, y, options):
+        gp_options_text = wx.StaticText(self.panel, -1, 
+            "Options:", (15,y), style=wx.ALIGN_LEFT)
+        gp_options_text.SetFont(wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.BOLD))
+        gp_options_choices = wx.CheckListBox(self.panel, -1, (150,y-10),
+                (180,120),options, wx.LB_MULTIPLE)
+        return gp_options_text, gp_options_choices
 
-    def __hsp_help(self):
+
+    def hsp_help(self):
         self.pointer = self.OutputText.GetInsertionPoint()
         self.OutputText.AppendText("\n\nusage of hsp:\n\n");
         self.OutputText.AppendText("OPTIONS   DESCRIPTIONS\n\n");
@@ -1094,7 +1096,7 @@ class PlannerGUI(wx.Frame):
         self.pointer = self.OutputText.GetInsertionPoint()
         self.OutputText.SetStyle(tp_point, self.pointer, wx.TextAttr("coral", wx.NullColour))
 
-    def __ff_help(self):
+    def ff_help(self):
         self.pointer = self.OutputText.GetInsertionPoint()
         self.OutputText.AppendText("\n\nusage of ff:\n");
         self.OutputText.AppendText("run-time information level( preset: 1 )\n");
@@ -1301,8 +1303,6 @@ class PlannerGUI(wx.Frame):
             elif not self.pro_file:
                 self.OutputText.AppendText("\nError: no problem file selected!\n")
                 return
-            #self.lib = cdll.LoadLibrary('./libs/%s.so'%pl)
-            self.lib = ctypes.CDLL('./libs/%s.so'%self.currentPlanner.algName)
             argv = []
             if pl == 'graphplan':       
                 d = self.gp_default_choice.GetSelection()
@@ -1328,36 +1328,38 @@ class PlannerGUI(wx.Frame):
                     else:
                         argv = ['graphplan', '-o', self.dom_file, '-f', self.pro_file, 
                         '-i', self.gp_info_list[num], '-t', ts, '-O', ops]
-            elif not self.currentPlanner:
+            elif self.currentPlanner:
                 argv.append(self.currentPlanner.algName)
-                argv.append(['-o', self.dom_file, '-f', self.pro_file,])
+                argv.extend(['-o', self.dom_file, '-f', self.pro_file,])
                 if temp:
-                    argv.append(['-out', temp[0]])
+                    argv.extend([self.currentPlanner.outtag, temp[0]])
+                else:
+                    argv.extend([self.currentPlanner.outtag, pl+"_output.txt"])
                 for i in range(len(self.currentPlanner.names)):
                     if self.currentPlanner.types[i] == "text":
                         text = self.controls[self.currentPlanner.names[i]].GetValue().encode('utf-8').strip()
                         if not text:
                             self.OutputText.AppendText('\nError : Empty '+self.currentPlanner.names[i])
                             return
-                        argv.append([self.currentPlanner.tags[i],
+                        argv.extend([self.currentPlanner.tags[i],
                                 text])
                     elif self.currentPlanner.types[i] == "choice":
                         idx = self.controls[self.currentPlanner.names[i]].GetSelection()
-                        argv.append([self.currentPlanner.tags[i],
+                        argv.extend([self.currentPlanner.tags[i],
                                 self.currentPlanner.values[i][idx]])
                     elif self.currentPlanner.types[i] == "checkbox":
                         text = ""
                         for j in range(len(self.currentPlanner.values[i])):
                             if self.controls[self.currentPlanner.names[i]].IsChecked(j):
                                 text += self.currentPlanner.values[i][j]
-                        argv.append([self.currentPlanner.tags[i],
+                        argv.extend([self.currentPlanner.tags[i],
                                 text])
             else:
                 return
 
             self.OutputText.AppendText('\nInput argv is %s\n'%' '.join(argv))
             self.OutputText.AppendText('\nDoing planning for your problem...')
-            self.lib.main(len(argv), (ctypes.c_char_p*len(argv))(*argv))
+            eval("planners."+self.currentPlanner.algName+".run(argv)")
             if temp:
                 self.OutputText.AppendText(
                     '\nThe planning is done!\nResult of it is saved in %s\n'%temp[0])
