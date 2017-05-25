@@ -28,6 +28,8 @@ A example here:
 
 ./FF_X -p './' -a 'output.txt' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
 
+
+Then, go to the current directory, find "output.txt",it contains the output of FF_X.
 2.
 Usage of FF_X.run()  ---->wrapped func
 
@@ -40,4 +42,5 @@ A example here:
 
 >>FF_X.run(argv)
 
+Then, go to the current directory, find "output.txt",it contains the output of FF_X.
 
