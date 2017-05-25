@@ -52,6 +52,7 @@
 
 #include "relax.h"
 #include "search.h"
+#include <string.h>
 
 
 
@@ -456,7 +457,7 @@ void load_fct_file( char *filename );
  */
 
 
-
+char out_filename[MAX_LENGTH] = "";
 
 struct tms lstart, lend;
 
@@ -466,6 +467,11 @@ struct tms lstart, lend;
 int run( int argc, char *argv[] )
 
 {
+	/*
+	 * *******************
+	 */
+	 
+	
 
   /* resulting name for ops file
    */
@@ -483,8 +489,15 @@ int run( int argc, char *argv[] )
   times ( &lstart );
 
 
+	FILE *stream;
+	stream = freopen("temp_out.txt","w",stdout);
+	if( stream == NULL )  
+     fprintf( stdout, "error on freopen\n" );
+	
+
   /* command line treatment
    */
+		
   if ( argc == 1 || ( argc == 2 && *++argv[0] == '?' ) ) {
     ff_usage();
     exit( 1 );
@@ -513,6 +526,10 @@ int run( int argc, char *argv[] )
   sprintf(fct_file, "%s%s", gcmd_line.path, gcmd_line.fct_file_name);
 
 
+	
+
+
+	
   /* parse the input files
    */
 
@@ -537,6 +554,7 @@ int run( int argc, char *argv[] )
   if ( gcmd_line.display_info >= 1 ) {
     printf(" ... done.\n\n");
   }
+
 
   /* This is needed to get all types.
    */
@@ -677,13 +695,31 @@ int run( int argc, char *argv[] )
 
   if ( found_plan ) {
     print_plan();
+
   }
 
   output_planner_info();
+  
 
   printf("\n\n");
-  exit( 0 );
-
+ 
+ 
+ 
+ fclose(stream);
+ 
+ printf("*******************");
+ FILE *op,*np;
+ op = fopen("temp_out.txt","rb");
+ np = fopen(out_filename,"wb");
+ void *buf;
+ while (!feof(op)){
+	 fread(&buf,1,1,op);
+	 fwrite(&buf,1,1,np);
+	 }
+fclose(np);
+fclose(op);
+remove("temp_out.txt");
+ exit( 0 );
 }
 
 
@@ -763,7 +799,6 @@ void output_planner_info( void )
   fprintf(out, "%.2f\n", gsearch_time);
   fclose( out );
 
-  exit( 0 );
 
 }
 
@@ -893,6 +928,9 @@ Bool process_command_line( int argc, char *argv[] )
     default:
       if ( --argc && ++argv ) {
 	switch ( option ) {
+	case 'a':
+		strncpy(out_filename,*argv,MAX_LENGTH);
+		break;
 	case 'p':
 	  strncpy( gcmd_line.path, *argv, MAX_LENGTH );
 	  break;

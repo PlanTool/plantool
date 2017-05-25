@@ -24,19 +24,19 @@ run() is the function which wrapped the main() function of FF_X
 1.
 Usage of FF_X(shell):
 
-An example here:
+A example here:
 
-./FF_X -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+./FF_X -p './' -a 'output.txt' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
 
 2.
 Usage of FF_X.run()  ---->wrapped func
 
-An example here:
+A example here:
 
 
 >>import FF_X
 
->>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+>>argv = ['./','-a','output.txt','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
 
 >>FF_X.run(argv)
 
