@@ -1,0 +1,69 @@
+
+ipp: parsing domain file
+domain 'FRIDGE-DOMAIN' defined
+ ... done.
+ipp: parsing problem file
+problem 'FIXA' defined
+ ... done.
+
+
+warning: detected identical trees in con/dis junction
+warning: detected identical trees in con/dis junction
+warning: detected identical trees in con/dis junction
+warning: detected identical trees in con/dis junction
+warning: detected identical trees in con/dis junction
+warning: detected identical trees in con/dis junction
+warning: detected identical trees in con/dis junction
+warning: detected identical trees in con/dis junction
+warning: detected identical trees in con/dis junction
+warning: detected identical trees in con/dis junction
+warning: detected identical trees in con/dis junction
+warning: detected identical trees in con/dis junction
+warning: detected identical trees in con/dis junction
+warning: detected identical trees in con/dis junction
+warning: detected identical trees in con/dis junction
+instantiated 587 actions
+
+
+time:   0,    10 facts and       0 exclusive pairs (    8,       0 positives)
+              15 ops   and       5 exclusive pairs
+time:   1,    15 facts and       0 exclusive pairs (    8,       0 positives)
+             408 ops   and   78027 exclusive pairs
+time:   2,    16 facts and       1 exclusive pairs (    8,       0 positives)
+             602 ops   and  173485 exclusive pairs
+time:   3,    20 facts and      21 exclusive pairs (   10,       8 positives)
+
+goals first reachable in 3 time steps
+
+
+found plan as follows:
+
+time step    0: STOP-FRIDGE F1
+                UNFASTEN S1 B1
+                UNFASTEN S2 B1
+time step    1: REMOVE-BACKPLANE B1 F1 S1 S1 S1 S2
+time step    2: CHANGE-COMPRESSOR C1 C2 B1
+
+
+
+number of actions tried:          5
+number of noops tried  :          0
+
+had       0 simple memoizing hits
+had       0 partial memoizing hits
+had       0 subset memoizing hits
+
+time spent:    0.01 seconds instantiating 587 operators
+               0.01 seconds building graph
+               0.01 seconds calculating exclusions
+               0.00 seconds searching graph
+               0.03 seconds total time
+
+Memory used:   0.64 MBytes for domain representation
+               3.35 MBytes for graph
+               0.02 MBytes for exclusions
+               0.05 MBytes for memoization
+               0.00 MBytes for wave front
+
+
+
