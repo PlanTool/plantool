@@ -15,7 +15,7 @@ import wx.html
 import wx.lib.buttons as buttons
 import random
 from multiprocessing import Process
-from planners import *
+from plantool import *
 #from ctypes import *
 
 
@@ -97,8 +97,8 @@ class PlannerGUI(wx.Frame):
         #Listbox
         self.planner_init()
         if self.track_id == 'D': #Deterministic Track
-            self.PlannerList = ['IPP', 'HSP', 'Graphplan','SGplan','Contigent-FF', 'FF-X', 'FF-v2.3', 'Metric-FF',
-                                'Sequence Satisfy FF', "Conformant FF"]
+            self.PlannerList = ['IPP', 'HSP', 'Graphplan','SGplan', 'FF-X', 'FF-v2.3',
+                                'Seq Satisfy FF', "Conformant FF"]
             self.show_pddl_choice()
         elif self.track_id == 'U': #Uncertainty Track
             self.PlannerList = []
@@ -125,6 +125,14 @@ class PlannerGUI(wx.Frame):
                                                       [],
                                                       [],
                                                       [],
+                                                      '-out')
+        self.planners["IPP"] = PlannerWxParameters("ipp",
+                                                      ["Write Graph","Graph File"],
+                                                      ["-W","-w"],
+                                                      ["checkbox","text"],
+                                                      [None,None],
+                                                      [None,None],
+                                                      [False,"graph"],
                                                       '-out')
         self.planners["SatPlan2006"] = PlannerWxParameters("satplan2006",
                                                       ["Goal Layer","Options","CNF output",
@@ -158,7 +166,7 @@ class PlannerGUI(wx.Frame):
                                                ["0","1","2"]],
                                               [["0","1","2","3"],["0","1"],["0","1","2"],None,None,None,None,
                                                ["0","1","2"]],
-                                              ["3","greedy AO*","observ maxed",False,None,"1",False,"2"],
+                                              ["3","greedy AO*","observ maxed",False,"0","1",False,"2"],
                                               '-x')
         self.planners["FF-X"] = PlannerWxParameters("FF_X",
                                                       [],
@@ -168,7 +176,7 @@ class PlannerGUI(wx.Frame):
                                                       [],
                                                       [],
                                                       '-a')
-        self.planners["FF-v2.3"] = PlannerWxParameters("FF-v2.3",
+        self.planners["FF-v2.3"] = PlannerWxParameters("FF_2_3",
                                                       [],
                                                       [],
                                                       [],
@@ -184,10 +192,10 @@ class PlannerGUI(wx.Frame):
                                                       [None,None,None,None],
                                                       [False,"0","0",False],
                                                       '-a')
-        self.planners["Sequence Satisfy FF"] = PlannerWxParameters("Seq_Sat_FF",
+        self.planners["Seq Satisfy FF"] = PlannerWxParameters("Seq_Sat_FF",
                                                       ["No hill-climbing try","Weight g","Weight h","optimization "
                                                                                                     "expression",
-                                                       "set-additive heuristic","TSP heuristic","standard additive "
+                                                       "set-additive heuristic","TSP heuristic","additive "
                                                                                                 "heuristic","Competition output"],
                                                       ["-E","-g","-h","-O","-S","-T","-H","-C"],
                                                       ["checkbox","text","text","checkbox","checkbox","checkbox","checkbox","checkbox"],
@@ -198,11 +206,11 @@ class PlannerGUI(wx.Frame):
         self.planners["Conformant FF"] = PlannerWxParameters("Conf_FF",
                                                       ["Heuristic function","EHC run","Helpful actions","Stagnating "
                                                                                                         "paths "
-                                                                                                        "check","Full repeated states check","Breadth-first style"],
+                                                                                                        "check","Full repeated states","Breadth-first style"],
                                                       ["-h","-E","-H","-S","-D","-B"],
                                                       ["choice","checkbox","checkbox","checkbox","checkbox","checkbox"],
                                                       [["0","1","2"],None,None,None,None,None],
-                                                      [["0","1","2"],None,None,None,None,None],
+                                                      [["0","1","2"],False,False,False,False,False],
                                                       ["1",True,True,True,True,True],
                                                       '-a')
 
@@ -1168,7 +1176,7 @@ class PlannerGUI(wx.Frame):
                 self.controls[name+"T"], self.controls[name] = \
                         self.checkBox(name+":", y, label)
                 if default:
-                    self.controls[name].SetChecked()
+                    self.controls[name].SetValue(default)
                 y += 35
 
         self.__help()
@@ -1197,7 +1205,7 @@ class PlannerGUI(wx.Frame):
         tp_point = self.pointer
         self.pointer = self.OutputText.GetInsertionPoint()
         textColour = wx.Colour()
-        textColour.Set(random.randint(0,255),random.randint(0,255),random.randint(0,255))
+        textColour.Set(random.randint(0,150),random.randint(0,150),random.randint(0,150))
         self.OutputText.SetStyle(tp_point, self.pointer, wx.TextAttr(textColour,
                                                                      wx.NullColour))
 
@@ -1375,7 +1383,7 @@ class PlannerGUI(wx.Frame):
         tool_name = self.PlannerList[ind]
         self.OutputText.AppendText("\nUsing planner %s...\n"%tool_name)
 
-        pl = self.PlannerList[ind].lower()
+        pl = self.currentPlanner.algName
         temp = self.out_file_name.GetValue().encode('utf-8').split()
         self.out_file_name.Clear()
 
@@ -1412,11 +1420,17 @@ class PlannerGUI(wx.Frame):
                     for j in range(len(self.currentPlanner.values[i])):
                         if self.controls[self.currentPlanner.names[i]].IsChecked(j):
                             text += self.currentPlanner.values[i][j]
+                    if len(text)==0:
+                        text = " "
                     argv.extend([self.currentPlanner.tags[i],
                             text])
                 elif self.currentPlanner.types[i] == "checkbox":
-                    if self.controls[self.currentPlanner.names[i]].IsChecked():
-                        argv.extend([self.currentPlanner.tags[i]])
+                    if self.currentPlanner.values is not None and not self.currentPlanner.values:
+                        if not self.controls[self.currentPlanner.names[i]].IsChecked():
+                            argv.extend([self.currentPlanner.tags[i]])
+                    else:
+                        if self.controls[self.currentPlanner.names[i]].IsChecked():
+                            argv.extend([self.currentPlanner.tags[i]])
 
             self.OutputText.AppendText('\nInput argv is %s\n'%' '.join(argv))
             self.OutputText.AppendText('\nDoing planning for your problem...')
