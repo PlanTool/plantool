@@ -1,30 +1,9 @@
-This directory contains the C implementation of Metric-FF, as it was
-used in the 3rd international planning competition. Build the planner
-by typing
-
-make
-
-Which produces an executable named
-
-Cont_FF
-
-Usage should be self-explanatory. Running ff without any parameters
-prints out a brief help information about the parameters that are
-applicable, which basically come down to specifying the domain and
-problem files.
-
-Have fun,
-
-Joerg Hoffmann
-
-//**************************************************//
 
 Usage of Conformant-FF:
 
 OPTIONS   DESCRIPTIONS
 
 -p <str>    path for operator and fact file
--x <str>    path for output file
 -o <str>    operator file name
 -f <str>    fact file name
 
@@ -56,32 +35,4 @@ OPTIONS   DESCRIPTIONS
 -A          debug search.c
 -T          debug state_transitions.c
 -P          debug repeated_states.c
-
-//**************************************************//
-run() is the function which wrapped the main() function of Cont_FF
-
-1.
-Usage of Cont_FF(shell):
-
-An example here:
-
-./Cont_FF -p './' -x 'output.txt' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
-
-
-Then, go to the current directory, find "output.txt",it contains the output.
-
-2.
-Usage of Cont_FF.run()  ---->wrapped func
-
-An example here:
-
-
->>import Cont_FF
-
->>argv = ['./','-x','output.txt','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
-
->>Cont_FF.run(argv)
-
-Then, go to the current directory, find "output.txt",it contains the output.
-
 
