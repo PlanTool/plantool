@@ -70,7 +70,8 @@ OBJECTS 	= $(SOURCES:.c=.o)
 .c.o:; $(CC) -c $(CFLAGS) $<
 
 ####### Build rules
-
+FF_2_3: $(OBJECTS) $(PDDL_PARSER_OBJ)
+	$(CC) -o FF_2_3 $(OBJECTS) $(PDDL_PARSER_OBJ) $(CFLAGS) $(LIBS)
 _FF_2_3.so: $(OBJECTS) FF_2_3_wrap.o $(PDDL_PARSER_OBJ)
 	gcc $(CFLAGS) -shared -o $@ $^
 
@@ -79,8 +80,7 @@ FF_2_3_wrap.o: FF_2_3_wrap.c
 
 FF_2_3.py FF_2_3_wrap.c: FF_2_3.i
 		swig -python FF_2_3.i
-FF_2_3: $(OBJECTS) $(PDDL_PARSER_OBJ)
-	$(CC) -o FF_2_3 $(OBJECTS) $(PDDL_PARSER_OBJ) $(CFLAGS) $(LIBS)
+
 
 # pddl syntax
 scan-fct_pddl.tab.c: scan-fct_pddl.y lex.fct_pddl.c

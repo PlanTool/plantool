@@ -27,7 +27,10 @@ Usage of Cont_FF(shell):
 
 An example here:
 
-./Cont_FF -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+./Cont_FF -p './' -x 'output.txt' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+
+
+Then, go to the current directory, find "output.txt",it contains the output.
 
 2.
 Usage of Cont_FF.run()  ---->wrapped func
@@ -37,8 +40,10 @@ An example here:
 
 >>import Cont_FF
 
->>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+>>argv = ['./','-x','output.txt','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
 
 >>Cont_FF.run(argv)
+
+Then, go to the current directory, find "output.txt",it contains the output.
 
 

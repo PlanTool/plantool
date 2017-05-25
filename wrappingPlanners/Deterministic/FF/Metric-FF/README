@@ -27,7 +27,10 @@ Usage of Metric_FF(shell):
 
 An example here:
 
-./Metric_FF -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+./Metric_FF -p './' -a 'output.txt' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+
+
+Then, go to the current directory, find "output.txt",it contains the output of FF_X.
 
 2.
 Usage of Metric_FF.run()  ---->wrapped func
@@ -37,8 +40,8 @@ An example here:
 
 >>import Metric_FF
 
->>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+>>argv = ['./','-a','output.txt','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
 
 >>Metric_FF.run(argv)
 
-
+Then, go to the current directory, find "output.txt",it contains the output of FF_X.

@@ -64,6 +64,7 @@ OBJECTS 	= $(SOURCES:.c=.o)
 .c.o:; $(CC) -c $(CFLAGS) $<
 
 ####### Build rules
+
 _Metric_FF.so: $(OBJECTS) Metric_FF_wrap.o $(PDDL_PARSER_OBJ)
 	gcc $(CFLAGS) -shared -o $@ $^
 
@@ -72,9 +73,9 @@ Metric_FF_wrap.o: Metric_FF_wrap.c
 
 Metric_FF.py Metric_FF_wrap.c: Metric_FF.i
 		swig -python Metric_FF.i
-
 Metric_FF: $(OBJECTS) $(PDDL_PARSER_OBJ)
 	$(CC) -o Metric_FF $(OBJECTS) $(PDDL_PARSER_OBJ) $(CFLAGS) $(LIBS)
+
 
 # pddl syntax
 scan-fct_pddl.tab.c: scan-fct_pddl.y lex.fct_pddl.c

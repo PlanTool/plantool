@@ -20,7 +20,11 @@ Usage of Seq_Sat_FF(shell):
 
 An example here:
 
-./Seq_Sat_FF -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+./Seq_Sat_FF -p './' -a 'output.txt' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+
+
+Then, go to the current directory, find "output.txt",it contains the output.
+2.
 
 2.
 Usage of Seq_Sat_FF.run()  ---->wrapped func
@@ -30,7 +34,9 @@ An example here:
 
 >>import Seq_Sat_FF
 
->>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+>>argv = ['./','-a','output.txt','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
 
 >>Seq_Sat_FF.run(argv)
+
+Then, go to the current directory, find "output.txt",it contains the output.
 
