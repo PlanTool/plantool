@@ -1,30 +1,9 @@
-This directory contains the C implementation of FF-v2.3, as it was
-used in the 3rd international planning competition. Build the planner
-by typing
 
-make
-
-Which produces an executable named
-
-FF_2_3
-
-Usage should be self-explanatory. Running ff without any parameters
-prints out a brief help information about the parameters that are
-applicable, which basically come down to specifying the domain and
-problem files.
-
-Have fun,
-
-Joerg Hoffmann
-
-
-/**************************************************/
-usage of FF_X:
+usage of ff:
 
 OPTIONS   DESCRIPTIONS
 
 -p <str>    path for operator and fact file
--a <str>    path for output file
 -o <str>    operator file name
 -f <str>    fact file name
 
@@ -61,30 +40,3 @@ OPTIONS   DESCRIPTIONS
 
 -d <num>    switch on debugging
 
-//**************************************************//
-
-run() is the function which wrapped the main() function of ff-v2.3
-
-//------------------------------------------------//
-1.
-Usage of FF_2_3(shell):
-
-An example here:
-
-./FF_2_3 -p './' -a 'output.txt' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
-
-Then, go to the current directory, find "output.txt",it contains the output of FF_2_3.
-
-2.
-Usage of FF_2_3.run()
-
-An example here:
-
-
->>import FF_2_3
-
->>argv = ['./','-a','output.txt','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
-
->>FF_2_3.run(argv)
-
-Then, go to the current directory, find "output.txt",it contains the output of FF_2_3.
