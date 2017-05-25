@@ -17,11 +17,31 @@ Have fun,
 
 Joerg Hoffmann
 
+
+
 //**************************************************//
+
+usage of ff:
+
+OPTIONS   DESCRIPTIONS
+
+-p <str>    path for operator and fact file
+-a <str>    path for output file
+-o <str>    operator file name
+-f <str>    fact file name
+
+-E          don't do enforced hill-climbing try before bestfirst
+
+-g <num>    set weight w_g in w_g*g(s) + w_h*h(s) [preset: 0]
+-h <num>    set weight w_h in w_g*g(s) + w_h*h(s) [preset: 0]
+
+-O          switch on optimization expression (default is plan length)
+
+
+/*******************************************************/
 
 run() is the function which wrapped the main() function of Metric_FF
 
-//------------------------------------------------//
 1.
 Usage of Metric_FF(shell):
 
