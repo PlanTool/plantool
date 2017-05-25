@@ -61,7 +61,7 @@ SOURCES = main.c \
 
 OBJECTS = $(SOURCES:.c=.o) 
 
-LPG_LIBS = LocalSearch/LocalSearch.a Utilities/Utilities.a HillClimbingSearch/HillClimbingSearch.a Parser/Parser.a Metric-FF/mff.a ./libmetis.so
+LPG_LIBS = LocalSearch/LocalSearch.a Utilities/Utilities.a HillClimbingSearch/HillClimbingSearch.a Parser/Parser.a Metric-FF/mff.a libmetis.a
 
 SUB_DIRS = LocalSearch Utilities HillClimbingSearch Parser Metric-FF
 

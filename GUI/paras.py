@@ -2,7 +2,7 @@ import wx
 
 class PlannerWxParameters():
     def __init__(self, algName, names, tags, types, labels, values, defaults, outtag):
-        self.all_types = ["choice", "text", "checkbox"]
+        self.all_types = ["choice", "text", "checkboxlist","checkbox"]
         for type in types:
             if not type in self.all_types:
                 raise RuntimeError("Error: undefined type.")
