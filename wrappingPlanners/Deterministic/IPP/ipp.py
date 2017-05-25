@@ -6,7 +6,7 @@
 
 
 
-import sys
+
 
 from sys import version_info
 if version_info >= (2, 6, 0):
@@ -89,14 +89,11 @@ except AttributeError:
         pass
     _newclass = 0
 
+
+
 def run(argc):
     return _ipp.run(argc)
 run = _ipp.run
-
-savedStdout = sys.stdout
-with open('output.txt', 'w+') as file:
-    sys.stdout = file
-    
 # This file is compatible with both classic and new-style classes.
 
 
