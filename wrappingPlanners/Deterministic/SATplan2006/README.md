@@ -1,3 +1,6 @@
+# 05.24 更新
+## satplan2006目前未找到可以解的问题和领域pddl，此外运行时可能有core dump错误(由运聪测试发现)
+
 # Usage for SATplan:  
 ```python
 >>> import satplan  

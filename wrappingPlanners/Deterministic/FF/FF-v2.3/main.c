@@ -482,11 +482,11 @@ struct tms lstart, lend;
 
 int main( int argc, char * argv[] ) 
 {
-  return FF_2_3(argc, argv);
+  return run(argc, argv);
 }
 
 
-int FF_2_3( int argc, char *argv[] )
+int run( int argc, char *argv[] )
 
 {
 
@@ -511,11 +511,13 @@ int FF_2_3( int argc, char *argv[] )
    */
   if ( argc == 1 || ( argc == 2 && *++argv[0] == '?' ) ) {
     ff_usage();
-    exit( 1 );
+    //print "Bad parameters";
+    return 1;
   }
   if ( !process_command_line( argc, argv ) ) {
     ff_usage();
-    exit( 1 );
+    //print "Bad parameters";
+    return 1;
   }
 
 
@@ -528,7 +530,8 @@ int FF_2_3( int argc, char *argv[] )
        !gcmd_line.fct_file_name ) {
     fprintf(stdout, "\nff: two input files needed\n\n");
     ff_usage();      
-    exit( 1 );
+    //print "Bad parameters";
+    return 1;
   }
   /* add path info, complete file names will be stored in
    * ops_file and fct_file 

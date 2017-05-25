@@ -1,0 +1,1042 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-05-25 四 07:21 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PlanTool Documentation</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="king-kong" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">PlanTool Documentation</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgd66ee46">1. Introduction</a></li>
+<li><a href="#org36b5040">2. Installation</a></li>
+<li><a href="#orga9da518">3. Planners</a>
+<ul>
+<li><a href="#orgb09d88f">3.1. Deterministic</a>
+<ul>
+<li><a href="#org98ef92d">3.1.1. SGPlan</a></li>
+<li><a href="#orga116b01">3.1.2. SatPlan2006</a></li>
+<li><a href="#org61ff6c9">3.1.3. HSP</a></li>
+<li><a href="#orgad2c532">3.1.4. LAMA</a></li>
+<li><a href="#orged4a8c4">3.1.5. GP-CSP</a></li>
+<li><a href="#org4812c23">3.1.6. Graphplan</a></li>
+<li><a href="#org6519bb2">3.1.7. FF</a></li>
+<li><a href="#orga23827b">3.1.8. IPP</a></li>
+</ul>
+</li>
+<li><a href="#org9b63c37">3.2. Learning</a></li>
+<li><a href="#orgda9ba58">3.3. Uncertainty</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd66ee46" class="outline-2">
+<h2 id="orgd66ee46"><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Plantool wraps different planners into a python utility package. It aims to provide convenience for planning study and applications.
+</p>
+</div>
+</div>
+<div id="outline-container-org36b5040" class="outline-2">
+<h2 id="org36b5040"><span class="section-number-2">2</span> Installation</h2>
+</div>
+<div id="outline-container-orga9da518" class="outline-2">
+<h2 id="orga9da518"><span class="section-number-2">3</span> Planners</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-orgb09d88f" class="outline-3">
+<h3 id="orgb09d88f"><span class="section-number-3">3.1</span> Deterministic</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Deterministic planners
+</p>
+</div>
+<div id="outline-container-org98ef92d" class="outline-4">
+<h4 id="org98ef92d"><span class="section-number-4">3.1.1</span> SGPlan</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<ul class="org-ul">
+<li>Usage for SGPlan:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python">&gt;&gt;&gt; import sgplan
+&gt;&gt;&gt; argv = ['sgplan', '-o', 'domain.pddl', '-f', 'problem.pddl']
+&gt;&gt;&gt; sgplan.oldmain(argv)
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><p>
+Instructions about arguments:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">OPTIONS</th>
+<th scope="col" class="org-left">DESCRIPTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">-o &lt;str&gt;</td>
+<td class="org-left">operator file name</td>
+</tr>
+
+<tr>
+<td class="org-left">-f  &lt;str&gt;</td>
+<td class="org-left">fact file name</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orga116b01" class="outline-4">
+<h4 id="orga116b01"><span class="section-number-4">3.1.2</span> SatPlan2006</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<ul class="org-ul">
+<li><p>
+Usage for SATplan:  
+</p>
+<div class="org-src-container">
+<pre class="src src-python">&gt;&gt;&gt; import satplan  
+&gt;&gt;&gt; argv=['bb','-o','domain.pddl','-f','problem.pddl','-l','5','-G','0','-C','2']  
+&gt;&gt;&gt; satplan.run(argv)  
+</pre>
+</div></li>
+
+<li><p>
+Instructions about arguments:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">OPTIONS</th>
+<th scope="col" class="org-left">DESCRIPTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">-o &lt;str&gt;</td>
+<td class="org-left">operator file name</td>
+</tr>
+
+<tr>
+<td class="org-left">-f  &lt;str&gt;</td>
+<td class="org-left">fact file name</td>
+</tr>
+
+<tr>
+<td class="org-left">-p  &lt;str&gt;</td>
+<td class="org-left">path for operator and fact file</td>
+</tr>
+
+<tr>
+<td class="org-left">-l  &lt;num&gt;</td>
+<td class="org-left">goal layer for CNF</td>
+</tr>
+
+<tr>
+<td class="org-left">-G &lt;0 or 1&gt;</td>
+<td class="org-left">(0) create CNF output or (1) build final solution</td>
+</tr>
+
+<tr>
+<td class="org-left">-b  &lt;str&gt;</td>
+<td class="org-left">CNF output file name</td>
+</tr>
+
+<tr>
+<td class="org-left">-t &lt;0 or 1&gt;</td>
+<td class="org-left">(1) CNF output includes only unary/binary clauses - others ignored</td>
+</tr>
+
+<tr>
+<td class="org-left">-S  &lt;str&gt;</td>
+<td class="org-left">Input Solution File Name (only when -G 1 is used)</td>
+</tr>
+
+<tr>
+<td class="org-left">-F  &lt;str&gt;</td>
+<td class="org-left">Final Output Solution File Name (only when -G 1 is used)</td>
+</tr>
+
+<tr>
+<td class="org-left">-V  &lt;str&gt;</td>
+<td class="org-left">Variables File Name - list all variables (only when -G 1 is used)</td>
+</tr>
+
+<tr>
+<td class="org-left">-C</td>
+<td class="org-left">CNF formula output (preset: -1); at layer &lt;-l&gt;</td>
+</tr>
+
+<tr>
+<td class="org-left">-C 0</td>
+<td class="org-left">none</td>
+</tr>
+
+<tr>
+<td class="org-left">-C 1</td>
+<td class="org-left">action-based</td>
+</tr>
+
+<tr>
+<td class="org-left">-C 2</td>
+<td class="org-left">gp-style action-based</td>
+</tr>
+
+<tr>
+<td class="org-left">-C 3</td>
+<td class="org-left">gp-based</td>
+</tr>
+
+<tr>
+<td class="org-left">-C 4</td>
+<td class="org-left">thin gp-based</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org61ff6c9" class="outline-4">
+<h4 id="org61ff6c9"><span class="section-number-4">3.1.3</span> HSP</h4>
+<div class="outline-text-4" id="text-3-1-3">
+<ul class="org-ul">
+<li><p>
+Usage for HSP: 
+</p>
+<div class="org-src-container">
+<pre class="src src-python">&gt;&gt;&gt; import hsp
+&gt;&gt;&gt; argv = ['hsp', '-o', 'domain.pddl', '-f', 'problem.pddl']
+&gt;&gt;&gt; hsp.run(argv)
+</pre>
+</div></li>
+
+<li><p>
+Instructions about arguments:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">OPTIONS</th>
+<th scope="col" class="org-left">DESCRIPTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">-o  &lt;str&gt;</td>
+<td class="org-left">operator file name</td>
+</tr>
+
+<tr>
+<td class="org-left">-f  &lt;str&gt;</td>
+<td class="org-left">&lt;str&gt;    fact file name</td>
+</tr>
+
+<tr>
+<td class="org-left">-a  &lt;str&gt;</td>
+<td class="org-left">&lt;str&gt;    Algorithm, either 'bfs' or 'gbfs'.</td>
+</tr>
+
+<tr>
+<td class="org-left">-d  &lt;str&gt;</td>
+<td class="org-left">&lt;str&gt;    Search direction, either 'forward' or 'backward'.</td>
+</tr>
+
+<tr>
+<td class="org-left">-h  &lt;str&gt;</td>
+<td class="org-left">&lt;str&gt;    Heuristic function, one of 'h1plus', 'h1max', 'h2plus', 'h2max'.</td>
+</tr>
+
+<tr>
+<td class="org-left">-v  &lt;num&gt;</td>
+<td class="org-left">&lt;num&gt;    Verbose level &gt;= 0 (default is 1).</td>
+</tr>
+
+<tr>
+<td class="org-left">-w  &lt;float&gt;</td>
+<td class="org-left">&lt;float&gt;   Float to weight the heuristic component of the cost</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgad2c532" class="outline-4">
+<h4 id="orgad2c532"><span class="section-number-4">3.1.4</span> LAMA</h4>
+<div class="outline-text-4" id="text-3-1-4">
+<ul class="org-ul">
+<li>Usage for LAMA:</li>
+<li><p>
+First,run:
+</p>
+<div class="org-src-container">
+<pre class="src src-python">&gt;&gt;&gt; import translate
+&gt;&gt;&gt; argv = ['translate','domain.pddl','problem.pddl']
+&gt;&gt;&gt; translate.main(argv)
+</pre>
+</div>
+<ul class="org-ul">
+<li>translate
+The translator will will write its result to a file called
+"output.sas", which serves as an input to the next phase, knowledge
+compilation. The translator also writes a file called
+"test.groups", which is some sort of translation key (see
+"sas-format.txt" in the documentation directory mentioned above).
+This second file is not needed by the planner, but might help you
+understand what the translated task looks like. It also writes a
+file called "all.groups" which is needed by the landmark heuristic.</li>
+</ul></li>
+
+<li><p>
+Second, run:
+</p>
+<div class="org-src-container">
+<pre class="src src-python">&gt;&gt;&gt; import preprocess
+&gt;&gt;&gt; argv = ['preprocess','&lt; output.sas']
+&gt;&gt;&gt; preprocess.oldmain(argv)
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>preprocess
+This will run the knowledge compilation component, writing its
+output to the file aptly named "output".</li>
+</ul></li>
+
+<li><p>
+Finally, run:
+</p>
+<div class="org-src-container">
+<pre class="src src-python">&gt;&gt;&gt; import search
+&gt;&gt;&gt; argv = ['search','f','&lt; output']
+&gt;&gt;&gt; search.oldmain(argv)
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>search
+note 
+This runs the search component of the planner. On success, it will
+write a file called "sas<sub>plan</sub>" containing the plan.
+OPTIONS DESCRIPTIONS
+l:  Use the landmark heuristic.
+L:  Use preferred operators of the landmark heuristic.
+f:  Use the FF heuristic.
+F:  Use helpful actions ("preferred operators" of the FF
+heuristic).</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orged4a8c4" class="outline-4">
+<h4 id="orged4a8c4"><span class="section-number-4">3.1.5</span> GP-CSP</h4>
+<div class="outline-text-4" id="text-3-1-5">
+<ul class="org-ul">
+<li><p>
+Usage for GP-CSP
+</p>
+<div class="org-src-container">
+<pre class="src src-python">&gt;&gt;&gt; import gpcsp
+&gt;&gt;&gt; argv = ['gpcsp', '-o', 'domain.pddl', '-f', 'problem.pddl']
+&gt;&gt;&gt; gpcsp.run(argv)
+</pre>
+</div></li>
+
+<li><p>
+Instructions about arguments:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">OPTIONS</td>
+<td class="org-left">DESCRIPTIONS</td>
+</tr>
+
+<tr>
+<td class="org-left">-h</td>
+<td class="org-left">for this list</td>
+</tr>
+
+<tr>
+<td class="org-left">-o &lt;op file&gt;</td>
+<td class="org-left">to specify operator file</td>
+</tr>
+
+<tr>
+<td class="org-left">-f &lt;fact file&gt;</td>
+<td class="org-left">to specify fact file</td>
+</tr>
+
+<tr>
+<td class="org-left">-t &lt;integer&gt;</td>
+<td class="org-left">to specify a fixed number of time steps</td>
+</tr>
+
+<tr>
+<td class="org-left">-i &lt;info level&gt;</td>
+<td class="org-left">to specify info level 1 or 2 (default is 0)</td>
+</tr>
+
+<tr>
+<td class="org-left">-O &lt;option list&gt;</td>
+<td class="org-left">to specify options you want</td>
+</tr>
+
+<tr>
+<td class="org-left">-M &lt;integer&gt;</td>
+<td class="org-left">to specify alternative max nodes in a time step (default is 256)</td>
+</tr>
+
+<tr>
+<td class="org-left">-d</td>
+<td class="org-left">give default values to everything not specified</td>
+</tr>
+
+<tr>
+<td class="org-left">-csp</td>
+<td class="org-left">to run the CSP solver</td>
+</tr>
+
+<tr>
+<td class="org-left">-nopddl</td>
+<td class="org-left">to take graphplan type problem description</td>
+</tr>
+
+<tr>
+<td class="org-left">-ns &lt;integer&gt;</td>
+<td class="org-left">to specify the maximum size of nogoods to learn</td>
+</tr>
+
+<tr>
+<td class="org-left">-nr &lt;integer&gt;</td>
+<td class="org-left">to specify the relevance-k value</td>
+</tr>
+
+<tr>
+<td class="org-left">-cutoff &lt;long&gt;</td>
+<td class="org-left">to specify the cutoff limit for CSP solver</td>
+</tr>
+
+<tr>
+<td class="org-left">-ldc</td>
+<td class="org-left">to specify the use <b>ldc</b> var-order when solving the CSP</td>
+</tr>
+
+<tr>
+<td class="org-left">-dlc</td>
+<td class="org-left">to specify the use of <b>dlc</b> var-order when solving the CSP</td>
+</tr>
+
+<tr>
+<td class="org-left">-switch</td>
+<td class="org-left">switch to the other var-order when over the cutoff-limit</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>EXAMPLES</li>
+</ul>
+<p>
+Example1: gpcsp -o -nopddl fixit<sub>ops</sub> -f fixit<sub>facts1</sub> -O IL -d
+Run original graphplan with original input format (not pddl).
+Example2: gpcsp -csp -ldc -cutoff 50000 -o a<sub>ops.pddl</sub> -f a<sub>facts.pddl</sub>
+Run GP-CSP with <b>ldc</b> variable ordering with cutoff-limit of 50000.
+Example3: gpcsp -csp -ns 100 -nr 5 -o fixit<sub>ops.pddl</sub> -f fixit<sub>ops.pddl</sub>
+Run GP-CSP with default variable ordering (dcl), with the maximum
+nogood size of 100, and will prune all irrelevant nogoods of size&gt;5.
+Example4: gpcsp -csp -switch -cutoff 10000 -o &#x2026;&#x2026;
+Run GP-CSP with the cutoff-limit of 10000. Then switch from default
+var-ordering to ldc var-ordering.
+Example5: gpcsp -csp -ldc -cutoff 100 -switch -o &#x2026;.
+Similar to Example4, but switch from <b>ldc</b> var-ordering to default
+var-ordering
+</p></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org4812c23" class="outline-4">
+<h4 id="org4812c23"><span class="section-number-4">3.1.6</span> Graphplan</h4>
+<div class="outline-text-4" id="text-3-1-6">
+<ul class="org-ul">
+<li><p>
+Usage of Graphplan
+</p>
+<div class="org-src-container">
+<pre class="src src-python">&gt;&gt;&gt; import graphplan
+&gt;&gt;&gt; argv = ['graphplan', '-o', 'domain.pddl', '-f', 'problem.pddl']
+&gt;&gt;&gt; graphplan.run(argv)
+</pre>
+</div></li>
+
+<li><p>
+Instructions about arguments:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">OPTIONS</th>
+<th scope="col" class="org-left">DESCRIPTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">-h</td>
+<td class="org-left">for this list</td>
+</tr>
+
+<tr>
+<td class="org-left">-o &lt;op file&gt;</td>
+<td class="org-left">to specify operator file</td>
+</tr>
+
+<tr>
+<td class="org-left">-f &lt;fact file&gt;</td>
+<td class="org-left">to specify fact file</td>
+</tr>
+
+<tr>
+<td class="org-left">-t &lt;integer&gt;</td>
+<td class="org-left">to specify a fixed number of time steps</td>
+</tr>
+
+<tr>
+<td class="org-left">-i &lt;info level&gt;</td>
+<td class="org-left">to specify info level 1 or 2 (default is 0)</td>
+</tr>
+
+<tr>
+<td class="org-left">-O &lt;option list&gt;</td>
+<td class="org-left">to specify options you want</td>
+</tr>
+
+<tr>
+<td class="org-left">-M &lt;integer&gt;</td>
+<td class="org-left">to specify alternative max nodes in a time step (default is 256)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>-d</code></td>
+<td class="org-left">give default values to everything not specified</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>-r</code></td>
+<td class="org-left">redirect output to specified files</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+
+
+<p>
+<b>Note</b>: graphplan will prompt for '<b>-t</b>' and '<b>-O</b>' during execution
+</p>
+
+<ul class="org-ul">
+<li><p>
+Options on <b>'-O'</b>
+</p>
+
+<p>
+'I' means do a quick check to toss out irrelevant initial
+conditions.  See, for example, "rocket<sub>factsBIG</sub>"
+</p>
+
+<p>
+'L' is a speedup using the reasoning: if I have m goals with
+the property that I can create at most one of them in a
+given time step, then I won't be able to find a plan of
+fewer than m time-steps.  For instance, in a TSP problem
+if there are m places still to be visited, then it knows
+it will fail if the current time is &lt; m.
+NOTE: this option currently interferes with graphplan's
+completeness check.
+</p>
+
+<p>
+'S' is a speedup using the reasoning: if I have a set of goals
+at time t, and I've already failed on a SUBSET of these
+goals at time t, then we're going to fail.  Unfortunately,
+it seems computationally difficult to make this check, so
+really what Graphplan does with this option is check
+whether it has previously failed on some subset of size
+ONE SMALLER than the current set. 
+</p>
+
+<p>
+'E' turns off some of graphplan's smarts.
+</p></li>
+</ul>
+</div>
+
+<ol class="org-ol"><li><a id="org6e0184e"></a>Update <span class="timestamp-wrapper"><span class="timestamp">&lt;2017-05-24 三&gt;</span></span><br /><div class="outline-text-5" id="text-3-1-6-1">
+<ul class="org-ul">
+<li>Adding redirection of stdout to other files, the source would be '-r' flag, python would be '-out'</li>
+</ul>
+</div></li></ol>
+</div>
+
+
+<div id="outline-container-org6519bb2" class="outline-4">
+<h4 id="org6519bb2"><span class="section-number-4">3.1.7</span> FF</h4>
+<div class="outline-text-4" id="text-3-1-7">
+<p>
+run() is the function which wrapped the main() function of Metric<sub>FF</sub>
+</p>
+</div>
+<ol class="org-ol"><li><a id="orgb0430c5"></a>Metric-FF<br /><div class="outline-text-5" id="text-3-1-7-1">
+<ul class="org-ul">
+<li><p>
+Usage of Metric<sub>FF</sub>(shell):
+</p>
+
+<p>
+A example here:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">./Metric_FF -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+</pre>
+</div></li>
+
+<li><p>
+Usage of Metric<sub>FF.run</sub>()  -&#x2014;&gt;wrapped func
+</p>
+
+<p>
+A example here:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">&gt;&gt;&gt;import Metric_FF
+&gt;&gt;&gt;argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+&gt;&gt;&gt;Metric_FF.run(argv)
+</pre>
+</div></li>
+</ul>
+</div></li>
+
+<li><a id="org143dc93"></a>Seq<sub>Sat</sub><sub>FF</sub><br /><div class="outline-text-5" id="text-3-1-7-2">
+<ul class="org-ul">
+<li><p>
+Usage of Seq<sub>Sat</sub><sub>FF</sub>(shell):
+</p>
+
+<p>
+A example here:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">./Seq_Sat_FF -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'       
+</pre>
+</div></li>
+
+<li>Usage of Seq<sub>Sat</sub><sub>FF.run</sub>()  -&#x2014;&gt;wrapped func</li>
+</ul>
+
+<p>
+A example here:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">&gt;&gt;&gt;import Seq_Sat_FF
+&gt;&gt;&gt;argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+&gt;&gt;&gt;Seq_Sat_FF.run(argv)
+</pre>
+</div>
+</div></li>
+
+<li><a id="orgb507f33"></a>FF<sub>X</sub><br /><div class="outline-text-5" id="text-3-1-7-3">
+<ul class="org-ul">
+<li>Usage of Seq<sub>Sat</sub><sub>FF</sub>(shell):</li>
+</ul>
+
+<p>
+A example here:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">./Seq_Sat_FF -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Usage of Seq<sub>Sat</sub><sub>FF.run</sub>()  -&#x2014;&gt;wrapped func</li>
+</ul>
+
+<p>
+A example here:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">&gt;&gt;&gt;import Seq_Sat_FF
+&gt;&gt;&gt;argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.paddle']
+&gt;&gt;&gt;Seq_Sat_FF.run(argv)
+</pre>
+</div>
+</div></li>
+
+<li><a id="org9249589"></a>Cont<sub>FF</sub><br /><div class="outline-text-5" id="text-3-1-7-4">
+<ul class="org-ul">
+<li>Usage of Cont<sub>FF</sub>(shell):</li>
+</ul>
+
+<p>
+A example here:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">./Cont_FF -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'     
+</pre>
+</div>
+
+
+<ul class="org-ul">
+<li>Usage of Cont<sub>FF.run</sub>()  -&#x2014;&gt;wrapped func</li>
+</ul>
+
+<p>
+A example here:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">&gt;&gt;&gt;import Cont_FF
+&gt;&gt;&gt;argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+&gt;&gt;&gt;Cont_FF.run(argv)
+</pre>
+</div>
+</div></li>
+
+<li><a id="org2720492"></a>FF-v2.3<br /><div class="outline-text-5" id="text-3-1-7-5">
+<ul class="org-ul">
+<li>Usage of FF<sub>2</sub><sub>3</sub>(shell):</li>
+</ul>
+
+<p>
+A example here:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">./FF_2_3 -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'     
+</pre>
+</div>
+
+
+<ul class="org-ul">
+<li>Usage of FF<sub>2</sub><sub>3.run</sub>()</li>
+</ul>
+
+<p>
+A example here:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">&gt;&gt;&gt;import FF_2_3
+&gt;&gt;&gt;argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+&gt;&gt;&gt;FF_2_3.run(argv)
+</pre>
+</div>
+</div></li></ol>
+</div>
+
+
+
+
+<div id="outline-container-orga23827b" class="outline-4">
+<h4 id="orga23827b"><span class="section-number-4">3.1.8</span> IPP</h4>
+</div>
+</div>
+
+<div id="outline-container-org9b63c37" class="outline-3">
+<h3 id="org9b63c37"><span class="section-number-3">3.2</span> Learning</h3>
+</div>
+<div id="outline-container-orgda9ba58" class="outline-3">
+<h3 id="orgda9ba58"><span class="section-number-3">3.3</span> Uncertainty</h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: king-kong</p>
+<p class="date">Created: 2017-05-25 四 07:21</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -22,6 +22,4 @@
 (effects
  (on wheel2 the-hub) (in wheel1 boot) (inflated wheel2) (in wrench boot) 
  (in jack boot) (in pump boot) (tight nuts the-hub)  
- (closed boot))
-
-
+(closed boot))

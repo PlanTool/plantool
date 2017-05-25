@@ -1,0 +1,61 @@
+* Introduction
+  The functions usable wrapped from main are tested and documented
+* run
+  The main function with name changed
+** do_error
+   Since the original do_error used exit(1), which is unacceptable for python calling. So I modify it to return to the main function, and add
+   #+BEGIN_SRC c
+   return 1;
+   #+END_SRC
+   Just after returning from do_error
+* Documentation          
+
+    - Usage of Graphplan
+      #+BEGIN_SRC python
+      >>> import graphplan
+      >>> argv = ['graphplan', '-o', 'domain.pddl', '-f', 'problem.pddl']
+      >>> graphplan.run(argv)
+      #+END_SRC
+ 
+    - Instructions about arguments:
+
+      | OPTIONS          | DESCRIPTIONS                                                     |
+      |------------------+------------------------------------------------------------------|
+      | -h               | for this list                                                    |
+      | -o <op file>     | to specify operator file                                         |
+      | -f <fact file>   | to specify fact file                                             |
+      | -t <integer>     | to specify a fixed number of time steps                          |
+      | -i <info level>  | to specify info level 1 or 2 (default is 0)                      |
+      | -O <option list> | to specify options you want                                      |
+      | -M <integer>     | to specify alternative max nodes in a time step (default is 256) |
+      | ~-d~             | give default values to everything not specified                  |
+      | ~-r~             | redirect output to specified files                               |
+      *Note*: graphplan will prompt for '*-t*' and '*-O*' during execution
+    
+      - Options on *'-O'*
+        
+        'I' means do a quick check to toss out irrelevant initial
+	      conditions.  See, for example, "rocket_factsBIG"
+
+  	    'L' is a speedup using the reasoning: if I have m goals with
+  	    the property that I can create at most one of them in a
+  	    given time step, then I won't be able to find a plan of
+  	    fewer than m time-steps.  For instance, in a TSP problem
+  	    if there are m places still to be visited, then it knows
+  	    it will fail if the current time is < m.
+  	    NOTE: this option currently interferes with graphplan's
+  	    completeness check.
+
+	      'S' is a speedup using the reasoning: if I have a set of goals
+  	    at time t, and I've already failed on a SUBSET of these
+  	    goals at time t, then we're going to fail.  Unfortunately,
+  	    it seems computationally difficult to make this check, so
+  	    really what Graphplan does with this option is check
+  	    whether it has previously failed on some subset of size
+  	    ONE SMALLER than the current set. 
+
+        'E' turns off some of graphplan's smarts.
+
+**** Update <2017-05-24 Wed>
+     - Adding redirection of stdout to other files, the source would be '-r' flag, python would be '-out'
+     

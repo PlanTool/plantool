@@ -463,7 +463,7 @@ struct tms lstart, lend;
 
 
 
-int FF_X( int argc, char *argv[] )
+int run( int argc, char *argv[] )
 
 {
 
@@ -691,7 +691,7 @@ int main( int argc, char *argv[] )
 
 {
 
-  return FF_X(argc,argv);
+  return run(argc,argv);
 
 }
 

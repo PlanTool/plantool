@@ -1,0 +1,3 @@
+#! /bin/bash
+./ffha -i 1 -C -o $1 -f $2
+mv $2.solution $3

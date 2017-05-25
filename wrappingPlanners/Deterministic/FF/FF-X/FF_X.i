@@ -9,4 +9,4 @@
 
 %apply (int ARGC, char **ARGV) { (int argc, char *argv[]) }
 
-int FF_X( int argc, char *argv[] ); // The function we want to wrap
+int run( int argc, char *argv[] ); // The function we want to wrap

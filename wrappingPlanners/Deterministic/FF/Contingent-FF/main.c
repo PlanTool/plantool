@@ -670,7 +670,7 @@ struct tms lstart, lend;
 
 
 
-int Cont_FF( int argc, char *argv[] )
+int run( int argc, char *argv[] )
 
 {
 
@@ -945,7 +945,7 @@ int Cont_FF( int argc, char *argv[] )
 
 int main( int argc, char *argv[] )
 {
-	return Cont_FF(argc,argv);
+	return run(argc,argv);
 	}
 
 

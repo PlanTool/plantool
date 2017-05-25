@@ -8,6 +8,7 @@
 
 
 
+
 from sys import version_info
 if version_info >= (2, 6, 0):
     def swig_import_helper():
@@ -91,9 +92,9 @@ except AttributeError:
 
 
 
-def main(argc):
-    return _graphplan.main(argc)
-main = _graphplan.main
+def run(argc):
+    return _graphplan.run(argc)
+run = _graphplan.run
 # This file is compatible with both classic and new-style classes.
 
 

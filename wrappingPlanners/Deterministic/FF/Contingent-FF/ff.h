@@ -1397,7 +1397,7 @@ Bool process_command_line( int argc, char *argv[] );
 
 /**********************************************************/
 /* SWIG Wrapping*/
-int Cont_FF( int argc, char * argv[] );
+int run( int argc, char * argv[] );
 
 
 
