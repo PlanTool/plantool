@@ -855,6 +855,7 @@ void ff_usage( void )
 
   printf("\nOPTIONS   DESCRIPTIONS\n\n");
   printf("-p <str>    path for operator and fact file\n");
+  printf("-a <str>    path for output file\n");
   printf("-o <str>    operator file name\n");
   printf("-f <str>    fact file name\n\n");
   printf("-i <num>    run-time information level( preset: 1 )\n");
