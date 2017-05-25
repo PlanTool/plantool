@@ -26,18 +26,22 @@ run() is the function which wrapped the main() function of ff-v2.3
 1.
 Usage of FF_2_3(shell):
 
-A example here:
+An example here:
 
-./FF_2_3 -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+./FF_2_3 -p './' -a 'output.txt' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+
+Then, go to the current directory, find "output.txt",it contains the output of FF_2_3.
 
 2.
 Usage of FF_2_3.run()
 
-A example here:
+An example here:
 
 
 >>import FF_2_3
 
->>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+>>argv = ['./','-a','output.txt','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
 
 >>FF_2_3.run(argv)
+
+Then, go to the current directory, find "output.txt",it contains the output of FF_2_3.

@@ -26,8 +26,10 @@ Usage of FF_X(shell):
 
 A example here:
 
-./FF_X -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+./FF_X -p './' -a 'output.txt' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
 
+
+Then, go to the current directory, find "output.txt",it contains the output of FF_X.
 2.
 Usage of FF_X.run()  ---->wrapped func
 
@@ -36,8 +38,9 @@ A example here:
 
 >>import FF_X
 
->>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+>>argv = ['./','-a','output.txt','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
 
 >>FF_X.run(argv)
 
+Then, go to the current directory, find "output.txt",it contains the output of FF_X.
 
