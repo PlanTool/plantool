@@ -1,3 +1,154 @@
+open
+close
+fetch
+put-away
+loosen
+tighten
+jack-up
+jack-down
+undo
+do-up
+remove-wheel
+put-on-wheel
+inflate
+cuss
+facts loaded.
+turning off completeness check.
+beginning pre-preprocessing...
+time 1
+time 2
+time 3
+time 4
+found 27 possibly useful facts.
+...done pre-preprocessing.
+time: 1, 13 facts and 1 exclusive pairs.
+time: 2, 17 facts and 9 exclusive pairs.
+time: 3, 20 facts and 13 exclusive pairs.
+time: 4, 20 facts and 10 exclusive pairs.
+time: 5, 22 facts and 24 exclusive pairs.
+time: 6, 25 facts and 38 exclusive pairs.
+time: 7, 27 facts and 41 exclusive pairs.
+time: 8, 27 facts and 30 exclusive pairs.
+time: 9, 27 facts and 28 exclusive pairs.
+time: 10, 27 facts and 28 exclusive pairs.
+time: 11, 27 facts and 28 exclusive pairs.
+time: 12, 27 facts and 28 exclusive pairs.
+time: 13, 27 facts and 28 exclusive pairs.
+time: 14, 27 facts and 28 exclusive pairs.
+time: 15, 27 facts and 28 exclusive pairs.
+time: 16, 27 facts and 28 exclusive pairs.
+time: 17, 27 facts and 28 exclusive pairs.
+time: 18, 27 facts and 28 exclusive pairs.
+time: 19, 27 facts and 28 exclusive pairs.
+time: 20, 27 facts and 28 exclusive pairs.
+time: 21, 27 facts and 28 exclusive pairs.
+time: 22, 27 facts and 28 exclusive pairs.
+time: 23, 27 facts and 28 exclusive pairs.
+time: 24, 27 facts and 28 exclusive pairs.
+time: 25, 27 facts and 28 exclusive pairs.
+time: 26, 27 facts and 28 exclusive pairs.
+time: 27, 27 facts and 28 exclusive pairs.
+time: 28, 27 facts and 28 exclusive pairs.
+time: 29, 27 facts and 28 exclusive pairs.
+time: 30, 27 facts and 28 exclusive pairs.
+time: 31, 27 facts and 28 exclusive pairs.
+time: 32, 27 facts and 28 exclusive pairs.
+time: 33, 27 facts and 28 exclusive pairs.
+time: 34, 27 facts and 28 exclusive pairs.
+time: 35, 27 facts and 28 exclusive pairs.
+time: 36, 27 facts and 28 exclusive pairs.
+time: 37, 27 facts and 28 exclusive pairs.
+time: 38, 27 facts and 28 exclusive pairs.
+time: 39, 27 facts and 28 exclusive pairs.
+time: 40, 27 facts and 28 exclusive pairs.
+time: 41, 27 facts and 28 exclusive pairs.
+time: 42, 27 facts and 28 exclusive pairs.
+time: 43, 27 facts and 28 exclusive pairs.
+time: 44, 27 facts and 28 exclusive pairs.
+time: 45, 27 facts and 28 exclusive pairs.
+time: 46, 27 facts and 28 exclusive pairs.
+time: 47, 27 facts and 28 exclusive pairs.
+time: 48, 27 facts and 28 exclusive pairs.
+time: 49, 27 facts and 28 exclusive pairs.
+time: 50, 27 facts and 28 exclusive pairs.
+time: 51, 27 facts and 28 exclusive pairs.
+time: 52, 27 facts and 28 exclusive pairs.
+time: 53, 27 facts and 28 exclusive pairs.
+time: 54, 27 facts and 28 exclusive pairs.
+time: 55, 27 facts and 28 exclusive pairs.
+time: 56, 27 facts and 28 exclusive pairs.
+time: 57, 27 facts and 28 exclusive pairs.
+time: 58, 27 facts and 28 exclusive pairs.
+time: 59, 27 facts and 28 exclusive pairs.
+time: 60, 27 facts and 28 exclusive pairs.
+time: 61, 27 facts and 28 exclusive pairs.
+time: 62, 27 facts and 28 exclusive pairs.
+time: 63, 27 facts and 28 exclusive pairs.
+time: 64, 27 facts and 28 exclusive pairs.
+time: 65, 27 facts and 28 exclusive pairs.
+time: 66, 27 facts and 28 exclusive pairs.
+time: 67, 27 facts and 28 exclusive pairs.
+time: 68, 27 facts and 28 exclusive pairs.
+time: 69, 27 facts and 28 exclusive pairs.
+time: 70, 27 facts and 28 exclusive pairs.
+time: 71, 27 facts and 28 exclusive pairs.
+time: 72, 27 facts and 28 exclusive pairs.
+time: 73, 27 facts and 28 exclusive pairs.
+time: 74, 27 facts and 28 exclusive pairs.
+time: 75, 27 facts and 28 exclusive pairs.
+time: 76, 27 facts and 28 exclusive pairs.
+time: 77, 27 facts and 28 exclusive pairs.
+time: 78, 27 facts and 28 exclusive pairs.
+time: 79, 27 facts and 28 exclusive pairs.
+time: 80, 27 facts and 28 exclusive pairs.
+time: 81, 27 facts and 28 exclusive pairs.
+time: 82, 27 facts and 28 exclusive pairs.
+time: 83, 27 facts and 28 exclusive pairs.
+time: 84, 27 facts and 28 exclusive pairs.
+time: 85, 27 facts and 28 exclusive pairs.
+time: 86, 27 facts and 28 exclusive pairs.
+time: 87, 27 facts and 28 exclusive pairs.
+time: 88, 27 facts and 28 exclusive pairs.
+time: 89, 27 facts and 28 exclusive pairs.
+time: 90, 27 facts and 28 exclusive pairs.
+time: 91, 27 facts and 28 exclusive pairs.
+time: 92, 27 facts and 28 exclusive pairs.
+time: 93, 27 facts and 28 exclusive pairs.
+time: 94, 27 facts and 28 exclusive pairs.
+time: 95, 27 facts and 28 exclusive pairs.
+time: 96, 27 facts and 28 exclusive pairs.
+time: 97, 27 facts and 28 exclusive pairs.
+time: 98, 27 facts and 28 exclusive pairs.
+time: 99, 27 facts and 28 exclusive pairs.
+time: 100, 27 facts and 28 exclusive pairs.
+7826 nodes created.
+goals at time 101:
+  on_wheel2_the-hub in_wheel1_boot inflated_wheel2 in_wrench_boot in_jack_boot in_pump_boot tight_nuts_the-hub closed_boot 
+
+1 open_boot
+2 fetch_jack_boot
+2 fetch_pump_boot
+2 fetch_wrench_boot
+2 fetch_wheel2_boot
+3 loosen_nuts_the-hub
+3 inflate_wheel2
+4 jack-up_the-hub
+4 put-away_pump_boot
+5 undo_nuts_the-hub
+6 remove-wheel_wheel1_the-hub
+7 put-on-wheel_wheel2_the-hub
+7 put-away_wheel1_boot
+8 do-up_nuts_the-hub
+9 jack-down_the-hub
+10 tighten_nuts_the-hub
+10 put-away_jack_boot
+11 put-away_wrench_boot
+12 close_boot
+75 entries in hash table, 149 hash hits, avg set size 8.
+323 total set-creation steps (entries + hits + plan length - 1).
+2 subset hits.
+353 actions tried
+  1495702967.56 secs
 !!
 open
 close
@@ -149,159 +300,7 @@ goals at time 101:
 323 total set-creation steps (entries + hits + plan length - 1).
 2 subset hits.
 353 actions tried
-  1495635187.45 secs
-!!
-open
-close
-fetch
-put-away
-loosen
-tighten
-jack-up
-jack-down
-undo
-do-up
-remove-wheel
-put-on-wheel
-inflate
-cuss
-facts loaded.
-turning off completeness check.
-beginning pre-preprocessing...
-time 1
-time 2
-time 3
-time 4
-found 27 possibly useful facts.
-...done pre-preprocessing.
-time: 1, 13 facts and 1 exclusive pairs.
-time: 2, 17 facts and 9 exclusive pairs.
-time: 3, 20 facts and 13 exclusive pairs.
-time: 4, 20 facts and 10 exclusive pairs.
-time: 5, 22 facts and 24 exclusive pairs.
-time: 6, 25 facts and 38 exclusive pairs.
-time: 7, 27 facts and 41 exclusive pairs.
-time: 8, 27 facts and 30 exclusive pairs.
-time: 9, 27 facts and 28 exclusive pairs.
-time: 10, 27 facts and 28 exclusive pairs.
-time: 11, 27 facts and 28 exclusive pairs.
-time: 12, 27 facts and 28 exclusive pairs.
-time: 13, 27 facts and 28 exclusive pairs.
-time: 14, 27 facts and 28 exclusive pairs.
-time: 15, 27 facts and 28 exclusive pairs.
-time: 16, 27 facts and 28 exclusive pairs.
-time: 17, 27 facts and 28 exclusive pairs.
-time: 18, 27 facts and 28 exclusive pairs.
-time: 19, 27 facts and 28 exclusive pairs.
-time: 20, 27 facts and 28 exclusive pairs.
-time: 21, 27 facts and 28 exclusive pairs.
-time: 22, 27 facts and 28 exclusive pairs.
-time: 23, 27 facts and 28 exclusive pairs.
-time: 24, 27 facts and 28 exclusive pairs.
-time: 25, 27 facts and 28 exclusive pairs.
-time: 26, 27 facts and 28 exclusive pairs.
-time: 27, 27 facts and 28 exclusive pairs.
-time: 28, 27 facts and 28 exclusive pairs.
-time: 29, 27 facts and 28 exclusive pairs.
-time: 30, 27 facts and 28 exclusive pairs.
-time: 31, 27 facts and 28 exclusive pairs.
-time: 32, 27 facts and 28 exclusive pairs.
-time: 33, 27 facts and 28 exclusive pairs.
-time: 34, 27 facts and 28 exclusive pairs.
-time: 35, 27 facts and 28 exclusive pairs.
-time: 36, 27 facts and 28 exclusive pairs.
-time: 37, 27 facts and 28 exclusive pairs.
-time: 38, 27 facts and 28 exclusive pairs.
-time: 39, 27 facts and 28 exclusive pairs.
-time: 40, 27 facts and 28 exclusive pairs.
-time: 41, 27 facts and 28 exclusive pairs.
-time: 42, 27 facts and 28 exclusive pairs.
-time: 43, 27 facts and 28 exclusive pairs.
-time: 44, 27 facts and 28 exclusive pairs.
-time: 45, 27 facts and 28 exclusive pairs.
-time: 46, 27 facts and 28 exclusive pairs.
-time: 47, 27 facts and 28 exclusive pairs.
-time: 48, 27 facts and 28 exclusive pairs.
-time: 49, 27 facts and 28 exclusive pairs.
-time: 50, 27 facts and 28 exclusive pairs.
-time: 51, 27 facts and 28 exclusive pairs.
-time: 52, 27 facts and 28 exclusive pairs.
-time: 53, 27 facts and 28 exclusive pairs.
-time: 54, 27 facts and 28 exclusive pairs.
-time: 55, 27 facts and 28 exclusive pairs.
-time: 56, 27 facts and 28 exclusive pairs.
-time: 57, 27 facts and 28 exclusive pairs.
-time: 58, 27 facts and 28 exclusive pairs.
-time: 59, 27 facts and 28 exclusive pairs.
-time: 60, 27 facts and 28 exclusive pairs.
-time: 61, 27 facts and 28 exclusive pairs.
-time: 62, 27 facts and 28 exclusive pairs.
-time: 63, 27 facts and 28 exclusive pairs.
-time: 64, 27 facts and 28 exclusive pairs.
-time: 65, 27 facts and 28 exclusive pairs.
-time: 66, 27 facts and 28 exclusive pairs.
-time: 67, 27 facts and 28 exclusive pairs.
-time: 68, 27 facts and 28 exclusive pairs.
-time: 69, 27 facts and 28 exclusive pairs.
-time: 70, 27 facts and 28 exclusive pairs.
-time: 71, 27 facts and 28 exclusive pairs.
-time: 72, 27 facts and 28 exclusive pairs.
-time: 73, 27 facts and 28 exclusive pairs.
-time: 74, 27 facts and 28 exclusive pairs.
-time: 75, 27 facts and 28 exclusive pairs.
-time: 76, 27 facts and 28 exclusive pairs.
-time: 77, 27 facts and 28 exclusive pairs.
-time: 78, 27 facts and 28 exclusive pairs.
-time: 79, 27 facts and 28 exclusive pairs.
-time: 80, 27 facts and 28 exclusive pairs.
-time: 81, 27 facts and 28 exclusive pairs.
-time: 82, 27 facts and 28 exclusive pairs.
-time: 83, 27 facts and 28 exclusive pairs.
-time: 84, 27 facts and 28 exclusive pairs.
-time: 85, 27 facts and 28 exclusive pairs.
-time: 86, 27 facts and 28 exclusive pairs.
-time: 87, 27 facts and 28 exclusive pairs.
-time: 88, 27 facts and 28 exclusive pairs.
-time: 89, 27 facts and 28 exclusive pairs.
-time: 90, 27 facts and 28 exclusive pairs.
-time: 91, 27 facts and 28 exclusive pairs.
-time: 92, 27 facts and 28 exclusive pairs.
-time: 93, 27 facts and 28 exclusive pairs.
-time: 94, 27 facts and 28 exclusive pairs.
-time: 95, 27 facts and 28 exclusive pairs.
-time: 96, 27 facts and 28 exclusive pairs.
-time: 97, 27 facts and 28 exclusive pairs.
-time: 98, 27 facts and 28 exclusive pairs.
-time: 99, 27 facts and 28 exclusive pairs.
-time: 100, 27 facts and 28 exclusive pairs.
-7826 nodes created.
-goals at time 101:
-  on_wheel2_the-hub in_wheel1_boot inflated_wheel2 in_wrench_boot in_jack_boot in_pump_boot tight_nuts_the-hub closed_boot 
-
-1 open_boot
-2 fetch_jack_boot
-2 fetch_pump_boot
-2 fetch_wrench_boot
-2 fetch_wheel2_boot
-3 loosen_nuts_the-hub
-3 inflate_wheel2
-4 jack-up_the-hub
-4 put-away_pump_boot
-5 undo_nuts_the-hub
-6 remove-wheel_wheel1_the-hub
-7 put-on-wheel_wheel2_the-hub
-7 put-away_wheel1_boot
-8 do-up_nuts_the-hub
-9 jack-down_the-hub
-10 tighten_nuts_the-hub
-10 put-away_jack_boot
-11 put-away_wrench_boot
-12 close_boot
-75 entries in hash table, 149 hash hits, avg set size 8.
-323 total set-creation steps (entries + hits + plan length - 1).
-2 subset hits.
-353 actions tried
-  1495635446.07 secs
+  1495704886.00 secs
 !!
 open
 close

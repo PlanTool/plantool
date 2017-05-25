@@ -18,6 +18,49 @@ Have fun,
 Joerg Hoffmann
 
 
+/**************************************************/
+usage of FF_2_3:
+
+OPTIONS   DESCRIPTIONS
+
+-p <str>    path for operator and fact file
+-a <str>    path for output file
+-o <str>    operator file name
+-f <str>    fact file name
+
+-i <num>    run-time information level( preset: 1 )
+      0     only times
+      1     problem name, planning process infos
+    101     parsed problem data
+    102     cleaned up ADL problem
+    103     collected string tables
+    104     encoded domain
+    105     predicates inertia info
+    106     splitted initial state
+    107     domain with Wff s normalized
+    108     domain with NOT conds translated
+    109     splitted domain
+    110     cleaned up easy domain
+    111     unaries encoded easy domain
+    112     effects multiplied easy domain
+    113     inertia removed easy domain
+    114     easy action templates
+    115     cleaned up hard domain representation
+    116     mixed hard domain representation
+    117     final hard domain representation
+    118     reachability analysis results
+    119     facts selected as relevant
+    120     final domain and problem representations
+    121     connectivity graph
+    122     fixpoint result on each evaluated state
+    123     1P extracted on each evaluated state
+    124     H set collected for each evaluated state
+    125     False sets of goals <GAM>
+    126     detected ordering constraints leq_h <GAM>
+    127     the Goal Agenda <GAM>
+
+-d <num>    switch on debugging
+
 //**************************************************//
 
 run() is the function which wrapped the main() function of ff-v2.3
