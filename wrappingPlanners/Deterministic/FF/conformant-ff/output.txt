@@ -1,0 +1,50 @@
+
+ff: parsing domain file
+domain 'BLOCKS' defined
+ ... done.
+ff: parsing problem file
+problem 'BLOCKS-4-0' defined
+ ... done.
+
+
+
+Cueing down from goal distance:    7 into depth [1]
+                                   6            [1][2]
+                                   5            [1]
+                                   4            [1][2][3][4]
+                                   3            [1]
+                                   2            [1]
+                                   0            
+
+ff: found legal plan as follows
+
+step    0: PICK-UP D
+        1: STACK D C
+        2: PICK-UP B
+        3: STACK B A
+        4: UNSTACK D C
+        5: PUT-DOWN D
+        6: PICK-UP C
+        7: STACK C B
+        8: PICK-UP D
+        9: STACK D C
+     
+
+statistics:    0.00 seconds instantiating 40 easy, 0 hard action templates
+               0.00 seconds reachability analysis, yielding 29 facts and 40 actions
+               0.00 seconds creating final representation with 29 relevant facts (0 max U, 0 CNF max U)
+               0.00 seconds building connectivity graph
+               0.00 seconds (   0.00 pure) evaluating 23 states, to a max depth of 4
+               0.00 seconds in DP for 0 RPG ini state implication checks
+               0.00 seconds in DP for 0 RPlan extract ini state implication checks (0 lits removed)
+               0.00 seconds generating,    0.00 seconds encoding 56 state transition base CNFs
+               0.00 seconds in DP solving 0 state transition CNFs
+               0.00 seconds checking for self-contradictions, including 0 DP calls
+               0.00 seconds checking for stagnating states (17 hits), including 0 DP calls
+               0.00 seconds altogether checking for dominated states making 0 comparisons (0 conformant, 0 hits),
+                    spending    0.00 seconds doing 0 DP calls
+                  0 total DP calls, 0 total UP calls,    0.00 sec membership
+               0.00 seconds for remaining searching duties
+               0.00 seconds total time (+    0.00 secs for CNF memory allocation)
+
+
