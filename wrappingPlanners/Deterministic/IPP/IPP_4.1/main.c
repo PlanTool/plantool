@@ -48,8 +48,7 @@
 #include "wave_front.h"
 
 #include "save_graph.h"
-
-
+#include "stdio.h"
 
 
 
@@ -463,9 +462,13 @@ void load_fct_file( char *filename );
 
 
 
-int oldmain( int argc, char *argv[] )
+int run( int argc, char *argv[] )
 
 {
+  FILE *stream;
+
+  stream = freopen("output.txt", "a+", stdout);
+
 
   /* resulting name for ops file
    */
@@ -735,8 +738,11 @@ int oldmain( int argc, char *argv[] )
 			     gexcl_time, search_time, min_time );
       }
     }
+    /*
     exit( 0 );
-  }
+    */
+    return 1;
+}
 
   if ( gsame_as_prev_flag ) {/* we're in the fixpoint already */
     if ( gcmd_line.display_info ) {
@@ -798,14 +804,17 @@ int oldmain( int argc, char *argv[] )
     fprintf( OUT, "\n" );
     output_planner_info( inst_time, build_time - gexcl_time,
 			 gexcl_time, search_time, min_time );
+    freopen("data.out","w",stdout); 
   }
 
+  freopen("/data.out","w",stdout); 
   exit( 0 );
 
 }
 
 int main( int argc, char * argv[]) {
-  return oldmain(argc, argv);
+
+  return run(argc, argv);
 }
 
 
@@ -871,6 +880,7 @@ void output_planner_info( float inst_time, float build_time,
     SaveGraph( gcmd_line.save_name, min_time );
   }
 
+  freopen("data.out","w",stdout); 
 }
 
 

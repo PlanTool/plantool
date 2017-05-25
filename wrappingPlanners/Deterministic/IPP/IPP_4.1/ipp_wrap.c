@@ -3197,7 +3197,7 @@ SWIGINTERNINLINE PyObject*
 #ifdef __cplusplus
 extern "C" {
 #endif
-SWIGINTERN PyObject *_wrap_oldmain(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_run(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
   char **arg2 ;
@@ -3208,16 +3208,16 @@ SWIGINTERN PyObject *_wrap_oldmain(PyObject *SWIGUNUSEDPARM(self), PyObject *arg
   PyObject * obj0 = 0 ;
   int result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:oldmain",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:run",&obj0)) SWIG_fail;
   res1 = SWIG_AsArgcArgv(obj0, SWIGTYPE_p_p_char, &argc1, &argv1, &owner1);
   if (!SWIG_IsOK(res1)) {
     arg1 = 0; arg2 = 0;
-    SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "oldmain" "', argument " "1"" of type '" "int ARGC, char **ARGV""'");
+    SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "run" "', argument " "1"" of type '" "int ARGC, char **ARGV""'");
   } else {
     arg1 = (int)(argc1);
     arg2 = (char **)(argv1);
   }
-  result = (int)oldmain(arg1,arg2);
+  result = (int)run(arg1,arg2);
   resultobj = SWIG_From_int((int)(result));
   if (owner1) {
     size_t i = argc1;
@@ -3241,7 +3241,7 @@ fail:
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { (char *)"oldmain", _wrap_oldmain, METH_VARARGS, NULL},
+	 { (char *)"run", _wrap_run, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
