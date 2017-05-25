@@ -6,7 +6,7 @@ make
 
 Which produces an executable named
 
-FF_X
+Conf_FF
 
 Usage should be self-explanatory. Running ff without any parameters
 prints out a brief help information about the parameters that are
