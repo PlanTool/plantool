@@ -59,7 +59,7 @@ _ipp.so: $(OBJECTS) $(PDDL_PARSER_OBJ) ipp_wrap.o
 	gcc -shared -o $@ $^
 
 ipp_wrap.o: ipp_wrap.c
-	$(CC) -c $(INC_PYTHON) $^
+	$(CC) -c $(INC_PYTHON) $(CFLAGS) $^
 
 ipp.py ipp_wrap.c: ipp.i
 	swig -python ipp.i

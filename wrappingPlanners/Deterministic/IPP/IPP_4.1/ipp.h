@@ -1315,7 +1315,7 @@ extern Candidate *gplan_start;
 
 /**********************************************************/
 /* SWIG Wrapping*/
-int oldmain( int argc, char * argv[] );
+int run( int argc, char * argv[] );
 
 
 

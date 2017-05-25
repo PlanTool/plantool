@@ -1,8 +1,8 @@
 
 import ipp
 
-problem = '/home/king-kong/my_github/plantool/GUI/pddl_files/ipp_problem.pddl'
+fact = 'prob01.pddl'
 
-fact = '/home/king-kong/my_github/plantool/GUI/pddl_files/ipp_domain.pddl'
+problem = 'domain01.pddl'
 
-ipp.oldmain(['ipp', '-o', problem, '-f', fact])
+ipp.run(['ipp', '-o', problem, '-f', fact])

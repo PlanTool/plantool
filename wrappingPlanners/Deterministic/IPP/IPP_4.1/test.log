@@ -1,2 +1,20 @@
-gcc -fPIC -c -O6 -Wall -ansi scan-fct_pddl.tab.c
-makefile:54: recipe for target 'scan-fct_pddl.tab.o' failed
+gcc -c -O6 -Wall -ansi -fPIC main.c
+gcc -c -O6 -Wall -ansi -fPIC output.c
+gcc -c -O6 -Wall -ansi -fPIC utilities.c
+gcc -c -O6 -Wall -ansi -fPIC memory.c
+gcc -c -O6 -Wall -ansi -fPIC pddl.c
+gcc -c -O6 -Wall -ansi -fPIC pddl-types.c
+gcc -c -O6 -Wall -ansi -fPIC instantiateI.c
+gcc -c -O6 -Wall -ansi -fPIC instantiateII.c
+gcc -c -O6 -Wall -ansi -fPIC instantiateIII.c
+gcc -c -O6 -Wall -ansi -fPIC instantiateIV.c
+gcc -c -O6 -Wall -ansi -fPIC build_graph.c
+gcc -c -O6 -Wall -ansi -fPIC exclusions.c
+gcc -c -O6 -Wall -ansi -fPIC search_plan.c
+gcc -c -O6 -Wall -ansi -fPIC memoize.c
+gcc -c -O6 -Wall -ansi -fPIC wave_front.c
+gcc -c -O6 -Wall -ansi -fPIC save_graph.c
+gcc -c -O6 -Wall -ansi -fPIC scan-fct_pddl.tab.c
+gcc -c -O6 -Wall -ansi -fPIC scan-ops_pddl.tab.c
+gcc -c -I/usr/include/python2.7 -O6 -Wall -ansi -fPIC ipp_wrap.c
+gcc -shared -o _ipp.so main.o output.o utilities.o memory.o pddl.o pddl-types.o instantiateI.o instantiateII.o instantiateIII.o instantiateIV.o build_graph.o exclusions.o search_plan.o memoize.o wave_front.o save_graph.o scan-fct_pddl.tab.o scan-ops_pddl.tab.o ipp_wrap.o
