@@ -1,0 +1,28 @@
+
+usage of contigent FF:
+
+OPTIONS DESCRIPTIONS
+Heuristic function: <num> (default:3)
+      0     implication graph for path to s plus RPG, incomplete check for leafs implication by I
+      1     implication graph for path to s plus RPG, complete check for leafs implication by I
+      2     implication graph for RPG, complete check for leafs implication by phi(s)
+      3     FF heuristic assuming that all unknowns are true
+Search algorithm: <num>    (default: 1)
+      0     AO* search
+      1     greedy AO* search
+Search mode <num> (default: 1)
+      0     observations added 
+      1     observations max'ed
+      2     average of observations 
+Giveup action : <0/1>
+  giveup action 
+Giveup action cost <num> (default: 100000)
+  giveup action cost
+Leaf cost weight: <num> (default: 1)
+  leaf cost weight in AO*.
+Helpful actions pruning: (0/1)
+  use helpful actions pruning
+Stagnating paths check level: (default: 2)
+      0     OFF
+      1     only against direct successor
+      2     against all ancestors

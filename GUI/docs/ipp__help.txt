@@ -1,0 +1,8 @@
+
+usage of IPP:
+
+OPTIONS DESCRIPTIONS
+Write Gragh: <0/1>
+  write complete graph to text files after planning
+Graph File: <str> (default: graph)
+  specify name for graph output files

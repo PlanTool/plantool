@@ -133,7 +133,7 @@ class PlannerGUI(wx.Frame):
                                                       [None,None],
                                                       [None,None],
                                                       [False,"graph"],
-                                                      '-out')
+                                                      '-r')
         self.planners["SatPlan2006"] = PlannerWxParameters("satplan2006",
                                                       ["Goal Layer","Options","CNF output",
                                                        "Only unary/binary clauses","Input Solution","Variables"],
@@ -1407,9 +1407,10 @@ class PlannerGUI(wx.Frame):
                 if self.currentPlanner.types[i] == "text":
                     text = self.controls[self.currentPlanner.names[i]].GetValue().encode('utf-8').strip()
                     if not text:
-                        self.OutputText.AppendText('\nError : Empty '+self.currentPlanner.names[i])
-                        return
-                    argv.extend([self.currentPlanner.tags[i],
+                        #self.OutputText.AppendText('\nError : Empty '+self.currentPlanner.names[i])
+                        pass
+                    else:
+                        argv.extend([self.currentPlanner.tags[i],
                             text])
                 elif self.currentPlanner.types[i] == "choice":
                     idx = self.controls[self.currentPlanner.names[i]].GetSelection()

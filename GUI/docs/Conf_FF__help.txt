@@ -1,0 +1,18 @@
+
+usage of Conformant FF:
+
+OPTIONS DESCRIPTIONS
+Heuristic function: <num> (default: 1)
+      0     implication graph for path to s plus RPG, incomplete check for leafs implication by I
+      1     implication graph for path to s plus RPG, complete check for leafs implication by I
+      2     implication graph for RPG, complete check for leafs implication by phi(s)
+EHC run:<0/1>
+  use EHC run
+Helpful actions:<0/1>
+  use helpful actions
+Stagnating paths check:<0/1>
+  use stagnating paths check
+Full repeated states check:<0/1>
+  use full repeated (dominated) states check 
+Breadth-first style: <0/1>
+  run Best-first search in breadth-first style
