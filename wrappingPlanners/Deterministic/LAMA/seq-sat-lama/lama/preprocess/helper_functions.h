@@ -34,7 +34,7 @@
 #include <iostream>
 
 using namespace std;
-int oldmain(int argc,  char **argv);
+int oldmain();
 class State;
 class Operator;
 class Axiom;

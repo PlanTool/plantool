@@ -1,4 +1,4 @@
-# Usage for SGPlan:
+# Usage for LAMA:
 ## First,run:
 ```python
    >>> import translate

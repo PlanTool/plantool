@@ -48,7 +48,7 @@ void print_heuristics_used(bool ff_heuristic, bool ff_preferred_operators,
 			   bool landmarks_heuristic, 
 			   bool landmarks_heuristic_preferred_operators);
 
-int replacemain(int argc,  char **argv){
+int oldmain(int argc,  char **argv){
 	struct tms start, search_start, search_end;
     struct tms landmarks_generation_start, landmarks_generation_end;
     times(&start);
@@ -62,10 +62,10 @@ int replacemain(int argc,  char **argv){
 
     enum {wa_star, bfs} search_type = bfs;
     if(argc < 2 || argc > 3) {
-	std::cout << "Usage: \"search options [outputfile]\"\n";
+	std::cout << "Usage: \"domain.pddl problem.pddl <args> output.file\"\n";
     }
     else {
-	for(const char *c = argv[1]; *c != 0; c++) {
+	for(const char *c = argv[0]; *c != 0; c++) {
 	    if(*c == 'f') {
 		ff_heuristic = true;
 	    } else if(*c == 'F') {
@@ -83,9 +83,13 @@ int replacemain(int argc,  char **argv){
 		return 1;
 	    }
 	}
-	if(argc == 3)
-	    plan_filename = argv[2];
+	if(argc == 2)
+	    plan_filename = argv[1];
     }
+     if(freopen("output", "r", stdin)==NULL)
+  	{
+    cout << "Error" << endl;
+  	}
     if(!ff_heuristic && !landmarks_heuristic) {
 	cerr << "Error: you must select at least one heuristic!" << endl
 	     << "If you are unsure, choose options \"fFlL\"." << endl;
@@ -214,7 +218,7 @@ int replacemain(int argc,  char **argv){
     return solution_found ? 0 : 1; 
 }
 int main(int argc,  char **argv) {
-    return replacemain(argc,argv);
+    return oldmain(argc,argv);
 }
 
 int save_plan(const vector<const Operator *> &plan, const string& filename, int iteration) {

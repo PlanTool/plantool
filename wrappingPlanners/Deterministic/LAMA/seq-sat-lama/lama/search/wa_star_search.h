@@ -25,7 +25,7 @@
 #include <vector>
 
 #include "best_first_search.h"
-int replacemain(int argc,  char **argv);
+int oldmain(int argc,  char **argv);
 
 class WAStarSearchEngine : public BestFirstSearchEngine {
 private:

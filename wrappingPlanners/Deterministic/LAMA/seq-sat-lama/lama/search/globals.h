@@ -29,7 +29,7 @@
 #include <string>
 #include <vector>
 using namespace std;
-int replacemain(int argc,  char **argv);
+int oldmain(int argc,  char **argv);
 
 class AxiomEvaluator;
 class Cache;

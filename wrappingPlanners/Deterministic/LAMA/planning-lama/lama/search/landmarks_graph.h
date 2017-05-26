@@ -33,7 +33,7 @@
 #include "operator.h"
 #include "landmarks_types.h"
 
-
+int oldmain(int argc,  char **argv);
 using namespace __gnu_cxx;
 int replacemain(int argc,  char **argv);
 enum edge_type {n = 4, gn = 3, r = 1, o_r = 0, ln = 2};

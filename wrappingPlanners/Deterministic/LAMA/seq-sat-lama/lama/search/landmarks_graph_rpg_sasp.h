@@ -26,7 +26,7 @@
 #include <ext/hash_set>
 #include "globals.h"
 #include "landmarks_graph.h"
-int replacemain(int argc,  char **argv);
+int oldmain(int argc,  char **argv);
 
 class LandmarksGraphNew : public LandmarksGraph {
 

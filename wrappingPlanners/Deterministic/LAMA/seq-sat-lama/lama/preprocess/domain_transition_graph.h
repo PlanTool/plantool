@@ -30,7 +30,7 @@ using namespace std;
 class Operator;
 class Axiom;
 class Variable;
-int oldmain(int argc,  char **argv);
+int oldmain();
 class DomainTransitionGraph {
 public:
   typedef vector<pair<const Variable *, int> > Condition;

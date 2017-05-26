@@ -38,8 +38,9 @@
 #include "axiom.h"
 #include "variable.h"
 #include <iostream>
+#include <string.h>
 using namespace std;
-int oldmain(int argc,char **argv){
+int oldmain(){
 	bool metric;
   vector<Variable *> variables;
   vector<Variable> internal_variables;
@@ -49,11 +50,18 @@ int oldmain(int argc,char **argv){
   vector<Axiom> axioms;
   vector<DomainTransitionGraph> transition_graphs;
 
-  if(argc != 1) {
+  /*if(argc != 1) {
       cout << "*** do not perform relevance analysis ***" << endl;
       g_do_not_prune_variables = true;
+  }*/
+  //char input_file[256];
+  //strncpy(input_file, argv[3], 256);
+  //cout<<input_file<<endl;
+  //cout<<"***********"<<endl;
+  if(freopen("output.sas", "r", stdin)==NULL)
+  {
+    cout << "Error" << endl;
   }
-
   read_preprocessed_problem_description
     (cin, metric, internal_variables, variables, initial_state, goals, operators, axioms);
   //dump_preprocessed_problem_description
@@ -87,5 +95,5 @@ int oldmain(int argc,char **argv){
   cout << "done" << endl << endl;
 }
 int main(int argc, char **argv) {
-   return oldmain(argc,argv);
+   return oldmain();
 }

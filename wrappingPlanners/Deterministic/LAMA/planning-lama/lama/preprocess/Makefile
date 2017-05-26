@@ -24,12 +24,12 @@ _preprocess.so:$(OBJECTS) preprocess_wrap.o
 	g++  -fPIC -shared -o $@ $^
 preprocess_wrap.o: preprocess_wrap.cxx
 	g++ -c -fPIC $(INC_PYTHON) $^
-preprocess.py preprocess_wrap.cxx: preprocess.i
+reprocess.py preprocess_wrap.cxx: preprocess.i
 	swig -c++ -python preprocess.i
 	
 
 $(TARGET): $(OBJECTS)
-	$(CC) $(LINK_OPTIONS) $(OBJECTS:%=obj/%) -o $(TARGET)
+	$(CC) $(LINK_OPTIONS) $(OBJECTS:%=obj/%) -g -o $(TARGET)
 
 $(PROFILE_TARGET): $(PROFILE_OBJECTS)
 	$(CC) $(LINK_OPTIONS) $(PROFILE_OPTIONS) $(PROFILE_OBJECTS:%=obj/%) \

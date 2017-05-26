@@ -27,7 +27,7 @@
 #include <map>
 #include <vector>
 using namespace std;
-int oldmain(int argc,char **argv);
+int oldmain();
 class Variable;
 
 class State {

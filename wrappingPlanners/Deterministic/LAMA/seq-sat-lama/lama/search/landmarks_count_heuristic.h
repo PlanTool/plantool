@@ -28,7 +28,7 @@
 #include "landmarks_graph.h"
 #include "best_first_search.h"
 #include "ff_heuristic.h"
-int replacemain(int argc,  char **argv);
+int oldmain(int argc,  char **argv);
 
 class LandmarksCountHeuristic : public Heuristic {
     friend class PartialBestFirstSearchEngine;

@@ -26,7 +26,7 @@
 #include <vector>
 #include <fstream>
 using namespace std;
-int oldmain(int argc,char **argv);
+int oldmain();
 class Operator;
 class Axiom;
 class Variable;

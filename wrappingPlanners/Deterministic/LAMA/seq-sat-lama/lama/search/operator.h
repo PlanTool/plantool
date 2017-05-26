@@ -31,8 +31,7 @@
 
 #include "globals.h"
 #include "state.h"
-int replacemain(int argc,  char **argv);
-
+int oldmain(int argc,  char **argv);
 class Variable;
 
 struct Prevail {

@@ -25,7 +25,7 @@
 
 #include <iostream>
 using namespace std;
-int oldmain(int argc,char **argv);
+int oldmain();
 class Variable {
   int range;
   string name;

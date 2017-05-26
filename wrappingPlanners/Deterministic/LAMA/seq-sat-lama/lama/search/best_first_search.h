@@ -28,7 +28,7 @@
 #include "open_list.h"
 #include "search_engine.h"
 #include "state.h"
-int replacemain(int argc,  char **argv);
+int oldmain(int argc,  char **argv);
 class Heuristic;
 class Operator;
 

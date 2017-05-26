@@ -33,7 +33,7 @@
 #include <vector>
 #include <iostream>
 
-int oldmain(int argc,char **argv);
+int oldmain();
 using namespace std;
 
 class State;

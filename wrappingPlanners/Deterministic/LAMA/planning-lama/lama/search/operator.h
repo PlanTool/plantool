@@ -31,7 +31,7 @@
 
 #include "globals.h"
 #include "state.h"
-
+int oldmain(int argc,  char **argv);
 
 class Variable;
 

@@ -24,7 +24,7 @@
 
 #ifndef GLOBALS_H
 #define GLOBALS_H
-int replacemain(int argc,  char **argv);
+int oldmain(int argc,  char **argv);
 #include <iostream>
 #include <string>
 #include <vector>

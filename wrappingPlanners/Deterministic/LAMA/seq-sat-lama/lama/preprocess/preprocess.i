@@ -15,4 +15,4 @@
 
 %apply (int ARGC, char **ARGV) { (int argc, char *argv[]) }
 
-int oldmain( int argc, char *argv[] ); // The function we want to wrap
+int oldmain(  ); // The function we want to wrap

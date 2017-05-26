@@ -33,7 +33,7 @@
 
 #include "operator.h"
 #include "landmarks_types.h"
-int replacemain(int argc,  char **argv);
+int oldmain(int argc,  char **argv);
 
 using namespace __gnu_cxx;
 

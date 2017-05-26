@@ -34,7 +34,7 @@
 #include <ext/hash_map>
 #include <cassert>
 
-int replacemain(int argc,  char **argv);
+int oldmain(int argc,  char **argv);
 class Operator;
 class State;
 

@@ -28,7 +28,7 @@
 #include <fstream>
 #include <map>
 using namespace std;
-int oldmain(int argc,char **argv);
+int oldmain();
 class GeneratorBase;
 class Operator;
 class Variable;
