@@ -15,25 +15,25 @@ var3 9 -1
 var7 9 -1
 end_variables
 begin_state
-4
+1
+3
 2
+1
+8
+0
 2
 5
-2
-4
-1
-1
 2
 end_state
 begin_goal
 8
-1 5
-2 4
-3 3
-4 0
+1 1
+2 1
+3 4
+4 2
 5 8
-6 0
-7 7
+6 4
+7 8
 8 2
 end_goal
 192
@@ -42,9 +42,9 @@ move-down t3 p1 p2 p1
 0
 2
 0
-0 4 5
+0 1 5
 0
-2 2 7
+2 2 5
 0
 end_operator
 begin_operator
@@ -52,9 +52,9 @@ move-right t1 p2 p1 p1
 0
 2
 0
-2 2 1
+2 2 8
 0
-5 4 3
+5 0 5
 0
 end_operator
 begin_operator
@@ -62,9 +62,9 @@ move-right t4 p2 p2 p1
 0
 2
 0
-0 5 7
+0 5 3
 0
-8 2 6
+8 2 8
 0
 end_operator
 begin_operator
@@ -72,9 +72,9 @@ move-left t3 p1 p1 p2
 0
 2
 0
-2 7 2
+2 5 2
 0
-5 3 0
+5 5 1
 0
 end_operator
 begin_operator
@@ -82,9 +82,9 @@ move-left t1 p1 p1 p2
 0
 2
 0
-2 1 2
+2 8 2
 0
-5 3 4
+5 5 0
 0
 end_operator
 begin_operator
@@ -92,9 +92,9 @@ move-right t2 p3 p1 p2
 0
 2
 0
-3 5 6
+3 1 8
 0
-5 3 5
+5 5 6
 0
 end_operator
 begin_operator
@@ -102,9 +102,9 @@ move-up t3 p1 p1 p2
 0
 2
 0
-0 5 4
+0 5 1
 0
-2 7 2
+2 5 2
 0
 end_operator
 begin_operator
@@ -112,9 +112,9 @@ move-up t1 p1 p1 p2
 0
 2
 0
-0 5 6
+0 5 8
 0
-2 1 2
+2 8 2
 0
 end_operator
 begin_operator
@@ -122,9 +122,9 @@ move-down t6 p1 p3 p2
 0
 2
 0
-1 2 4
+1 3 0
 0
-0 5 3
+0 5 6
 0
 end_operator
 begin_operator
@@ -132,9 +132,9 @@ move-down t4 p2 p2 p1
 0
 2
 0
-5 3 6
+5 5 4
 0
-8 2 6
+8 2 8
 0
 end_operator
 begin_operator
@@ -142,9 +142,9 @@ move-down t4 p1 p2 p1
 0
 2
 0
-0 7 5
+0 3 5
 0
-2 2 0
+2 2 4
 0
 end_operator
 begin_operator
@@ -152,9 +152,9 @@ move-right t3 p2 p1 p1
 0
 2
 0
-2 2 7
+2 2 5
 0
-5 0 3
+5 1 5
 0
 end_operator
 begin_operator
@@ -162,9 +162,9 @@ move-right t2 p2 p1 p1
 0
 2
 0
-2 2 3
+2 2 0
 0
-5 5 3
+5 6 5
 0
 end_operator
 begin_operator
@@ -172,9 +172,9 @@ move-down t1 p1 p2 p1
 0
 2
 0
-0 6 5
+0 8 5
 0
-2 2 1
+2 2 8
 0
 end_operator
 begin_operator
@@ -182,9 +182,9 @@ move-down t6 p1 p2 p1
 0
 2
 0
-0 3 5
+0 6 5
 0
-2 2 8
+2 2 7
 0
 end_operator
 begin_operator
@@ -192,9 +192,9 @@ move-left t3 p1 p2 p2
 0
 2
 0
-0 4 5
+0 1 5
 0
-8 6 0
+8 8 0
 0
 end_operator
 begin_operator
@@ -202,9 +202,9 @@ move-left t4 p1 p2 p2
 0
 2
 0
-0 7 5
+0 3 5
 0
-8 6 2
+8 8 2
 0
 end_operator
 begin_operator
@@ -212,9 +212,9 @@ move-left t1 p1 p2 p2
 0
 2
 0
-0 6 5
+0 8 5
 0
-8 6 3
+8 8 7
 0
 end_operator
 begin_operator
@@ -222,9 +222,9 @@ move-left t6 p1 p2 p2
 0
 2
 0
-0 3 5
+0 6 5
 0
-8 6 8
+8 8 6
 0
 end_operator
 begin_operator
@@ -232,9 +232,9 @@ move-right t5 p3 p2 p2
 0
 2
 0
-7 1 5
+7 5 4
 0
-8 6 7
+8 8 4
 0
 end_operator
 begin_operator
@@ -242,9 +242,9 @@ move-right t4 p2 p1 p1
 0
 2
 0
-2 2 0
+2 2 4
 0
-5 6 3
+5 4 5
 0
 end_operator
 begin_operator
@@ -252,9 +252,9 @@ move-left t1 p2 p1 p3
 0
 2
 0
-3 6 8
+3 8 2
 0
-5 4 3
+5 0 5
 0
 end_operator
 begin_operator
@@ -262,9 +262,9 @@ move-left t3 p2 p1 p3
 0
 2
 0
-3 6 0
+3 8 0
 0
-5 0 3
+5 1 5
 0
 end_operator
 begin_operator
@@ -272,9 +272,9 @@ move-left t2 p2 p1 p3
 0
 2
 0
-3 6 5
+3 8 1
 0
-5 5 3
+5 6 5
 0
 end_operator
 begin_operator
@@ -282,9 +282,9 @@ move-left t4 p2 p1 p3
 0
 2
 0
-3 6 2
+3 8 3
 0
-5 6 3
+5 4 5
 0
 end_operator
 begin_operator
@@ -292,9 +292,9 @@ move-right t7 p2 p3 p1
 0
 2
 0
-6 1 8
+6 2 1
 0
-1 4 6
+1 0 7
 0
 end_operator
 begin_operator
@@ -302,9 +302,9 @@ move-up t1 p2 p1 p2
 0
 2
 0
-5 4 3
+5 0 5
 0
-8 6 3
+8 8 7
 0
 end_operator
 begin_operator
@@ -312,9 +312,9 @@ move-up t3 p2 p1 p2
 0
 2
 0
-5 0 3
+5 1 5
 0
-8 6 0
+8 8 0
 0
 end_operator
 begin_operator
@@ -322,9 +322,9 @@ move-up t2 p2 p1 p2
 0
 2
 0
-5 5 3
+5 6 5
 0
-8 6 5
+8 8 1
 0
 end_operator
 begin_operator
@@ -332,9 +332,9 @@ move-up t4 p2 p1 p2
 0
 2
 0
-5 6 3
+5 4 5
 0
-8 6 2
+8 8 2
 0
 end_operator
 begin_operator
@@ -342,9 +342,9 @@ move-down t7 p2 p3 p2
 0
 2
 0
-6 1 8
+6 2 1
 0
-8 6 4
+8 8 5
 0
 end_operator
 begin_operator
@@ -352,9 +352,9 @@ move-down t5 p3 p2 p1
 0
 2
 0
-3 6 7
+3 8 5
 0
-7 1 5
+7 5 4
 0
 end_operator
 begin_operator
@@ -362,9 +362,9 @@ move-up t3 p1 p2 p3
 0
 2
 0
-1 4 7
+1 0 5
 0
-0 4 5
+0 1 5
 0
 end_operator
 begin_operator
@@ -372,9 +372,9 @@ move-up t4 p1 p2 p3
 0
 2
 0
-1 4 1
+1 0 2
 0
-0 7 5
+0 3 5
 0
 end_operator
 begin_operator
@@ -382,9 +382,9 @@ move-up t1 p1 p2 p3
 0
 2
 0
-1 4 3
+1 0 8
 0
-0 6 5
+0 8 5
 0
 end_operator
 begin_operator
@@ -392,9 +392,9 @@ move-up t6 p1 p2 p3
 0
 2
 0
-1 4 2
+1 0 3
 0
-0 3 5
+0 6 5
 0
 end_operator
 begin_operator
@@ -402,9 +402,9 @@ move-up t4 p1 p1 p2
 0
 2
 0
-0 5 7
+0 5 3
 0
-2 0 2
+2 4 2
 0
 end_operator
 begin_operator
@@ -412,9 +412,9 @@ move-left t4 p1 p1 p2
 0
 2
 0
-2 0 2
+2 4 2
 0
-5 3 6
+5 5 4
 0
 end_operator
 begin_operator
@@ -424,7 +424,7 @@ move-up t2 p1 p1 p2
 0
 0 5 0
 0
-2 3 2
+2 0 2
 0
 end_operator
 begin_operator
@@ -432,9 +432,9 @@ move-left t2 p1 p1 p2
 0
 2
 0
-2 3 2
+2 0 2
 0
-5 3 5
+5 5 6
 0
 end_operator
 begin_operator
@@ -442,9 +442,9 @@ move-up t6 p1 p1 p2
 0
 2
 0
-0 5 3
+0 5 6
 0
-2 8 2
+2 7 2
 0
 end_operator
 begin_operator
@@ -452,9 +452,9 @@ move-left t6 p1 p1 p2
 0
 2
 0
-2 8 2
+2 7 2
 0
-5 3 2
+5 5 7
 0
 end_operator
 begin_operator
@@ -462,9 +462,9 @@ move-down t3 p2 p2 p1
 0
 2
 0
-5 3 0
+5 5 1
 0
-8 0 6
+8 0 8
 0
 end_operator
 begin_operator
@@ -472,9 +472,9 @@ move-right t3 p2 p2 p1
 0
 2
 0
-0 5 4
+0 5 1
 0
-8 0 6
+8 0 8
 0
 end_operator
 begin_operator
@@ -482,9 +482,9 @@ move-down t1 p2 p2 p1
 0
 2
 0
-5 3 4
+5 5 0
 0
-8 3 6
+8 7 8
 0
 end_operator
 begin_operator
@@ -492,9 +492,9 @@ move-right t1 p2 p2 p1
 0
 2
 0
-0 5 6
+0 5 8
 0
-8 3 6
+8 7 8
 0
 end_operator
 begin_operator
@@ -502,9 +502,9 @@ move-down t6 p2 p2 p1
 0
 2
 0
-5 3 2
+5 5 7
 0
-8 8 6
+8 6 8
 0
 end_operator
 begin_operator
@@ -512,9 +512,9 @@ move-right t6 p2 p2 p1
 0
 2
 0
-0 5 3
+0 5 6
 0
-8 8 6
+8 6 8
 0
 end_operator
 begin_operator
@@ -522,9 +522,9 @@ move-down t5 p2 p2 p1
 0
 2
 0
-5 3 1
+5 5 2
 0
-8 7 6
+8 4 8
 0
 end_operator
 begin_operator
@@ -532,9 +532,9 @@ move-right t5 p2 p2 p1
 0
 2
 0
-0 5 1
+0 5 4
 0
-8 7 6
+8 4 8
 0
 end_operator
 begin_operator
@@ -542,9 +542,9 @@ move-right t1 p3 p1 p2
 0
 2
 0
-3 8 6
+3 2 8
 0
-5 3 4
+5 5 0
 0
 end_operator
 begin_operator
@@ -552,9 +552,9 @@ move-right t3 p3 p1 p2
 0
 2
 0
-3 0 6
+3 0 8
 0
-5 3 0
+5 5 1
 0
 end_operator
 begin_operator
@@ -562,9 +562,9 @@ move-right t4 p3 p1 p2
 0
 2
 0
-3 2 6
+3 3 8
 0
-5 3 6
+5 5 4
 0
 end_operator
 begin_operator
@@ -572,9 +572,9 @@ move-down t7 p1 p3 p2
 0
 2
 0
-1 6 4
+1 7 0
 0
-0 5 8
+0 5 7
 0
 end_operator
 begin_operator
@@ -582,9 +582,9 @@ move-down t2 p2 p2 p1
 0
 2
 0
-5 3 5
+5 5 6
 0
-8 5 6
+8 1 8
 0
 end_operator
 begin_operator
@@ -594,7 +594,7 @@ move-right t2 p2 p2 p1
 0
 0 5 0
 0
-8 5 6
+8 1 8
 0
 end_operator
 begin_operator
@@ -602,9 +602,9 @@ move-down t7 p2 p2 p1
 0
 2
 0
-5 3 8
+5 5 8
 0
-8 4 6
+8 5 8
 0
 end_operator
 begin_operator
@@ -612,9 +612,9 @@ move-right t7 p2 p2 p1
 0
 2
 0
-0 5 8
+0 5 7
 0
-8 4 6
+8 5 8
 0
 end_operator
 begin_operator
@@ -622,9 +622,9 @@ move-left t4 p2 p2 p3
 0
 2
 0
-7 5 6
+7 4 3
 0
-8 2 6
+8 2 8
 0
 end_operator
 begin_operator
@@ -632,9 +632,9 @@ move-left t3 p2 p2 p3
 0
 2
 0
-7 5 4
+7 4 1
 0
-8 0 6
+8 0 8
 0
 end_operator
 begin_operator
@@ -642,9 +642,9 @@ move-left t1 p2 p2 p3
 0
 2
 0
-7 5 7
+7 4 8
 0
-8 3 6
+8 7 8
 0
 end_operator
 begin_operator
@@ -652,9 +652,9 @@ move-left t6 p2 p2 p3
 0
 2
 0
-7 5 3
+7 4 7
 0
-8 8 6
+8 6 8
 0
 end_operator
 begin_operator
@@ -662,9 +662,9 @@ move-left t5 p2 p2 p3
 0
 2
 0
-7 5 1
+7 4 5
 0
-8 7 6
+8 4 8
 0
 end_operator
 begin_operator
@@ -672,9 +672,9 @@ move-left t2 p2 p2 p3
 0
 2
 0
-7 5 0
+7 4 2
 0
-8 5 6
+8 1 8
 0
 end_operator
 begin_operator
@@ -682,9 +682,9 @@ move-left t7 p2 p2 p3
 0
 2
 0
-7 5 8
+7 4 6
 0
-8 4 6
+8 5 8
 0
 end_operator
 begin_operator
@@ -692,9 +692,9 @@ move-right t5 p3 p1 p2
 0
 2
 0
-3 7 6
+3 5 8
 0
-5 3 1
+5 5 2
 0
 end_operator
 begin_operator
@@ -702,9 +702,9 @@ move-down t3 p1 p3 p2
 0
 2
 0
-1 7 4
+1 5 0
 0
-0 5 4
+0 5 1
 0
 end_operator
 begin_operator
@@ -712,9 +712,9 @@ move-down t4 p1 p3 p2
 0
 2
 0
-1 1 4
+1 2 0
 0
-0 5 7
+0 5 3
 0
 end_operator
 begin_operator
@@ -722,9 +722,9 @@ move-down t1 p1 p3 p2
 0
 2
 0
-1 3 4
+1 8 0
 0
-0 5 6
+0 5 8
 0
 end_operator
 begin_operator
@@ -732,9 +732,9 @@ move-left t6 p1 p3 p2
 0
 2
 0
-6 8 3
+6 1 7
 0
-1 2 4
+1 3 0
 0
 end_operator
 begin_operator
@@ -742,9 +742,9 @@ move-left t7 p1 p3 p2
 0
 2
 0
-6 8 1
+6 1 2
 0
-1 6 4
+1 7 0
 0
 end_operator
 begin_operator
@@ -752,9 +752,9 @@ move-left t3 p1 p3 p2
 0
 2
 0
-6 8 2
+6 1 0
 0
-1 7 4
+1 5 0
 0
 end_operator
 begin_operator
@@ -762,9 +762,9 @@ move-left t4 p1 p3 p2
 0
 2
 0
-6 8 7
+6 1 3
 0
-1 1 4
+1 2 0
 0
 end_operator
 begin_operator
@@ -772,9 +772,9 @@ move-left t1 p1 p3 p2
 0
 2
 0
-6 8 6
+6 1 8
 0
-1 3 4
+1 8 0
 0
 end_operator
 begin_operator
@@ -782,9 +782,9 @@ move-right t8 p3 p3 p2
 0
 2
 0
-6 8 5
+6 1 6
 0
-4 2 5
+4 8 1
 0
 end_operator
 begin_operator
@@ -792,9 +792,9 @@ move-up t2 p3 p1 p2
 0
 2
 0
-3 5 6
+3 1 8
 0
-7 5 0
+7 4 2
 0
 end_operator
 begin_operator
@@ -802,9 +802,9 @@ move-up t1 p3 p1 p2
 0
 2
 0
-3 8 6
+3 2 8
 0
-7 5 7
+7 4 8
 0
 end_operator
 begin_operator
@@ -812,9 +812,9 @@ move-up t3 p3 p1 p2
 0
 2
 0
-3 0 6
+3 0 8
 0
-7 5 4
+7 4 1
 0
 end_operator
 begin_operator
@@ -822,9 +822,9 @@ move-up t4 p3 p1 p2
 0
 2
 0
-3 2 6
+3 3 8
 0
-7 5 6
+7 4 3
 0
 end_operator
 begin_operator
@@ -832,9 +832,9 @@ move-up t5 p3 p1 p2
 0
 2
 0
-3 7 6
+3 5 8
 0
-7 5 1
+7 4 5
 0
 end_operator
 begin_operator
@@ -842,9 +842,9 @@ move-down t8 p3 p3 p2
 0
 2
 0
-7 5 2
+7 4 0
 0
-4 2 5
+4 8 1
 0
 end_operator
 begin_operator
@@ -852,7 +852,7 @@ move-up t2 p1 p2 p3
 0
 2
 0
-1 4 5
+1 0 1
 0
 0 0 5
 0
@@ -864,7 +864,7 @@ move-down t2 p1 p2 p1
 0
 0 0 5
 0
-2 2 3
+2 2 0
 0
 end_operator
 begin_operator
@@ -874,7 +874,7 @@ move-left t2 p1 p2 p2
 0
 0 0 5
 0
-8 6 5
+8 8 1
 0
 end_operator
 begin_operator
@@ -882,9 +882,9 @@ move-up t4 p2 p2 p3
 0
 2
 0
-6 8 7
+6 1 3
 0
-8 2 6
+8 2 8
 0
 end_operator
 begin_operator
@@ -892,9 +892,9 @@ move-up t3 p2 p2 p3
 0
 2
 0
-6 8 2
+6 1 0
 0
-8 0 6
+8 0 8
 0
 end_operator
 begin_operator
@@ -902,9 +902,9 @@ move-up t1 p2 p2 p3
 0
 2
 0
-6 8 6
+6 1 8
 0
-8 3 6
+8 7 8
 0
 end_operator
 begin_operator
@@ -912,9 +912,9 @@ move-up t6 p2 p2 p3
 0
 2
 0
-6 8 3
+6 1 7
 0
-8 8 6
+8 6 8
 0
 end_operator
 begin_operator
@@ -922,9 +922,9 @@ move-up t5 p2 p2 p3
 0
 2
 0
-6 8 0
+6 1 4
 0
-8 7 6
+8 4 8
 0
 end_operator
 begin_operator
@@ -932,9 +932,9 @@ move-up t2 p2 p2 p3
 0
 2
 0
-6 8 4
+6 1 5
 0
-8 5 6
+8 1 8
 0
 end_operator
 begin_operator
@@ -942,9 +942,9 @@ move-up t7 p2 p2 p3
 0
 2
 0
-6 8 1
+6 1 2
 0
-8 4 6
+8 5 8
 0
 end_operator
 begin_operator
@@ -952,9 +952,9 @@ move-up t6 p2 p1 p2
 0
 2
 0
-5 2 3
+5 7 5
 0
-8 6 8
+8 8 6
 0
 end_operator
 begin_operator
@@ -962,9 +962,9 @@ move-left t6 p2 p1 p3
 0
 2
 0
-3 6 3
+3 8 4
 0
-5 2 3
+5 7 5
 0
 end_operator
 begin_operator
@@ -972,9 +972,9 @@ move-right t6 p2 p1 p1
 0
 2
 0
-2 2 8
+2 2 7
 0
-5 2 3
+5 7 5
 0
 end_operator
 begin_operator
@@ -982,9 +982,9 @@ move-up t5 p2 p1 p2
 0
 2
 0
-5 1 3
+5 2 5
 0
-8 6 7
+8 8 4
 0
 end_operator
 begin_operator
@@ -992,9 +992,9 @@ move-left t5 p2 p1 p3
 0
 2
 0
-3 6 7
+3 8 5
 0
-5 1 3
+5 2 5
 0
 end_operator
 begin_operator
@@ -1002,9 +1002,9 @@ move-right t5 p2 p1 p1
 0
 2
 0
-2 2 6
+2 2 3
 0
-5 1 3
+5 2 5
 0
 end_operator
 begin_operator
@@ -1012,9 +1012,9 @@ move-up t5 p1 p2 p3
 0
 2
 0
-1 4 8
+1 0 6
 0
-0 1 5
+0 4 5
 0
 end_operator
 begin_operator
@@ -1022,9 +1022,9 @@ move-down t5 p1 p2 p1
 0
 2
 0
-0 1 5
+0 4 5
 0
-2 2 6
+2 2 3
 0
 end_operator
 begin_operator
@@ -1032,9 +1032,9 @@ move-left t5 p1 p2 p2
 0
 2
 0
-0 1 5
+0 4 5
 0
-8 6 7
+8 8 4
 0
 end_operator
 begin_operator
@@ -1042,9 +1042,9 @@ move-up t7 p1 p2 p3
 0
 2
 0
-1 4 6
+1 0 7
 0
-0 8 5
+0 7 5
 0
 end_operator
 begin_operator
@@ -1052,9 +1052,9 @@ move-down t7 p1 p2 p1
 0
 2
 0
-0 8 5
+0 7 5
 0
-2 2 5
+2 2 6
 0
 end_operator
 begin_operator
@@ -1062,9 +1062,9 @@ move-left t7 p1 p2 p2
 0
 2
 0
-0 8 5
+0 7 5
 0
-8 6 4
+8 8 5
 0
 end_operator
 begin_operator
@@ -1072,9 +1072,9 @@ move-up t7 p2 p1 p2
 0
 2
 0
-5 8 3
+5 8 5
 0
-8 6 4
+8 8 5
 0
 end_operator
 begin_operator
@@ -1082,9 +1082,9 @@ move-left t7 p2 p1 p3
 0
 2
 0
-3 6 4
+3 8 7
 0
-5 8 3
+5 8 5
 0
 end_operator
 begin_operator
@@ -1092,9 +1092,9 @@ move-right t7 p2 p1 p1
 0
 2
 0
-2 2 5
+2 2 6
 0
-5 8 3
+5 8 5
 0
 end_operator
 begin_operator
@@ -1102,9 +1102,9 @@ move-down t4 p3 p2 p1
 0
 2
 0
-3 6 2
+3 8 3
 0
-7 6 5
+7 3 4
 0
 end_operator
 begin_operator
@@ -1112,9 +1112,9 @@ move-right t4 p3 p2 p2
 0
 2
 0
-7 6 5
+7 3 4
 0
-8 6 2
+8 8 2
 0
 end_operator
 begin_operator
@@ -1122,9 +1122,9 @@ move-down t3 p3 p2 p1
 0
 2
 0
-3 6 0
+3 8 0
 0
-7 4 5
+7 1 4
 0
 end_operator
 begin_operator
@@ -1132,9 +1132,9 @@ move-right t3 p3 p2 p2
 0
 2
 0
-7 4 5
+7 1 4
 0
-8 6 0
+8 8 0
 0
 end_operator
 begin_operator
@@ -1142,9 +1142,9 @@ move-down t1 p3 p2 p1
 0
 2
 0
-3 6 8
+3 8 2
 0
-7 7 5
+7 8 4
 0
 end_operator
 begin_operator
@@ -1152,9 +1152,9 @@ move-right t1 p3 p2 p2
 0
 2
 0
-7 7 5
+7 8 4
 0
-8 6 3
+8 8 7
 0
 end_operator
 begin_operator
@@ -1162,9 +1162,9 @@ move-down t6 p3 p2 p1
 0
 2
 0
-3 6 3
+3 8 4
 0
-7 3 5
+7 7 4
 0
 end_operator
 begin_operator
@@ -1172,9 +1172,9 @@ move-right t6 p3 p2 p2
 0
 2
 0
-7 3 5
+7 7 4
 0
-8 6 8
+8 8 6
 0
 end_operator
 begin_operator
@@ -1182,9 +1182,9 @@ move-down t2 p3 p2 p1
 0
 2
 0
-3 6 5
+3 8 1
 0
-7 0 5
+7 2 4
 0
 end_operator
 begin_operator
@@ -1192,9 +1192,9 @@ move-right t2 p3 p2 p2
 0
 2
 0
-7 0 5
+7 2 4
 0
-8 6 5
+8 8 1
 0
 end_operator
 begin_operator
@@ -1202,9 +1202,9 @@ move-down t7 p3 p2 p1
 0
 2
 0
-3 6 4
+3 8 7
 0
-7 8 5
+7 6 4
 0
 end_operator
 begin_operator
@@ -1212,9 +1212,9 @@ move-right t7 p3 p2 p2
 0
 2
 0
-7 8 5
+7 6 4
 0
-8 6 4
+8 8 5
 0
 end_operator
 begin_operator
@@ -1222,9 +1222,9 @@ move-down t6 p2 p3 p2
 0
 2
 0
-6 3 8
+6 7 1
 0
-8 6 8
+8 8 6
 0
 end_operator
 begin_operator
@@ -1232,9 +1232,9 @@ move-right t6 p2 p3 p1
 0
 2
 0
-6 3 8
+6 7 1
 0
-1 4 2
+1 0 3
 0
 end_operator
 begin_operator
@@ -1242,9 +1242,9 @@ move-down t3 p2 p3 p2
 0
 2
 0
-6 2 8
+6 0 1
 0
-8 6 0
+8 8 0
 0
 end_operator
 begin_operator
@@ -1252,9 +1252,9 @@ move-right t3 p2 p3 p1
 0
 2
 0
-6 2 8
+6 0 1
 0
-1 4 7
+1 0 5
 0
 end_operator
 begin_operator
@@ -1262,9 +1262,9 @@ move-down t4 p2 p3 p2
 0
 2
 0
-6 7 8
+6 3 1
 0
-8 6 2
+8 8 2
 0
 end_operator
 begin_operator
@@ -1272,9 +1272,9 @@ move-right t4 p2 p3 p1
 0
 2
 0
-6 7 8
+6 3 1
 0
-1 4 1
+1 0 2
 0
 end_operator
 begin_operator
@@ -1282,9 +1282,9 @@ move-down t1 p2 p3 p2
 0
 2
 0
-6 6 8
+6 8 1
 0
-8 6 3
+8 8 7
 0
 end_operator
 begin_operator
@@ -1292,9 +1292,9 @@ move-right t1 p2 p3 p1
 0
 2
 0
-6 6 8
+6 8 1
 0
-1 4 3
+1 0 8
 0
 end_operator
 begin_operator
@@ -1302,9 +1302,9 @@ move-down t8 p2 p3 p2
 0
 2
 0
-6 5 8
+6 6 1
 0
-8 6 1
+8 8 3
 0
 end_operator
 begin_operator
@@ -1312,9 +1312,9 @@ move-right t8 p2 p3 p1
 0
 2
 0
-6 5 8
+6 6 1
 0
-1 4 0
+1 0 4
 0
 end_operator
 begin_operator
@@ -1322,9 +1322,9 @@ move-down t8 p3 p2 p1
 0
 2
 0
-3 6 1
+3 8 6
 0
-7 2 5
+7 0 4
 0
 end_operator
 begin_operator
@@ -1332,9 +1332,9 @@ move-right t8 p3 p2 p2
 0
 2
 0
-7 2 5
+7 0 4
 0
-8 6 1
+8 8 3
 0
 end_operator
 begin_operator
@@ -1342,7 +1342,7 @@ move-down t2 p1 p3 p2
 0
 2
 0
-1 5 4
+1 1 0
 0
 0 5 0
 0
@@ -1352,9 +1352,9 @@ move-left t2 p1 p3 p2
 0
 2
 0
-6 8 4
+6 1 5
 0
-1 5 4
+1 1 0
 0
 end_operator
 begin_operator
@@ -1362,9 +1362,9 @@ move-down t5 p2 p3 p2
 0
 2
 0
-6 0 8
+6 4 1
 0
-8 6 7
+8 8 4
 0
 end_operator
 begin_operator
@@ -1372,9 +1372,9 @@ move-right t5 p2 p3 p1
 0
 2
 0
-6 0 8
+6 4 1
 0
-1 4 8
+1 0 6
 0
 end_operator
 begin_operator
@@ -1382,9 +1382,9 @@ move-down t2 p2 p3 p2
 0
 2
 0
-6 4 8
+6 5 1
 0
-8 6 5
+8 8 1
 0
 end_operator
 begin_operator
@@ -1392,9 +1392,9 @@ move-right t2 p2 p3 p1
 0
 2
 0
-6 4 8
+6 5 1
 0
-1 4 5
+1 0 1
 0
 end_operator
 begin_operator
@@ -1402,9 +1402,9 @@ move-left t7 p2 p3 p3
 0
 2
 0
-6 1 8
+6 2 1
 0
-4 5 3
+4 1 7
 0
 end_operator
 begin_operator
@@ -1412,9 +1412,9 @@ move-left t6 p2 p3 p3
 0
 2
 0
-6 3 8
+6 7 1
 0
-4 5 7
+4 1 6
 0
 end_operator
 begin_operator
@@ -1422,9 +1422,9 @@ move-left t3 p2 p3 p3
 0
 2
 0
-6 2 8
+6 0 1
 0
-4 5 0
+4 1 2
 0
 end_operator
 begin_operator
@@ -1432,9 +1432,9 @@ move-left t4 p2 p3 p3
 0
 2
 0
-6 7 8
+6 3 1
 0
-4 5 1
+4 1 5
 0
 end_operator
 begin_operator
@@ -1442,9 +1442,9 @@ move-left t1 p2 p3 p3
 0
 2
 0
-6 6 8
+6 8 1
 0
-4 5 8
+4 1 3
 0
 end_operator
 begin_operator
@@ -1452,9 +1452,9 @@ move-left t8 p2 p3 p3
 0
 2
 0
-6 5 8
+6 6 1
 0
-4 5 2
+4 1 8
 0
 end_operator
 begin_operator
@@ -1462,9 +1462,9 @@ move-left t5 p2 p3 p3
 0
 2
 0
-6 0 8
+6 4 1
 0
-4 5 6
+4 1 4
 0
 end_operator
 begin_operator
@@ -1472,9 +1472,9 @@ move-left t2 p2 p3 p3
 0
 2
 0
-6 4 8
+6 5 1
 0
-4 5 4
+4 1 0
 0
 end_operator
 begin_operator
@@ -1482,9 +1482,9 @@ move-up t6 p3 p1 p2
 0
 2
 0
-3 3 6
+3 4 8
 0
-7 5 3
+7 4 7
 0
 end_operator
 begin_operator
@@ -1492,9 +1492,9 @@ move-right t6 p3 p1 p2
 0
 2
 0
-3 3 6
+3 4 8
 0
-5 3 2
+5 5 7
 0
 end_operator
 begin_operator
@@ -1502,9 +1502,9 @@ move-up t5 p1 p1 p2
 0
 2
 0
-0 5 1
+0 5 4
 0
-2 6 2
+2 3 2
 0
 end_operator
 begin_operator
@@ -1512,9 +1512,9 @@ move-left t5 p1 p1 p2
 0
 2
 0
-2 6 2
+2 3 2
 0
-5 3 1
+5 5 2
 0
 end_operator
 begin_operator
@@ -1522,9 +1522,9 @@ move-down t5 p1 p3 p2
 0
 2
 0
-1 8 4
+1 6 0
 0
-0 5 1
+0 5 4
 0
 end_operator
 begin_operator
@@ -1532,9 +1532,9 @@ move-left t5 p1 p3 p2
 0
 2
 0
-6 8 0
+6 1 4
 0
-1 8 4
+1 6 0
 0
 end_operator
 begin_operator
@@ -1542,9 +1542,9 @@ move-up t5 p3 p2 p3
 0
 2
 0
-7 1 5
+7 5 4
 0
-4 5 6
+4 1 4
 0
 end_operator
 begin_operator
@@ -1552,9 +1552,9 @@ move-up t4 p3 p2 p3
 0
 2
 0
-7 6 5
+7 3 4
 0
-4 5 1
+4 1 5
 0
 end_operator
 begin_operator
@@ -1562,9 +1562,9 @@ move-up t3 p3 p2 p3
 0
 2
 0
-7 4 5
+7 1 4
 0
-4 5 0
+4 1 2
 0
 end_operator
 begin_operator
@@ -1572,9 +1572,9 @@ move-up t1 p3 p2 p3
 0
 2
 0
-7 7 5
+7 8 4
 0
-4 5 8
+4 1 3
 0
 end_operator
 begin_operator
@@ -1582,9 +1582,9 @@ move-up t6 p3 p2 p3
 0
 2
 0
-7 3 5
+7 7 4
 0
-4 5 7
+4 1 6
 0
 end_operator
 begin_operator
@@ -1592,9 +1592,9 @@ move-up t2 p3 p2 p3
 0
 2
 0
-7 0 5
+7 2 4
 0
-4 5 4
+4 1 0
 0
 end_operator
 begin_operator
@@ -1602,9 +1602,9 @@ move-up t7 p3 p2 p3
 0
 2
 0
-7 8 5
+7 6 4
 0
-4 5 3
+4 1 7
 0
 end_operator
 begin_operator
@@ -1612,9 +1612,9 @@ move-up t8 p3 p2 p3
 0
 2
 0
-7 2 5
+7 0 4
 0
-4 5 2
+4 1 8
 0
 end_operator
 begin_operator
@@ -1622,9 +1622,9 @@ move-up t7 p1 p1 p2
 0
 2
 0
-0 5 8
+0 5 7
 0
-2 5 2
+2 6 2
 0
 end_operator
 begin_operator
@@ -1632,9 +1632,9 @@ move-left t7 p1 p1 p2
 0
 2
 0
-2 5 2
+2 6 2
 0
-5 3 8
+5 5 8
 0
 end_operator
 begin_operator
@@ -1642,9 +1642,9 @@ move-up t7 p3 p1 p2
 0
 2
 0
-3 4 6
+3 7 8
 0
-7 5 8
+7 4 6
 0
 end_operator
 begin_operator
@@ -1652,9 +1652,9 @@ move-right t7 p3 p1 p2
 0
 2
 0
-3 4 6
+3 7 8
 0
-5 3 8
+5 5 8
 0
 end_operator
 begin_operator
@@ -1662,9 +1662,9 @@ move-up t8 p2 p2 p3
 0
 2
 0
-6 8 5
+6 1 6
 0
-8 1 6
+8 3 8
 0
 end_operator
 begin_operator
@@ -1672,9 +1672,9 @@ move-down t8 p2 p2 p1
 0
 2
 0
-5 3 7
+5 5 3
 0
-8 1 6
+8 3 8
 0
 end_operator
 begin_operator
@@ -1682,9 +1682,9 @@ move-left t8 p2 p2 p3
 0
 2
 0
-7 5 2
+7 4 0
 0
-8 1 6
+8 3 8
 0
 end_operator
 begin_operator
@@ -1694,7 +1694,7 @@ move-right t8 p2 p2 p1
 0
 0 5 2
 0
-8 1 6
+8 3 8
 0
 end_operator
 begin_operator
@@ -1702,7 +1702,7 @@ move-down t8 p1 p3 p2
 0
 2
 0
-1 0 4
+1 4 0
 0
 0 5 2
 0
@@ -1712,9 +1712,9 @@ move-left t8 p1 p3 p2
 0
 2
 0
-6 8 5
+6 1 6
 0
-1 0 4
+1 4 0
 0
 end_operator
 begin_operator
@@ -1722,9 +1722,9 @@ move-up t8 p3 p1 p2
 0
 2
 0
-3 1 6
+3 6 8
 0
-7 5 2
+7 4 0
 0
 end_operator
 begin_operator
@@ -1732,9 +1732,9 @@ move-right t8 p3 p1 p2
 0
 2
 0
-3 1 6
+3 6 8
 0
-5 3 7
+5 5 3
 0
 end_operator
 begin_operator
@@ -1742,9 +1742,9 @@ move-down t7 p3 p3 p2
 0
 2
 0
-7 5 8
+7 4 6
 0
-4 3 5
+4 7 1
 0
 end_operator
 begin_operator
@@ -1752,9 +1752,9 @@ move-right t7 p3 p3 p2
 0
 2
 0
-6 8 1
+6 1 2
 0
-4 3 5
+4 7 1
 0
 end_operator
 begin_operator
@@ -1762,9 +1762,9 @@ move-down t6 p3 p3 p2
 0
 2
 0
-7 5 3
+7 4 7
 0
-4 7 5
+4 6 1
 0
 end_operator
 begin_operator
@@ -1772,9 +1772,9 @@ move-right t6 p3 p3 p2
 0
 2
 0
-6 8 3
+6 1 7
 0
-4 7 5
+4 6 1
 0
 end_operator
 begin_operator
@@ -1782,9 +1782,9 @@ move-down t3 p3 p3 p2
 0
 2
 0
-7 5 4
+7 4 1
 0
-4 0 5
+4 2 1
 0
 end_operator
 begin_operator
@@ -1792,9 +1792,9 @@ move-right t3 p3 p3 p2
 0
 2
 0
-6 8 2
+6 1 0
 0
-4 0 5
+4 2 1
 0
 end_operator
 begin_operator
@@ -1802,9 +1802,9 @@ move-down t4 p3 p3 p2
 0
 2
 0
-7 5 6
+7 4 3
 0
-4 1 5
+4 5 1
 0
 end_operator
 begin_operator
@@ -1812,9 +1812,9 @@ move-right t4 p3 p3 p2
 0
 2
 0
-6 8 7
+6 1 3
 0
-4 1 5
+4 5 1
 0
 end_operator
 begin_operator
@@ -1822,9 +1822,9 @@ move-down t1 p3 p3 p2
 0
 2
 0
-7 5 7
+7 4 8
 0
-4 8 5
+4 3 1
 0
 end_operator
 begin_operator
@@ -1832,9 +1832,9 @@ move-right t1 p3 p3 p2
 0
 2
 0
-6 8 6
+6 1 8
 0
-4 8 5
+4 3 1
 0
 end_operator
 begin_operator
@@ -1842,9 +1842,9 @@ move-down t5 p3 p3 p2
 0
 2
 0
-7 5 1
+7 4 5
 0
-4 6 5
+4 4 1
 0
 end_operator
 begin_operator
@@ -1852,9 +1852,9 @@ move-right t5 p3 p3 p2
 0
 2
 0
-6 8 0
+6 1 4
 0
-4 6 5
+4 4 1
 0
 end_operator
 begin_operator
@@ -1862,9 +1862,9 @@ move-down t2 p3 p3 p2
 0
 2
 0
-7 5 0
+7 4 2
 0
-4 4 5
+4 0 1
 0
 end_operator
 begin_operator
@@ -1872,9 +1872,9 @@ move-right t2 p3 p3 p2
 0
 2
 0
-6 8 4
+6 1 5
 0
-4 4 5
+4 0 1
 0
 end_operator
 begin_operator
@@ -1882,9 +1882,9 @@ move-up t8 p2 p1 p2
 0
 2
 0
-5 7 3
+5 3 5
 0
-8 6 1
+8 8 3
 0
 end_operator
 begin_operator
@@ -1892,9 +1892,9 @@ move-left t8 p2 p1 p3
 0
 2
 0
-3 6 1
+3 8 6
 0
-5 7 3
+5 3 5
 0
 end_operator
 begin_operator
@@ -1902,9 +1902,9 @@ move-right t8 p2 p1 p1
 0
 2
 0
-2 2 4
+2 2 1
 0
-5 7 3
+5 3 5
 0
 end_operator
 begin_operator
@@ -1912,7 +1912,7 @@ move-up t8 p1 p2 p3
 0
 2
 0
-1 4 0
+1 0 4
 0
 0 2 5
 0
@@ -1924,7 +1924,7 @@ move-down t8 p1 p2 p1
 0
 0 2 5
 0
-2 2 4
+2 2 1
 0
 end_operator
 begin_operator
@@ -1934,7 +1934,7 @@ move-left t8 p1 p2 p2
 0
 0 2 5
 0
-8 6 1
+8 8 3
 0
 end_operator
 begin_operator
@@ -1944,7 +1944,7 @@ move-up t8 p1 p1 p2
 0
 0 5 2
 0
-2 4 2
+2 1 2
 0
 end_operator
 begin_operator
@@ -1952,9 +1952,9 @@ move-left t8 p1 p1 p2
 0
 2
 0
-2 4 2
+2 1 2
 0
-5 3 7
+5 5 3
 0
 end_operator
 0
@@ -1963,91 +1963,19 @@ switch 6
 check 0
 switch 1
 check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-133
-check 0
-check 0
-check 0
-check 0
-switch 8
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-132
-check 0
-check 0
-switch 4
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-142
-check 0
-check 0
-check 0
-check 0
-switch 1
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-25
-check 0
-check 0
-check 0
-check 0
-switch 8
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-30
-check 0
-check 0
-switch 4
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-136
-check 0
-check 0
-check 0
-check 0
-switch 1
-check 0
-check 0
-check 0
-check 0
-check 0
 check 1
 121
 check 0
 check 0
 check 0
 check 0
+check 0
+check 0
+check 0
+check 0
 switch 8
+check 0
+check 0
 check 0
 check 0
 check 0
@@ -2057,13 +1985,7 @@ check 0
 check 0
 check 1
 120
-check 0
-check 0
 switch 4
-check 0
-check 0
-check 0
-check 0
 check 0
 check 0
 check 1
@@ -2072,14 +1994,76 @@ check 0
 check 0
 check 0
 check 0
+check 0
+check 0
+check 0
+check 0
 switch 1
 check 0
 check 0
-check 0
-check 0
+check 1
+131
+check 1
+72
+check 1
+69
+check 1
+167
+check 1
+71
+check 1
+149
+check 1
+70
+check 1
+73
+switch 8
 check 0
 check 1
-119
+85
+check 1
+89
+check 1
+84
+check 1
+162
+check 1
+88
+check 1
+90
+check 1
+87
+check 1
+86
+check 0
+switch 4
+check 0
+check 1
+183
+check 0
+check 1
+175
+check 1
+179
+check 1
+181
+check 1
+177
+check 1
+173
+check 1
+171
+check 1
+74
+check 0
+switch 1
+check 0
+check 1
+25
+check 0
+check 0
+check 0
+check 0
 check 0
 check 0
 check 0
@@ -2092,139 +2076,24 @@ check 0
 check 0
 check 0
 check 0
+check 0
+check 0
 check 1
-118
-check 0
-check 0
+30
 switch 4
 check 0
 check 0
-check 0
-check 0
-check 0
-check 0
 check 1
-137
+136
+check 0
+check 0
+check 0
+check 0
 check 0
 check 0
 check 0
 check 0
 switch 1
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-135
-check 0
-check 0
-check 0
-check 0
-switch 8
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-134
-check 0
-check 0
-switch 4
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-143
-check 0
-check 0
-check 0
-check 0
-switch 1
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-127
-check 0
-check 0
-check 0
-check 0
-switch 8
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-126
-check 0
-check 0
-switch 4
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-141
-check 0
-check 0
-check 0
-check 0
-switch 1
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-125
-check 0
-check 0
-check 0
-check 0
-switch 8
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-124
-check 0
-check 0
-switch 4
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-140
-check 0
-check 0
-check 0
-check 0
-switch 1
-check 0
-check 0
-check 0
-check 0
 check 0
 check 1
 123
@@ -2232,7 +2101,13 @@ check 0
 check 0
 check 0
 check 0
+check 0
+check 0
+check 0
+check 0
 switch 8
+check 0
+check 0
 check 0
 check 0
 check 0
@@ -2242,13 +2117,7 @@ check 0
 check 0
 check 1
 122
-check 0
-check 0
 switch 4
-check 0
-check 0
-check 0
-check 0
 check 0
 check 0
 check 1
@@ -2257,65 +2126,216 @@ check 0
 check 0
 check 0
 check 0
+check 0
+check 0
+check 0
+check 0
 switch 1
 check 0
 check 1
-167
-check 1
-72
-check 1
-69
-check 1
-73
+133
 check 0
-check 1
-131
-check 1
-70
-check 1
-71
-check 1
-149
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
 switch 8
 check 0
-check 1
-85
-check 1
-162
-check 1
-84
-check 1
-86
-check 1
-90
-check 1
-89
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
 check 0
 check 1
-88
-check 1
-87
+132
 switch 4
 check 0
-check 1
-175
-check 1
-177
-check 1
-74
-check 1
-171
-check 1
-183
 check 0
 check 1
-181
-check 1
-173
-check 1
-179
+142
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
 check 0
 switch 1
+check 0
+check 1
+135
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 8
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+134
+switch 4
+check 0
+check 0
+check 1
+143
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 1
+check 0
+check 1
+127
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 8
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+126
+switch 4
+check 0
+check 0
+check 1
+141
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 1
+check 0
+check 1
+119
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 8
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+118
+switch 4
+check 0
+check 0
+check 1
+137
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 1
+check 0
+check 1
+125
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 8
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+124
+switch 4
+check 0
+check 0
+check 1
+140
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 1
+check 0
+switch 0
+check 0
+check 1
+81
+check 1
+32
+check 1
+187
+check 1
+33
+check 1
+97
+check 0
+check 1
+35
+check 1
+100
+check 1
+34
 check 0
 switch 0
 check 0
@@ -2325,7 +2345,7 @@ check 0
 check 0
 check 0
 check 1
-166
+130
 check 0
 check 0
 check 0
@@ -2364,53 +2384,7 @@ check 0
 check 0
 check 0
 check 1
-68
-check 0
-check 0
-check 0
-check 0
-switch 0
-check 0
-check 1
-81
-check 1
-97
-check 1
-187
-check 1
-35
-check 1
-32
-check 0
-check 1
-34
-check 1
-33
-check 1
-100
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-130
-check 0
-check 0
-check 0
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-53
+166
 check 0
 check 0
 check 0
@@ -2437,6 +2411,32 @@ check 0
 check 0
 check 1
 148
+check 0
+check 0
+check 0
+check 0
+switch 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+53
+check 0
+check 0
+check 0
+check 0
+switch 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+68
 check 0
 check 0
 check 0
@@ -2449,13 +2449,15 @@ check 0
 check 0
 check 0
 check 0
-check 0
 check 1
 77
 check 0
 check 0
 check 0
+check 0
 switch 5
+check 0
+check 0
 check 0
 check 0
 check 0
@@ -2466,110 +2468,7 @@ check 0
 check 0
 check 0
 check 0
-check 0
-check 0
 switch 7
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-168
-check 0
-check 0
-check 0
-switch 5
-check 0
-check 0
-check 0
-check 0
-check 1
-169
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 7
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-78
-check 0
-check 0
-check 0
-switch 5
-check 0
-check 0
-check 0
-check 0
-check 1
-52
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 7
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-144
-check 0
-check 0
-check 0
-switch 5
-check 0
-check 0
-check 0
-check 0
-check 1
-145
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 7
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-160
-check 0
-check 0
-check 0
-switch 5
-check 0
-check 0
-check 0
-check 0
-check 1
-161
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 7
-check 0
 check 0
 check 0
 check 0
@@ -2580,7 +2479,10 @@ check 1
 check 0
 check 0
 check 0
+check 0
 switch 5
+check 0
+check 0
 check 0
 check 0
 check 0
@@ -2591,74 +2493,7 @@ check 0
 check 0
 check 0
 check 0
-check 0
-check 0
 switch 7
-check 0
-check 1
-114
-check 1
-31
-check 1
-128
-check 1
-112
-check 1
-108
-check 0
-check 1
-106
-check 1
-110
-check 1
-116
-switch 5
-check 0
-check 1
-22
-check 1
-95
-check 1
-92
-check 0
-check 1
-21
-check 1
-23
-check 1
-24
-check 1
-185
-check 1
-104
-check 0
-switch 7
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-79
-check 0
-check 0
-check 0
-switch 5
-check 0
-check 0
-check 0
-check 0
-check 1
-65
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 7
-check 0
 check 0
 check 0
 check 0
@@ -2669,7 +2504,10 @@ check 1
 check 0
 check 0
 check 0
+check 0
 switch 5
+check 0
+check 0
 check 0
 check 0
 check 0
@@ -2680,7 +2518,169 @@ check 0
 check 0
 check 0
 check 0
+switch 7
 check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+78
+check 0
+check 0
+check 0
+check 0
+switch 5
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+52
+check 0
+check 0
+check 0
+check 0
+switch 7
+check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+144
+check 0
+check 0
+check 0
+check 0
+switch 5
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+145
+check 0
+check 0
+check 0
+check 0
+switch 7
+check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+79
+check 0
+check 0
+check 0
+check 0
+switch 5
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+65
+check 0
+check 0
+check 0
+check 0
+switch 7
+check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+168
+check 0
+check 0
+check 0
+check 0
+switch 5
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+169
+check 0
+check 0
+check 0
+check 0
+switch 7
+check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+160
+check 0
+check 0
+check 0
+check 0
+switch 5
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+161
+check 0
+check 0
+check 0
+check 0
+switch 7
+check 0
+check 1
+128
+check 1
+108
+check 1
+114
+check 1
+106
+check 0
+check 1
+31
+check 1
+116
+check 1
+112
+check 1
+110
+switch 5
+check 0
+check 1
+21
+check 1
+22
+check 1
+95
+check 1
+185
+check 1
+24
+check 0
+check 1
+23
+check 1
+92
+check 1
+104
 check 0
 switch 7
 check 0
@@ -2692,65 +2692,11 @@ check 0
 check 0
 check 0
 check 0
-check 1
-115
-check 0
-check 0
-switch 4
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-155
-check 0
-check 0
-check 0
-check 0
-switch 8
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-19
-check 0
-check 0
-switch 4
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-150
-check 0
-check 0
-check 0
-check 0
-switch 8
-check 0
-check 0
-check 0
-check 0
-check 0
 check 0
 check 0
 check 1
 129
-check 0
-check 0
 switch 4
-check 0
-check 0
-check 0
-check 0
 check 0
 check 0
 check 1
@@ -2759,32 +2705,13 @@ check 0
 check 0
 check 0
 check 0
-switch 8
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-113
-check 0
-check 0
-switch 4
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-154
 check 0
 check 0
 check 0
 check 0
 switch 8
+check 0
+check 0
 check 0
 check 0
 check 0
@@ -2794,13 +2721,7 @@ check 0
 check 0
 check 1
 109
-check 0
-check 0
 switch 4
-check 0
-check 0
-check 0
-check 0
 check 0
 check 0
 check 1
@@ -2809,46 +2730,38 @@ check 0
 check 0
 check 0
 check 0
+check 0
+check 0
+check 0
+check 0
 switch 8
 check 0
-check 1
-59
-check 1
-164
-check 1
-58
-check 1
-60
-check 1
-64
-check 1
-63
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
 check 0
 check 1
-62
-check 1
-61
+115
 switch 4
 check 0
-check 1
-174
-check 1
-176
-check 1
-80
-check 1
-170
-check 1
-182
 check 0
 check 1
-180
-check 1
-172
-check 1
-178
+155
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
 check 0
 switch 8
+check 0
+check 0
 check 0
 check 0
 check 0
@@ -2858,13 +2771,7 @@ check 0
 check 0
 check 1
 107
-check 0
-check 0
 switch 4
-check 0
-check 0
-check 0
-check 0
 check 0
 check 0
 check 1
@@ -2873,32 +2780,77 @@ check 0
 check 0
 check 0
 check 0
+check 0
+check 0
+check 0
+check 0
 switch 8
 check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
 check 1
-111
-check 0
+59
+check 1
+63
+check 1
+58
+check 1
+164
+check 1
+62
+check 1
+64
+check 1
+61
+check 1
+60
 check 0
 switch 4
 check 0
+check 1
+182
+check 0
+check 1
+174
+check 1
+178
+check 1
+180
+check 1
+176
+check 1
+172
+check 1
+170
+check 1
+80
+check 0
+switch 8
+check 0
+check 0
+check 0
+check 0
 check 0
 check 0
 check 0
 check 0
 check 0
 check 1
-153
+19
+switch 4
+check 0
+check 0
+check 1
+150
+check 0
+check 0
+check 0
+check 0
 check 0
 check 0
 check 0
 check 0
 switch 8
+check 0
+check 0
 check 0
 check 0
 check 0
@@ -2908,9 +2860,23 @@ check 0
 check 0
 check 1
 117
-check 0
-check 0
 switch 4
+check 0
+check 0
+check 1
+156
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 8
+check 0
+check 0
+check 0
 check 0
 check 0
 check 0
@@ -2918,7 +2884,41 @@ check 0
 check 0
 check 0
 check 1
-156
+113
+switch 4
+check 0
+check 0
+check 1
+154
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 8
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+111
+switch 4
+check 0
+check 0
+check 1
+153
+check 0
+check 0
+check 0
+check 0
 check 0
 check 0
 check 0
@@ -2945,17 +2945,17 @@ check 0
 check 0
 check 0
 check 0
+check 0
+check 0
 check 1
 83
-check 0
-check 0
 check 0
 switch 2
 check 0
 check 0
 check 0
 check 1
-98
+0
 check 0
 check 0
 check 0
@@ -2970,10 +2970,10 @@ check 0
 check 0
 check 0
 check 0
+check 0
+check 0
 check 1
-99
-check 0
-check 0
+15
 check 0
 switch 2
 check 0
@@ -2995,9 +2995,98 @@ check 0
 check 0
 check 0
 check 0
+check 0
+check 0
 check 1
 189
 check 0
+switch 2
+check 0
+check 0
+check 0
+check 1
+10
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 8
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+16
+check 0
+switch 2
+check 0
+check 0
+check 0
+check 1
+98
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 8
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+99
+check 0
+switch 2
+check 0
+check 1
+38
+check 1
+190
+check 0
+check 1
+146
+check 1
+36
+check 1
+6
+check 1
+158
+check 1
+40
+check 1
+7
+switch 8
+check 0
+check 1
+43
+check 1
+55
+check 1
+2
+check 1
+165
+check 1
+49
+check 1
+57
+check 1
+47
+check 1
+45
 check 0
 check 0
 switch 2
@@ -3020,124 +3109,10 @@ check 0
 check 0
 check 0
 check 0
+check 0
+check 0
 check 1
 18
-check 0
-check 0
-check 0
-switch 2
-check 0
-check 0
-check 0
-check 1
-0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 8
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-15
-check 0
-check 0
-check 0
-switch 2
-check 0
-check 1
-36
-check 1
-7
-check 0
-check 1
-38
-check 1
-190
-check 1
-158
-check 1
-146
-check 1
-6
-check 1
-40
-switch 8
-check 0
-check 1
-43
-check 1
-165
-check 1
-2
-check 1
-45
-check 1
-57
-check 1
-55
-check 0
-check 1
-49
-check 1
-47
-check 0
-switch 2
-check 0
-check 0
-check 0
-check 1
-13
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 8
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-17
-check 0
-check 0
-check 0
-switch 2
-check 0
-check 0
-check 0
-check 1
-10
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 8
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-16
-check 0
-check 0
 check 0
 switch 2
 check 0
@@ -3159,60 +3134,41 @@ check 0
 check 0
 check 0
 check 0
+check 0
+check 0
 check 1
 102
 check 0
+switch 2
 check 0
+check 0
+check 0
+check 1
+13
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 8
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+17
 check 0
 switch 2
 check 0
 switch 5
 check 0
 check 0
-check 0
-check 0
-check 1
-37
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 5
-check 0
-check 0
-check 0
-check 0
-check 1
-4
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 5
-check 0
-check 1
-11
-check 1
-96
-check 1
-93
-check 0
-check 1
-1
-check 1
-12
-check 1
-20
-check 1
-186
-check 1
-105
-check 0
-switch 5
 check 0
 check 0
 check 0
@@ -3223,9 +3179,9 @@ check 0
 check 0
 check 0
 check 0
-check 0
-check 0
 switch 5
+check 0
+check 0
 check 0
 check 0
 check 0
@@ -3236,22 +3192,29 @@ check 0
 check 0
 check 0
 check 0
-check 0
-check 0
 switch 5
-check 0
-check 0
-check 0
 check 0
 check 1
-159
+1
+check 1
+11
+check 1
+96
+check 1
+186
+check 1
+20
 check 0
-check 0
-check 0
-check 0
-check 0
+check 1
+12
+check 1
+93
+check 1
+105
 check 0
 switch 5
+check 0
+check 0
 check 0
 check 0
 check 0
@@ -3262,9 +3225,22 @@ check 0
 check 0
 check 0
 check 0
+switch 5
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+37
+check 0
+check 0
 check 0
 check 0
 switch 5
+check 0
+check 0
 check 0
 check 0
 check 0
@@ -3275,9 +3251,22 @@ check 0
 check 0
 check 0
 check 0
+switch 5
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+159
+check 0
+check 0
 check 0
 check 0
 switch 5
+check 0
+check 0
 check 0
 check 0
 check 0
@@ -3288,6 +3277,17 @@ check 0
 check 0
 check 0
 check 0
+switch 5
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+4
+check 0
+check 0
 check 0
 check 0
 switch 5
@@ -3300,12 +3300,27 @@ check 0
 check 0
 check 0
 check 0
+check 0
+check 0
+check 1
+26
+check 0
+switch 8
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
 check 1
 27
 check 0
-check 0
-check 0
 switch 8
+check 0
+check 0
 check 0
 check 0
 check 0
@@ -3316,81 +3331,9 @@ check 0
 check 1
 94
 check 0
-check 0
-check 0
 switch 8
 check 0
 check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-91
-check 0
-check 0
-check 0
-switch 8
-check 0
-check 1
-42
-check 1
-163
-check 1
-9
-check 1
-44
-check 1
-56
-check 1
-54
-check 0
-check 1
-48
-check 1
-46
-check 0
-switch 8
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-26
-check 0
-check 0
-check 0
-switch 8
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-28
-check 0
-check 0
-check 0
-switch 8
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-29
-check 0
-check 0
-check 0
-switch 8
 check 0
 check 0
 check 0
@@ -3401,6 +3344,37 @@ check 0
 check 1
 184
 check 0
+switch 8
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+29
+check 0
+switch 8
+check 0
+check 1
+42
+check 1
+54
+check 1
+9
+check 1
+163
+check 1
+48
+check 1
+56
+check 1
+46
+check 1
+44
 check 0
 check 0
 switch 8
@@ -3411,10 +3385,36 @@ check 0
 check 0
 check 0
 check 0
+check 0
+check 0
+check 1
+28
+check 0
+switch 8
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 1
+91
+check 0
+switch 8
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
 check 1
 103
-check 0
-check 0
 check 0
 check 0
 end_SG
@@ -3423,7 +3423,7 @@ begin_DTG
 5
 81
 1
-1 4
+1 0
 5
 82
 1
@@ -3431,46 +3431,7 @@ begin_DTG
 5
 83
 1
-8 6
-3
-5
-97
-1
-1 4
-5
-98
-1
-2 2
-5
-99
-1
-8 6
-3
-5
-187
-1
-1 4
-5
-188
-1
-2 2
-5
-189
-1
-8 6
-3
-5
-14
-1
-2 2
-5
-18
-1
-8 6
-5
-35
-1
-1 4
+8 8
 3
 5
 0
@@ -3479,121 +3440,24 @@ begin_DTG
 5
 15
 1
-8 6
+8 8
 5
 32
 1
-1 4
-24
-0
-38
-1
-2 3
-0
-130
-1
-1 5
-0
-55
-1
-8 5
-1
-148
-1
-1 8
-1
-146
-1
-2 6
-1
-49
-1
-8 7
-2
-190
-1
-2 4
-2
-166
-1
 1 0
-2
-165
-1
-8 1
-3
-47
-1
-8 8
-3
-40
-1
-2 8
-3
-8
-1
-1 2
-4
-43
-1
-8 0
-4
-66
-1
-1 7
-4
-6
-1
-2 7
-6
-45
-1
-8 3
-6
-68
-1
-1 3
-6
-7
-1
-2 1
-7
-67
-1
-1 1
-7
-36
-1
-2 0
-7
-2
-1
-8 2
-8
-53
-1
-1 6
-8
-57
-1
-8 4
-8
-158
-1
-2 5
 3
 5
-13
+187
+1
+1 0
+5
+188
 1
 2 2
 5
-17
+189
 1
-8 6
-5
-34
-1
-1 4
+8 8
 3
 5
 10
@@ -3602,16 +3466,139 @@ begin_DTG
 5
 16
 1
-8 6
+8 8
 5
 33
 1
+1 0
+3
+5
+97
+1
+1 0
+5
+98
+1
+2 2
+5
+99
+1
+8 8
+24
+0
+130
+1
+1 1
+0
+55
+1
+8 1
+0
+38
+1
+2 0
+1
+6
+1
+2 5
+1
+66
+1
+1 5
+1
+43
+1
+8 0
+2
+190
+1
+2 1
+2
+166
+1
 1 4
+2
+165
+1
+8 3
+3
+67
+1
+1 2
+3
+2
+1
+8 2
+3
+36
+1
+2 4
+4
+49
+1
+8 4
+4
+146
+1
+2 3
+4
+148
+1
+1 6
+6
+8
+1
+1 3
+6
+40
+1
+2 7
+6
+47
+1
+8 6
+7
+53
+1
+1 7
+7
+57
+1
+8 5
+7
+158
+1
+2 6
+8
+7
+1
+2 8
+8
+68
+1
+1 8
+8
+45
+1
+8 7
+3
+5
+14
+1
+2 2
+5
+18
+1
+8 8
+5
+35
+1
+1 0
 3
 5
 100
 1
-1 4
+1 0
 5
 101
 1
@@ -3619,231 +3606,161 @@ begin_DTG
 5
 102
 1
-8 6
-end_DTG
-begin_DTG
-2
-4
-166
-1
-0 5
-4
-167
-1
-6 8
-2
-4
-67
-1
-0 5
-4
-72
-1
-6 8
-2
-4
-8
-1
-0 5
-4
-69
-1
-6 8
-2
-4
-68
-1
-0 5
-4
-73
-1
-6 8
-16
-0
-127
-1
-6 5
-0
-187
-1
-0 2
-1
-33
-1
-0 7
-1
-123
-1
-6 7
-2
-35
-1
-0 3
-2
-119
-1
-6 3
+8 8
 3
+5
+13
+1
+2 2
+5
+17
+1
+8 8
+5
 34
 1
-0 6
-3
-125
+1 0
+end_DTG
+begin_DTG
+16
 1
-6 6
-5
 81
 1
 0 0
-5
+1
 135
 1
-6 4
-6
-25
-1
-6 1
-6
-100
-1
-0 8
-7
-32
-1
-0 4
-7
-121
-1
-6 2
-8
-97
-1
-0 1
-8
-133
-1
-6 0
+6 5
 2
-4
-130
+33
 1
-0 5
-4
-131
-1
-6 8
+0 3
 2
-4
-53
+123
 1
-0 5
-4
-70
-1
-6 8
-2
-4
-66
-1
-0 5
-4
-71
-1
-6 8
-2
-4
-148
-1
-0 5
-4
-149
-1
-6 8
-end_DTG
-begin_DTG
-2
-2
-36
-1
-0 5
-2
-37
-1
-5 3
-2
-2
-4
-1
-5 3
-2
-7
-1
-0 5
-16
-0
-10
-1
-0 7
-0
-20
-1
-5 6
-1
-1
-1
-5 4
-1
-13
+6 3
+3
+35
 1
 0 6
 3
-12
+119
 1
-5 5
-3
-82
-1
-0 0
+6 7
 4
-186
+127
 1
-5 7
+6 6
 4
-188
+187
 1
 0 2
 5
-101
-1
-0 8
-5
-105
-1
-5 8
-6
-96
-1
-5 1
-6
-98
+32
 1
 0 1
-7
-0
+5
+121
+1
+6 0
+6
+97
 1
 0 4
+6
+133
+1
+6 4
 7
-11
+25
 1
-5 0
+6 2
+7
+100
+1
+0 7
 8
-14
+34
 1
-0 3
+0 8
 8
-93
+125
 1
-5 2
+6 8
+2
+0
+130
+1
+0 5
+0
+131
+1
+6 1
+2
+0
+67
+1
+0 5
+0
+72
+1
+6 1
+2
+0
+8
+1
+0 5
+0
+69
+1
+6 1
+2
+0
+166
+1
+0 5
+0
+167
+1
+6 1
+2
+0
+66
+1
+0 5
+0
+71
+1
+6 1
+2
+0
+148
+1
+0 5
+0
+149
+1
+6 1
+2
+0
+53
+1
+0 5
+0
+70
+1
+6 1
+2
+0
+68
+1
+0 5
+0
+73
+1
+6 1
+end_DTG
+begin_DTG
 2
 2
 38
@@ -3852,7 +3769,7 @@ begin_DTG
 2
 39
 1
-5 3
+5 5
 2
 2
 190
@@ -3861,16 +3778,72 @@ begin_DTG
 2
 191
 1
-5 3
-2
-2
-158
+5 5
+16
+0
+12
 1
-0 5
-2
-159
+5 6
+0
+82
+1
+0 0
+1
+186
 1
 5 3
+1
+188
+1
+0 2
+3
+96
+1
+5 2
+3
+98
+1
+0 4
+4
+10
+1
+0 3
+4
+20
+1
+5 4
+5
+0
+1
+0 1
+5
+11
+1
+5 1
+6
+101
+1
+0 7
+6
+105
+1
+5 8
+7
+14
+1
+0 6
+7
+93
+1
+5 7
+8
+1
+1
+5 0
+8
+13
+1
+0 8
 2
 2
 146
@@ -3879,16 +3852,34 @@ begin_DTG
 2
 147
 1
-5 3
+5 5
+2
+2
+36
+1
+0 5
+2
+37
+1
+5 5
 2
 2
 3
 1
-5 3
+5 5
 2
 6
 1
 0 5
+2
+2
+158
+1
+0 5
+2
+159
+1
+5 5
 2
 2
 40
@@ -3897,1161 +3888,1170 @@ begin_DTG
 2
 41
 1
-5 3
+5 5
+2
+2
+4
+1
+5 5
+2
+7
+1
+0 5
 end_DTG
 begin_DTG
 2
-6
+8
 51
 1
-5 3
-6
+5 5
+8
 77
 1
-7 5
+7 4
 2
-6
-168
-1
-7 5
-6
-169
-1
-5 3
-2
-6
-52
-1
-5 3
-6
-78
-1
-7 5
-2
-6
-144
-1
-7 5
-6
-145
-1
-5 3
-2
-6
-160
-1
-7 5
-6
-161
-1
-5 3
-2
-6
+8
 5
 1
-5 3
-6
+5 5
+8
 75
 1
-7 5
+7 4
+2
+8
+50
+1
+5 5
+8
+76
+1
+7 4
+2
+8
+52
+1
+5 5
+8
+78
+1
+7 4
+2
+8
+144
+1
+7 4
+8
+145
+1
+5 5
+2
+8
+65
+1
+5 5
+8
+79
+1
+7 4
+2
+8
+168
+1
+7 4
+8
+169
+1
+5 5
+2
+8
+160
+1
+7 4
+8
+161
+1
+5 5
 16
 0
 22
 1
-5 0
+5 1
 0
 108
 1
-7 4
+7 1
 1
-128
-1
-7 2
-1
-185
-1
-5 7
-2
-24
+23
 1
 5 6
+1
+114
+1
+7 2
 2
+21
+1
+5 0
+2
+110
+1
+7 8
+3
+24
+1
+5 4
+3
 106
-1
-7 6
-3
-92
-1
-5 2
-3
-112
 1
 7 3
 4
+92
+1
+5 7
+4
+112
+1
+7 7
+5
+31
+1
+7 5
+5
+95
+1
+5 2
+6
+128
+1
+7 0
+6
+185
+1
+5 3
+7
 104
 1
 5 8
-4
+7
 116
 1
-7 8
-5
-23
-1
-5 5
-5
-114
-1
-7 0
-7
-31
-1
-7 1
-7
-95
-1
-5 1
-8
-21
-1
-5 4
-8
-110
-1
-7 7
-2
-6
-65
-1
-5 3
-6
-79
-1
-7 5
-2
-6
-50
-1
-5 3
-6
-76
-1
-7 5
+7 6
 end_DTG
 begin_DTG
 2
-5
-174
 1
-7 5
-5
-175
-1
-6 8
-2
-5
-176
-1
-7 5
-5
-177
-1
-6 8
-2
-5
-74
-1
-6 8
-5
-80
-1
-7 5
-2
-5
-170
-1
-7 5
-5
-171
-1
-6 8
-2
-5
 182
-1
-7 5
-5
-183
-1
-6 8
-16
-0
-138
-1
-6 2
-0
-152
 1
 7 4
 1
-139
-1
-6 7
-1
-151
-1
-7 6
-2
-141
-1
-6 5
-2
-157
-1
-7 2
-3
-136
+183
 1
 6 1
+16
+0
+143
+1
+6 5
+0
+155
+1
+7 2
+2
+138
+1
+6 0
+2
+152
+1
+7 1
 3
-156
+140
+1
+6 8
+3
+153
 1
 7 8
 4
-143
+142
 1
 6 4
 4
-155
-1
-7 0
-6
-142
-1
-6 0
-6
 150
 1
-7 1
-7
-137
+7 5
+5
+139
 1
 6 3
-7
-154
+5
+151
 1
 7 3
+6
+137
+1
+6 7
+6
+154
+1
+7 7
+7
+136
+1
+6 2
+7
+156
+1
+7 6
 8
-140
+141
 1
 6 6
 8
-153
+157
 1
-7 7
+7 0
 2
-5
-180
 1
-7 5
-5
-181
+174
 1
-6 8
+7 4
+1
+175
+1
+6 1
 2
-5
-172
 1
-7 5
-5
-173
-1
-6 8
-2
-5
 178
 1
-7 5
-5
+7 4
+1
 179
 1
-6 8
+6 1
+2
+1
+180
+1
+7 4
+1
+181
+1
+6 1
+2
+1
+176
+1
+7 4
+1
+177
+1
+6 1
+2
+1
+172
+1
+7 4
+1
+173
+1
+6 1
+2
+1
+170
+1
+7 4
+1
+171
+1
+6 1
+2
+1
+74
+1
+6 1
+1
+80
+1
+7 4
 end_DTG
 begin_DTG
 3
+5
+1
+1
+2 2
+5
+21
+1
+3 8
+5
+26
+1
+8 8
 3
+5
 11
 1
 2 2
-3
+5
 22
 1
-3 6
-3
+3 8
+5
 27
 1
-8 6
+8 8
 3
-3
+5
 94
 1
-8 6
-3
+8 8
+5
 95
 1
-3 6
-3
+3 8
+5
 96
 1
 2 2
 3
-3
-91
-1
-8 6
-3
-92
-1
-3 6
-3
-93
-1
-2 2
-24
-0
-3
-1
-2 7
-0
-51
-1
-3 0
-0
-42
-1
-8 0
-1
-147
-1
-2 6
-1
-65
-1
-3 7
-1
-48
-1
-8 7
-2
-145
-1
-3 3
-2
-41
-1
-2 8
-2
-46
-1
-8 8
-4
-4
-1
-2 1
-4
-50
-1
-3 8
-4
-44
-1
-8 3
 5
-39
-1
-2 3
-5
-54
-1
-8 5
-5
-5
-1
-3 5
-6
-52
-1
-3 2
-6
-37
-1
-2 0
-6
-9
-1
-8 2
-7
-163
-1
-8 1
-7
-169
-1
-3 1
-7
-191
-1
-2 4
-8
-56
-1
-8 4
-8
-159
-1
-2 5
-8
-161
-1
-3 4
-3
-3
-1
-1
-2 2
-3
-21
-1
-3 6
-3
-26
-1
-8 6
-3
-3
-12
-1
-2 2
-3
-23
-1
-3 6
-3
-28
-1
-8 6
-3
-3
-20
-1
-2 2
-3
-24
-1
-3 6
-3
-29
-1
-8 6
-3
-3
 184
 1
-8 6
-3
+8 8
+5
 185
 1
-3 6
-3
+3 8
+5
 186
 1
 2 2
 3
-3
-103
+5
+20
 1
-8 6
+2 2
+5
+24
+1
+3 8
+5
+29
+1
+8 8
+24
+0
+4
+1
+2 8
+0
+50
+1
+3 2
+0
+44
+1
+8 7
+1
+51
+1
+3 0
+1
 3
-104
+1
+2 5
+1
+42
+1
+8 0
+2
+48
+1
+8 4
+2
+147
+1
+2 3
+2
+65
+1
+3 5
+3
+191
+1
+2 1
+3
+169
 1
 3 6
 3
+163
+1
+8 3
+4
+37
+1
+2 4
+4
+9
+1
+8 2
+4
+52
+1
+3 3
+6
+39
+1
+2 0
+6
+54
+1
+8 1
+6
+5
+1
+3 1
+7
+145
+1
+3 4
+7
+46
+1
+8 6
+7
+41
+1
+2 7
+8
+56
+1
+8 5
+8
+159
+1
+2 6
+8
+161
+1
+3 7
+3
+5
+12
+1
+2 2
+5
+23
+1
+3 8
+5
+28
+1
+8 8
+3
+5
+91
+1
+8 8
+5
+92
+1
+3 8
+5
+93
+1
+2 2
+3
+5
+103
+1
+8 8
+5
+104
+1
+3 8
+5
 105
 1
 2 2
 end_DTG
 begin_DTG
 3
-8
-132
 1
-8 6
-8
-133
-1
-1 4
-8
-142
-1
-4 5
-3
-8
-25
-1
-1 4
-8
-30
-1
-8 6
-8
-136
-1
-4 5
-3
-8
 120
 1
-8 6
-8
+8 8
+1
 121
 1
-1 4
-8
+1 0
+1
 138
 1
-4 5
-3
-8
-118
-1
-8 6
-8
-119
-1
-1 4
-8
-137
-1
-4 5
-3
-8
-134
-1
-8 6
-8
-135
-1
-1 4
-8
-143
-1
-4 5
-3
-8
-126
-1
-8 6
-8
-127
-1
-1 4
-8
-141
-1
-4 5
-3
-8
-124
-1
-8 6
-8
-125
-1
-1 4
-8
-140
-1
-4 5
-3
-8
-122
-1
-8 6
-8
-123
-1
-1 4
-8
-139
-1
-4 5
+4 1
 24
 0
-181
+175
 1
-4 6
+4 2
 0
-149
+71
 1
-1 8
+1 5
 0
-88
-1
-8 7
-1
-70
-1
-1 6
-1
-171
-1
-4 3
-1
-90
-1
-8 4
-2
 85
 1
 8 0
 2
-175
-1
-4 0
-2
-71
+70
 1
 1 7
+2
+171
+1
+4 7
+2
+90
+1
+8 5
 3
-69
+177
+1
+4 5
+3
+72
 1
 1 2
 3
-87
-1
-8 8
-3
-173
-1
-4 7
-4
-183
-1
-4 4
-4
-131
-1
-1 5
-4
-89
-1
-8 5
-5
-162
-1
-8 1
-5
-167
-1
-1 0
-5
-74
-1
-4 2
-6
-73
-1
-1 3
-6
-179
-1
-4 8
-6
-86
-1
-8 3
-7
-72
-1
-1 1
-7
-177
-1
-4 1
-7
 84
 1
 8 2
-end_DTG
-begin_DTG
-3
-5
-114
-1
-3 6
-5
-115
-1
-8 6
-5
-155
-1
-4 5
-3
-5
-19
-1
-8 6
-5
-31
-1
-3 6
-5
-150
-1
-4 5
-3
-5
-128
-1
-3 6
-5
-129
-1
-8 6
-5
-157
-1
-4 5
-3
-5
-112
-1
-3 6
-5
-113
-1
-8 6
-5
-154
-1
-4 5
-3
-5
-108
-1
-3 6
-5
-109
-1
-8 6
-5
-152
-1
-4 5
-24
-0
-182
+4
+181
 1
 4 4
-0
-63
-1
-8 5
-0
-75
-1
-3 5
-1
-180
-1
-4 6
-1
-62
-1
-8 7
-1
-79
-1
-3 7
-2
-80
-1
-4 2
-2
-168
-1
-3 1
-2
-164
-1
-8 1
-3
-144
-1
-3 3
-3
-61
-1
-8 8
-3
-172
-1
-4 7
 4
-77
-1
-3 0
-4
-174
-1
-4 0
-4
-59
-1
-8 0
-6
-78
-1
-3 2
-6
-58
-1
-8 2
-6
-176
-1
-4 1
-7
-76
-1
-3 8
-7
-178
-1
-4 8
-7
-60
-1
-8 3
-8
-160
-1
-3 4
-8
-64
+88
 1
 8 4
-8
-170
-1
-4 3
-3
-5
-106
-1
-3 6
-5
-107
-1
-8 6
-5
-151
-1
-4 5
-3
-5
-110
-1
-3 6
-5
-111
-1
-8 6
-5
-153
-1
-4 5
-3
-5
-116
-1
-3 6
-5
-117
-1
-8 6
-5
-156
-1
-4 5
-end_DTG
-begin_DTG
 4
-6
-42
+149
 1
-5 3
-6
-43
+1 6
+5
+183
 1
-0 5
-6
-59
+4 0
+5
+89
 1
-7 5
-6
-85
+8 1
+5
+131
 1
-6 8
-4
+1 1
 6
 162
 1
-6 8
+8 3
 6
-163
+167
 1
-5 3
+1 4
 6
+74
+1
+4 8
+7
+173
+1
+4 6
+7
+69
+1
+1 3
+7
+87
+1
+8 6
+8
+73
+1
+1 8
+8
+179
+1
+4 3
+8
+86
+1
+8 7
+3
+1
+25
+1
+1 0
+1
+30
+1
+8 8
+1
+136
+1
+4 1
+3
+1
+122
+1
+8 8
+1
+123
+1
+1 0
+1
+139
+1
+4 1
+3
+1
+132
+1
+8 8
+1
+133
+1
+1 0
+1
+142
+1
+4 1
+3
+1
+134
+1
+8 8
+1
+135
+1
+1 0
+1
+143
+1
+4 1
+3
+1
+126
+1
+8 8
+1
+127
+1
+1 0
+1
+141
+1
+4 1
+3
+1
+118
+1
+8 8
+1
+119
+1
+1 0
+1
+137
+1
+4 1
+3
+1
+124
+1
+8 8
+1
+125
+1
+1 0
+1
+140
+1
+4 1
+end_DTG
+begin_DTG
+3
+4
+128
+1
+3 8
+4
+129
+1
+8 8
+4
+157
+1
+4 1
+3
+4
+108
+1
+3 8
+4
+109
+1
+8 8
+4
+152
+1
+4 1
+3
+4
+114
+1
+3 8
+4
+115
+1
+8 8
+4
+155
+1
+4 1
+3
+4
+106
+1
+3 8
+4
+107
+1
+8 8
+4
+151
+1
+4 1
+24
+0
+168
+1
+3 6
+0
 164
 1
-7 5
+8 3
+0
+80
+1
+4 8
+1
+59
+1
+8 0
+1
+174
+1
+4 2
+1
+77
+1
+3 0
+2
+75
+1
+3 1
+2
+182
+1
+4 0
+2
+63
+1
+8 1
+3
+78
+1
+3 3
+3
+58
+1
+8 2
+3
+176
+1
+4 5
+5
+79
+1
+3 5
+5
+62
+1
+8 4
+5
+180
+1
+4 4
 6
+160
+1
+3 7
+6
+170
+1
+4 7
+6
+64
+1
+8 5
+7
+144
+1
+3 4
+7
+61
+1
+8 6
+7
+172
+1
+4 6
+8
+76
+1
+3 2
+8
+60
+1
+8 7
+8
+178
+1
+4 3
+3
+4
+19
+1
+8 8
+4
+31
+1
+3 8
+4
+150
+1
+4 1
+3
+4
+116
+1
+3 8
+4
+117
+1
+8 8
+4
+156
+1
+4 1
+3
+4
+112
+1
+3 8
+4
+113
+1
+8 8
+4
+154
+1
+4 1
+3
+4
+110
+1
+3 8
+4
+111
+1
+8 8
+4
+153
+1
+4 1
+end_DTG
+begin_DTG
+4
+8
+42
+1
+5 5
+8
+43
+1
+0 5
+8
+59
+1
+7 4
+8
+85
+1
+6 1
+4
+8
+54
+1
+5 5
+8
+55
+1
+0 5
+8
+63
+1
+7 4
+8
+89
+1
+6 1
+4
+8
+2
+1
+0 5
+8
+9
+1
+5 5
+8
+58
+1
+7 4
+8
+84
+1
+6 1
+4
+8
+162
+1
+6 1
+8
+163
+1
+5 5
+8
+164
+1
+7 4
+8
 165
 1
 0 5
 4
-6
-2
-1
-0 5
-6
-9
-1
-5 3
-6
-58
-1
-7 5
-6
-84
-1
-6 8
-4
-6
-44
-1
-5 3
-6
-45
-1
-0 5
-6
-60
-1
-7 5
-6
-86
-1
-6 8
-4
-6
-56
-1
-5 3
-6
-57
-1
-0 5
-6
-64
-1
-7 5
-6
-90
-1
-6 8
-4
-6
-54
-1
-5 3
-6
-55
-1
-0 5
-6
-63
-1
-7 5
-6
-89
-1
-6 8
-32
-0
-27
-1
-5 0
-0
-120
-1
-6 2
-0
-109
-1
-7 4
-0
-15
-1
-0 4
-1
-189
-1
-0 2
-1
-184
-1
-5 7
-1
-129
-1
-7 2
-1
-126
-1
-6 5
-2
-107
-1
-7 6
-2
-122
-1
-6 7
-2
-16
-1
-0 7
-2
-29
-1
-5 6
-3
-17
-1
-0 6
-3
-124
-1
-6 6
-3
-26
-1
-5 4
-3
-111
-1
-7 7
-4
-117
-1
-7 8
-4
-30
-1
-6 1
-4
-103
-1
-5 8
-4
-102
-1
-0 8
-5
-115
-1
-7 0
-5
-83
-1
-0 0
-5
-28
-1
-5 5
-5
-134
-1
-6 4
-7
-99
-1
-0 1
-7
-19
-1
-7 1
-7
-132
-1
-6 0
-7
-94
-1
-5 1
 8
-113
-1
-7 3
-8
-118
-1
-6 3
-8
-18
-1
-0 3
-8
-91
-1
-5 2
-4
-6
 48
 1
-5 3
-6
+5 5
+8
 49
 1
 0 5
-6
+8
 62
 1
-7 5
-6
+7 4
+8
 88
 1
-6 8
+6 1
 4
-6
+8
+56
+1
+5 5
+8
+57
+1
+0 5
+8
+64
+1
+7 4
+8
+90
+1
+6 1
+4
+8
 46
 1
-5 3
-6
+5 5
+8
 47
 1
 0 5
-6
+8
 61
 1
-7 5
-6
+7 4
+8
 87
 1
+6 1
+4
+8
+44
+1
+5 5
+8
+45
+1
+0 5
+8
+60
+1
+7 4
+8
+86
+1
+6 1
+32
+0
+15
+1
+0 1
+0
+120
+1
+6 0
+0
+27
+1
+5 1
+0
+109
+1
+7 1
+1
+134
+1
+6 5
+1
+115
+1
+7 2
+1
+28
+1
+5 6
+1
+83
+1
+0 0
+2
+16
+1
+0 3
+2
+122
+1
+6 3
+2
+107
+1
+7 3
+2
+29
+1
+5 4
+3
+189
+1
+0 2
+3
+184
+1
+5 3
+3
+129
+1
+7 0
+3
+126
+1
+6 6
+4
+94
+1
+5 2
+4
+132
+1
+6 4
+4
+19
+1
+7 5
+4
+99
+1
+0 4
+5
+117
+1
+7 6
+5
+30
+1
+6 2
+5
+103
+1
+5 8
+5
+102
+1
+0 7
+6
+113
+1
+7 7
+6
+118
+1
+6 7
+6
+18
+1
+0 6
+6
+91
+1
+5 7
+7
+26
+1
+5 0
+7
+111
+1
+7 8
+7
+124
+1
 6 8
+7
+17
+1
+0 8
 end_DTG
 begin_CG
 3
