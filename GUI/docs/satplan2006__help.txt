@@ -1,0 +1,16 @@
+
+Usage for SATplan:
+
+OPTIONS DESCRIPTIONS
+Goal Layer: <num>
+  goal layer for CNF  
+Options: 
+  (0) create CNF output or (1) build final solution  
+CNF output: <str> 
+  CNF output file name  
+Only unary/binary clauses: <0 or 1>  
+  (1) CNF output includes only unary/binary clauses - others ignored
+Input Solution: <str>
+  Input Solution File Name (only when -G 1 is used)
+Variables: <str>    
+  Variables File Name - list all variables (only when -G 1 is used)

@@ -1612,7 +1612,7 @@ VARS_TOK  OPEN_PAREN  typed_list_variable  CLOSE_PAREN  durative_action_def_body
 DURATION_TOK duration_constraint
 {
 
-scur_op->duration = $2
+scur_op->duration = $2;
   
 }
 durative_action_def_body

@@ -472,7 +472,7 @@ void load_fct_file( char *filename );
  *  ----------------------------- MAIN ROUTINE ----------------------------
  */
 
-
+char out_filename[MAX_LENGTH] = "";
 
 
 struct tms lstart, lend;
@@ -506,6 +506,11 @@ int run( int argc, char *argv[] )
 
   times ( &lstart );
 
+
+  FILE *stream;
+	stream = freopen("temp_out.txt","w",stdout);
+	if( stream == NULL )  
+     fprintf( stdout, "error on freopen\n" );
 
   /* command line treatment
    */
@@ -723,7 +728,22 @@ int run( int argc, char *argv[] )
   output_planner_info();
 
   printf("\n\n");
-  exit( 0 );
+  
+  fclose(stream);
+ 
+ printf("*******************");
+ FILE *op,*np;
+ op = fopen("temp_out.txt","rb");
+ np = fopen(out_filename,"wb");
+ void *buf;
+ while (!feof(op)){
+	 fread(&buf,1,1,op);
+	 fwrite(&buf,1,1,np);
+	 }
+fclose(np);
+fclose(op);
+remove("temp_out.txt");
+ exit( 0 );
 
 }
 
@@ -771,7 +791,6 @@ void output_planner_info( void )
 
   printf("\n\n");
 
-  exit( 0 );
 
   print_official_result();
 
@@ -910,6 +929,9 @@ Bool process_command_line( int argc, char *argv[] )
     default:
       if ( --argc && ++argv ) {
 	switch ( option ) {
+	case 'a':
+		strncpy(out_filename,*argv,MAX_LENGTH);
+		break;
 	case 'p':
 	  strncpy( gcmd_line.path, *argv, MAX_LENGTH );
 	  break;

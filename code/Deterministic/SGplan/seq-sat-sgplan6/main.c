@@ -72,7 +72,7 @@
  *********************************************************************/ 
 
 
-
+#include "main.h"
 #include <math.h>
 #include <sys/time.h>
 #include "lpg.h"
@@ -1518,5 +1518,5 @@ if (GpG.SearchModal == -2)
   printf ("\n\n");
 
 	      printf ("\nTotal time:      %.3f\n", gtotal_time);
-  exit (0);
+  return;
 }

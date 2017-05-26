@@ -1,0 +1,77 @@
+This directory contains the C implementation of Metric-FF, as it was
+used in the 3rd international planning competition. Build the planner
+by typing
+
+make
+
+Which produces an executable named
+
+Conf_FF
+
+Usage should be self-explanatory. Running ff without any parameters
+prints out a brief help information about the parameters that are
+applicable, which basically come down to specifying the domain and
+problem files.
+
+Have fun,
+
+Joerg Hoffmann
+
+
+/**************************************************/
+Usage of Conformant-FF:
+
+OPTIONS   DESCRIPTIONS
+
+-p <str>    path for operator and fact file
+-a <str>    path for output file
+-o <str>    operator file name
+-f <str>    fact file name
+
+-h <num>    heuristic function to be used (preset: 1) (explanation: see journal paper)
+      0     implication graph for path to s plus RPG, incomplete check for leafs implication by I
+      1     implication graph for path to s plus RPG, complete check for leafs implication by I
+      2     implication graph for RPG, complete check for leafs implication by phi(s)
+
+-E          EHC run OFF
+-H          helpful actions OFF
+
+-S          stagnating paths check OFF
+-D          full repeated (dominated) states check OFF
+
+-B          run Best-first search in breadth-first style
+
+-M          manual search control
+-d <num>    debug info level (preset 0)
+-R          debug relax.c
+-A          debug search.c
+-T          debug state_transitions.cpp
+//**************************************************//
+
+
+run() is the function which wrapped the main() function of FF_X
+
+//------------------------------------------------//
+1.
+Usage of Conf_FF(shell):
+
+A example here:
+
+./Conf_FF -p './' -a 'output.txt' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+
+
+Then, go to the current directory, find "output.txt",it contains the output of Conf_FF.
+2.
+Usage ofConf_FF.run()  ---->wrapped func
+
+A example here:
+
+
+>>import Conf_FF
+
+>>argv = ['./','-a','output.txt','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+
+>>Conf_FF.run(argv)
+
+Then, go to the current directory, find "output.txt",it contains the output of FF_X.
+

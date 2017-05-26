@@ -1,0 +1,20 @@
+
+Usage for Sequence Satisfy FF:
+
+OPTIONS DESCRIPTIONS
+No hill-climbing try: <0/1>
+  don't do enforced hill-climbing try before bestfirst
+Weight g: <num> [default: 0]
+  set weight w_g in w_g*g(s) + w_h*h(s)
+Weight h: <num> [default: 0]
+  set weight w_h in w_g*g(s) + w_h*h(s) 
+optimization expression: <0/1>
+  switch on optimization expression
+Set-additive heuristic: <0/1>
+  use set-additive heuristic rather than duplicate-eliminated additive
+TSP heuristic: <0/1>
+  use TSP heuristic 
+Standard additive heuristic: <0/1>
+  use standard additive heuristic with wA*
+Competition output: <0/1>
+  use Competition output

@@ -1,6 +1,8 @@
 #coding:utf-8
 import re
 import wx
+import six
+from paras import PlannerWxParameters
 import os
 import sys
 import time
@@ -11,6 +13,9 @@ import argparse
 import threading
 import wx.html
 import wx.lib.buttons as buttons
+import random
+from multiprocessing import Process
+from plantool import *
 #from ctypes import *
 
 
@@ -50,7 +55,9 @@ class PlannerGUI(wx.Frame):
         if bcolor:
             self.panel.SetBackgroundColour(bcolor)
         self.panel.Refresh()
-
+        self.controls = {}
+        self.lastAlgorithm = None
+        self.currentPlanner = None
         self.track_id = track_id
         self.pddldir = './domains/Deterministic/'
         self.lib = ''
@@ -90,10 +97,11 @@ class PlannerGUI(wx.Frame):
         #Listbox
         self.planner_init()
         if self.track_id == 'D': #Deterministic Track
-            self.PlannerList = ['IPP', 'HSP', 'FF', 'Graphplan']
+            self.PlannerList = ['IPP', 'HSP', 'Graphplan','SGplan', 'FF-X', 'FF-v2.3',
+                                'Seq Satisfy FF', "Conformant FF"]
             self.show_pddl_choice()
         elif self.track_id == 'U': #Uncertainty Track
-            self.PlannerList = [''] 
+            self.PlannerList = []
         elif self.track_id == 'L': #Learning Track
             self.PlannerList = ['DUP','DPR','HTNML']
         self.planner_text, self.planner_choice = self.TF_choice("Select a planner:", 
@@ -102,6 +110,116 @@ class PlannerGUI(wx.Frame):
 
     def planner_init(self):
         #print 'planner_init-----\n'
+        self.planners = dict()
+        self.planners["HSP"] = PlannerWxParameters("hsp",
+                ["Algorithm","Direction","Heuristic"],
+                ["-a","-d","-h"],
+                ["choice","choice","choice"],
+                [["bfs", "gbfs"],["forward", "backward"],["h1max", "h2plus", "h1plus"]],
+                [["bfs", "gbfs"],["forward", "backward"],["h1max", "h2plus", "h1plus"]],
+                                                   ["gbfs", "backward", "h1plus"],'-r')
+        self.planners["SGplan"] = PlannerWxParameters("sgplan",
+                                                      [],
+                                                      [],
+                                                      [],
+                                                      [],
+                                                      [],
+                                                      [],
+                                                      '-out')
+        self.planners["IPP"] = PlannerWxParameters("ipp",
+                                                      ["Write Graph","Graph File"],
+                                                      ["-W","-w"],
+                                                      ["checkbox","text"],
+                                                      [None,None],
+                                                      [None,None],
+                                                      [False,"graph"],
+                                                      '-r')
+        self.planners["SatPlan2006"] = PlannerWxParameters("satplan2006",
+                                                      ["Goal Layer","Options","CNF output",
+                                                       "Only unary/binary clauses","Input Solution","Variables"],
+                                                      ["-l","-G","-b","-t","-S","-V"],
+                                                      ["text","choice","text","choice","text",
+                                                       "text"],
+                                                      [None, ["CNF output","Final Solution"],None,["False",'True'],
+                                                       None,None],
+                                                      [None,["0","1"],None,["0","1"],None,None],
+                                                      [None,"Final Solution",None,'True',None,None],
+                                                      '-F')
+        self.planners["Graphplan"] = PlannerWxParameters("graphplan",
+                                                      ["Time Steps","Information Level","Options","max nodes"],
+                                                      ["-t","-i","-O","-M"],
+                                                      ["text","choice","checkboxlist","text"],
+                                                      [None, ["0","1","2"], ['show irrelevants', 'Lower bound time',
+            'Build up to goals', 'no mutual exclusion', 'examine subsets'], None],
+                                                      [None, ["0","1","2"], ['I', 'L', 'B', 'E', 'S'], None],
+                                                      ["0", "0", None, "256"],
+                                                      '-r')
+        self.planners["Contigent-FF"] = PlannerWxParameters("Cont_FF",
+                                              ["Heuristic function","Search algorithm","Search mode","Giveup action",
+                                               "Giveup action cost","Leaf cost weight","Helpful actions pruning","Stagnating paths check"],
+                                              ["-h","-a","-m","-G","-g","-w","-H","-s"],
+                                              ["choice","choice","choice","checkbox","text","text","checkbox","choice"],
+                                              [["0","1","2","3"],["AO*","greedy AO*"],["observ added",
+                                                                                                     "observ maxed",
+                                                                                                     "observ avg"],
+                                               None,None,None,None,
+                                               ["0","1","2"]],
+                                              [["0","1","2","3"],["0","1"],["0","1","2"],None,None,None,None,
+                                               ["0","1","2"]],
+                                              ["3","greedy AO*","observ maxed",False,"0","1",False,"2"],
+                                              '-x')
+        self.planners["FF-X"] = PlannerWxParameters("FF_X",
+                                                      [],
+                                                      [],
+                                                      [],
+                                                      [],
+                                                      [],
+                                                      [],
+                                                      '-a')
+        self.planners["FF-v2.3"] = PlannerWxParameters("FF_2_3",
+                                                      [],
+                                                      [],
+                                                      [],
+                                                      [],
+                                                      [],
+                                                      [],
+                                                      '-a')
+        self.planners["Metric-FF"] = PlannerWxParameters("Metric_FF",
+                                                      ["No hill-climbing try","Weight g","Weight h","optimization expression"],
+                                                      ["-E","-g","-h","-O"],
+                                                      ["checkbox","text","text","checkbox"],
+                                                      [None,None,None,None],
+                                                      [None,None,None,None],
+                                                      [False,"0","0",False],
+                                                      '-a')
+        self.planners["Seq Satisfy FF"] = PlannerWxParameters("Seq_Sat_FF",
+                                                      ["No hill-climbing try","Weight g","Weight h","optimization "
+                                                                                                    "expression",
+                                                       "set-additive heuristic","TSP heuristic","additive "
+                                                                                                "heuristic","Competition output"],
+                                                      ["-E","-g","-h","-O","-S","-T","-H","-C"],
+                                                      ["checkbox","text","text","checkbox","checkbox","checkbox","checkbox","checkbox"],
+                                                      [None,None,None,None,None,None,None,None],
+                                                      [None,None,None,None,None,None,None,None],
+                                                      [False,"0","0",False,False,False,False,False],
+                                                      '-a')
+        self.planners["Conformant FF"] = PlannerWxParameters("Conf_FF",
+                                                      ["Heuristic function","EHC run","Helpful actions","Stagnating "
+                                                                                                        "paths "
+                                                                                                        "check","Full repeated states","Breadth-first style"],
+                                                      ["-h","-E","-H","-S","-D","-B"],
+                                                      ["choice","checkbox","checkbox","checkbox","checkbox","checkbox"],
+                                                      [["0","1","2"],None,None,None,None,None],
+                                                      [["0","1","2"],False,False,False,False,False],
+                                                      ["1",True,True,True,True,True],
+                                                      '-a')
+
+
+
+#self.planners["IPP"] = PlannerWxParameters()
+#       self.planners["FF"] = PlannerWxParameters()
+#       self.planners["Graphplan"] = PlannerWxParameters()
+
         if self.track_id == 'D':
             self.hsp_a_text = 0
             self.hsp_d_text = 0 
@@ -149,43 +267,14 @@ class PlannerGUI(wx.Frame):
 
     def choice_init(self, event):
         p = self.planner_choice.GetSelection()
-        if self.track_id == 'D':
-            if p == 0:
-                if self.hsp_a_text:
-                    self.__hsp_destroy()
-                elif self.ff_info_text:
-                    self.__ff_destroy()
-                elif self.gp_default_text:
-                    self.__graphplan_destroy()
-                self.__ipp_show()
-            elif p == 1:
-                if self.ipp_info_text:
-                    self.__ipp_destroy()
-                elif self.ff_info_text:
-                    self.__ff_destroy()
-                elif self.gp_default_text:
-                    self.__graphplan_destroy()
-                self.__hsp_show()
-            elif p == 2:
-                if self.ipp_info_text:
-                    self.__ipp_destroy()
-                elif self.hsp_a_text:
-                    self.__hsp_destroy()
-                elif self.gp_default_text:
-                    self.__graphplan_destroy()
-                self.__ff_show()
-            elif p == 3:
-                if self.ipp_info_text:
-                    self.__ipp_destroy()
-                elif self.hsp_a_text:
-                    self.__hsp_destroy()
-                elif self.ff_info_text:
-                    self.__ff_destroy()
-                self.__graphplan_show()
-            else:
-                pass
-        elif self.track_id == 'U':
-            pass
+        if self.track_id == 'D' or self.track_id == 'U':
+            currentAlgorithm = self.PlannerList[p]
+            self.currentPlanner = self.planners[currentAlgorithm]
+            for ctrl in self.controls.values():
+                ctrl.Destroy()
+            self.controls.clear()
+            self.__show(self.currentPlanner)
+            self.lastAlgorithm = currentAlgorithm
         elif self.track_id == 'L':
             if p == 0:
                 self.train_DPR_flag = 0
@@ -1043,15 +1132,7 @@ class PlannerGUI(wx.Frame):
         textctrl.SetInsertionPoint(0)
         return text, textctrl
 
-
-    def __ipp_show(self):
-        self.ipp_info_list = [str(i) for i in range(1,9)]
-        self.ipp_info_text, self.ipp_info_choice = self.TF_choice("Information level:", 
-            (15,190), (200, 185), self.ipp_info_list)
-        self.__ipp_help()
-
-
-    def __ipp_help(self):
+    def ipp_help(self):
         self.pointer = self.OutputText.GetInsertionPoint()
         self.OutputText.AppendText("\n\nusage of ipp:\n\n");
         self.OutputText.AppendText("run-time information level( preset: 1 )\n");
@@ -1067,57 +1148,69 @@ class PlannerGUI(wx.Frame):
         self.pointer = self.OutputText.GetInsertionPoint()
         self.OutputText.SetStyle(tp_point, self.pointer, wx.TextAttr("sienna", wx.NullColour))
 
+    def __show(self, planner):
+        y = 190
+        for name, typ, label, default in zip(planner.names, \
+            planner.types, planner.labels, planner.defaults):
+            if typ == "choice":
+                self.controls[name+"T"],self.controls[name] = self.TF_choice(name+":",
+                            (15, y), (200, y-5), label)
+                if default is not None and default in label:
+                    self.controls[name].SetSelection(label.index(default))
+                y += 35
+            elif typ == "text":
+                self.controls[name+"T"],self.controls[name] = \
+                    self.text_text_ctrl(name+":",
+                            (15, y), (200, y-5),
+                            size = (120, -1))
+                if default is not None:
+                    self.controls[name].ChangeValue(default)
+                y += 35
+            elif typ == "checkboxlist":
+                self.controls[name+"T"], self.controls[name] = \
+                        self.checkBoxList(name+":", y, label)
+                if default is not None:
+                    self.controls[name].SetChecked(default)
+                y += 130
+            elif typ == "checkbox":
+                self.controls[name+"T"], self.controls[name] = \
+                        self.checkBox(name+":", y, label)
+                if default:
+                    self.controls[name].SetValue(default)
+                y += 35
 
-    def __ipp_destroy(self):
-        self.ipp_info_text.Destroy()
-        self.ipp_info_choice.Destroy()
+        self.__help()
+
+    def checkBox(self, text, y, options):
+        gp_options_text = wx.StaticText(self.panel, -1,
+            text, (15,y), style=wx.ALIGN_LEFT)
+        gp_options_text.SetFont(wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.BOLD))
+        gp_options_choices = wx.CheckBox(self.panel, -1, pos=(200,y-5))
+        return gp_options_text, gp_options_choices
+
+    def checkBoxList(self, text, y, options):
+        gp_options_text = wx.StaticText(self.panel, -1, 
+            text, (15,y), style=wx.ALIGN_LEFT)
+        gp_options_text.SetFont(wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.BOLD))
+        gp_options_choices = wx.CheckListBox(self.panel, -1, (150,y-5),
+                (180,120),options, wx.LB_MULTIPLE)
+        return gp_options_text, gp_options_choices
 
 
-    def __hsp_show(self):
-        self.HSP_algorithm = ['bfs', 'gbfs']
-        self.HSP_direction = ['forward', 'backward']
-        self.HSP_heuristic = ['h1max', 'h2plus', 'h1plus']
-        self.hsp_a_text, self.hsp_a_choice = self.TF_choice("Algorithm:", 
-            (15,190), (200, 185), self.HSP_algorithm)
-        self.hsp_d_text, self.hsp_d_choice = self.TF_choice("Direction:", 
-            (15,230), (200, 225), self.HSP_direction)
-        self.hsp_h_text, self.hsp_h_choice = self.TF_choice("Heuristic:", 
-            (15,270), (200, 265), self.HSP_heuristic)
-        self.__hsp_help()
-
-
-    def __hsp_help(self):
+    def __help(self):
         self.pointer = self.OutputText.GetInsertionPoint()
-        self.OutputText.AppendText("\n\nusage of hsp:\n\n");
-        self.OutputText.AppendText("OPTIONS   DESCRIPTIONS\n\n");
-        self.OutputText.AppendText("Algorithm:\n\tEither 'bfs' or 'gbfs'.\n" );
-        self.OutputText.AppendText("Direction of Searching:\n\tEither 'forward' or 'backward'.\n" );
-        self.OutputText.AppendText("Heuristic Methods:\n\tOne of 'h1plus', 'h1max', 'h2plus', 'h2max'.\n\n" );
+        helper = open("./docs/"+self.currentPlanner.algName+"__help.txt")
+        for line in helper.readlines():
+            self.OutputText.AppendText(line)
         tp_point = self.pointer
         self.pointer = self.OutputText.GetInsertionPoint()
-        self.OutputText.SetStyle(tp_point, self.pointer, wx.TextAttr("coral", wx.NullColour))
+        textColour = wx.Colour()
+        textColour.Set(random.randint(0,150),random.randint(0,150),random.randint(0,150))
+        self.OutputText.SetStyle(tp_point, self.pointer, wx.TextAttr(textColour,
+                                                                     wx.NullColour))
 
 
-    def __hsp_destroy(self):
-        self.hsp_a_text.Destroy()
-        self.hsp_d_text.Destroy()
-        self.hsp_h_text.Destroy()
-        self.hsp_a_choice.Destroy()
-        self.hsp_d_choice.Destroy()
-        self.hsp_h_choice.Destroy()
-
-
-    def __ff_show(self):
-        a = range(3)
-        b = range(101, 128)
-        a.extend(b)
-        self.ff_info_list = [str(i) for i in a]
-        self.ff_info_text, self.ff_info_choice = self.TF_choice("Information level:", 
-            (15,190), (200, 185), self.ff_info_list)
-        self.__ff_help()
-
-
-    def __ff_help(self):
+    def ff_help(self):
         self.pointer = self.OutputText.GetInsertionPoint()
         self.OutputText.AppendText("\n\nusage of ff:\n");
         self.OutputText.AppendText("run-time information level( preset: 1 )\n");
@@ -1151,35 +1244,6 @@ class PlannerGUI(wx.Frame):
         self.OutputText.AppendText("    125     False sets of goals <GAM>\n");
         self.OutputText.AppendText("    126     detected ordering constraints leq_h <GAM>\n");
         self.OutputText.AppendText("    127     the Goal Agenda <GAM>\n");
-        tp_point = self.pointer
-        self.pointer = self.OutputText.GetInsertionPoint()
-        self.OutputText.SetStyle(tp_point, self.pointer, wx.TextAttr("blue", wx.NullColour))
-
-
-    def __ff_destroy(self):
-        self.ff_info_text.Destroy()
-        self.ff_info_choice.Destroy()
-
-
-    def __graphplan_show(self):
-        self.gp_default_list = ['False', 'True']
-        self.gp_default_text, self.gp_default_choice = self.TF_choice("Default setting:", 
-            (15,190), (200, 185), self.gp_default_list, self.__graphplan_setting)
-        self.__graphplan_help()
-
-
-    def __graphplan_help(self):
-        self.pointer = self.OutputText.GetInsertionPoint()
-        self.OutputText.AppendText("\n\nusage of graphplan:\n");
-        self.OutputText.AppendText("\nOPTIONS   DESCRIPTIONS\n\n");
-        self.OutputText.AppendText("Default Setting:\n\tuse default values or not.\n");
-        self.OutputText.AppendText("Time Steps:\n\tto specify a fixed number of time steps\n");
-        self.OutputText.AppendText("Information Level\n\tto specify info level 1 or 2 (default is 0)\n\n");
-        self.OutputText.AppendText("Options\n\tto specify options you want\n");
-        tp_point = self.pointer
-        self.pointer = self.OutputText.GetInsertionPoint()
-        self.OutputText.SetStyle(tp_point, self.pointer, wx.TextAttr("green", wx.NullColour))
-
 
     def __graphplan_setting(self, event):
         d = self.gp_default_choice.GetSelection()
@@ -1224,7 +1288,7 @@ class PlannerGUI(wx.Frame):
     def Domain_Button(self, event):
         dom_type = "PDDL source (*.pddl)|*.pddl|" \
         "Text source (*.txt)|*.txt|" \
-        "All files (*.*)|*.*"
+        "All files (*.*)|*"
         dialog = wx.FileDialog(None, "Choose a file", self.pddldir, "", 
             dom_type, wx.OPEN)
         if dialog.ShowModal() == wx.ID_OK:
@@ -1236,7 +1300,7 @@ class PlannerGUI(wx.Frame):
     def Problem_Button(self, event):
         pro_type = "PDDL source (*.pddl)|*.pddl|" \
         "Text source (*.txt)|*.txt|" \
-        "All files (*.*)|*.*"
+        "All files (*.*)|*"
         dialog = wx.FileDialog(None, "Choose a file", self.pddldir, "", 
             pro_type, wx.OPEN)
         if dialog.ShowModal() == wx.ID_OK:
@@ -1319,7 +1383,7 @@ class PlannerGUI(wx.Frame):
         tool_name = self.PlannerList[ind]
         self.OutputText.AppendText("\nUsing planner %s...\n"%tool_name)
 
-        pl = self.PlannerList[ind].lower()
+        pl = self.currentPlanner.algName
         temp = self.out_file_name.GetValue().encode('utf-8').split()
         self.out_file_name.Clear()
 
@@ -1330,65 +1394,53 @@ class PlannerGUI(wx.Frame):
             elif not self.pro_file:
                 self.OutputText.AppendText("\nError: no problem file selected!\n")
                 return
-            #self.lib = cdll.LoadLibrary('./libs/%s.so'%pl)
-            self.lib = ctypes.CDLL('./libs/%s.so'%pl)
-            if pl == 'ipp':
-                num = self.ipp_info_choice.GetSelection()
-                if temp:
-                    argv = ['ipp', '-o', self.dom_file, '-f', self.pro_file, '-r', 
-                    temp[0], '-i', self.ipp_info_list[num]]
-                else:
-                    argv = ['ipp', '-o', self.dom_file, '-f', self.pro_file, '-i', 
-                    self.ipp_info_list[num]]
-            elif pl == 'hsp':
-                a = self.hsp_a_choice.GetSelection()
-                d = self.hsp_d_choice.GetSelection()
-                h = self.hsp_h_choice.GetSelection()
-                if temp:
-                    argv = ['hsp', 'r', temp[0], '-a', self.HSP_algorithm[a], '-d', 
-                    self.HSP_direction[d], '-h', self.HSP_heuristic[h], self.pro_file, self.dom_file ]
-                else:
-                    argv = ['hsp', 'r', 'hsp_output.txt', '-a', self.HSP_algorithm[a], '-d', self.HSP_direction[d], 
-                    '-h', self.HSP_heuristic[h], self.pro_file, self.dom_file ]
-                #self.OutputText.AppendText( str(argv)+'\n' )
-            elif pl == 'ff':
-                num = self.ff_info_choice.GetSelection()
-                if temp:
-                    argv = ['ff', '-o', self.dom_file, '-f', self.pro_file, '-r', 
-                    temp[0], '-i', self.ff_info_list[num]]
-                else:
-                    argv = ['ff', '-o', self.dom_file, '-f', self.pro_file, '-i', 
-                    self.ff_info_list[num]]
-            elif pl == 'graphplan':       
-                d = self.gp_default_choice.GetSelection()
-                if d != 0:
-                    if temp:
-                        argv = ['graphplan', '-r', temp[0], '-o', self.dom_file, '-f', self.pro_file, '-d']
-                    else:
-                        argv = ['graphplan', '-o', self.dom_file, '-f', self.pro_file, '-d']
-                else:
-                    num = self.gp_info_choice.GetSelection()   
-                    ops = ''
-                    for i in range(len(self.gp_options_list)):
-                        if self.gp_options_choices.IsChecked(i):
-                            ops += self.gp_op_list[i]
-                    temp_time_steps = self.gp_time_steps.GetValue().encode('utf-8').split()
-                    if not temp_time_steps:
-                        ts = '0'
-                    else:
-                        ts = temp_time_steps[0]
-                    if temp:
-                        argv = ['graphplan', '-r', temp[0], '-o', self.dom_file, '-f', self.pro_file, 
-                        '-i', self.gp_info_list[num], '-t', ts, '-O', ops]
-                    else:
-                        argv = ['graphplan', '-o', self.dom_file, '-f', self.pro_file, 
-                        '-i', self.gp_info_list[num], '-t', ts, '-O', ops]
-            else:
+            argv = []
+            if not self.currentPlanner:
                 return
+            argv.append(self.currentPlanner.algName)
+            argv.extend(['-o', self.dom_file, '-f', self.pro_file,])
+            if temp:
+                argv.extend([self.currentPlanner.outtag, temp[0]])
+            else:
+                argv.extend([self.currentPlanner.outtag, pl+"_output.txt"])
+            for i in range(len(self.currentPlanner.names)):
+                if self.currentPlanner.types[i] == "text":
+                    text = self.controls[self.currentPlanner.names[i]].GetValue().encode('utf-8').strip()
+                    if not text:
+                        #self.OutputText.AppendText('\nError : Empty '+self.currentPlanner.names[i])
+                        pass
+                    else:
+                        argv.extend([self.currentPlanner.tags[i],
+                            text])
+                elif self.currentPlanner.types[i] == "choice":
+                    idx = self.controls[self.currentPlanner.names[i]].GetSelection()
+                    argv.extend([self.currentPlanner.tags[i],
+                            self.currentPlanner.values[i][idx]])
+                elif self.currentPlanner.types[i] == "checkboxlist":
+                    text = ""
+                    for j in range(len(self.currentPlanner.values[i])):
+                        if self.controls[self.currentPlanner.names[i]].IsChecked(j):
+                            text += self.currentPlanner.values[i][j]
+                    if len(text)==0:
+                        text = " "
+                    argv.extend([self.currentPlanner.tags[i],
+                            text])
+                elif self.currentPlanner.types[i] == "checkbox":
+                    if self.currentPlanner.values is not None and not self.currentPlanner.values:
+                        if not self.controls[self.currentPlanner.names[i]].IsChecked():
+                            argv.extend([self.currentPlanner.tags[i]])
+                    else:
+                        if self.controls[self.currentPlanner.names[i]].IsChecked():
+                            argv.extend([self.currentPlanner.tags[i]])
 
             self.OutputText.AppendText('\nInput argv is %s\n'%' '.join(argv))
             self.OutputText.AppendText('\nDoing planning for your problem...')
-            self.lib.main(len(argv), (ctypes.c_char_p*len(argv))(*argv))
+            p = Process(target=eval(self.currentPlanner.algName+".run"), args=[argv])
+            try:
+                p.start()
+                p.join()
+            except Exception, e:
+                self.OutputText.AppendText(e+"\n")
             if temp:
                 self.OutputText.AppendText(
                     '\nThe planning is done!\nResult of it is saved in %s\n'%temp[0])

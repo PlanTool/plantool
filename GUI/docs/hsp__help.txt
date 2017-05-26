@@ -1,0 +1,10 @@
+
+Usage for HSP:
+
+OPTIONS DESCRIPTIONS
+Algorithm: <str>
+  either 'bfs' or 'gbfs' (default: 'gbfs')
+Search direction: <str>
+  either 'forward' or 'backward' (default: 'backward')
+Heuristic function: <str>
+  one of 'h1plus', 'h1max', 'h2plus', 'h2max' (default: 'h1plus')

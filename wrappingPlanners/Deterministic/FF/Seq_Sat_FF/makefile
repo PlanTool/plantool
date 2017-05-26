@@ -64,6 +64,10 @@ OBJECTS 	= $(SOURCES:.c=.o)
 ####### Build rules
 
 #
+
+Seq_Sat_FF: $(OBJECTS) $(PDDL_PARSER_OBJ)
+	$(CC) -o Seq_Sat_FF $(OBJECTS) $(PDDL_PARSER_OBJ) $(CFLAGS) $(LIBS)
+
 _Seq_Sat_FF.so: $(OBJECTS) $(PDDL_PARSER_OBJ) Seq_Sat_FF_wrap.o
 	gcc -shared -o $@ $^
 

@@ -1,5 +1,8 @@
 #+AUTHOR: 326623
 #+DATE: <2017-05-05 五>
+Version 0.01
+* Introduction
+    PlanTool is a tool for efficient application and research in planning area, which integrating various popular planners. For now there are a GUI for planning application and a planning package with a lot of planners.
 
 * Schedule
 1. First discussion <2017-05-12 五>

@@ -42,12 +42,13 @@
 
 
 ####### FLAGS
-
-TARGET = sgplan
-CFLAGS = -g -Wall
-CFLAGS	= -O3 -DNDEBUG -Wall
-LIBS	= -lm -lnsl -lsocket
-LIBS	= -lm 
+#TARGET = sgplan
+TARGET = _sgplan.so
+#CFLAGS = -g -Wall
+#CFLAGS	= -O3 -DNDEBUG -Wall
+CFLAGS = -O2 -fPIC
+#LIBS	= -lm -lnsl -lsocket
+LIBS	= -lm
 
 ####### COMPILE
 
@@ -60,7 +61,7 @@ SOURCES = main.c \
 
 OBJECTS = $(SOURCES:.c=.o) 
 
-LPG_LIBS = LocalSearch/LocalSearch.a Utilities/Utilities.a HillClimbingSearch/HillClimbingSearch.a Parser/Parser.a Metric-FF/mff.a Metric-FF/libmetis.a
+LPG_LIBS = LocalSearch/LocalSearch.a Utilities/Utilities.a HillClimbingSearch/HillClimbingSearch.a Parser/Parser.a Metric-FF/mff.a ./libmetis.so
 
 SUB_DIRS = LocalSearch Utilities HillClimbingSearch Parser Metric-FF
 
@@ -74,12 +75,14 @@ HEADERS := $(foreach dir,./include,$(find_header))
 
 .SUFFIXES: .c .o
 
-.c.o:; $(CC) -I$(PATH_HEADERS) -c $(CFLAGS) $<
+.c.o:; $(CC) -Dmain=run -I$(PATH_HEADERS) -c $(CFLAGS) $<
 
 
 ####### Build rules
-sgplan:	islpg $(OBJECTS) COMPILE_SUB
-	$(CC) -o $(TARGET) $(OBJECTS) $(LPG_LIBS) $(CFLAGS) $(LIBS) -static
+
+sgplan:	islpg $(OBJECTS) COMPILE_SUB sgplan_wrap.o
+#	$(CC) -shared -o $(TARGET) $(OBJECTS) $(LPG_LIBS) $(LIBS)
+	$(CC) -shared -o $(TARGET) $(OBJECTS) sgplan_wrap.o $(LPG_LIBS) $(LIBS) -I/home/henrysky/anaconda3/envs/py2/include/python2.7
 
 islpg:	
 #	rm -f LocalSearch/LocalSearch.a
@@ -89,6 +92,12 @@ COMPILE_SUB:
 	@ for i in $(SUB_DIRS); do $(MAKE) -C $$i CFLAGS='$(CFLAGS)'; done
 
 $(OBJECTS): $(HEADERS)
+
+sgplan_wrap.o: sgplan_wrap.c
+	gcc -O2 -fPIC -c sgplan_wrap.c -I/home/henrysky/anaconda3/envs/py2/include/python2.7
+
+sgplan_wrap.c:
+	swig -python -o sgplan_wrap.c main.i
 
 clean:
 	@ for i in $(SUB_DIRS); do $(MAKE) -C $$i clean; done

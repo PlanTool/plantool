@@ -11,6 +11,63 @@ the file gpl.txt for more information.
 Contact emilkeyder@gmail.com with bug reports or questions.
 
 /*************************************************************/
+usage of Seq_Sat_FF:
+
+OPTIONS   DESCRIPTIONS
+
+-a <str>    path for output file
+-p <str>    path for operator and fact file
+-o <str>    operator file name
+-f <str>    fact file name
+
+-E          don't do enforced hill-climbing try before bestfirst
+
+-g <num>    set weight w_g in w_g*g(s) + w_h*h(s) [preset: 0]
+-h <num>    set weight w_h in w_g*g(s) + w_h*h(s) [preset: 0]
+
+-O          switch on optimization expression (default is plan length)
+
+-S          Use set-additive heuristic rather than duplicate-eliminated additive
+-T          Use TSP heuristic
+-H          Use standard additive heuristic with wA*
+
+-C          Competition output
+
+-i <num>    run-time information level( preset: 1 )
+      0     only times
+      1     problem name, planning process infos
+    101     parsed problem data
+    102     cleaned up ADL problem
+    103     collected string tables
+    104     encoded domain
+    105     predicates inertia info
+    106     splitted initial state
+    107     domain with Wff s normalized
+    108     domain with NOT conds translated
+    109     splitted domain
+    110     cleaned up easy domain
+    111     unaries encoded easy domain
+    112     effects multiplied easy domain
+    113     inertia removed easy domain
+    114     easy action templates
+    115     cleaned up hard domain representation
+    116     mixed hard domain representation
+    117     final hard domain representation
+    118     reachability analysis results
+    119     facts selected as relevant
+    120     final domain and problem representations
+    121     normalized expressions representation
+    122     LNF: translated subtractions representation
+    123     summarized effects LNF  representation
+    124     encoded LNF representation
+    125     connectivity graph
+    126     fixpoint result on each evaluated state
+    127     1P extracted on each evaluated state
+    128     H set collected for each evaluated state
+
+-d <num>    switch on debugging
+
+/*****************************************************************************/
 
 run() is the function which wrapped the main() function of Seq_Sat_FF
 
@@ -20,7 +77,11 @@ Usage of Seq_Sat_FF(shell):
 
 An example here:
 
-./Seq_Sat_FF -p './' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+./Seq_Sat_FF -p './' -a 'output.txt' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+
+
+Then, go to the current directory, find "output.txt",it contains the output.
+2.
 
 2.
 Usage of Seq_Sat_FF.run()  ---->wrapped func
@@ -30,7 +91,9 @@ An example here:
 
 >>import Seq_Sat_FF
 
->>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+>>argv = ['./','-a','output.txt','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
 
 >>Seq_Sat_FF.run(argv)
+
+Then, go to the current directory, find "output.txt",it contains the output.
 
