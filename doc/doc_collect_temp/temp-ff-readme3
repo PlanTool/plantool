@@ -1,0 +1,87 @@
+This directory contains the C implementation of Metric-FF, as it was
+used in the 3rd international planning competition. Build the planner
+by typing
+
+make
+
+Which produces an executable named
+
+Cont_FF
+
+Usage should be self-explanatory. Running ff without any parameters
+prints out a brief help information about the parameters that are
+applicable, which basically come down to specifying the domain and
+problem files.
+
+Have fun,
+
+Joerg Hoffmann
+
+//**************************************************//
+
+Usage of Conformant-FF:
+
+OPTIONS   DESCRIPTIONS
+
+-p <str>    path for operator and fact file
+-x <str>    path for output file
+-o <str>    operator file name
+-f <str>    fact file name
+
+-h <num>    heuristic function to be used (preset: 3) (explanation: see journal paper)
+      0     implication graph for path to s plus RPG, incomplete check for leafs implication by I
+      1     implication graph for path to s plus RPG, complete check for leafs implication by I
+      2     implication graph for RPG, complete check for leafs implication by phi(s)
+      3     FF heuristic assuming that all unknowns are true
+-a <num>    search algorithm (preset: 1)
+      0     AO* search
+      1     greedy AO* search
+-m <num>    search mode (preset: 1)
+      0     observations added 
+      1     observations max'ed
+      2     average of observations 
+-G          use giveup action
+-g <num>    Giveup action cost (preset: 100000)
+-I          partial plan configuration (shortcut for -G -a 0 -m 2 -h 3) 
+-w <num>    leaf cost weight in AO* (preset: 1)
+-H          helpful actions pruning ON
+-s          stagnating paths check level (preset: 2)
+      0     OFF
+      1     only against direct successor
+      2     against all ancestors
+
+-M          manual search control
+-d <num>    debug info level (preset 0)
+-R          debug relax.c
+-A          debug search.c
+-T          debug state_transitions.c
+-P          debug repeated_states.c
+
+//**************************************************//
+run() is the function which wrapped the main() function of Cont_FF
+
+1.
+Usage of Cont_FF(shell):
+
+An example here:
+
+./Cont_FF -p './' -x 'output.txt' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+
+
+Then, go to the current directory, find "output.txt",it contains the output.
+
+2.
+Usage of Cont_FF.run()  ---->wrapped func
+
+An example here:
+
+
+>>import Cont_FF
+
+>>argv = ['./','-x','output.txt','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+
+>>Cont_FF.run(argv)
+
+Then, go to the current directory, find "output.txt",it contains the output.
+
+

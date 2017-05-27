@@ -1,4 +1,4 @@
-#+TITLE: PlanTool Documentation
+b#+TITLE: PlanTool Documentation
 * Introduction
   Plantool wraps different planners into a python utility package. It aims to provide convenience for planning study and applications.
 * Installation
@@ -72,52 +72,21 @@
       | -w  <float> | <float>   Float to weight the heuristic component of the cost             |
 
 
-*** LAMA
+*** LAMA(planning seq-sat-lama)
     - Usage for LAMA:
-    1. First,run:
-      #+BEGIN_SRC python
-      >>> import translate
-      >>> argv = ['translate','domain.pddl','problem.pddl']
-      >>> translate.main(argv)
-      #+END_SRC
-      - translate
-        The translator will will write its result to a file called
-        "output.sas", which serves as an input to the next phase, knowledge
-        compilation. The translator also writes a file called
-        "test.groups", which is some sort of translation key (see
-        "sas-format.txt" in the documentation directory mentioned above).
-        This second file is not needed by the planner, but might help you
-        understand what the translated task looks like. It also writes a
-        file called "all.groups" which is needed by the landmark heuristic.
-
-    2. Second, run:
-       #+BEGIN_SRC python
-       >>> import preprocess
-       >>> argv = ['preprocess','< output.sas']
-       >>> preprocess.oldmain(argv)
-       #+END_SRC
-
-       - preprocess
-         This will run the knowledge compilation component, writing its
-         output to the file aptly named "output".
-
-    3. Finally, run:
-       #+BEGIN_SRC python
-       >>> import search
-       >>> argv = ['search','f','< output']
-       >>> search.oldmain(argv)
-       #+END_SRC
-
-       - search
-         note 
-         This runs the search component of the planner. On success, it will
-         write a file called "sas_plan" containing the plan.
-         OPTIONS DESCRIPTIONS
-         l:  Use the landmark heuristic.
-         L:  Use preferred operators of the landmark heuristic.
-         f:  Use the FF heuristic.
-         F:  Use helpful actions ("preferred operators" of the FF
-         heuristic).
+      
+      - First,run:
+        #+BEGIN_SRC python
+        >>> import translate
+        >>> argv = ['domain.pddl','problem.pddl','l','result']
+        >>> translate.main(argv)
+        #+END_SRC
+        
+        | OPTIONS | DESCRIPTIONS                                                     |
+        | l       | Use the landmark heuristic.                                      |
+        | L       | Use preferred operators of the landmark heuristic.               |
+        | f       | Use the FF heuristic.                                            |
+        | F       | Use helpful actions ("preferred operators" of the FF heuristic). |
 
 
 *** GP-CSP
@@ -239,6 +208,20 @@
        >>>Metric_FF.run(argv)
        #+END_SRC
 
+     - usage of Metric_FF:
+
+ 
+       | OPTIONS  | DESCRIPTIONS                                               |
+       | -p <str> | path for operator and fact file                            |
+       | -a <str> | path for output file                                       |
+       | -o <str> | operator file name                                         |
+       | -f <str> | fact file name                                             |
+       | -E       | don't do enforced hill-climbing try before bestfirst       |
+       | -g <num> | set weight w_g in w_g*g(s) + w_h*h(s) [preset: 0]          |
+       | -h <num> | set weight w_h in w_g*g(s) + w_h*h(s) [preset: 0]          |
+       | -O       | switch on optimization expression (default is plan length) |
+
+
 **** Seq_Sat_FF
 
      - Usage of Seq_Sat_FF(shell):
@@ -259,6 +242,53 @@
      >>>Seq_Sat_FF.run(argv)
      #+END_SRC
 
+     |  OPTIONS | DESCRIPTIONS                                                         |
+     | -a <str> | path for output file                                                 |
+     | -p <str> | path for operator and fact file                                      |
+     | -o <str> | operator file name                                                   |
+     | -f <str> | fact file name                                                       |
+     |       -E | don't do enforced hill-climbing try before bestfirst                 |
+     | -g <num> | set weight w_g in w_g*g(s) + w_h*h(s) [preset: 0]                    |
+     | -h <num> | set weight w_h in w_g*g(s) + w_h*h(s) [preset: 0]                    |
+     |       -O | switch on optimization expression (default is plan length)           |
+     |       -S | Use set-additive heuristic rather than duplicate-eliminated additive |
+     |       -T | Use TSP heuristic                                                    |
+     |       -H | Use standard additive heuristic with wA*                             |
+     |       -C | Competition output                                                   |
+     | -i <num> | run-time information level( preset: 1 )                              |
+     |        0 | only times                                                           |
+     |        1 | problem name, planning process infos                                 |
+     |      101 | parsed problem data                                                  |
+     |      102 | cleaned up ADL problem                                               |
+     |      103 | collected string tables                                              |
+     |      104 | encoded domain                                                       |
+     |      105 | predicates inertia info                                              |
+     |      106 | splitted initial state                                               |
+     |      107 | domain with Wff s normalized                                         |
+     |      108 | domain with NOT conds translated                                     |
+     |      109 | splitted domain                                                      |
+     |      110 | cleaned up easy domain                                               |
+     |      111 | unaries encoded easy domain                                          |
+     |      112 | effects multiplied easy domain                                       |
+     |      113 | inertia removed easy domain                                          |
+     |      114 | easy action templates                                                |
+     |      115 | cleaned up hard domain representation                                |
+     |      116 | mixed hard domain representation                                     |
+     |      117 | final hard domain representation                                     |
+     |      118 | reachability analysis results                                        |
+     |      119 | facts selected as relevant                                           |
+     |      120 | final domain and problem representations                             |
+     |      121 | normalized expressions representation                                |
+     |      122 | LNF: translated subtractions representation                          |
+     |      123 | summarized effects LNF  representation                               |
+     |      124 | encoded LNF representation                                           |
+     |      125 | connectivity graph                                                   |
+     |      126 | fixpoint result on each evaluated state                              |
+     |      127 | 1P extracted on each evaluated state                                 |
+     |      128 | H set collected for each evaluated state                             |
+     | -d <num> | switch on debugging                                                  |
+   
+     
 **** FF_X
 
      - Usage of Seq_Sat_FF(shell):
@@ -278,6 +308,45 @@
      >>>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.paddle']
      >>>Seq_Sat_FF.run(argv)
      #+END_SRC
+
+        
+     |  OPTIONS | DESCRIPTIONS                              |
+     | -p <str> | path for operator and fact file           |
+     | -a <str> | path for output file                      |
+     | -o <str> | operator file name                        |
+     | -f <str> | fact file name                            |
+     | -i <num> | run-time information level( preset: 1 )   |
+     |        0 | only times                                |
+     |        1 | problem name, planning process infos      |
+     |      101 | parsed problem data                       |
+     |      102 | cleaned up ADL problem                    |
+     |      103 | collected string tables                   |
+     |      104 | encoded domain                            |
+     |      105 | predicates inertia info                   |
+     |      106 | splitted initial state                    |
+     |      107 | domain with Wff s normalized              |
+     |      108 | domain with NOT conds translated          |
+     |      109 | splitted domain                           |
+     |      110 | cleaned up easy domain                    |
+     |      111 | unaries encoded easy domain               |
+     |      112 | effects multiplied easy domain            |
+     |      113 | inertia removed easy domain               |
+     |      114 | easy action templates                     |
+     |      115 | cleaned up hard domain representation     |
+     |      116 | mixed hard domain representation          |
+     |      117 | final hard domain representation          |
+     |      118 | reachability analysis results             |
+     |      119 | facts selected as relevant                |
+     |      120 | final domain and problem representations  |
+     |      121 | connectivity graph                        |
+     |      122 | fixpoint result on each evaluated state   |
+     |      123 | 1P extracted on each evaluated state      |
+     |      124 | H set collected for each evaluated state  |
+     |      125 | False sets of goals <GAM>                 |
+     |      126 | detected ordering constraints leq_h <GAM> |
+     |      127 | the Goal Agenda <GAM>                     |
+     | -d <num> | switch on debugging                       |
+
 
 **** Cont_FF
 
@@ -300,6 +369,86 @@
      >>>Cont_FF.run(argv)
      #+END_SRC
 
+     | OPTIONS  | DESCRIPTIONS                                                                          |
+     | -p <str> | path for operator and fact file                                                       |
+     | -x <str> | path for output file                                                                  |
+     | -o <str> | operator file name                                                                    |
+     | -f <str> | fact file name                                                                        |
+     | -h <num> | heuristic function to be used (preset: 3) (explanation: see journal paper)            |
+     | 0        | implication graph for path to s plus RPG, incomplete check for leafs implication by I |
+     | 1        | implication graph for path to s plus RPG, complete check for leafs implication by I   |
+     | 2        | implication graph for RPG, complete check for leafs implication by phi(s)             |
+     | 3        | FF heuristic assuming that all unknowns are true                                      |
+     | -a <num> | search algorithm (preset: 1)                                                          |
+     | 0        | AO* search                                                                            |
+     | 1        | greedy AO* search                                                                     |
+     | -m <num> | search mode (preset: 1)                                                               |
+     | 0        | observations added                                                                    |
+     | 1        | observations max'ed                                                                   |
+     | 2        | average of observations                                                               |
+     | -G       | use giveup action                                                                     |
+     | -g <num> | Giveup action cost (preset: 100000)                                                   |
+     | -I       | partial plan configuration (shortcut for -G -a 0 -m 2 -h 3)                           |
+     | -w <num> | leaf cost weight in AO* (preset: 1)                                                   |
+     | -H       | helpful actions pruning ON                                                            |
+     | -s       | stagnating paths check level (preset: 2)                                              |
+     | 0        | OFF                                                                                   |
+     | 1        | only against direct successor                                                         |
+     | 2        | against all ancestors                                                                 |
+     | -M       | manual search control                                                                 |
+     | -d <num> | debug info level (preset 0)                                                           |
+     | -R       | debug relax.c                                                                         |
+     | -A       | debug search.c                                                                        |
+     | -T       | debug state_transitions.c                                                             |
+     | -P       | debug repeated_states.c                                                               |
+
+
+
+**** Conf_FF
+
+     - Usage of Conf_FF(shell):
+
+       A example here:
+     
+       #+BEGIN_SRC sh
+       ./Conf_FF -p './' -a 'output.txt' -o 'domain.pddl' -f 'probBLOCKS-4-0.pddl'
+       #+END_SRC
+
+       Then, go to the current directory, find "output.txt",it contains the output of Conf_FF.
+
+     - Usage ofConf_FF.run()  ---->wrapped func
+
+       A example here:
+       
+       #+BEGIN_SRC python
+       >>import Conf_FF
+       >>argv = ['./','-a','output.txt','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
+       >>Conf_FF.run(argv)
+       #+END_SRC
+       
+       Then, go to the current directory, find "output.txt",it contains the output of FF_X.
+
+     | OPTIONS  | DESCRIPTIONS                                                                          |
+     | -p <str> | path for operator and fact file                                                       |
+     | -a <str> | path for output file                                                                  |
+     | -o <str> | operator file name                                                                    |
+     | -f <str> | fact file name                                                                        |
+     | -h <num> | heuristic function to be used (preset: 1) (explanation: see journal paper)            |
+     | 0        | implication graph for path to s plus RPG, incomplete check for leafs implication by I |
+     | 1        | implication graph for path to s plus RPG, complete check for leafs implication by I   |
+     | 2        | implication graph for RPG, complete check for leafs implication by phi(s)             |
+     | -E       | EHC run OFF                                                                           |
+     | -H       | helpful actions OFF                                                                   |
+     | -S       | stagnating paths check OFF                                                            |
+     | -D       | full repeated (dominated) states check OFF                                            |
+     | -B       | run Best-first search in breadth-first style                                          |
+     | -M       | manual search control                                                                 |
+     | -d <num> | debug info level (preset 0)                                                           |
+     | -R       | debug relax.c                                                                         |
+     | -A       | debug search.c                                                                        |
+     | -T       | debug state_transitions.cpp                                                           |
+     
+
 **** FF-v2.3
 
      - Usage of FF_2_3(shell):
@@ -320,11 +469,77 @@
      >>>argv = ['./','-o','domain.pddl','-f','probBLOCKS-4-0.pddl']
      >>>FF_2_3.run(argv)
      #+END_SRC
+     
+     - usage of FF_2_3:
 
-
+       |  OPTIONS | DESCRIPTIONS                              |
+       | -p <str> | path for operator and fact file           |
+       | -a <str> | path for output file                      |
+       | -o <str> | operator file name                        |
+       | -f <str> | fact file name                            |
+       | -i <num> | run-time information level( preset: 1 )   |
+       |        0 | only times                                |
+       |        1 | problem name, planning process infos      |
+       |      101 | parsed problem data                       |
+       |      102 | cleaned up ADL problem                    |
+       |      103 | collected string tables                   |
+       |      104 | encoded domain                            |
+       |      105 | predicates inertia info                   |
+       |      106 | splitted initial state                    |
+       |      107 | domain with Wff s normalized              |
+       |      108 | domain with NOT conds translated          |
+       |      109 | splitted domain                           |
+       |      110 | cleaned up easy domain                    |
+       |      111 | unaries encoded easy domain               |
+       |      112 | effects multiplied easy domain            |
+       |      113 | inertia removed easy domain               |
+       |      114 | easy action templates                     |
+       |      115 | cleaned up hard domain representation     |
+       |      116 | mixed hard domain representation          |
+       |      117 | final hard domain representation          |
+       |      118 | reachability analysis results             |
+       |      119 | facts selected as relevant                |
+       |      120 | final domain and problem representations  |
+       |      121 | connectivity graph                        |
+       |      122 | fixpoint result on each evaluated state   |
+       |      123 | 1P extracted on each evaluated state      |
+       |      124 | H set collected for each evaluated state  |
+       |      125 | False sets of goals <GAM>                 |
+       |      126 | detected ordering constraints leq_h <GAM> |
+       |      127 | the Goal Agenda <GAM>                     |
+       | -d <num> | switch on debugging                       |
 
 
 *** IPP
+  - Usage of IPP
+    #+BEGIN_SRC python
+    >>> import ipp
+    >>> argv = ['ipp', '-o', 'domain.pddl', '-f', 'problem.pddl']
+    >>> ipp.run(argv)
+    #+END_SRC
+
+  - Instructions about arguments:
+
+    | OPTIONS  | DESCRIPTIONS                                                     |
+    | -p <str> | path for operator and fact file                                  |
+    | -o <str> | operator file name                                               |
+    | -f <str> | fact file name                                                   |
+    | -i <num> | run-time information level( preset: 1 )                          |
+    | ~0~      | nothing                                                          |
+    | ~1~      | info on action number, graph, search and plan                    |
+    | ~2~      | 1 + info on problem constants, types and predicates              |
+    | ~3~      | 1 + 2 + loaded operators, initial and goal state                 |
+    | ~4~      | 1 + predicates and their inertia status                          |
+    | ~5~      | 1 + 4 + goal state and operators with unary inertia encoded      |
+    | ~6~      | 1 + actions, initial and goal state after expansion of variables |
+    | ~7~      | 1 + facts selected as relevant to the problem                    |
+    | ~8~      | 1 + final domain representation                                  |
+    | ~> 100~  | 1 + various debugging information                                |
+    | -W       | write complete graph to text files after planning                |
+    | -w <str> | specify name for graph output files( preset: graph )             |
+    | -m <num> | build graph up to level <num> without search                     |
+    | -S       | don't do complete subset test in memoization                     |
+        
     
 ** Learning
 ** Uncertainty
